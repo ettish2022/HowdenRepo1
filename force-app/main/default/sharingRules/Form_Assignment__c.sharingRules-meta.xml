@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>The_Name_is_Not_Receipt</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>The Name is Not Receipt</label>
+        <sharedTo>
+            <roleAndSubordinates>BarZivRavid</roleAndSubordinates>
+        </sharedTo>
+        <criteriaItems>
+            <field>Name</field>
+            <operation>notEqual</operation>
+            <value>Receipt</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>The_Name_is_Not_Receipt2</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>The Name is Not Receipt</label>
+        <sharedTo>
+            <roleAndSubordinates>Chair_Man</roleAndSubordinates>
+        </sharedTo>
+        <criteriaItems>
+            <field>Name</field>
+            <operation>notEqual</operation>
+            <value>Receipt</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>The_Name_is_Receipt_And_Share_equel_False</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>The Name is Receipt And Share equel False</label>
+        <sharedTo>
+            <roleAndSubordinates>Chair_Man</roleAndSubordinates>
+        </sharedTo>
+        <criteriaItems>
+            <field>Name</field>
+            <operation>equals</operation>
+            <value>Receipt</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Share_Specific__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>The_Name_is_Receipt_And_Share_equel_True</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>The Name is Receipt And Share equel True</label>
+        <sharedTo>
+            <roleAndSubordinates>BarZivRavid</roleAndSubordinates>
+        </sharedTo>
+        <criteriaItems>
+            <field>Name</field>
+            <operation>equals</operation>
+            <value>Receipt</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Share_Specific__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+</SharingRules>

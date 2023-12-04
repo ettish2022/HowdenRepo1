@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Policy_Number_Transformed__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF((ISBLANK(Policy_Number__c)|| Policy_Number__c = &quot;TBD&quot;),
+
+ &quot;חסר&quot;,
+
+IF( RecordType.DeveloperName = &quot;MENORA&quot;,
+
+	(TEXT(VALUE(LEFT( Policy_Number__c , 4)))
+	+
+	 MID(Policy_Number__c , 6, 6)
+	+
+	TEXT(VALUE(RIGHT( Policy_Number__c , 4)))
+	+
+	MID(Policy_Number__c , 13, 1)
+	),
+
+IF( BEGINS(RecordType.DeveloperName, &quot;PHOENIX&quot;) , 
+
+	TEXT( Load_Year__c )
+	+
+	LPAD(Load_Branch__c , 3, &quot;0&quot; ) 
+	+
+	LPAD( Commission_Branch__c , 3, &quot;0&quot; ) 
+
+	+ Policy_Number__c,
+
+IF( RecordType.DeveloperName = &quot;CLAL&quot; &amp;&amp;   Commission_Branch__c = &quot;30&quot; &amp;&amp; Load_Agent_Number__c = &quot;86042&quot;,
+	&quot;CLAL30AGENT86042&quot;,
+IF( RecordType.DeveloperName = &quot;CLAL&quot; &amp;&amp;   Commission_Branch__c = &quot;30&quot; &amp;&amp; Load_Agent_Number__c = &quot;86831&quot;,
+	&quot;CLAL30AGENT86831&quot;,
+IF( RecordType.DeveloperName = &quot;CLAL&quot; &amp;&amp;   ISBLANK(Commission_Branch__c),
+	 SUBSTITUTE(Policy_Number__c, RIGHT(Policy_Number__c, 2),&quot;&quot;),
+
+IF( RecordType.DeveloperName = &quot;CLAL&quot; &amp;&amp;   Commission_Branch__c  &lt;&gt;  &quot;30&quot;,
+	 Commission_Branch__c + Policy_Number__c,
+
+
+
+
+IF( RecordType.DeveloperName = &quot;MIGDAL&quot; &amp;&amp;   Commission_Branch__c = &quot;271&quot; ,
+	&quot;MIGDAL271&quot;,
+		
+
+IF( RecordType.DeveloperName = &quot;SELA&quot;  ,
+	 SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(Policy_Number__c, &quot;-&quot;, &quot;&quot;)  , &quot; &quot;, &quot;&quot;), &quot;Ext.1&quot;, &quot;&quot;), &quot;Ext.&quot;, &quot;&quot;), &quot;Endt.1&quot;, &quot;&quot;), &quot;Endt.2&quot;, &quot;&quot;), &quot;Endt.3&quot;, &quot;&quot;),
+
+IF( RecordType.DeveloperName = &quot;WS&quot;, SUBSTITUTE(Policy_Number__c, &quot; &quot;, &quot;&quot;),
+IF( RecordType.DeveloperName = &quot;ARDONAGH&quot;,LEFT(Policy_Number__c, FIND(&quot;-&quot;, Policy_Number__c) - 1),
+
+IF( RecordType.DeveloperName = &quot;HAREL&quot; &amp;&amp;   Commission_Branch__c = &quot;91&quot; ,
+	&quot;HAREL91AGENT21093&quot;,
+
+	
+Policy_Number__c)
+)))))))))))</formula>
+    <label>מספר פוליסה - התאמה</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

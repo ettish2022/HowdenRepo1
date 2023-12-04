@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Priority__c</fullName>
+    <externalId>false</externalId>
+    <label>Priority</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>בהול - לא ניתן לעבוד</fullName>
+                <default>false</default>
+                <label>בהול - לא ניתן לעבוד</label>
+            </value>
+            <value>
+                <fullName>דחוף - טיפול נדרש בטווח זמן מיידי</fullName>
+                <default>false</default>
+                <label>דחוף - טיפול נדרש בטווח זמן מיידי</label>
+            </value>
+            <value>
+                <fullName>רגיל - טיפול נדרש בטווח זמן של שבוע קלנדרי</fullName>
+                <default>true</default>
+                <label>רגיל - טיפול נדרש בטווח זמן של שבוע קלנדרי</label>
+            </value>
+            <value>
+                <fullName>נמוך - ממתין לפגישת תיעדוף</fullName>
+                <default>false</default>
+                <label>נמוך - ממתין לפגישת תיעדוף</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

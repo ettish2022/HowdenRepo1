@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Travel_Icon__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(  Has_Travel__c  , IMAGE(&quot;https://howdenil--c.documentforce.com/sfc/servlet.shepherd/version/renditionDownload?rendition=ORIGINAL_Jpg&amp;versionId=0684G00000DAqNt&amp;operationContext=CHATTER&amp;contentId=05T4G00000diIPJ&quot;, &quot;has travel&quot;, $Setup.IconSize__c.small__c, $Setup.IconSize__c.small__c),IMAGE(&quot;https://howdenil--c.documentforce.com/sfc/servlet.shepherd/version/renditionDownload?rendition=ORIGINAL_Jpg&amp;versionId=0684G00000DAqPA&amp;operationContext=CHATTER&amp;contentId=05T4G00000diIYK&quot;,&quot;Does not have travel&quot;, $Setup.IconSize__c.small__c, $Setup.IconSize__c.small__c))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Travel</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

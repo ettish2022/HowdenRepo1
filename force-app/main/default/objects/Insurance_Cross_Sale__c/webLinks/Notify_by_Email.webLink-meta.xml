@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Notify_by_Email</fullName>
+    <availability>online</availability>
+    <displayType>button</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>Notify by Email</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <url>window.open(&quot;/apex/Insurance_Cross_Sales_Send_Email?id={!Insurance_Cross_Sale__c.Id}&quot;,&quot;Insurance_Cross_Sales_Send_Email&quot;, &quot;width=600, height=300,top=300,left=400&quot; );</url>
+</WebLink>

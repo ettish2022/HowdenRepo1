@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>Carrier 1</label>
+    <name>Car_Carrier1__c</name>
+    <relationshipLabel>Custom Lead (carrier 1)</relationshipLabel>
+</CustomFieldTranslation>

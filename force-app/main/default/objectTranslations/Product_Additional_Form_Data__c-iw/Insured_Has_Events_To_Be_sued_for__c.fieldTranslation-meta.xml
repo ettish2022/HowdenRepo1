@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>אירועים שאפשר ויוגשו תביעות לגביהם</label>
+    <name>Insured_Has_Events_To_Be_sued_for__c</name>
+    <picklistValues>
+        <masterLabel>כן</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>לא</masterLabel>
+        <translation></translation>
+    </picklistValues>
+</CustomFieldTranslation>

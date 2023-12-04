@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>FY_2024</fullName>
+    <columns>Budget_Year__c</columns>
+    <columns>NAME</columns>
+    <columns>Internal_profit_center__c</columns>
+    <columns>Product_Definition__c</columns>
+    <columns>Retention_Percent__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Budget_Year__c</field>
+        <operation>equals</operation>
+        <value>FY-2024</value>
+    </filters>
+    <label>FY 2024</label>
+</ListView>

@@ -1,0 +1,16 @@
+<apex:page standardController="Novidea_HPC__Policy__c" extensions="PolicyProductsController" action="{!init}">
+<!-- <a href="/{!product}/e?retURL=%2F{!Id}"  target="_parent" style="cursor:pointer; color: #015ba7;font-weight: normal;">עריכת מוצר פוליסה</a> -->
+ 
+<apex:pageBlock mode="maindetail" rendered="{!IsProducts}">
+    <apex:pageBlockSection columns="2">
+    <apex:repeat value="{!viewFieldSet}" var="f"> 
+        <apex:pageBlockSection >
+            <apex:outputField value="{!product[realFields[f]]}"/>        
+        </apex:pageBlockSection>
+    </apex:repeat>
+    </apex:pageBlockSection>
+</apex:pageBlock>
+<apex:outputpanel rendered="{!NOT(isProducts)}">
+    <apex:outputLabel value="אין נתונים להצגה"/>
+</apex:outputpanel>
+</apex:page>

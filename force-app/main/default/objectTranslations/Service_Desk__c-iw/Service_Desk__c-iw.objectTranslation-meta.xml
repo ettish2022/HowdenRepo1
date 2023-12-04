@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <article>None</article>
+        <plural>false</plural>
+        <value>Service Desk</value>
+    </caseValues>
+    <caseValues>
+        <article>None</article>
+        <plural>true</plural>
+        <value>Service Desk</value>
+    </caseValues>
+    <gender>Masculine</gender>
+    <layouts>
+        <layout>Service Desk Admin Layout</layout>
+        <sections>
+            <label></label>
+            <section>מסמכים</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרטי הטיפול</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>קישורים מותאמים אישית</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Service Desk Users Layout</layout>
+        <sections>
+            <label></label>
+            <section>מסמכים</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרטי הטיפול</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>קישורים מותאמים אישית</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>שדות</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>קליטת עובד חדש</layout>
+        <sections>
+            <label></label>
+            <section>מסמכים</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>משימות לעזיבת עובד</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>משימות לקליטת עובד/ניוד/חל&quot;ד</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרטי העובד</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>קישורים מותאמים אישית</section>
+        </sections>
+    </layouts>
+    <recordTypes>
+        <label></label>
+        <name>HR_Process</name>
+    </recordTypes>
+    <recordTypes>
+        <label></label>
+        <name>Help_Desk_Admin</name>
+    </recordTypes>
+    <recordTypes>
+        <label></label>
+        <name>Help_Desk_User</name>
+    </recordTypes>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>AbroadPermission_Dates</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>CustomerAccount_CantBeBlank</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>New_Employee_Email</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Report_Description</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Send_a_Link</name>
+    </validationRules>
+    <webLinks>
+        <label></label>
+        <name>File_a_Document</name>
+    </webLinks>
+</CustomObjectTranslation>

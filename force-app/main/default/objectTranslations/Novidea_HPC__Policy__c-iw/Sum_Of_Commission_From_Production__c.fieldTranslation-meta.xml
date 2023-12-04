@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>סך עמלות מפרדוקציה (פוליסות בת)</label>
+    <name>Sum_Of_Commission_From_Production__c</name>
+</CustomFieldTranslation>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>עמלה לאחר מס בדולר</label>
+    <name>Commission_After_Tax_U_S_D__c</name>
+</CustomFieldTranslation>

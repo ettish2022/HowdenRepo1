@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Age_Must_Be_Under_100</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+NOT($Setup.Novidea_HPC__Trigger__c.Novidea_HPC__Stop_Validation_Rule__c ),
+( AgentWise_IL__Age__c)  &gt;= 100)</errorConditionFormula>
+    <errorDisplayField>Otzar_Interface__Date_Of_Birth__c</errorDisplayField>
+    <errorMessage>גיל איש הקשר לא יכול להיות מעל 100</errorMessage>
+</ValidationRule>

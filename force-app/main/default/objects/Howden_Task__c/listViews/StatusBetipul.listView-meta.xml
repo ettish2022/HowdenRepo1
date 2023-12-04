@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>StatusBetipul</fullName>
+    <columns>NAME</columns>
+    <columns>Subject__c</columns>
+    <columns>Request_date__c</columns>
+    <columns>Status__c</columns>
+    <columns>Request_Owner__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Status__c</field>
+        <operation>equals</operation>
+        <value>בטיפול</value>
+    </filters>
+    <label>בטיפול</label>
+    <language>iw</language>
+</ListView>

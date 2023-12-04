@@ -1,0 +1,825 @@
+<apex:component controller="PolicyManagementController" allowDML="true">
+    <apex:attribute name="pPolicyId" description="The policy Id." type="String" required="true" assignTo="{!policyId}"/>
+    <apex:attribute name="pNewPolicy" description="The policy Id." type="Boolean" required="false" assignTo="{!newPolicy}"/>
+    <apex:attribute name="pFromConversion" description="The policy was created from conversion" type="Boolean" required="false" assignTo="{!isFromConversion}"/>
+    <apex:attribute name="pControlledByFlow" description="Indicator that the copmonent should not try changing the page url." type="Boolean" required="false" assignTo="{!controlledByFlow}"/>
+    <apex:attribute name="pAdvancedMode" description="" type="Boolean" required="false" assignTo="{!advancedMode}"/>
+    <apex:attribute name="pFilterId" description="" type="String" required="false" assignTo="{!filterId}"/>
+
+    <!-- Make sure to include the following  
+    
+        <apex:includeScript value="{!$Resource.jquery3_6_0min}" />
+        <apex:includeScript value="{!$Resource.jqueryMigrateDevelopment}" />
+        <apex:includeScript value="{!$Resource.autocompletejs}" />
+        <apex:includeScript value="{!$Resource.novidea_js_utils}" />
+        <apex:includeScript value="{!$Resource.json2min}"/>
+        <apex:stylesheet value="{!$Resource.autocompletecss}" />
+    
+     -->
+    <style>
+    
+     div#mask { display: none; cursor: wait; z-index: 9999; 
+position: absolute; top: 0; {!$Label.novidea_hpc__text_alignment_reverse}: 0; height: 100%; 
+width: 100%; background-color: #fff; opacity: 0; filter: alpha(opacity = 0);}
+        
+        .currencyInput {
+            width: 80px;
+        }
+        .currencyPercentage {
+            width: 80px;
+        }
+        .headerlabel {
+            font-weight: bold;
+            padding: 5px;
+            vertical-align: top;
+        }
+        .headerTable {
+            border: 1px dashed #1F497D;
+            border-radius: 5px;
+            width: 735px;
+            margin-{!$Label.novidea_hpc__text_alignment}: 5px;
+            margin-bottom: 10px;
+            margin-top: 20px;
+        }
+        .incomeTable {
+            border: 1px dashed #1F497D;
+            border-radius: 5px;
+            margin-{!$Label.novidea_hpc__text_alignment}: 5px;
+            margin-bottom: 10px;
+            margin-top: 20px;
+        }
+        .numeric{
+            direction:{!$Label.novidea_hpc__direction_reverse};
+        }
+        .incomeTable input {
+            float:{!$Label.novidea_hpc__Text_Alignment_Reverse};
+        }
+        .timePeriodErrorCssClass { 
+            border-color : red; 
+        }
+        .inputTextBox {
+            width: 215px;
+            height: 60px;
+            direction: {!$Label.novidea_hpc__direction};
+        }
+        .autocomplete {
+            position: absolute !important;
+        }
+    </style>
+    <script>
+        var j$ = jQuery.noConflict();
+        
+        j$(document).ready(function() {
+             j$(window).width('700px');
+             
+             const currencies = document.getElementsByClassName("currencyInput");
+             for (let i = 0; i < currencies.length; i++) {
+                let val = currencies[i].value;
+                if (!isNaN(val)) {
+                    currencies[i].value = Number(currencies[i].value).toFixed(2);
+                }
+             }
+        });
+        
+        var allowEnterSubmission = false;
+        function preventEnterSubmission(pevent) {   
+           if (pevent == null)
+               return true;
+           if (pevent.keyCode == 13 && !allowEnterSubmission) {
+               pevent.cancelBubble = true;
+               pevent.returnValue = false;
+               return false;
+           }
+           return true;
+       } 
+        
+        function validate(){
+            var msgs = validateFieldValues();
+            if(msgs.length>0){
+                createMessage(msgs);
+                return false;
+            }
+ 
+            return true;
+        }
+        
+        function validateFieldValues(){
+            var msgs =[];
+            j$("[id$='carrier']").each(function(index){if(this.value==null || this.value=="") msgs.push("{!$Label.novidea_hpc__missing} {!$ObjectType.Novidea_HPC__Policy_Breakdown__c.Fields.Novidea_HPC__Carrier__c.label}")});
+            j$("[id$='tbBreakdown']").each(function(index){
+                if(this.value <= 0) {
+                    msgs.push("{!$Label.TB_irrelevant_values}");
+                }
+                else if(!this.value){
+                    msgs.push("{!$Label.TB_not_value}");
+                }
+            });
+
+            var totalCommissionBreakdown = getBreakdown('commissionBreakdown');
+            var totalPremiumBreakdown = getBreakdown('premiumBreakdown');
+            var totalFeeBreakdown = getBreakdown('feeBreakdown');
+            var totalCreditFeeBreakdown = getBreakdown('creditFeeBreakdown');
+            var dontValidateBreakDown = {!dontValidateBreakdownCommission};
+            
+            if(!dontValidateBreakDown) {
+                if (totalCommissionBreakdown != 100 && totalCommissionBreakdown != 0) {
+                    msgs.push("{!JSENCODE($Label.novidea_hpc__total) & ' ' & $ObjectType.Novidea_HPC__Policy_Breakdown__c.Fields.Novidea_HPC__Commission_Breakdown__c.label & ' ' & JSENCODE($Label.novidea_hpc__equal_to)}" + totalCommissionBreakdown);
+                }
+                if (totalFeeBreakdown != 100 && totalFeeBreakdown != 0) {
+                    msgs.push("{!JSENCODE($Label.novidea_hpc__total)& ' ' & $ObjectType.Novidea_HPC__Policy_Breakdown__c.Fields.Novidea_HPC__Fees_Breakdown__c.label &' '& JSENCODE($Label.novidea_hpc__equal_to)}" + totalFeeBreakdown);
+                }
+                if (totalCreditFeeBreakdown != 100 && totalCreditFeeBreakdown != 0) {
+                    msgs.push("{!JSENCODE($Label.novidea_hpc__total) & ' ' & $ObjectType.Novidea_HPC__Policy_Breakdown__c.Fields.Novidea_HPC__Credit_Fee_Breakdown__c.label & ' ' & JSENCODE($Label.novidea_hpc__equal_to)}" + totalCreditFeeBreakdown);
+                }
+            }
+
+            if (totalPremiumBreakdown != 100 && totalPremiumBreakdown != 0) {
+                msgs.push("{!JSENCODE($Label.novidea_hpc__total) & ' ' & $ObjectType.Novidea_HPC__Policy_Breakdown__c.Fields.Novidea_HPC__Premium_Breakdown__c.label & ' ' & JSENCODE($Label.novidea_hpc__equal_to)}" + totalPremiumBreakdown);
+            }
+
+            var subAgentDialog = document.getElementById('{!$Component.frm.subAgentAgreementDialog}');
+            if (subAgentDialog) {
+                msgs.push("{!JSENCODE($Label.Validation_User_Answers_Sub_Agent_Agreement)}");
+            }
+            return msgs;
+        }  
+        function getBreakdown(breakdownType){
+            var breakdownTotal = 0;
+            j$("[id$='" + breakdownType + "']").each(function(){
+                currElemVal = this.value;
+                currElemValNum = currElemVal==""?0:new Number(currElemVal.replace(/,/g,""));
+                breakdownTotal+=currElemValNum;
+            });
+            return breakdownTotal;
+        }
+                                                
+        function createMessage(msgs){
+            var elem = document.getElementById("{!$Component.msg}");
+            if(elem.getElementsByTagName("UL").length>0)elem.removeChild(elem.getElementsByTagName("UL")[0]);
+            if(msgs.length>0 && msgs[0]!=""){
+                elem = elem.appendChild(document.createElement("UL"));
+                var elem1;
+                for(var i=0;i<msgs.length;++i){
+                    elem1 = elem.appendChild(document.createElement("LI"));
+                    elem1.innerText= msgs[i];
+                }
+            }
+        }
+        
+        function handleValidationException(message, acInputId){
+            createMessage([message]);
+            j$("#"+acInputId).val("").css("border","1px solid red").parent().find(":hidden").val("");
+        }
+        
+        function handleValidateSelectedPolicy(result, plcId,plcName,acInputId){
+            var message = null;
+            if(!result.isPolicyOfCarrier){
+                message = "{!$Label.the_selected_policy_is_not_related_to_carrier}";
+            }
+            if(result.isPolicyChargedThisMonth){
+                message = "{!$Label.the_selected_policy_already_has_payment_in_the_selected_month}";
+            }
+            if(message!=null){
+                createMessage([message]);
+                j$("#"+acInputId).val("").css("border","1px solid red").parent().find(":hidden").val("");
+                return;
+            }
+            else{
+                createMessage([]);
+                j$("#"+acInputId).val(plcName).css("border","initial").find(":hidden").each(function(index){
+                                                                        if(index==0)this.value= plcName;
+                                                                        else if(index==1)this.value=plcId;
+                                                                    });
+            }
+        }   
+        
+        function updateTotal(elem){
+            var totalFee=0,totalCredit=0,totalCommission=0,totalPremium=0,totalIncome=0,currElemVal,currElemValNum;
+            j$("[id$='premium']").each(function(){
+                currElemVal = this.value;
+                currElemValNum = currElemVal==""?0:new Number(currElemVal.replace(/,/g,""));
+                totalPremium+=currElemValNum;
+            });
+            j$("[id$='commission']").each(function(){
+                currElemVal = this.value;
+                currElemValNum = currElemVal==""?0:new Number(currElemVal.replace(/,/g,""));
+                totalCommission+=currElemValNum;
+            });
+            totalIncome = totalCommission;
+            j$("[id$='agencyFees']").each(function(){
+                // TBD - transalte to the same currency as the commission.
+                currElemVal = this.value;
+                currElemValNum = currElemVal==""?0:new Number(currElemVal.replace(/,/g,""));
+                totalIncome+=currElemValNum;
+            });
+            var totalIncomeElem = document.getElementById("{!$Component.frm.blk.totalIncome}");
+            var totalPremiumElem = document.getElementById("{!$Component.frm.blk.totalPremium}");
+            var totalCommissionElem = document.getElementById("{!$Component.frm.blk.totalCommission}");
+            totalIncomeElem.innerText = totalIncome;
+            totalPremiumElem.innerText = totalPremium;
+            totalCommissionElem.innerText = totalCommission;
+        }
+        
+        
+        j$(document).ready(function() {
+            checkExtensionDisplay();
+            updateTotal();
+            j$("#{!$Component.frm.blk.maintable}".replace(/:/g,"\\:")).on("keydown", function(event){
+                                                                                   if(event.which == 13 ) {
+                                                                                        event.preventDefault();
+                                                                                        var nextSiblingElem = j$((j$(event.srcElement).parents("TD:first").nextAll("TD:first")));
+                                                                                        if(nextSiblingElem.length==0)
+                                                                                            nextSiblingElem = j$((j$(event.srcElement).parents("TR:first").nextAll("TR:first")).children("TD:nth-child(2)"));
+                                                                                        nextSiblingElem.find("input,select").focus().select();
+                                                                                   }
+                                                                                });
+        });
+        function startFlowloading(){
+            document.getElementById('mask').style.display = 'block';
+            document.body.style.cursor='wait';
+        }
+
+        function flowloadingStop(){
+            document.body.style.cursor='default';
+            document.getElementById('mask').style.display = 'none';                
+        }
+
+        let insuranceBankValue;
+        let netoExtensionValue;
+        let feePercentageExtensionValue;
+        let agencyFeePercentageExtensionValue;
+        let extensionCommentValue;
+
+        function changeFieldsExtended(){
+            if({!shouldShowEnhancedPolicyManagementPage}){
+                const checkbox = document.getElementById("{!$Component.frm.blk.extensionCheckbox}");
+
+                const insuranceBankHTML = document.getElementById("{!$Component.frm.blk.insuranceBank}");
+                const netoExtensionValueHTML = document.getElementById('{!$Component.frm.blk.extraNetoExtension}');
+                const feePercentageExtensionValueHTML = document.getElementById('{!$Component.frm.blk.extensionFeePercentage}');
+                const agencyFeePercentageExtensionValueHTML = document.getElementById('{!$Component.frm.blk.extensionAgencyFeePercentage}');
+                const extensionCommentValueHTML = document.getElementById('{!$Component.frm.blk.extensionComment}');
+
+                insuranceBankValue = !insuranceBankValue ? insuranceBankHTML.value : insuranceBankValue;
+                netoExtensionValue = !netoExtensionValue ? netoExtensionValueHTML.value : netoExtensionValue;
+                feePercentageExtensionValue = !feePercentageExtensionValue ? feePercentageExtensionValueHTML.value : feePercentageExtensionValue;
+                agencyFeePercentageExtensionValue = !agencyFeePercentageExtensionValue ? agencyFeePercentageExtensionValueHTML.value : agencyFeePercentageExtensionValue;
+                extensionCommentValue = !extensionCommentValue ? extensionCommentValueHTML.value : extensionCommentValue;
+
+                if (checkbox.checked){
+                    changeHTMLElementValue(insuranceBankHTML, 0);
+                    changeHTMLElementValue(netoExtensionValueHTML, 0);
+                    changeHTMLElementValue(feePercentageExtensionValueHTML, 0);
+                    changeHTMLElementValue(agencyFeePercentageExtensionValueHTML, 0);
+                    changeHTMLElementValue(extensionCommentValueHTML, null);
+                } else {
+                    changeHTMLElementValue(insuranceBankHTML, insuranceBankValue);
+                    changeHTMLElementValue(netoExtensionValueHTML, netoExtensionValue);
+                    changeHTMLElementValue(feePercentageExtensionValueHTML, feePercentageExtensionValue);
+                    changeHTMLElementValue(agencyFeePercentageExtensionValueHTML, agencyFeePercentageExtensionValue);
+                    changeHTMLElementValue(extensionCommentValueHTML, extensionCommentValue);
+                }
+                checkExtensionDisplay();
+            }
+        }
+
+        function checkExtensionDisplay(){
+            if({!shouldShowEnhancedPolicyManagementPage}){
+                const checkbox = document.getElementById("{!$Component.frm.blk.extensionCheckbox}");
+                if (checkbox.checked){
+                    document.getElementById('{!$Component.frm.blk.extensionBlock}').style.display = 'block';
+                } else {
+                    document.getElementById('{!$Component.frm.blk.extensionBlock}').style.display = 'none';
+                }
+            }
+        }
+
+        function changeHTMLElementValue(element, value){
+            if(element) {
+                element.value = value;
+            }
+        }
+    </script>
+    
+    <div id="mask" style="display:none;"/>
+    <apex:outputPanel id="msgBlock" style="font-style:italic;font-size:14px;color:#A80000;direction:{!$Label.novidea_hpc__direction};" rendered="true" layout="block">
+        <apex:outputPanel id="msg" style="font-style:italic;font-size:14px;color:#A80000;direction:{!$Label.novidea_hpc__direction};" rendered="true" layout="block"/>
+        <script>
+            function showError(){
+                if({!!ISBLANK(error)}){
+                    createMessage(["{!error}"]);
+                } 
+            }     
+        </script>
+        <apex:messages id="errorMsgs"/>
+        <script>
+            function saveCompleted() {
+                if({!ISBLANK(error)} && document.getElementById('{!$Component.errorMsgs}') == null){
+                    if({!Not(ISBLANK(filterId))}){
+                        window.location.assign('/lightning/o/Novidea_HPC__Product__c/list?filterName={!filterId}');
+                    } else if({!controlledByFlow}){
+                        policyCompleted();
+                    } else if({!Not(newPolicy)}){
+                        window.location.assign('/{!pPolicyId}');
+                    }
+                } //else showError();
+              }
+        </script>
+    </apex:outputPanel>       
+    
+    <apex:actionStatus id="loadingStatus" onstart="startFlowloading();" onstop="flowloadingStop();"/>
+    <apex:form >
+        <apex:actionFunction name="setPolicyOption" action="{!setPolicyOption}" rerender="frm">
+            <apex:param name="insuranceType" assignTo="{!policy.Novidea_HPC__Insurance_Type__c}" value="" />
+        </apex:actionFunction>
+    </apex:form>
+    <apex:form id="frm" onkeydown="preventEnterSubmission(event);">
+        <apex:actionFunction name="removeLine" action="{!removeLine}" rerender="maintableSplit" status="loadingStatus">
+            <apex:param name="lineToRemove" value="" assignTo="{!lineToRemove}" />
+        </apex:actionFunction>
+
+        <apex:pageBlock id="subAgentAgreementDialog" rendered="{!showSubAgentAgreementDialog}">
+            <apex:pageMessage summary="{!$Label.Sub_Agent_Exists_Warning}"
+                severity="warning" strength="2"/>
+            <apex:commandButton value="{!$Label.No}" action="{!hideSubAgentAgreementDialog}" reRender="frm" status="loadingStatus"/>
+            <apex:commandButton value="{!$Label.Yes}" action="{!handleSubAgent}" reRender="frm" status="loadingStatus"/>
+        </apex:pageBlock>
+
+        <apex:pageBlock mode="maindetail" id="blk">
+            <apex:pageBlockButtons location="bottom" dir="{!$Label.novidea_hpc__direction}">
+                <apex:commandButton id="btnSave" action="{!save}" rerender="frm,msgBlock" value="{!$Label.novidea_hpc__Save}" 
+                    onclick="if(!validate())return false;"
+                    oncomplete="saveCompleted();" status="loadingStatus">
+                </apex:commandButton>
+                <apex:commandButton rendered="{!NOT(advancedMode)}" action="{!exitPage}" value="{!$Label.novidea_hpc__Cancel}" onclick="window.history.back();return false;" />
+            </apex:pageBlockButtons>
+            <apex:panelGrid columns="3" cellspacing="5px" styleclass="headerTable">
+                <apex:panelGroup >
+                    <apex:outputLabel styleClass="headerlabel" value="{!$ObjectType.Novidea_HPC__Policy__c.Fields.Novidea_HPC__Insurance_Type__c.label}:" />
+                    <apex:outputPanel style="float:{!$Label.novidea_hpc__Text_Alignment_Reverse}">
+                        <apex:inputField value="{!policy.Novidea_HPC__Insurance_Type__c}" rendered="{!NOT(OR(endorsementProcess, cancellationProcess))}" required="true" onchange="setPolicyOption(this.value);"/>
+                    </apex:outputPanel>
+                    <apex:outputField value="{!policy.Novidea_HPC__Insurance_Type__c}" rendered="{!OR(endorsementProcess, cancellationProcess)}"/>
+                </apex:panelGroup>
+                <apex:panelGroup rendered="{!NOT(newPolicy)}">
+                    <apex:commandButton id="btnCancellation" action="{!cancellation}" rerender="blk" value="{!$Label.Cancel_Policy}" status="loadingStatus" oncomplete="checkExtensionDisplay();updateTotal();" disabled="{!AND(NOT(newPolicy),OR(endorsementProcess, cancellationProcess))}"/>
+                    <apex:commandButton id="btnEndorsement" action="{!endorsement}" rerender="blk" value="{!$Label.Extension_Change}" status="loadingStatus" oncomplete="checkExtensionDisplay();updateTotal();" disabled="{!AND(NOT(newPolicy),OR(endorsementProcess, cancellationProcess))}"/>
+                </apex:panelGroup>
+            </apex:panelGrid>
+            <apex:panelGrid columns="4" cellspacing="5px" styleclass="headerTable">
+                <apex:panelGroup >
+                    <apex:outputLabel styleClass="headerlabel" value="{!$Label.Premium_and_Income_Breakdown}" escape="true"/>
+                </apex:panelGroup>
+                <apex:panelGroup >
+                    <apex:outputLabel styleClass="headerlabel" value="{!$Label.Premium_Payment}" escape="false"/>
+                    <apex:outputText id="totalPremium" />
+                </apex:panelGroup>
+                <apex:panelGroup >
+                    <apex:outputLabel styleClass="headerlabel" value="{!$Label.Commission}" escape="false"/>
+                    <apex:outputText id="totalCommission" />
+                </apex:panelGroup>
+                <apex:panelGroup >
+                    <apex:outputLabel styleClass="headerlabel" value="{!$Label.Income_from_file}" escape="false"/>
+                    <apex:outputText id="totalIncome" />
+                </apex:panelGroup>
+            </apex:panelGrid>
+            <apex:panelGrid columns="5" cellspacing="5px" id="policy" styleclass="incomeTable">
+                <apex:panelGroup >
+                    <apex:outputLabel styleClass="headerlabel" value="{!$ObjectType.Novidea_HPC__Policy__c.Fields.Name.label}:" />
+                    <apex:inputField id="policyName" value="{!policy.Name}" />
+                </apex:panelGroup>
+                <apex:panelGroup >
+                    <apex:outputLabel styleClass="headerlabel" value="{!$ObjectType.Novidea_HPC__Policy__c.Fields.Novidea_HPC__Policy_Number__c.label}:" />
+                    <apex:inputField id="policyNumber" value="{!policy.Novidea_HPC__Policy_Number__c}" />
+                </apex:panelGroup>
+                <apex:panelGroup >
+                    <apex:outputLabel styleClass="headerlabel" value="{!$ObjectType.Novidea_HPC__Policy__c.Fields.Novidea_HPC__Endorsement_Number__c.label}:"/>
+                    <apex:inputText id="currentEndorement" value="{!currentEndorement}" rendered="{!NOT(OR(endorsementProcess, cancellationProcess, lockEndorsementNumber))}"
+                            style="width:30px;"/>
+                    <apex:outputText value="{!currentEndorement}" rendered="{!OR(endorsementProcess, cancellationProcess, lockEndorsementNumber)}"/>
+                </apex:panelGroup>
+                <apex:panelGroup >
+                    <apex:outputLabel styleClass="headerlabel" value="{!$ObjectType.Novidea_HPC__Policy__c.Fields.Novidea_HPC__Original_Type__c.label}:"/>
+                    <apex:outputPanel style="float:{!$Label.novidea_hpc__Text_Alignment_Reverse}">
+                        <apex:inputField value="{!policy.Novidea_HPC__Original_Type__c}"  rendered="{!NOT(endorsementProcess)}" required="true"/>
+                    </apex:outputPanel>
+                    <apex:outputField value="{!policy.Novidea_HPC__Original_Type__c}"  rendered="{!endorsementProcess}"/>
+                </apex:panelGroup>
+                <apex:panelGroup >
+                    <apex:outputLabel styleClass="headerlabel" value="{!$ObjectType.Novidea_HPC__Policy__c.Fields.Novidea_HPC__Payments_Number__c.label}:" for="test"/>
+                    <apex:inputField value="{!policy.Novidea_HPC__Payments_Number__c}" rendered="{!NOT(cancellationProcess)}" style="width:59px;"/>
+                    <apex:outputField value="{!policy.Novidea_HPC__Payments_Number__c}" rendered="{!cancellationProcess}"/>
+                </apex:panelGroup>
+                <apex:panelGroup rendered="{!policy.Novidea_HPC__Insurance_Type__c != 'Local'}">
+                    <apex:outputLabel styleClass="headerlabel" value="{!$Label.novidea_hpc__Number_of_Days}:" />
+                    <apex:selectList value="{!policy.Novidea_HPC__Period_Between_Payments__c}" size="1" >
+                        <apex:selectOptions value="{!paymentOptions}"/>
+                    </apex:selectList>
+                </apex:panelGroup>
+                <apex:panelGroup >
+                    <apex:outputLabel styleClass="headerlabel" value="{!$ObjectType.Novidea_HPC__Policy__c.Fields.Novidea_HPC__Lower_Limit_of_Liability__c.label}:" />
+                    <apex:inputField value="{!policy.Novidea_HPC__Lower_Limit_of_Liability__c}" rendered="{!NOT(cancellationProcess)}"
+                            styleClass="currencyInput"/>
+                    <apex:outputField value="{!policy.Novidea_HPC__Lower_Limit_of_Liability__c}" rendered="{!cancellationProcess}"/>
+                </apex:panelGroup>
+                <apex:panelGroup >
+                    <apex:outputLabel styleClass="headerlabel" value="{!$ObjectType.Novidea_HPC__Policy__c.Fields.Novidea_HPC__Upper_Limit_of_Liability__c.label}:" />
+                    <apex:outputPanel style="float:{!$Label.novidea_hpc__Text_Alignment_Reverse}">
+                        <apex:inputField value="{!policy.Novidea_HPC__Upper_Limit_of_Liability__c}" rendered="{!NOT(cancellationProcess)}" required="true"
+                                styleClass="currencyInput"/>
+                    </apex:outputPanel>
+                    <apex:outputField value="{!policy.Novidea_HPC__Upper_Limit_of_Liability__c}" rendered="{!cancellationProcess}"/>
+                </apex:panelGroup>
+                <apex:panelGroup >
+                    <apex:outputLabel styleClass="headerlabel" value="{!$ObjectType.Novidea_HPC__Policy__c.Fields.Novidea_HPC__Liability_Limit_Per_Case__c.label}:" />
+                    <apex:inputField value="{!policy.Novidea_HPC__Liability_Limit_Per_Case__c}" rendered="{!NOT(cancellationProcess)}" styleClass="currencyInput"/>
+                    <apex:outputField value="{!policy.Novidea_HPC__Liability_Limit_Per_Case__c}" rendered="{!cancellationProcess}"/>
+                </apex:panelGroup>
+                <apex:panelGroup >
+                    <apex:outputLabel styleClass="headerlabel" value="{!$ObjectType.Novidea_HPC__Policy__c.Fields.Novidea_HPC__Liability_Limit_Currency__c.label}:" />
+                    <apex:outputPanel style="float:{!$Label.novidea_hpc__Text_Alignment_Reverse}">
+                        <apex:inputField value="{!policy.Novidea_HPC__Liability_Limit_Currency__c}" rendered="{!NOT(cancellationProcess)}" required="true" style="width: 65px;"/>
+                    </apex:outputPanel>
+                    <apex:outputField value="{!policy.Novidea_HPC__Liability_Limit_Currency__c}" rendered="{!cancellationProcess}"/>
+                </apex:panelGroup>
+                <apex:panelGroup rendered="{!policy.Novidea_HPC__Insurance_Type__c == 'Local'}"/>
+                <apex:panelGroup >
+                    <apex:outputLabel styleClass="headerlabel" value="{!$ObjectType.Novidea_HPC__Policy__c.Fields.Novidea_HPC__Effective_Date__c.label}:" />
+                    <apex:outputPanel style="float:{!$Label.novidea_hpc__Text_Alignment_Reverse}">
+                        <apex:inputField value="{!policy.Novidea_HPC__Effective_Date__c}" rendered="{!NOT(cancellationProcess)}" required="true" 
+                                styleClass="{!timePeriodErrorCssClass}" style="width: 65px;"/>
+                    </apex:outputPanel>
+                    <apex:outputField value="{!policy.Novidea_HPC__Effective_Date__c}" rendered="{!cancellationProcess}"/>
+                    <apex:inputHidden value="{!effectiveDatePrevValueStr}" />
+                </apex:panelGroup>
+                <apex:panelGroup >
+                    <apex:outputLabel styleClass="headerlabel" value="{!$ObjectType.Novidea_HPC__Policy__c.Fields.Novidea_HPC__Expiration_Date__c.label}:" />
+                    <apex:outputPanel style="float:{!$Label.novidea_hpc__Text_Alignment_Reverse}">
+                        <apex:inputField value="{!policy.Novidea_HPC__Expiration_Date__c}" required="true" styleClass="{!timePeriodErrorCssClass}" 
+                                style="width: 65px;"/>
+                    </apex:outputPanel>
+                    <apex:inputHidden value="{!expirationDatePrevValueStr}" />
+                    <apex:inputHidden value="{!timePeriodConfirm}" />
+                </apex:panelGroup>
+                <apex:panelGroup rendered="{!NOT(OR(endorsementProcess, cancellationProcess))}">
+                    <table style="width:100%;border-spacing: 0px;"><tr>
+                        <td>
+                            <apex:outputLabel styleClass="headerlabel" value="{!$ObjectType.Novidea_HPC__Policy__c.Fields.Novidea_HPC__Product_Definition__c.label}:" />
+                        </td>
+                        <td>
+                            <input type="hidden" value="{!policy.Novidea_HPC__Product_Definition__r.Name}"/>
+                            <apex:outputPanel style="float:{!$Label.novidea_hpc__Text_Alignment_Reverse}">
+                                <apex:inputhidden id="productDef" value="{!policy.Novidea_HPC__Product_Definition__c}" required="true"/>
+                            </apex:outputPanel>
+                            <input type="text" id="plcfilterProductDef" value="{!policy.Novidea_HPC__Product_definition__r.Name}" onkeypress="j$(this).parent().find(':hidden')[1].value='';" style="width:110px;"/>
+                            <span style="float: {!$Label.novidea_hpc__text_alignment_reverse};padding-top: 20px;">
+                                <Novidea_HPC:autocomplete width="130" className="autocomplete" searchField="Name" AutoCompleteId="auProductDefDirect" inputId="plcfilterProductDef" objectName="Novidea_HPC__Product_Def__c" 
+                                        selectedCallBack="initProductDefDirect"/>
+                                <script>
+                                    function initProductDefDirect(cName, cId){
+                                        j$(document.getElementById("{!$Component.productDef}")).val(cId);
+                                    }
+                                </script>
+                            </span>
+                        </td>
+                    </tr></table>
+                </apex:panelGroup>
+                <apex:panelGroup rendered="{!OR(endorsementProcess, cancellationProcess)}">
+                    <apex:outputField value="{!policy.Novidea_HPC__Product_Definition__c}"/>
+                    <apex:inputField value="{!policy.Novidea_HPC__Product_Definition__c}" />
+                </apex:panelGroup>
+
+                <apex:panelGroup rendered="{!AND(NOT(OR(endorsementProcess, cancellationProcess)),subAgentLogic, showAgreement)}">
+                    <apex:outputLabel styleClass="headerlabel" value="{!$ObjectType.Novidea_HPC__Policy__c.Fields.Novidea_HPC__Agreement__c.label}:"/>
+                    <apex:inputField value="{!policy.Novidea_HPC__Agreement__c}"/>
+                </apex:panelGroup>
+
+                <apex:panelGroup rendered="{!AND(NOT(OR(endorsementProcess, cancellationProcess)),showAgreement, NOT(subAgentLogic))}">
+                    <table style="width:100%;border-spacing: 0px;"><tr>
+                        <td>
+                            <apex:outputLabel styleClass="headerlabel" value="{!$ObjectType.Novidea_HPC__Policy__c.Fields.Novidea_HPC__Agreement__c.label}:" />
+                        </td>
+                        <td>
+                            <input type="hidden" value="{!policy.Novidea_HPC__Agreement__r.Name}"/>
+                            <apex:outputPanel style="float:{!$Label.novidea_hpc__Text_Alignment_Reverse}">
+                                <apex:inputhidden id="agreement" value="{!policy.Novidea_HPC__Agreement__c}"/>
+                            </apex:outputPanel>
+                            <input type="text" id="plcfilterAgreement" value="{!policy.Novidea_HPC__Agreement__r.Name}" onkeypress="j$(this).parent().find(':hidden')[1].value='';" style="width:110px;"/>
+                            <span style="float: {!$Label.novidea_hpc__text_alignment_reverse};padding-top: 20px;">
+                                <Novidea_HPC:autocomplete width="130" className="autocomplete" searchField="Name" AutoCompleteId="auAgreementDirect" inputId="plcfilterAgreement" objectName="Novidea_HPC__Agreement__c" 
+                                        selectedCallBack="initAgreementDirect"/>
+                                <script>
+                                    function initAgreementDirect(cName, cId){
+                                        j$(document.getElementById("{!$Component.agreement}")).val(cId);
+                                    }
+                                </script>
+                            </span>
+                        </td>
+                    </tr></table>
+                </apex:panelGroup>
+                
+                <apex:panelGroup rendered="{!showIncomeReason == true}">
+                    <apex:outputLabel styleClass="headerlabel" value="{!$Label.Income_Reason}:" />
+                    <apex:outputPanel style="float:{!$Label.novidea_hpc__Text_Alignment_Reverse}">
+                        <apex:selectList value="{!incomeReason}" size="1" >
+                            <apex:selectOptions value="{!incomeReasonOptions}"/>
+                        </apex:selectList>
+                    </apex:outputPanel>
+                </apex:panelGroup>
+
+                <apex:panelGroup rendered="{!showPolicyCancellation == true}" >
+                    <apex:outputLabel styleClass="headerlabel" value="{!$Label.Cancel_Policy}:" />
+                    <apex:outputPanel style="float:{!$Label.novidea_hpc__Text_Alignment_Reverse}">
+                        <apex:inputCheckbox value="{!cancelPolicy}"/>
+                    </apex:outputPanel>
+                </apex:panelGroup>
+            </apex:panelGrid>
+
+            <apex:panelGrid columns="2" cellspacing="5px" styleclass="incomeTable" rendered="{!AND(NOT(cancellationProcess),shouldShowEnhancedPolicyManagementPage)}">
+                <apex:panelGroup >
+                    <apex:outputLabel styleClass="headerlabel" value="{!$ObjectType.Novidea_HPC__Policy__c.Fields.Extra_Extension__c.label}:"/>
+                    <apex:inputCheckbox value="{!extraExtensionValue}" rendered="{!NOT(cancellationProcess)}" id="extensionCheckbox" onchange="changeFieldsExtended();"/>
+                </apex:panelGroup>
+                <apex:panelGrid columns="4" cellspacing="5px" id="extensionBlock">
+                    <apex:panelGroup >
+                        <apex:outputLabel styleClass="headerlabel" value="{!$ObjectType.Novidea_HPC__Income__c.Fields.Neto_Extra_Extension__c.label}:" />
+                        <apex:inputText value="{!extraNetoExtensionValue}" styleClass="currencyInput" id="extraNetoExtension"/>
+                    </apex:panelGroup>
+                    <apex:panelGroup >
+                        <apex:outputLabel styleClass="headerlabel" value="{!$ObjectType.Novidea_HPC__Income__c.Fields.Extension_Fee_Percentage__c.label}:" />
+                        <apex:inputText value="{!extensionFeePercentageValue}" styleClass="currencyInput" id="extensionFeePercentage"/>
+                    </apex:panelGroup>
+                    <apex:panelGroup >
+                        <apex:outputLabel styleClass="headerlabel" value="{!$ObjectType.Novidea_HPC__Income__c.Fields.Extension_Agency_Fee_Percentage__c.label}:" />
+                        <apex:inputText value="{!extensionAgencyFeePercentageValue}" styleClass="currencyInput" id="extensionAgencyFeePercentage"/>
+                    </apex:panelGroup>
+                    <apex:panelGroup >
+                        <apex:outputLabel styleClass="headerlabel" value="{!$ObjectType.Novidea_HPC__Income__c.Fields.Extension_Comments__c.label}:" />
+                        <apex:inputTextarea value="{!extensionCommentsValue}" styleClass="inputTextBox" id="extensionComment" />
+                    </apex:panelGroup>
+                </apex:panelGrid>
+            </apex:panelGrid>
+
+            <apex:panelGrid columns="4" cellspacing="5px" id="policyAdmin" styleclass="incomeTable" rendered="{!shouldShowEnhancedPolicyManagementPage}">
+                <apex:panelGroup >
+                    <apex:outputLabel style="font-size: 18px;" value="{!$Label.Constructors_Details}" escape="true"/>
+                </apex:panelGroup>
+                <apex:panelGroup />
+                <apex:panelGroup />
+                <apex:panelGroup />
+                <apex:panelGroup >
+                    <apex:outputLabel styleClass="headerlabel" value="{!$ObjectType.Novidea_HPC__Policy__c.Fields.Insurance_Bank__c.label}:"/>
+                    <apex:outputPanel style="float:{!$Label.novidea_hpc__Text_Alignment_Reverse}" >
+                        <apex:inputText value="{!insuranceBankValue}" rendered="{!NOT(cancellationProcess)}" required="true" styleClass="currencyInput" id="insuranceBank"/>
+                    </apex:outputPanel>
+                </apex:panelGroup>
+                <apex:panelGroup >
+                    <apex:outputLabel styleClass="headerlabel" value="{!$ObjectType.Novidea_HPC__Policy__c.Fields.Tariff__c.label}:" />
+                    <apex:inputText value="{!tariffValue}" rendered="{!NOT(cancellationProcess)}" styleClass="currencyPercentage" id="tariff"/>
+                </apex:panelGroup>
+                <apex:panelGroup >
+                    <apex:outputLabel styleClass="headerlabel" value="{!$ObjectType.Novidea_HPC__Policy__c.Fields.Fee_Percentage__c.label}:" />
+                    <apex:inputText value="{!feePercentageValue}" rendered="{!NOT(cancellationProcess)}" styleClass="currencyPercentage" id="feePercentage"/>
+                </apex:panelGroup>
+                <apex:panelGroup >
+                    <apex:outputLabel styleClass="headerlabel" value="{!$ObjectType.Novidea_HPC__Policy__c.Fields.Agency_Fee_Percentage__c.label}:" />
+                    <apex:inputText value="{!agencyFeePercentageValue}" rendered="{!NOT(cancellationProcess)}" styleClass="currencyPercentage" id="agencyFeePercentage"/>
+                </apex:panelGroup>
+            </apex:panelGrid>
+
+            <apex:panelGrid columns="2" cellspacing="5px" styleclass="incomeTable" id="agencyIncome">
+                <apex:panelGroup >
+                    <apex:outputLabel style="font-size: 18px;" value="{!$Label.Agency_Fee}" escape="true"/>
+                </apex:panelGroup>
+                <apex:panelGroup />
+                <apex:panelGroup >     
+                    <apex:outputLabel styleClass="headerlabel" value="{!$ObjectType.Novidea_HPC__Income__c.Fields.Novidea_HPC__Agency_Fee__c.label}" />
+                    <apex:outputPanel style="float:{!$Label.novidea_hpc__Text_Alignment_Reverse}">
+                        <apex:inputField id="agencyFees" value="{!agencyFees.Novidea_HPC__Agency_Fee__c}" styleClass="currencyInput" required="true"/>
+                    </apex:outputPanel>
+                </apex:panelGroup>
+                <apex:panelGroup >     
+                    <apex:outputLabel styleClass="headerlabel" value="{!$ObjectType.Novidea_HPC__Income__c.Fields.Novidea_HPC__Agency_Fee_Currency__c.label}" />
+                    <apex:outputPanel style="float:{!$Label.novidea_hpc__Text_Alignment_Reverse}">
+                        <apex:inputField value="{!agencyFees.Novidea_HPC__Agency_Fee_Currency__c}" required="true"/>
+                    </apex:outputPanel>
+                </apex:panelGroup>
+            </apex:panelGrid>
+            
+            <apex:panelGrid columns="6" cellspacing="5px" styleclass="incomeTable" id="noneFrontIncome"> <!-- Income from carrier / broker / front -->
+                <apex:panelGroup >
+                    <apex:outputLabel style="font-size: 18px;" value="{!IF(policy.Novidea_HPC__Insurance_Type__c == 'Local',$Label.Income_from_carrier,IF(policy.Novidea_HPC__Insurance_Type__c == 'Direct',$Label.Income_from_broker,$Label.Income_From_Front))}" escape="true"/>
+                </apex:panelGroup>
+                <apex:panelGroup />
+                <apex:panelGroup />
+                <apex:panelGroup />
+                <apex:panelGroup />
+                <apex:panelGroup />
+                
+                <apex:panelGroup rendered="{!removeIncomeRecognitionDate == false}">
+                    <apex:outputLabel styleClass="headerlabel" value="{!$ObjectType.Novidea_HPC__Income__c.Fields.Novidea_HPC__Income_Recognition_Date__c.label}" />
+                    <apex:inputField value="{!incomes[0].Novidea_HPC__Income_Recognition_Date__c}" style="width: 65px;"/>
+                </apex:panelGroup>
+                <apex:panelGroup >
+                    <table style="width:100%;border-spacing: 0px;"><tr>
+                        <td>
+                            <apex:outputLabel styleClass="headerlabel" value="{!$ObjectType.Novidea_HPC__Income__c.Fields.Novidea_HPC__Carrier__c.label}" />
+                        </td>
+                        <td> 
+                            <input type="hidden" value="{!carrierIdToName[incomes[0].Novidea_HPC__Carrier__c]}"/>
+                            <apex:outputPanel style="float:{!$Label.novidea_hpc__Text_Alignment_Reverse}">
+                                <apex:inputhidden id="carrier" value="{!incomes[0].Novidea_HPC__Carrier__c}" required="true"/>
+                            </apex:outputPanel>
+                            <input type="text" id="plcfilterCarrierDirect" value="{!carrierIdToName[incomes[0].Novidea_HPC__Carrier__c]}" onkeypress="j$(this).parent().find(':hidden')[1].value='';" style="width:110px;"/>
+                            <span style="float: {!$Label.novidea_hpc__text_alignment_reverse};padding-top: 20px;">
+                                <Novidea_HPC:autocomplete width="130" className="autocomplete" searchField="Name" AutoCompleteId="auCarrierDirect" inputId="plcfilterCarrierDirect" objectName="Account" 
+                                RecordTypeName="Carrier" selectedCallBack="initCarrierDirect"/>
+                                <script>
+                                    function initCarrierDirect(cName, cId){
+                                        j$(document.getElementById("{!$Component.carrier}")).val(cId);
+                                    }
+                                </script>
+                            </span>
+                        </td>
+                    </tr></table>
+                </apex:panelGroup>
+                <apex:panelGroup rendered="{!policy.Novidea_HPC__Insurance_Type__c != 'Front'}"> <!-- Different arrangement for front and the other types -->
+                    <apex:outputLabel styleClass="headerlabel" value="{!$Label.Currency}" />
+                    <apex:outputPanel style="float:{!$Label.novidea_hpc__Text_Alignment_Reverse}">
+                        <apex:inputField value="{!incomes[0].Novidea_HPC__Premium_Currency__c}" required="true" style="width:65px;"/>
+                    </apex:outputPanel>
+                </apex:panelGroup>
+                <apex:panelGroup rendered="{!policy.Novidea_HPC__Insurance_Type__c == 'Front'}"> <!-- Different arrangement for front and the other types -->
+                    <apex:outputLabel styleClass="headerlabel" value="{!$Label.Currency}" />
+                    <apex:outputPanel style="float:{!$Label.novidea_hpc__Text_Alignment_Reverse}">
+                        <apex:inputField value="{!incomes[0].Novidea_HPC__Premium_Currency__c}" required="true" style="width:65px;"/>
+                    </apex:outputPanel>
+                </apex:panelGroup>
+                <apex:panelGroup rendered="{!policy.Novidea_HPC__Insurance_Type__c != 'Front'}">
+                    <apex:outputLabel styleClass="headerlabel" value="{!$ObjectType.Novidea_HPC__Income__c.Fields.Novidea_HPC__Premium__c.label}" />
+                    <apex:outputPanel style="float:{!$Label.novidea_hpc__Text_Alignment_Reverse}">
+                        <apex:inputField id="broker_premium" value="{!incomes[0].Novidea_HPC__Premium__c}" 
+                                onchange="updateTotal();" styleClass="currencyInput" required="true"/>
+                    </apex:outputPanel>
+                </apex:panelGroup>
+                <apex:panelGroup >
+                    <apex:outputLabel styleClass="headerlabel" value="{!feesLabel}" />
+                    <apex:inputField id="broker_fee_premium" value="{!incomes[0].Novidea_HPC__Fees__c}" 
+                            onchange="updateTotal();" styleClass="currencyInput"/>
+                </apex:panelGroup>
+                <apex:panelGroup >
+                    <apex:outputLabel styleClass="headerlabel" value="{!$Label.Underwriter_Commission}" />
+                    <apex:inputField id="broker_additional_premium" value="{!incomes[0].Novidea_HPC__Underwriter_Commission__c}" 
+                            onchange="updateTotal();" styleClass="currencyInput"/>
+                </apex:panelGroup>
+                <apex:panelGroup rendered="{!policy.Novidea_HPC__Insurance_Type__c != 'Front'}">
+                    <apex:outputLabel styleClass="headerlabel" value="{!$ObjectType.Novidea_HPC__Income__c.Fields.Novidea_HPC__Tax_On_Premium__c.label}" />
+                    <!-- AEF: TAX -->
+                    <apex:inputField value="{!incomes[0].Novidea_HPC__Tax_On_Premium__c}" onchange="updateTotal();" 
+                            styleClass="currencyInput"/>
+                </apex:panelGroup>
+             
+                <apex:panelGroup rendered="{!policy.Novidea_HPC__Insurance_Type__c != 'Front'}" >     
+                    <apex:outputLabel styleClass="headerlabel" value="{!$ObjectType.Novidea_HPC__Income__c.Fields.Novidea_HPC__Commission_Percentage__c.label}" />
+                    <apex:inputField value="{!incomes[0].Novidea_HPC__Commission_Percentage__c}" styleClass="currencyInput twoDigits"/>
+                </apex:panelGroup>
+                <apex:panelGroup rendered="{!policy.Novidea_HPC__Insurance_Type__c != 'Front'}" >     
+                    <apex:outputLabel styleClass="headerlabel" value="{!$ObjectType.Novidea_HPC__Income__c.Fields.Novidea_HPC__Commission_Amount__c.label}" />
+                    <apex:inputField id="broker_commission" value="{!incomes[0].Novidea_HPC__Commission_Amount__c}" onchange="updateTotal();" styleClass="currencyInput"/>
+                </apex:panelGroup>
+                <apex:panelGroup rendered="{!hideOtherCommissionField != true}">
+                    <apex:outputLabel styleClass="headerlabel" value="{!$Label.Other_Commission}" />
+                    <apex:inputField id="broker_other_commission"  value="{!incomes[0].Novidea_HPC__Other_Commission__c}" onchange="updateTotal();" styleClass="currencyInput"/>
+                </apex:panelGroup>
+                <apex:panelGroup rendered="{!policy.Novidea_HPC__Insurance_Type__c == 'Direct'}">     
+                    <apex:outputLabel styleClass="headerlabel" value="{!$ObjectType.Novidea_HPC__Income__c.Fields.Novidea_HPC__Local_Tax__c.label}" />
+                    <apex:inputField id="broker_local_tax" value="{!incomes[0].Novidea_HPC__Local_Tax__c}" styleClass="currencyInput"/>
+                </apex:panelGroup>
+                <apex:panelGroup rendered="{!policy.Novidea_HPC__Insurance_Type__c != 'Front'}" >
+                    <apex:outputLabel styleClass="headerlabel" value="{!$ObjectType.Novidea_HPC__Income__c.Fields.Novidea_HPC__Agent_Discount__c.label}"/>
+                    <apex:inputField value="{!incomes[0].Novidea_HPC__Agent_Discount__c}" styleClass="currencyInput"/>
+                </apex:panelGroup>
+                
+                <apex:panelGroup rendered="{!policy.Novidea_HPC__Insurance_Type__c != 'Front'}"/>
+                <apex:panelGroup rendered="{!policy.Novidea_HPC__Insurance_Type__c != 'Front'}"/>
+                <apex:panelGroup rendered="{!policy.Novidea_HPC__Insurance_Type__c == 'Front'}"/>
+                <apex:panelGroup rendered="{!policy.Novidea_HPC__Insurance_Type__c == 'Front'}"/>
+                <apex:panelGroup rendered="{!policy.Novidea_HPC__Insurance_Type__c == 'Front'}"/>
+                <apex:panelGroup rendered="{!policy.Novidea_HPC__Insurance_Type__c == 'Front'}"/>
+                <apex:panelGroup rendered="{!policy.Novidea_HPC__Insurance_Type__c == 'Front'}"/>
+          </apex:panelGrid>
+          <!-- below handles the FRONT case. The order of incomes is importatnt because there is reference to incomes[1] of the broker -->
+          <!-- Income from broker (only for the front case) -->
+          <apex:panelGrid columns="5" cellspacing="5px" styleclass="incomeTable" rendered="{!incomes.size > 1}">
+                <apex:panelGroup >
+                    <apex:outputLabel style="font-size: 18px;" value="{!$Label.Income_from_broker}" escape="true"/>
+                </apex:panelGroup>
+                <apex:panelGroup />
+                <apex:panelGroup />
+                <apex:panelGroup />
+                <apex:panelGroup />
+                
+                <apex:panelGroup rendered="{!removeIncomeRecognitionDate == false}" >     
+                    <apex:outputLabel styleClass="headerlabel" value="{!$ObjectType.Novidea_HPC__Income__c.Fields.Novidea_HPC__Income_Recognition_Date__c.label}" />
+                    <apex:inputField value="{!incomes[1].Novidea_HPC__Income_Recognition_Date__c}" />
+                </apex:panelGroup>
+                <apex:panelGroup >
+                    <apex:outputLabel styleClass="headerlabel" value="{!$ObjectType.Novidea_HPC__Income__c.Fields.Novidea_HPC__Carrier__c.label}" />
+                    <input type="hidden" value="{!incomes[1].Novidea_HPC__Carrier__r.Name}"/>
+                    <apex:outputPanel style="float:{!$Label.novidea_hpc__Text_Alignment_Reverse}">
+                        <apex:inputhidden id="carrierFront" value="{!incomes[1].Novidea_HPC__Carrier__c}" required="true"/>
+                    </apex:outputPanel>
+                    <input type="text" id="plcfilterCarrierFront" value="{!carrierIdToName[incomes[1].Novidea_HPC__Carrier__c]}" onkeypress="j$(this).parent().find(':hidden')[1].value='';" style="width:110px;"/>
+                    <span style="float: {!$Label.novidea_hpc__text_alignment_reverse};padding-top: 20px;">
+                        <Novidea_HPC:autocomplete width="130" className="autocomplete" searchField="Name" AutoCompleteId="auCarrierFront" inputId="plcfilterCarrierFront" objectName="Account" 
+                                RecordTypeName="Carrier" selectedCallBack="initCarrierFront"/>
+                        <script>
+                            function initCarrierFront(cName, cId){
+                                j$(document.getElementById("{!$Component.carrierFront}")).val(cId);
+                            }
+                        </script>
+                    </span>
+                </apex:panelGroup>
+                <apex:panelGroup >
+                    <apex:outputLabel styleClass="headerlabel" value="{!$ObjectType.Novidea_HPC__Income__c.Fields.Novidea_HPC__Premium__c.label}" />
+                    <apex:outputPanel style="float:{!$Label.novidea_hpc__Text_Alignment_Reverse}">
+                        <apex:inputField id="front_premium" value="{!incomes[1].Novidea_HPC__Premium__c}" onchange="updateTotal();" styleClass="currencyInput" required="true"/>
+                    </apex:outputPanel>
+                </apex:panelGroup>
+                <apex:panelGroup >
+                    <apex:outputLabel styleClass="headerlabel" value="{!$ObjectType.Novidea_HPC__Income__c.Fields.Novidea_HPC__Fees__c.label}" />
+                    <apex:inputField id="front_fee_premium" value="{!incomes[1].Novidea_HPC__Fees__c}" onchange="updateTotal();" styleClass="currencyInput"/>
+                </apex:panelGroup>
+                <apex:panelGroup >
+                    <apex:outputLabel styleClass="headerlabel" value="{!$ObjectType.Novidea_HPC__Income__c.Fields.Novidea_HPC__Agent_Discount__c.label}"/>
+                    <apex:inputField value="{!incomes[1].Novidea_HPC__Agent_Discount__c}" styleClass="currencyInput"/>
+                </apex:panelGroup>
+                <apex:panelGroup >
+                    <apex:outputLabel styleClass="headerlabel" value="{!$ObjectType.Novidea_HPC__Income__c.Fields.Novidea_HPC__Commission_Percentage__c.label}" />
+                    <apex:inputField value="{!incomes[1].Novidea_HPC__Commission_Percentage__c}" styleClass="currencyInput"/>
+                </apex:panelGroup>
+                <apex:panelGroup >     
+                    <apex:outputLabel styleClass="headerlabel" value="{!$ObjectType.Novidea_HPC__Income__c.Fields.Novidea_HPC__Commission_Amount__c.label}" />
+                    <apex:inputField id="front_commission" value="{!incomes[1].Novidea_HPC__Commission_Amount__c}" onchange="updateTotal();" styleClass="currencyInput"/>
+                </apex:panelGroup>
+                <apex:panelGroup >
+                    <apex:outputLabel styleClass="headerlabel" value="{!$ObjectType.Novidea_HPC__Income__c.Fields.Novidea_HPC__Premium_Currency__c.label}" />
+                    <apex:outputPanel style="float:{!$Label.novidea_hpc__Text_Alignment_Reverse}">
+                        <apex:inputField value="{!incomes[1].Novidea_HPC__Premium_Currency__c}" required="true"/>
+                    </apex:outputPanel>
+                </apex:panelGroup>
+                <apex:panelGroup >     
+                    <apex:outputLabel styleClass="headerlabel" value="{!$ObjectType.Novidea_HPC__Income__c.Fields.Novidea_HPC__Local_Tax__c.label}" />
+                    <apex:inputField id="broker_local_tax_2" value="{!incomes[1].Novidea_HPC__Local_Tax__c}" styleClass="currencyInput"/>
+                </apex:panelGroup>
+                <apex:panelGroup >
+                    <apex:outputLabel styleClass="headerlabel" value="{!$ObjectType.Novidea_HPC__Income__c.Fields.Novidea_HPC__Tax_On_Premium__c.label}" />
+                    <apex:inputField value="{!incomes[1].Novidea_HPC__Tax_On_Premium__c}" onchange="updateTotal();" 
+                            styleClass="currencyInput"/>
+                </apex:panelGroup>
+            </apex:panelGrid>
+            <!-- the below part refers to policy breakdown -->
+            <apex:outputpanel layout="inline" rendered="{!policy.Novidea_HPC__Insurance_Type__c != 'Local'}" id="policySplit">
+                <apex:outputpanel layout="block" style="margin-bottom:10px;margin-{!$Label.novidea_hpc__Text_Alignment}:5px;">
+                        <apex:commandLink action="{!addLine}" value="{!$Label.Add_Split}" rerender="blk" status="loadingStatus"/>
+                </apex:outputpanel>
+                <apex:pageblockTable id="maintableSplit" columns="8" value="{!breakdowns}" var="clctWrap" styleClass="maintable" width="50%" align="center">
+                    <apex:column >
+                        <apex:commandLink action="{!removeLine}" onclick="removeLine({!clctWrap.id}); return false;" value="{!$Label.novidea_hpc__Erase}" rerender="blk" status="loadingStatus"/>
+                    </apex:column>
+                    <apex:column headerValue="{!$ObjectType.Novidea_HPC__Policy_Breakdown__c.Fields.Novidea_HPC__Carrier__c.label}">
+                        <apex:inputhidden id="carrierName" value="{!clctWrap.carrierName}"/>
+                        <apex:inputhidden id="carrier" value="{!clctWrap.breakdown.Novidea_HPC__Carrier__c}" required="true"/>
+                        <input type="text" id="plcfilter{!clctWrap.id}" value="{!clctWrap.carrierName}" onkeypress="j$(this).parent().find(':hidden')[1].value='';" style="width:110px;"/>
+                        <Novidea_HPC:autocomplete width="130" className="autocomplete" searchField="Name" AutoCompleteId="au{!clctWrap.id}" inputId="plcfilter{!clctWrap.id}" objectName="Account" 
+                                RecordTypeName="Carrier" selectedCallBack="initCarrier{!clctWrap.id}"/>
+                        <script>
+                            function initCarrier{!clctWrap.id}(cName, cId){
+                                j$(document.getElementById("{!$Component.carrier}")).val(cId);
+                                j$(document.getElementById("{!$Component.carrierName}")).val(cName);
+                            }
+                        </script>
+                    </apex:column>
+                    <apex:column headerValue="{!$ObjectType.Novidea_HPC__Policy_Breakdown__c.Fields.Novidea_HPC__Premium_Breakdown__c.label}" >
+                        <apex:inputField id="premiumBreakdown" value="{!clctWrap.breakdown.Novidea_HPC__Premium_Breakdown__c}" style="width:70px;" onchange="updateTotal();"/>
+                    </apex:column>
+                    <apex:column headerValue="{!$ObjectType.Novidea_HPC__Policy_Breakdown__c.Fields.Novidea_HPC__Commission_Breakdown__c.label}" >
+                        <apex:inputField id="commissionBreakdown" value="{!clctWrap.breakdown.Novidea_HPC__Commission_Breakdown__c}" style="width:70px;" onchange="updateTotal();"/>
+                    </apex:column>
+                    <apex:column headerValue="{!$ObjectType.Novidea_HPC__Policy_Breakdown__c.Fields.Novidea_HPC__Fees_Breakdown__c.label}" >
+                        <apex:inputField id="feeBreakdown" value="{!clctWrap.breakdown.Novidea_HPC__Fees_Breakdown__c}" style="width:70px;" onchange="updateTotal();"/>
+                    </apex:column>
+                    <apex:column headerValue="{!$ObjectType.Novidea_HPC__Policy_Breakdown__c.Fields.Novidea_HPC__Credit_Fee_Breakdown__c.label}" >
+                        <apex:inputField id="creditFeeBreakdown" value="{!clctWrap.breakdown.Novidea_HPC__Credit_Fee_Breakdown__c}" style="width:70px;" onchange="updateTotal();"/>
+                    </apex:column>
+                    <apex:column headerValue="{!$ObjectType.Novidea_HPC__Policy_Breakdown__c.Fields.Novidea_HPC__TB__c.label}" rendered="{!showBreakdownTB}">
+                        <apex:inputField id="tbBreakdown" value="{!clctWrap.breakdown.Novidea_HPC__TB__c}" style="width:70px;"/>
+                    </apex:column>
+                    <apex:column headerValue="{!$ObjectType.Novidea_HPC__Policy_Breakdown__c.Fields.Novidea_HPC__TB_Amount__c.label}" rendered="{!showBreakdownTB}">
+                        <apex:inputField id="tbAmountBreakdown" value="{!clctWrap.breakdown.Novidea_HPC__TB_Amount__c}" style="width:70px;"/>
+                    </apex:column>
+                </apex:pageBlockTable>
+            </apex:outputpanel>
+        </apex:pageBlock>
+    </apex:form>
+</apex:component>

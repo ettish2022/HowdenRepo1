@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Policy_Status__c</fullName>
+    <externalId>false</externalId>
+    <formula>/* unfortunately, SF formula doesn&apos;t support translation , so the following formula isn&apos;t good for Howden&apos;s needs (Michal Levy)
+TEXT(Policy__r.Novidea_HPC__Status__c)   
+*/
+
+IF (TEXT(Policy__r.Novidea_HPC__Status__c)==Null,&quot;&quot;, 
+IF( ISPICKVAL(Policy__r.Novidea_HPC__Status__c,&quot;Approved Coverage&quot;),&quot;אישור כיסוי&quot;,
+IF (ISPICKVAL(Policy__r.Novidea_HPC__Status__c,&quot;Production Updated&quot;),&quot;עדכון פרודוקציה&quot;,
+IF(ISPICKVAL(Policy__r.Novidea_HPC__Status__c,&quot;BOR In Middle period&quot;), &quot;באמצע תקופה BOR&quot;,
+IF(ISPICKVAL(Policy__r.Novidea_HPC__Status__c,&quot;טיפול משפטי ע\&quot;י המבטח&quot;), &quot;טיפול משפטי ע\&quot;י המבטח&quot;,
+IF(ISPICKVAL(Policy__r.Novidea_HPC__Status__c,&quot;לקראת טיפול משפטי- פנימי&quot;), &quot;לקראת טיפול משפטי- פנימי&quot;,
+&quot;NA&quot;))))))</formula>
+    <label>Policy Status</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

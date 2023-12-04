@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>מנהל תיק פנסיוני</label>
+    <name>Menahel_Tik_Pensiony__c</name>
+    <relationshipLabel></relationshipLabel>
+</CustomFieldTranslation>

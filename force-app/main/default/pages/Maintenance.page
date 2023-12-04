@@ -1,0 +1,88 @@
+<apex:page controller="MaintenanceCO" showHeader="false" sidebar="false" id="pg" action="{!init}" standardStylesheets="true">
+	<style>
+		.apexp .bPageBlock .detailList{
+			width:30%;
+		}
+	</style>
+	<apex:includescript value="{!$Resource.jquery164min}" />
+	<script>
+		var j$ = $.noConflict();
+	</script>
+	<apex:outputpanel rendered="{!jobId!=''}">
+		<script>
+			function checkJobStatus(){
+				
+			if(typeof(Novidea_HPC)=="object")MaintenanceCO = Novidea_HPC.MaintenanceCO;
+				MaintenanceCO.getJobStatus("{!jobId}",jobStatusHandler,{escape:true});
+			}
+			
+			function setValues(result){
+				j$("[id$='jobStatus']").text(result.status);
+				if(result.numberOfErrors>0)
+					j$("[id$='errors']").text(result.numberOfErrors + " " + result.extendedStatus);
+				else j$("[id$='errors']").text(result.numberOfErrors);
+				j$("[id$='itemsProcessed']").text(result.jobItemsProcessed);
+				j$("[id$='totalItems']").text(result.totalJobItems);
+				j$("[id$='startDateTime']").text(result.createdDate);
+			}
+			
+			function jobStatusHandler(result, event){
+				if (event.status) {
+					setValues(result);
+					if(result.status!="Completed" && result.status!="Failed" && result.status!="Aborted"){
+						window.setTimeout('checkJobStatus()',1000);
+					}
+					else{
+					}
+				}
+				else{ 
+					alert(event.message);
+				}		
+			}
+			checkJobStatus();
+		</script>
+	</apex:outputpanel>
+	<apex:form dir="rtl" id="frm">
+		<apex:pageBlock id="blk" mode="maindetail" dir="rtl">
+			<apex:pageBlockButtons location="bottom">
+				<apex:commandButton id="btn" disabled="false" value="המרת מטבעות" action="{!runCurrencyCoversion}"/>
+				<apex:commandButton id="btnAbort" disabled="{!jobId=''}" value="עצירת ג'וב" action="{!stopjob}"/>
+			</apex:pageBlockButtons>
+			<apex:pageBlockSection columns="1" showHeader="true" title="המרת שדות מטבע">
+<!-- 			<apex:panelGrid columns="1"> -->
+				<apex:pageBlockSectionItem >
+					<apex:outputLabel value="בחירת ישות להמרה"/>
+					<apex:selectList value="{!selectedEntity}" multiselect="false" size="1" >
+						<apex:selectOptions value="{!entOpts}"/>
+					</apex:selectList>
+				</apex:pageBlockSectionItem>
+				<apex:pageBlockSectionItem />
+				<apex:pageBlockSectionItem >
+					<apex:outputLabel value="מזהה התהליך: " for="jobId" />
+					<apex:outputLabel value="{!jobId}" Id="jobId" />
+				</apex:pageBlockSectionItem>
+				<apex:pageBlockSectionItem >
+					<apex:outputLabel value="התחלה: " for="startDateTime" />
+					<apex:outputLabel value="" Id="startDateTime" />
+				</apex:pageBlockSectionItem>
+				<apex:pageBlockSectionItem >
+					<apex:outputLabel value="סטטוס: " for="jobStatus" />
+					<apex:outputLabel value="" Id="jobStatus" />
+				</apex:pageBlockSectionItem>
+				<apex:pageBlockSectionItem >
+					<apex:outputLabel value="מספר שגיאות: " for="errors" />
+					<apex:outputLabel value="" Id="errors" />
+				</apex:pageBlockSectionItem>
+				<apex:pageBlockSectionItem >
+					<apex:outputLabel value="מספר חלקים שעובדו: " for="itemsProcessed" />
+					<apex:outputLabel value="" Id="itemsProcessed" />
+				</apex:pageBlockSectionItem>
+				<apex:pageBlockSectionItem >
+					<apex:outputLabel value="מספר חלקים כולל: " for="totalItems" />
+					<apex:outputLabel value="" Id="totalItems" />
+				</apex:pageBlockSectionItem>
+<!-- 			</apex:panelGrid> -->
+			</apex:pageBlockSection>
+		</apex:pageBlock>
+	</apex:form>
+</apex:page>

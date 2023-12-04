@@ -1,0 +1,25 @@
+<apex:page standardController="Novidea_HPC__Application__c" extensions="NFILING.DocumentViewStdControllerExt" sidebar="false" showHeader="false" standardStylesheets="true">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+    <script>
+        var entstype = "Novidea_HPC__Application__c";
+        var entid = "{!Novidea_HPC__Application__c.id}";
+        var entname="{!JSENCODE(Novidea_HPC__Application__c.name)}";
+        var accountId="{!Novidea_HPC__Application__c.Novidea_HPC__Account__c}";
+        var contactId="{!contactId}";
+        var defaultFaxNumber = "{!JSENCODE(defaultFaxNumber)}";
+        var defaultEmail = "{!JSENCODE(defaultEmail)}";
+        var defaultMobileSMS= "{!JSENCODE(defaultMobileSMS)}";
+    </script>
+    <style>
+        html.ext-strict {
+            overflow: hidden !important;
+        }
+        .dataTables_scroll {
+            overflow: auto;
+            overflow-x: auto !important;
+        }
+    </style>
+    <div id="filingPage" style="width:100%; overflow:hidden">
+        <NFILING:DocumentSearch psearchparams="{!searchparams}" pdisplayFilter="false"/>
+    </div>
+</apex:page>

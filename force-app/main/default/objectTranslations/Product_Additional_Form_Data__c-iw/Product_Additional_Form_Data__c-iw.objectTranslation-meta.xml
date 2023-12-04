@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <article>None</article>
+        <plural>false</plural>
+        <value>Product Renewal Form Data</value>
+    </caseValues>
+    <caseValues>
+        <article>None</article>
+        <plural>true</plural>
+        <value>Product Renewal Form Data</value>
+    </caseValues>
+    <gender>Masculine</gender>
+    <layouts>
+        <layout>Product Renewal Form Data Layout</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Do Insurance</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>אדריכלים</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>ביטוחים קודמים</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>חתימות</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מהנדסים</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרטי חידוש</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרטי מערכת</section>
+        </sections>
+    </layouts>
+</CustomObjectTranslation>

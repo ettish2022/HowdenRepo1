@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PolicyIsInternalOrExternal</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND($Setup.Novidea_HPC__Trigger__c.Novidea_HPC__Stop_Validation_Rule__c != True,
+OR(
+AND(
+ISBLANK( Extern_Policy_To_Be_Deleted_Carrier__c),
+ISBLANK( Extern_Policy_To_Be_Deleted_Number__c ),
+ISBLANK ( Policy__c )),
+AND(
+NOT(ISBLANK (Extern_Policy_To_Be_Deleted_Carrier__c)),
+ISBLANK (Extern_Policy_To_Be_Deleted_Number__c)),
+AND(
+ISBLANK (Extern_Policy_To_Be_Deleted_Carrier__c),
+NOT(ISBLANK (Extern_Policy_To_Be_Deleted_Number__c))),
+AND(
+NOT(ISBLANK(Policy__c)),
+OR(
+NOT(ISBLANK(Extern_Policy_To_Be_Deleted_Number__c)),
+NOT(ISBLANK(Extern_Policy_To_Be_Deleted_Carrier__c))))))</errorConditionFormula>
+    <errorMessage>חובה לסמן פוליסה/קופה פנימית מהחיפוש, או בפוליסה/קופה חיצונית מספר פוליסה/קופה וחברת ביטוח</errorMessage>
+</ValidationRule>

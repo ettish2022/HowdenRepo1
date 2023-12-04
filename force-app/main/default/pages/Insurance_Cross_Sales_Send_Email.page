@@ -1,0 +1,21 @@
+<apex:page extensions="InsuranceCrossSalesSendEmailController"
+    action="{!sendemails}"
+    standardController="Insurance_Cross_Sale__c" 
+    showHeader="false" sidebar="false" standardStylesheets="true">
+    
+    <apex:pageMessages />
+<apex:Form >
+    <apex:actionFunction action="{!updateParent}" name="updateParent" />
+    <apex:outputPanel layout="none">
+    	<center style="padding-top: 20px;">
+    		<apex:commandButton action="{!updateParent}" value="Close" />
+    	</center>
+    </apex:outputPanel>
+	    
+<!--     <apex:outputPanel layout="none" rendered="{!completSent}">  -->
+<!--     	<script> -->
+<!--     		window.self.close();  -->
+<!--     	</script> -->
+<!--     </apex:outputPanel> -->
+</apex:Form> 
+</apex:page>

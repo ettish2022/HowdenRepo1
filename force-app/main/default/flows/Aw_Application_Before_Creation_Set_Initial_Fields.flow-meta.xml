@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>54.0</apiVersion>
+    <assignments>
+        <name>Assign_Employer_Account</name>
+        <label>Assign Employer Account</label>
+        <locationX>176</locationX>
+        <locationY>311</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.AgentWise_IL__Employer_Account__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>EmployerAccount</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <formulas>
+        <name>EmployerAccount</name>
+        <dataType>String</dataType>
+        <expression>IF(ISPICKVAL({!$Record.Copy_Employer_From_Lead__c},&quot;Yes&quot;) &amp;&amp; NOT(ISBLANK({!$Record.AgentWise_IL__Lead__r.AgentWise_IL__Employer_Account__c})),
+{!$Record.AgentWise_IL__Lead__r.AgentWise_IL__Employer_Account__c},
+IF(ISPICKVAL({!$Record.Copy_Employer_From_Lead__c},&quot;No&quot;),&quot;&quot;,
+IF(NOT(ISBLANK({!$Record.AgentWise_IL__Employer_Account__c})),{!$Record.AgentWise_IL__Employer_Account__c},&quot;&quot;)))</expression>
+    </formulas>
+    <interviewLabel>Aw Application Before Creation Set Initial Fields {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Aw Application Before Creation Set Initial Fields</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Assign_Employer_Account</targetReference>
+        </connector>
+        <object>AgentWise_IL__Application__c</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Obsolete</status>
+</Flow>

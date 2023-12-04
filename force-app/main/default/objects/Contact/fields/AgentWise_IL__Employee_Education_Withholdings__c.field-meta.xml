@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AgentWise_IL__Employee_Education_Withholdings__c</fullName>
+    <deprecated>false</deprecated>
+    <description>קרן השתלמות היא קופת חיסכון לשכירים, לעצמאים ולחברי קיבוצים ומושבים שיתופיים, שנועדה במקור לשמש את העובדים למימון השתלמויות כגון כנסים מקצועיים ולימודי המשך, אולם כיום משמשת על פי רוב כאפיק חסכון כללי לטווח בינוני - האפיק היחיד שלא לטווח ארוך, שנותר פטור ממס לאחר הרפורמות במיסוי שוק ההון בישראל.
+לפי סעיף 3(ה) לפקודת מס הכנסה, הפקדות העובד והמעסיק לקרן השתלמות פטורות ממס הכנסה, אם הן עד 2.5% מהשכר ברוטו (הפרשה של העובד) ועד 7.5% מהשכר ברוטו (הפרשה של המעסיק, לכל היותר פי שלושה מחלק העובד), וזאת עד לתקרת שכר חודשי של 15,712 ש&quot;ח (נכון ל-2009). ניתן להפריש לקרן כספים גם מעבר לתקרה, אך עליהם לא יחול הפטור.
+הצבירה בקרן ההשתלמות למורים גבוהה יותר והיא מורכבת מהפרשות המורה בשיעור של 4.2% ממשכורתו ומהפרשות המעביד בשיעור של 8.4% ממשכורת זו. סך כל הצבירה (מעביד + עובד) מסתכם בשיעור של 12.6% מהמשכורת. אולם במשיכת הכסף ללא יציאה להשתלמות יכולים המורים לקבל רק כ- 90% מכספי המעביד.</description>
+    <externalId>false</externalId>
+    <label>Employee Education Withholdings</label>
+    <precision>5</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Percent</type>
+</CustomField>

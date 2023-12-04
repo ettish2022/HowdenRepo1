@@ -1,0 +1,601 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldSets>
+        <label></label>
+        <name>AgentWise_IL__Employer_Address</name>
+    </fieldSets>
+    <fieldSets>
+        <label></label>
+        <name>AgentWise_IL__Employer_Info</name>
+    </fieldSets>
+    <layouts>
+        <layout>Account Layout</layout>
+        <sections>
+            <label></label>
+            <section>מסמכים</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Agency</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מסמכים</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Agents</layout>
+        <sections>
+            <label></label>
+            <section>Bussiness Information</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Service Information</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מסמכים</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרטי התקשרות נוספים</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>תמונת לקוח</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>BRZ Business Layout</layout>
+        <sections>
+            <label></label>
+            <section>Bussiness Information</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Main Contacts</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>New Section</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מסמכים</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרטי התקשרות נוספים</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>BRZ Houshold</layout>
+        <sections>
+            <label></label>
+            <section>Contact Information</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Service Details</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מסמכים</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Business for admin</layout>
+        <sections>
+            <label></label>
+            <section>Bussiness Information</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Insurance Types in Account</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>New Section</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מסמכים</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרטי התקשרות נוספים</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Carrier</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מסמכים</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Elementry Layout</layout>
+        <sections>
+            <label></label>
+            <section>מסמכים</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Houshold</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מסמכים</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מקטע חדש</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Houshold2</layout>
+        <sections>
+            <label></label>
+            <section>Contact Information</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Service Details</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מסמכים</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מקטע חדש</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פוליסות ללקוח</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Individual Insurance</layout>
+        <sections>
+            <label></label>
+            <section>Bussiness Information</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Service Information</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מסמכים</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרטי התקשרות נוספים</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>תמונת לקוח</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>RI</layout>
+        <sections>
+            <label></label>
+            <section>Bussiness Information</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>New Section</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Service Information</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מסמכים</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרטי התקשרות נוספים</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>תמונת לקוח</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Service Company</layout>
+        <sections>
+            <label></label>
+            <section>Bussiness Information</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Contacts</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מסמכים</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Shefi_Business</layout>
+        <sections>
+            <label></label>
+            <section>Bussiness Information</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Insurance Types in Account</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>New Section</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מסמכים</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>נתונים נוספים לחידושי שפי</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרטי התקשרות נוספים</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>SpeedTestRon</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מסמכים</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>UK - Bussiness</layout>
+        <sections>
+            <label></label>
+            <section>Bussiness Information</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Map</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מסמכים</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מקטע חדש</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרטי התקשרות נוספים</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>תמונת לקוח</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>UK CRM - Bussiness</layout>
+        <sections>
+            <label></label>
+            <section>Business Information</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Documents</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Map</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מקטע חדש</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label></label>
+        <name>BusinessContactConnection</name>
+    </quickActions>
+    <quickActions>
+        <label></label>
+        <name>CS_2024_Pro</name>
+    </quickActions>
+    <quickActions>
+        <label></label>
+        <name>Contact_InAccount</name>
+    </quickActions>
+    <quickActions>
+        <label></label>
+        <name>CreateAlternativeApplication</name>
+    </quickActions>
+    <quickActions>
+        <label></label>
+        <name>CreateBusinessLeadForClient</name>
+    </quickActions>
+    <quickActions>
+        <label></label>
+        <name>Create_A_New_Product</name>
+    </quickActions>
+    <quickActions>
+        <label></label>
+        <name>New_Family_Member</name>
+    </quickActions>
+    <recordTypes>
+        <description></description>
+        <label></label>
+        <name>AgentWise_IL__Agency</name>
+    </recordTypes>
+    <recordTypes>
+        <description></description>
+        <label></label>
+        <name>AgentWise_IL__Business_Account</name>
+    </recordTypes>
+    <recordTypes>
+        <description></description>
+        <label></label>
+        <name>AgentWise_IL__Carrier</name>
+    </recordTypes>
+    <recordTypes>
+        <description></description>
+        <label></label>
+        <name>AgentWise_IL__Household</name>
+    </recordTypes>
+    <recordTypes>
+        <description></description>
+        <label></label>
+        <name>NBU__Legal_Entity</name>
+    </recordTypes>
+    <recordTypes>
+        <label></label>
+        <name>NBU__Test_Do_Not_Add_To_Package</name>
+    </recordTypes>
+    <recordTypes>
+        <label></label>
+        <name>NClone__Household</name>
+    </recordTypes>
+    <recordTypes>
+        <label></label>
+        <name>NORE__Master_Account</name>
+    </recordTypes>
+    <recordTypes>
+        <description></description>
+        <label></label>
+        <name>Novidea_HPC__Agency</name>
+    </recordTypes>
+    <recordTypes>
+        <description></description>
+        <label></label>
+        <name>Novidea_HPC__Broker</name>
+    </recordTypes>
+    <recordTypes>
+        <description></description>
+        <label></label>
+        <name>Novidea_HPC__Business</name>
+    </recordTypes>
+    <recordTypes>
+        <description></description>
+        <label></label>
+        <name>Novidea_HPC__Carrier</name>
+    </recordTypes>
+    <recordTypes>
+        <description></description>
+        <label></label>
+        <name>Novidea_HPC__Household</name>
+    </recordTypes>
+    <recordTypes>
+        <description></description>
+        <label></label>
+        <name>Novidea_HPC__Service_Company</name>
+    </recordTypes>
+    <recordTypes>
+        <label></label>
+        <name>RI</name>
+    </recordTypes>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Cannot_Change_AccountGrouping</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Cannot_Change_Industry</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>NewAccountForWiseOnlyFromButton</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Novidea_HPC__Carrier_Must_Have_Market_Code</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Novidea_HPC__Effective_Date_Later_Deactivatiion_Date</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>RenewalsContactRequiredDetails</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>ShefiValuesForIndustryRequiresCopy</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>carrier_name</name>
+    </validationRules>
+    <webLinks>
+        <label></label>
+        <name>AgentWise_IL__Billing</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>AgentWise_IL__Generate_With_PerForm</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>AgentWise_IL__Upload_Logo</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>AltavistaNews</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>Cust_Overview__ClientOverview</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>Documents</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>File_a_Document</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>GoogleMaps</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>GoogleNews</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>GoogleSearch</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>HooversProfile</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>Hours_Report</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>Log_a_call</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>NBU__Billing</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>NORE__Billing</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>Novidea_HPC__Collect</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>Novidea_HPC__View_Account_History</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>Novidea_HPC__createCarLead</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>Novidea_HPC__createDwellingLead</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>PDHPC__Create_Payment_Demand</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>Print_None_Personal_Policies_List</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>Print_Policies_List</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>YahooMaps</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>doco__Generate_Document</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>doco__Generate_MSS_Document</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>doco__Lightning_Mass_Generation</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>doco__Mass_Generation</name>
+    </webLinks>
+</CustomObjectTranslation>

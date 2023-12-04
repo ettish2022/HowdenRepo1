@@ -1,0 +1,24 @@
+<apex:page controller="ScheduleJob">
+  <apex:form >
+      <apex:pageBlock >
+      <apex:pageblockSection >
+      <apex:pageBlockSectionItem >
+      <apex:outputLabel value="Job Name"></apex:outputLabel>
+      <apex:inputText value="{!jobName}"/>
+      </apex:pageBlockSectionItem>
+      <apex:pageBlockSectionItem >
+      <apex:outputLabel value="Class Name"></apex:outputLabel>
+      <apex:inputText value="{!className}"/>
+      </apex:pageBlockSectionItem>
+      <apex:pageBlockSectionItem >
+      <apex:outputLabel value="Cron Exp"></apex:outputLabel>
+      <apex:inputText value="{!cronExp}"/>
+      </apex:pageBlockSectionItem>
+
+      </apex:pageblockSection>
+      <apex:pageBlockButtons >
+        <apex:commandButton value="click To Schedule" action="{!doScheduleJob}"/>
+      </apex:pageBlockButtons>
+      </apex:pageBlock>
+  </apex:form>  
+</apex:page>

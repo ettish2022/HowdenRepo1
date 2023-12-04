@@ -1,0 +1,15 @@
+<apex:page standardController="Howden_Task__c" sidebar="false" showHeader="false" standardStylesheets="true" extensions="NFILING.DocumentViewStdControllerExt"> 
+    <script>
+        var entstype = "Howden_Task__c";
+        var entid = "{!Howden_Task__c.id}";
+        var entname="{!JSENCODE(Howden_Task__c.name)}";
+        var accountId="{!Howden_Task__c.Account__c}";
+        var contactId="{!contactId}";
+        var defaultFaxNumber = "{!JSENCODE(defaultFaxNumber)}";
+        var defaultEmail = "{!JSENCODE(defaultEmail)}";
+        var defaultMobileSMS= "{!JSENCODE(defaultMobileSMS)}";
+    </script>
+     <div style="width:100%;">
+    <NFILING:DocumentSearch psearchparams="{!searchparams}" pdisplayFilter="false"/>
+    </div>
+</apex:page>

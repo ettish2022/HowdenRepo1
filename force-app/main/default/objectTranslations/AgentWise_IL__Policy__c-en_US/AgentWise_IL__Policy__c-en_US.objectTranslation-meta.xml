@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Policy</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Policies</value>
+    </caseValues>
+    <layouts>
+        <layout>NoInsured Policy Good Layout</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>New Section</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מידע מהפקה בסוכנות</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מידע מפרודוקציה</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מסמכים</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרטי הפוליסה</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרטי מערכת</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Policy Good Layout</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>New Section</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מידע מהפקה בסוכנות</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מידע מפרודוקציה</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מסמכים</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרטי הפוליסה</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרטי מערכת</section>
+        </sections>
+    </layouts>
+    <nameFieldLabel>Policy Name</nameFieldLabel>
+    <recordTypes>
+        <label></label>
+        <name>Alternative_Investments</name>
+    </recordTypes>
+    <recordTypes>
+        <label></label>
+        <name>Health_For_Collective_Policy</name>
+    </recordTypes>
+    <recordTypes>
+        <label></label>
+        <name>Invesments_Account_Policy</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>PolicyCancelledRequiredDetails</name>
+    </validationRules>
+    <webLinks>
+        <label>תייק קבצים</label>
+        <name>File_a_Document</name>
+    </webLinks>
+</CustomObjectTranslation>

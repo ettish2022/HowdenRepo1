@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Budget_Entity__c</fullName>
+    <externalId>false</externalId>
+    <label>ישות לתקציב</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Howden 2002</fullName>
+                <default>false</default>
+                <label>Howden 2002</label>
+            </value>
+            <value>
+                <fullName>Howden 2011</fullName>
+                <default>false</default>
+                <label>Howden 2011</label>
+            </value>
+            <value>
+                <fullName>Howden Re</fullName>
+                <default>false</default>
+                <label>Howden Re</label>
+            </value>
+            <value>
+                <fullName>Howden Wise</fullName>
+                <default>false</default>
+                <label>Howden Wise</label>
+            </value>
+            <value>
+                <fullName>BZR</fullName>
+                <default>false</default>
+                <label>BZR</label>
+            </value>
+            <value>
+                <fullName>M.M.I</fullName>
+                <default>false</default>
+                <label>M.M.I</label>
+            </value>
+            <value>
+                <fullName>Howden Boutique</fullName>
+                <default>false</default>
+                <label>Howden Boutique</label>
+            </value>
+            <value>
+                <fullName>Nilibit</fullName>
+                <default>false</default>
+                <label>Nilibit</label>
+            </value>
+            <value>
+                <fullName>Howden Boutique (Nilibit)</fullName>
+                <default>false</default>
+                <label>Howden Boutique (Nilibit)</label>
+            </value>
+            <value>
+                <fullName>Howden 2002 (Nilibit)</fullName>
+                <default>false</default>
+                <label>Howden 2002 (Nilibit)</label>
+            </value>
+            <value>
+                <fullName>Howden Surety</fullName>
+                <default>false</default>
+                <label>Howden Surety</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

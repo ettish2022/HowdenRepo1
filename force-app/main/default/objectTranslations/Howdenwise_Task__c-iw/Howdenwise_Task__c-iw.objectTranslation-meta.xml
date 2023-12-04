@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <article>None</article>
+        <plural>false</plural>
+        <value>Howdenwise Task</value>
+    </caseValues>
+    <caseValues>
+        <article>None</article>
+        <plural>true</plural>
+        <value>Howdenwise Tasks</value>
+    </caseValues>
+    <gender>Feminine</gender>
+    <layouts>
+        <layout>Howdenwise Task Layout</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרטי הבקשה והטיפול</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרטי מערכת</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>claim Task Layout</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרטי הבקשה והטיפול</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרטי מערכת</section>
+        </sections>
+    </layouts>
+    <recordTypes>
+        <label></label>
+        <name>Claim_Task</name>
+    </recordTypes>
+</CustomObjectTranslation>

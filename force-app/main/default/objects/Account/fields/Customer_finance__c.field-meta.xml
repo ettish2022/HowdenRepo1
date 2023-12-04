@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Customer_finance__c</fullName>
+    <externalId>false</externalId>
+    <label>אפיון לקוח - כספים</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>TIER 1</fullName>
+                <default>false</default>
+                <label>TIER 1</label>
+            </value>
+            <value>
+                <fullName>TIER 2</fullName>
+                <default>false</default>
+                <label>TIER 2</label>
+            </value>
+            <value>
+                <fullName>TIER 3</fullName>
+                <default>false</default>
+                <label>TIER 3</label>
+            </value>
+            <value>
+                <fullName>TIER 4</fullName>
+                <default>false</default>
+                <label>TIER 4</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

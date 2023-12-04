@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldOverrides>
+        <field>AccountId</field>
+        <formula>Account.Id</formula>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>AgentWise_IL__Id_Type__c</field>
+        <literalValue>תעודת זהות</literalValue>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>MailingCity</field>
+        <formula>IF(NOT(ISBLANK( Account.BillingCity )), Account.BillingCity,&quot;&quot;)</formula>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>MailingPostalCode</field>
+        <formula>IF(NOT(ISBLANK( Account.BillingPostalCode )),Account.BillingPostalCode,&quot;&quot;)</formula>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>MailingStreet</field>
+        <formula>IF(NOT(ISBLANK( Account.BillingStreet )), Account.BillingStreet,&quot;&quot;)</formula>
+    </fieldOverrides>
+    <label>New Family Member</label>
+    <optionsCreateFeedItem>true</optionsCreateFeedItem>
+    <quickActionLayout>
+        <layoutSectionStyle>TwoColumnsLeftToRight</layoutSectionStyle>
+        <quickActionLayoutColumns>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>Name</field>
+                <uiBehavior>Required</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>Novidea_HPC__SSN__c</field>
+                <uiBehavior>Required</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>MobilePhone</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>Email</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>Phone</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+        </quickActionLayoutColumns>
+        <quickActionLayoutColumns>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>AccountId</field>
+                <uiBehavior>Required</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>Birthdate</field>
+                <uiBehavior>Required</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>No_Cellular_phone__c</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>NoEmail__c</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+        </quickActionLayoutColumns>
+    </quickActionLayout>
+    <targetObject>Contact</targetObject>
+    <targetParentField>AgentWise_IL__Household__c</targetParentField>
+    <targetRecordType>Contact.AgentWise_IL__Client</targetRecordType>
+    <type>Create</type>
+</QuickAction>

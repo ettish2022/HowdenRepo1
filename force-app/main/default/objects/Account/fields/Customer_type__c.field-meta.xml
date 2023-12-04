@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Customer_type__c</fullName>
+    <externalId>false</externalId>
+    <label>Customer type</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>true</sorted>
+            <value>
+                <fullName>TLV</fullName>
+                <default>false</default>
+                <label>TLV</label>
+            </value>
+            <value>
+                <fullName>UCOMPARE</fullName>
+                <default>false</default>
+                <label>UCOMPARE</label>
+            </value>
+            <value>
+                <fullName>V.I.P</fullName>
+                <default>false</default>
+                <label>V.I.P</label>
+            </value>
+            <value>
+                <fullName>אורית אור</fullName>
+                <default>false</default>
+                <label>אורית אור</label>
+            </value>
+            <value>
+                <fullName>חברים/משפחה -משה</fullName>
+                <default>false</default>
+                <label>חברים/משפחה -משה</label>
+            </value>
+            <value>
+                <fullName>חברים/משפחה -צחי</fullName>
+                <default>false</default>
+                <label>חברים/משפחה -צחי</label>
+            </value>
+            <value>
+                <fullName>חד קרן</fullName>
+                <default>false</default>
+                <label>חד קרן</label>
+            </value>
+            <value>
+                <fullName>טבע-VIP</fullName>
+                <default>false</default>
+                <label>טבע-VIP</label>
+            </value>
+            <value>
+                <fullName>טיפול משפטי</fullName>
+                <default>false</default>
+                <label>טיפול משפטי</label>
+            </value>
+            <value>
+                <fullName>לא לחדש הפוליסה</fullName>
+                <default>false</default>
+                <label>לא לחדש הפוליסה</label>
+            </value>
+            <value>
+                <fullName>לא פעילים</fullName>
+                <default>false</default>
+                <label>לא פעילים</label>
+            </value>
+            <value>
+                <fullName>מבצע מבוטחי שפי</fullName>
+                <default>false</default>
+                <label>מבצע מבוטחי שפי</label>
+            </value>
+            <value>
+                <fullName>משרדי עו&quot;ד</fullName>
+                <default>false</default>
+                <label>משרדי עו&quot;ד</label>
+            </value>
+            <value>
+                <fullName>ספורט</fullName>
+                <default>false</default>
+                <label>ספורט</label>
+            </value>
+            <value>
+                <fullName>עובדי המשרד ומשפחתם</fullName>
+                <default>false</default>
+                <label>עובדי המשרד ומשפחתם</label>
+            </value>
+            <value>
+                <fullName>קשיי גביה</fullName>
+                <default>false</default>
+                <label>קשיי גביה</label>
+            </value>
+            <value>
+                <fullName>רגיל</fullName>
+                <default>false</default>
+                <label>רגיל</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

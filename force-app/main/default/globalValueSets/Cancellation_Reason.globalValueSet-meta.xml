@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>יש לו ביטוח זהה ממקום העבודה</fullName>
+        <default>false</default>
+        <label>יש לו ביטוח זהה ממקום העבודה</label>
+    </customValue>
+    <customValue>
+        <fullName>כפל במוצר</fullName>
+        <default>false</default>
+        <label>כפל במוצר</label>
+    </customValue>
+    <customValue>
+        <fullName>לקוח התחרט</fullName>
+        <default>false</default>
+        <label>לקוח התחרט</label>
+    </customValue>
+    <customValue>
+        <fullName>מינוי לסוכן אחר</fullName>
+        <default>false</default>
+        <label>מינוי לסוכן אחר</label>
+    </customValue>
+    <customValue>
+        <fullName>מקרה מוות</fullName>
+        <default>false</default>
+        <label>מקרה מוות</label>
+    </customValue>
+    <customValue>
+        <fullName>ניוד</fullName>
+        <default>false</default>
+        <label>ניוד</label>
+    </customValue>
+    <customValue>
+        <fullName>ניוד פנימי</fullName>
+        <default>false</default>
+        <label>ניוד פנימי</label>
+    </customValue>
+    <customValue>
+        <fullName>סיים עב&apos; ולא רוצה בהמשך</fullName>
+        <default>false</default>
+        <label>סיים עב&apos; ולא רוצה בהמשך</label>
+    </customValue>
+    <customValue>
+        <fullName>סילוק משכנתא</fullName>
+        <default>false</default>
+        <label>סילוק משכנתא</label>
+    </customValue>
+    <customValue>
+        <fullName>עובר לסוכן אישי/סוכן של המעסיק החדש</fullName>
+        <default>false</default>
+        <label>עובר לסוכן אישי/סוכן של המעסיק החדש</label>
+    </customValue>
+    <customValue>
+        <fullName>פידיון</fullName>
+        <default>false</default>
+        <label>פידיון</label>
+    </customValue>
+    <customValue>
+        <fullName>תום תקופה</fullName>
+        <default>false</default>
+        <label>תום תקופה</label>
+    </customValue>
+    <customValue>
+        <fullName>ניוד החוצה דרך סוכן אחר</fullName>
+        <default>false</default>
+        <label>ניוד החוצה דרך סוכן אחר</label>
+    </customValue>
+    <customValue>
+        <fullName>יזום ע&quot;י חברה בשל מידע</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>יזום ע&quot;י חברה בשל מידע</label>
+    </customValue>
+    <customValue>
+        <fullName>יש לו סוכן אישי שמטפל בכל הביטוחים שלו</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>יש לו סוכן אישי שמטפל בכל הביטוחים שלו</label>
+    </customValue>
+    <customValue>
+        <fullName>לא מרוצה מהסוכן</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>לא מרוצה מהסוכן</label>
+    </customValue>
+    <customValue>
+        <fullName>ללקוח אין כסף</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>ללקוח אין כסף</label>
+    </customValue>
+    <customValue>
+        <fullName>מחיר גבוה/דמי ניהול גבוהים</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>מחיר גבוה/דמי ניהול גבוהים</label>
+    </customValue>
+    <customValue>
+        <fullName>צבירה בלבד ללא הפקדות</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>צבירה בלבד ללא הפקדות</label>
+    </customValue>
+    <customValue>
+        <fullName>שדרוג פוליסה</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>שדרוג פוליסה</label>
+    </customValue>
+    <customValue>
+        <fullName>שומר ע&quot;י סוכן הקודם</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>שומר ע&quot;י סוכן הקודם</label>
+    </customValue>
+    <customValue>
+        <fullName>טכני</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>טכני</label>
+    </customValue>
+    <customValue>
+        <fullName>טוען שנגבו ממנו פרמיות כפולות/גבוהות ולא מעוניין</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>טוען שנגבו ממנו פרמיות כפולות/גבוהות ולא מעוניין</label>
+    </customValue>
+    <customValue>
+        <fullName>חיובים כפולים</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>חיובים כפולים</label>
+    </customValue>
+    <customValue>
+        <fullName>התחרט על הרכישה</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>התחרט על הרכישה</label>
+    </customValue>
+    <customValue>
+        <fullName>התגרש/ה ולא מוכנ/ה להיות בביטוח עם בן/בת הזוג</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>התגרש/ה ולא מוכנ/ה להיות בביטוח עם בן/בת הזוג</label>
+    </customValue>
+    <customValue>
+        <fullName>הלקוח אומר שיקר לו</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>הלקוח אומר שיקר לו</label>
+    </customValue>
+    <customValue>
+        <fullName>אשתו/בעלה מטפל/ת בנושא ולא מעוניינ/ת</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>אשתו/בעלה מטפל/ת בנושא ולא מעוניינ/ת</label>
+    </customValue>
+    <customValue>
+        <fullName>אכזבה מתהליך המכירה</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>אכזבה מתהליך המכירה</label>
+    </customValue>
+    <customValue>
+        <fullName>אכזבה משירות</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>אכזבה משירות</label>
+    </customValue>
+    <customValue>
+        <fullName>אכזבה ממוצר</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>אכזבה ממוצר</label>
+    </customValue>
+    <customValue>
+        <fullName>לא מעוניין בהמשכיות בשמירת זכויות - הסדר ריסק זמני</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>לא מעוניין בהמשכיות בשמירת זכויות - הסדר ריסק זמני</label>
+    </customValue>
+    <customValue>
+        <fullName>לא מעוניין</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>לא מעוניין</label>
+    </customValue>
+    <customValue>
+        <fullName>לא הופק בכלל</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>לא הופק בכלל</label>
+    </customValue>
+    <customValue>
+        <fullName>לא ידוע</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>לא ידוע</label>
+    </customValue>
+    <masterLabel>Cancellation Reason</masterLabel>
+    <sorted>true</sorted>
+</GlobalValueSet>

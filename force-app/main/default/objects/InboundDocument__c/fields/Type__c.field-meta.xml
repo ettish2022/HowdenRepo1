@@ -1,0 +1,635 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Type__c</fullName>
+    <externalId>false</externalId>
+    <label>Type</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>אישור כיסוי</fullName>
+                <default>false</default>
+                <label>אישור כיסוי</label>
+            </value>
+            <value>
+                <fullName>אישור כיסוי ללקוח</fullName>
+                <default>false</default>
+                <label>אישור כיסוי ללקוח</label>
+            </value>
+            <value>
+                <fullName>אישור מס</fullName>
+                <default>false</default>
+                <label>אישור מס</label>
+            </value>
+            <value>
+                <fullName>אישור פקס</fullName>
+                <default>false</default>
+                <label>אישור פקס</label>
+            </value>
+            <value>
+                <fullName>אישור קיום ביטוחים</fullName>
+                <default>false</default>
+                <label>אישור קיום ביטוחים</label>
+            </value>
+            <value>
+                <fullName>ביטול פוליסה</fullName>
+                <default>false</default>
+                <label>ביטול פוליסה</label>
+            </value>
+            <value>
+                <fullName>בקשה לאישור קיום ביטוח</fullName>
+                <default>false</default>
+                <label>בקשה לאישור קיום ביטוח</label>
+            </value>
+            <value>
+                <fullName>ד. תשלום DEBIT NOTE</fullName>
+                <default>false</default>
+                <label>ד. תשלום DEBIT NOTE</label>
+            </value>
+            <value>
+                <fullName>דף סיכום פגישה</fullName>
+                <default>false</default>
+                <label>דף סיכום פגישה</label>
+            </value>
+            <value>
+                <fullName>דרישת תשלום</fullName>
+                <default>false</default>
+                <label>דרישת תשלום</label>
+            </value>
+            <value>
+                <fullName>הארכת פוליסה</fullName>
+                <default>false</default>
+                <label>הארכת פוליסה</label>
+            </value>
+            <value>
+                <fullName>הנפקה ( פרטית / ציבורית)</fullName>
+                <default>false</default>
+                <label>הנפקה ( פרטית / ציבורית)</label>
+            </value>
+            <value>
+                <fullName>הסבה</fullName>
+                <default>false</default>
+                <label>הסבה</label>
+            </value>
+            <value>
+                <fullName>הסכם סודיות - NDA</fullName>
+                <default>false</default>
+                <label>הסכם סודיות - NDA</label>
+            </value>
+            <value>
+                <fullName>הצהרת העדר תביעות NCD</fullName>
+                <default>false</default>
+                <label>הצהרת העדר תביעות NCD</label>
+            </value>
+            <value>
+                <fullName>הצעה (לקוח חדש)</fullName>
+                <default>false</default>
+                <label>הצעה (לקוח חדש)</label>
+            </value>
+            <value>
+                <fullName>הצעה לחידוש</fullName>
+                <default>false</default>
+                <label>הצעה לחידוש</label>
+            </value>
+            <value>
+                <fullName>הצעה מן המבטח</fullName>
+                <default>false</default>
+                <label>הצעה מן המבטח</label>
+            </value>
+            <value>
+                <fullName>חומר חדש מהלקוח</fullName>
+                <default>false</default>
+                <label>חומר חדש מהלקוח</label>
+            </value>
+            <value>
+                <fullName>חומר לחידוש מהלקוח</fullName>
+                <default>false</default>
+                <label>חומר לחידוש מהלקוח</label>
+            </value>
+            <value>
+                <fullName>חריג חדלות פרעון</fullName>
+                <default>false</default>
+                <label>חריג חדלות פרעון</label>
+            </value>
+            <value>
+                <fullName>טבלת בעלי מניות</fullName>
+                <default>false</default>
+                <label>טבלת בעלי מניות</label>
+            </value>
+            <value>
+                <fullName>טופס הצעה</fullName>
+                <default>false</default>
+                <label>טופס הצעה</label>
+            </value>
+            <value>
+                <fullName>כולם</fullName>
+                <default>false</default>
+                <label>כולם</label>
+            </value>
+            <value>
+                <fullName>כפיפויות</fullName>
+                <default>false</default>
+                <label>כפיפויות</label>
+            </value>
+            <value>
+                <fullName>כתבה על החברה</fullName>
+                <default>false</default>
+                <label>כתבה על החברה</label>
+            </value>
+            <value>
+                <fullName>כתב כיסוי</fullName>
+                <default>false</default>
+                <label>כתב כיסוי</label>
+            </value>
+            <value>
+                <fullName>כתב מינוי סוכן</fullName>
+                <default>false</default>
+                <label>כתב מינוי סוכן</label>
+            </value>
+            <value>
+                <fullName>לחברת ביטוח Submission</fullName>
+                <default>false</default>
+                <label>לחברת ביטוח Submission</label>
+            </value>
+            <value>
+                <fullName>מייל ללקוח לאחר פגישה</fullName>
+                <default>false</default>
+                <label>מייל ללקוח לאחר פגישה</label>
+            </value>
+            <value>
+                <fullName>מכתב אי חידוש</fullName>
+                <default>false</default>
+                <label>מכתב אי חידוש</label>
+            </value>
+            <value>
+                <fullName>מכתב ביטול</fullName>
+                <default>false</default>
+                <label>מכתב ביטול</label>
+            </value>
+            <value>
+                <fullName>מכתב ביטול עקב אי תשלום</fullName>
+                <default>false</default>
+                <label>מכתב ביטול עקב אי תשלום</label>
+            </value>
+            <value>
+                <fullName>מכתב התראה</fullName>
+                <default>false</default>
+                <label>מכתב התראה</label>
+            </value>
+            <value>
+                <fullName>מכתב חידוש</fullName>
+                <default>false</default>
+                <label>מכתב חידוש</label>
+            </value>
+            <value>
+                <fullName>מכתב נלווה לפוליסה</fullName>
+                <default>false</default>
+                <label>מכתב נלווה לפוליסה</label>
+            </value>
+            <value>
+                <fullName>מכתב עו&quot;ד</fullName>
+                <default>false</default>
+                <label>מכתב עו&quot;ד</label>
+            </value>
+            <value>
+                <fullName>מצגת של הלקוח</fullName>
+                <default>false</default>
+                <label>מצגת של הלקוח</label>
+            </value>
+            <value>
+                <fullName>נספחים / הרחבות לפוליסה</fullName>
+                <default>false</default>
+                <label>נספחים / הרחבות לפוליסה</label>
+            </value>
+            <value>
+                <fullName>נתונים פיננסים</fullName>
+                <default>false</default>
+                <label>נתונים פיננסים</label>
+            </value>
+            <value>
+                <fullName>סירוב מבטח להגיש הצעה</fullName>
+                <default>false</default>
+                <label>סירוב מבטח להגיש הצעה</label>
+            </value>
+            <value>
+                <fullName>עמלות</fullName>
+                <default>false</default>
+                <label>עמלות</label>
+            </value>
+            <value>
+                <fullName>פוליסה לשליחה ללקוח</fullName>
+                <default>false</default>
+                <label>פוליסה לשליחה ללקוח</label>
+            </value>
+            <value>
+                <fullName>פירם אורדר - Firm Order</fullName>
+                <default>false</default>
+                <label>פירם אורדר - Firm Order</label>
+            </value>
+            <value>
+                <fullName>שינויי תמליל לפוליסה</fullName>
+                <default>false</default>
+                <label>שינויי תמליל לפוליסה</label>
+            </value>
+            <value>
+                <fullName>תביעה</fullName>
+                <default>false</default>
+                <label>תביעה</label>
+            </value>
+            <value>
+                <fullName>תוספת לפוליסה</fullName>
+                <default>false</default>
+                <label>תוספת לפוליסה</label>
+            </value>
+            <value>
+                <fullName>תיעוד שיחות עם לקוח</fullName>
+                <default>false</default>
+                <label>תיעוד שיחות עם לקוח</label>
+            </value>
+            <value>
+                <fullName>תכתובת עם יועץ</fullName>
+                <default>false</default>
+                <label>תכתובת עם יועץ</label>
+            </value>
+            <value>
+                <fullName>תכתובת עם לקוח</fullName>
+                <default>false</default>
+                <label>תכתובת עם לקוח</label>
+            </value>
+            <value>
+                <fullName>תכתובת עם מבטח</fullName>
+                <default>false</default>
+                <label>תכתובת עם מבטח</label>
+            </value>
+            <value>
+                <fullName>תכתובת פנימית</fullName>
+                <default>false</default>
+                <label>תכתובת פנימית</label>
+            </value>
+            <value>
+                <fullName>תמליל פוליסה</fullName>
+                <default>false</default>
+                <label>תמליל פוליסה</label>
+            </value>
+            <value>
+                <fullName>תשלום לחברת ביטוח</fullName>
+                <default>false</default>
+                <label>תשלום לחברת ביטוח</label>
+            </value>
+            <value>
+                <fullName>תשלום למבטח משנה</fullName>
+                <default>false</default>
+                <label>תשלום למבטח משנה</label>
+            </value>
+            <value>
+                <fullName>אופנוע</fullName>
+                <default>false</default>
+                <label>אופנוע</label>
+            </value>
+            <value>
+                <fullName>דוח סוקר לדירה</fullName>
+                <default>false</default>
+                <label>דוח סוקר לדירה</label>
+            </value>
+            <value>
+                <fullName>הסכם התקשרות</fullName>
+                <default>false</default>
+                <label>הסכם התקשרות</label>
+            </value>
+            <value>
+                <fullName>הצהרת בריאות</fullName>
+                <default>false</default>
+                <label>הצהרת בריאות</label>
+            </value>
+            <value>
+                <fullName>חשבונית/קבלה</fullName>
+                <default>false</default>
+                <label>חשבונית/קבלה</label>
+            </value>
+            <value>
+                <fullName>פוליסה</fullName>
+                <default>false</default>
+                <label>פוליסה</label>
+            </value>
+            <value>
+                <fullName>רכב</fullName>
+                <default>false</default>
+                <label>רכב</label>
+            </value>
+            <value>
+                <fullName>אחר</fullName>
+                <default>false</default>
+                <label>אחר</label>
+            </value>
+            <value>
+                <fullName>אישור מקדמה</fullName>
+                <default>false</default>
+                <label>אישור מקדמה</label>
+            </value>
+            <value>
+                <fullName>דרישת/תשלום השתתפות עצמית</fullName>
+                <default>false</default>
+                <label>דרישת/תשלום השתתפות עצמית</label>
+            </value>
+            <value>
+                <fullName>הודעה מוקדמת</fullName>
+                <default>false</default>
+                <label>הודעה מוקדמת</label>
+            </value>
+            <value>
+                <fullName>הודעה ממבוטח על ארוע</fullName>
+                <default>false</default>
+                <label>הודעה ממבוטח על ארוע</label>
+            </value>
+            <value>
+                <fullName>הודעת ארוע למבטח</fullName>
+                <default>false</default>
+                <label>הודעת ארוע למבטח</label>
+            </value>
+            <value>
+                <fullName>הצעה ללקוח קיים</fullName>
+                <default>false</default>
+                <label>הצעה ללקוח קיים</label>
+            </value>
+            <value>
+                <fullName>חוות דעת שמאי</fullName>
+                <default>false</default>
+                <label>חוות דעת שמאי</label>
+            </value>
+            <value>
+                <fullName>טופס הודעה</fullName>
+                <default>false</default>
+                <label>טופס הודעה</label>
+            </value>
+            <value>
+                <fullName>מכתב דחייה</fullName>
+                <default>false</default>
+                <label>מכתב דחייה</label>
+            </value>
+            <value>
+                <fullName>מכתב ערעור</fullName>
+                <default>false</default>
+                <label>מכתב ערעור</label>
+            </value>
+            <value>
+                <fullName>מסמכי גבייה</fullName>
+                <default>false</default>
+                <label>מסמכי גבייה</label>
+            </value>
+            <value>
+                <fullName>פנייה לחידוש</fullName>
+                <default>false</default>
+                <label>פנייה לחידוש</label>
+            </value>
+            <value>
+                <fullName>תביעה כספית</fullName>
+                <default>false</default>
+                <label>תביעה כספית</label>
+            </value>
+            <value>
+                <fullName>תביעה משפטית</fullName>
+                <default>false</default>
+                <label>תביעה משפטית</label>
+            </value>
+            <value>
+                <fullName>תביעת תאונות אישיות</fullName>
+                <default>false</default>
+                <label>תביעת תאונות אישיות</label>
+            </value>
+            <value>
+                <fullName>תשלום למבוטח</fullName>
+                <default>false</default>
+                <label>תשלום למבוטח</label>
+            </value>
+            <value>
+                <fullName>תשלום לפנים משורת הדין</fullName>
+                <default>false</default>
+                <label>תשלום לפנים משורת הדין</label>
+            </value>
+            <value>
+                <fullName>תשלום תביעה</fullName>
+                <default>false</default>
+                <label>תשלום תביעה</label>
+            </value>
+            <value>
+                <fullName>חומר לחו&quot;ל</fullName>
+                <default>false</default>
+                <label>חומר לחו&quot;ל</label>
+            </value>
+            <value>
+                <fullName>טופס מיגון לרכב</fullName>
+                <default>false</default>
+                <label>טופס מיגון לרכב</label>
+            </value>
+            <value>
+                <fullName>טיוטא עותק לבדיקה</fullName>
+                <default>false</default>
+                <label>טיוטא עותק לבדיקה</label>
+            </value>
+            <value>
+                <fullName>קבלה מחברת הביטוח</fullName>
+                <default>false</default>
+                <label>קבלה מחברת הביטוח</label>
+            </value>
+            <value>
+                <fullName>מיגון</fullName>
+                <default>false</default>
+                <label>מיגון</label>
+            </value>
+            <value>
+                <fullName>צמ&quot;ה/ מלגזה</fullName>
+                <default>false</default>
+                <label>צמ&quot;ה/ מלגזה</label>
+            </value>
+            <value>
+                <fullName>מפרט יועץ</fullName>
+                <default>false</default>
+                <label>מפרט יועץ</label>
+            </value>
+            <value>
+                <fullName>משאיות /נגררים</fullName>
+                <default>false</default>
+                <label>משאיות /נגררים</label>
+            </value>
+            <value>
+                <fullName>נסיון תביעות</fullName>
+                <default>false</default>
+                <label>נסיון תביעות</label>
+            </value>
+            <value>
+                <fullName>סקר סיכונים לעסק</fullName>
+                <default>false</default>
+                <label>סקר סיכונים לעסק</label>
+            </value>
+            <value>
+                <fullName>סריקה חיצונית</fullName>
+                <default>false</default>
+                <label>סריקה חיצונית</label>
+            </value>
+            <value>
+                <fullName>דוחות כספיים</fullName>
+                <default>false</default>
+                <label>דוחות כספיים</label>
+            </value>
+            <value>
+                <fullName>פניה לחברת ביטוח לקבלת הצעה</fullName>
+                <default>false</default>
+                <label>פניה לחברת ביטוח לקבלת הצעה</label>
+            </value>
+            <value>
+                <fullName>תכתובות עם האודן לונדון / US</fullName>
+                <default>false</default>
+                <label>תכתובות עם האודן לונדון / US</label>
+            </value>
+            <value>
+                <fullName>בקשה/אישור הכללת הנפקה</fullName>
+                <default>false</default>
+                <label>בקשה/אישור הכללת הנפקה</label>
+            </value>
+            <value>
+                <fullName>אישור קיום ביטוח</fullName>
+                <default>false</default>
+                <label>אישור קיום ביטוח</label>
+            </value>
+            <value>
+                <fullName>תכתובת עם מוניטור</fullName>
+                <default>false</default>
+                <label>תכתובת עם מוניטור</label>
+            </value>
+            <value>
+                <fullName>תכתובת עם עו&quot;ד המייצג</fullName>
+                <default>false</default>
+                <label>תכתובת עם עו&quot;ד המייצג</label>
+            </value>
+            <value>
+                <fullName>פנייה ללקוח חדש</fullName>
+                <default>false</default>
+                <label>פנייה ללקוח חדש</label>
+            </value>
+            <value>
+                <fullName>תכתובת עם מבטח ולקוח</fullName>
+                <default>false</default>
+                <label>תכתובת עם מבטח ולקוח</label>
+            </value>
+            <value>
+                <fullName>תשלום שכ&quot;ט</fullName>
+                <default>false</default>
+                <label>תשלום שכ&quot;ט</label>
+            </value>
+            <value>
+                <fullName>שיעבוד לבנק</fullName>
+                <default>false</default>
+                <label>שיעבוד לבנק</label>
+            </value>
+            <value>
+                <fullName>דירה</fullName>
+                <default>false</default>
+                <label>דירה</label>
+            </value>
+            <value>
+                <fullName>תיירים/עובדים זרים</fullName>
+                <default>false</default>
+                <label>תיירים/עובדים זרים</label>
+            </value>
+            <value>
+                <fullName>קבלנים</fullName>
+                <default>false</default>
+                <label>קבלנים</label>
+            </value>
+            <value>
+                <fullName>תיעוד שיחות עם מבטח</fullName>
+                <default>false</default>
+                <label>תיעוד שיחות עם מבטח</label>
+            </value>
+            <value>
+                <fullName>תכתובת עם סוכן משנה</fullName>
+                <default>false</default>
+                <label>תכתובת עם סוכן משנה</label>
+            </value>
+            <value>
+                <fullName>אסמכתא</fullName>
+                <default>false</default>
+                <label>אסמכתא</label>
+            </value>
+            <value>
+                <fullName>אישורי מסירה</fullName>
+                <default>false</default>
+                <label>אישורי מסירה</label>
+            </value>
+            <value>
+                <fullName>אישורי קריאה</fullName>
+                <default>false</default>
+                <label>אישורי קריאה</label>
+            </value>
+            <value>
+                <fullName>כתב כיסוי תאונות אישיות</fullName>
+                <default>false</default>
+                <label>כתב כיסוי תאונות אישיות</label>
+            </value>
+            <value>
+                <fullName>כתב כיסוי אחריות מקצועית</fullName>
+                <default>false</default>
+                <label>כתב כיסוי אחריות מקצועית</label>
+            </value>
+            <value>
+                <fullName>אישור עריכת ביטוח</fullName>
+                <default>false</default>
+                <label>אישור עריכת ביטוח</label>
+            </value>
+            <value>
+                <fullName>חוזים</fullName>
+                <default>false</default>
+                <label>חוזים</label>
+            </value>
+            <value>
+                <fullName>תעודת ביטוח חובה</fullName>
+                <default>false</default>
+                <label>תעודת ביטוח חובה</label>
+            </value>
+            <value>
+                <fullName>דף תמחור</fullName>
+                <default>false</default>
+                <label>דף תמחור</label>
+            </value>
+            <value>
+                <fullName>היסטוריה טרום שפי</fullName>
+                <default>false</default>
+                <label>היסטוריה טרום שפי</label>
+            </value>
+            <value>
+                <fullName>הערות לחוזים</fullName>
+                <default>false</default>
+                <label>הערות לחוזים</label>
+            </value>
+            <value>
+                <fullName>רישיון רכב</fullName>
+                <default>false</default>
+                <label>רישיון רכב</label>
+            </value>
+            <value>
+                <fullName>אישור הסרת שיעבוד</fullName>
+                <default>false</default>
+                <label>אישור הסרת שיעבוד</label>
+            </value>
+            <value>
+                <fullName>הערכת תכולה</fullName>
+                <default>false</default>
+                <label>הערכת תכולה</label>
+            </value>
+            <value>
+                <fullName>החלפת רכב</fullName>
+                <default>false</default>
+                <label>החלפת רכב</label>
+            </value>
+            <value>
+                <fullName>אישור לפקיד שומה</fullName>
+                <default>false</default>
+                <label>אישור לפקיד שומה</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>3</visibleLines>
+</CustomField>

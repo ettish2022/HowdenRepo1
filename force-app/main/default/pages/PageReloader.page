@@ -1,0 +1,11 @@
+<apex:page >
+	<script>
+	var url = unescape(window.location.search.substring(window.location.search.indexOf('=') + 1,window.location.search.length));
+	if (window.opener != null) {
+		if (url != '') 
+			window.opener.location.href=url;
+		window.close();top.close();
+	} else if (url != '')
+		window.location.href=url;
+	</script>
+</apex:page>

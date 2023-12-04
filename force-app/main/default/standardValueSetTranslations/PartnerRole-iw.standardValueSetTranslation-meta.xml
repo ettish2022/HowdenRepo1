@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <valueTranslation>
+        <masterLabel>Advertiser</masterLabel>
+        <translation>פרסומאי</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Agency</masterLabel>
+        <translation>סוכנות</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Broker</masterLabel>
+        <translation>ברוקר</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Consultant</masterLabel>
+        <translation>יועץ</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Dealer</masterLabel>
+        <translation>סוחר</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Developer</masterLabel>
+        <translation>מפתח</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Distributor</masterLabel>
+        <translation>מפיץ</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Institution</masterLabel>
+        <translation>מכון</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Lender</masterLabel>
+        <translation>מלווה</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>System Integrator</masterLabel>
+        <translation>משלב מערכות</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>VAR/Reseller</masterLabel>
+        <translation>מפיץ ערך מוסף</translation>
+    </valueTranslation>
+</StandardValueSetTranslation>

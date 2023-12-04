@@ -1,0 +1,130 @@
+<apex:page standardController="Account" extensions="TotalReportHoursCO" sidebar="false" showHeader="false" >
+
+
+ <apex:includeScript value="{!$Resource.jquery}"/> 
+
+ <script>
+  function startFlowloading(){
+                document.body.style.cursor='wait';
+                document.getElementById("create").disabled=true;
+            }
+  function flowloadingStop(){
+                if (document.body != null)
+                    document.body.style.cursor='default';
+                     document.getElementById("create").disabled=false;
+                return true;
+            }
+  </script>          
+ 
+
+<script>
+                      
+ //
+        var currentObjectIdG="{!CurrentObjectID}";
+        
+         
+        function createPdf(){
+          
+            startFlowloading();
+            
+            var startDate =document.getElementById('startDateI').value;
+            
+            var endDate =document.getElementById('endDateI').value;
+           
+            TotalReportHoursCO.createTempClaim(startDate,endDate,currentObjectIdG,callbackUpdateRows);
+        }
+        
+        var windowReference1 ;
+        var claimIdG ="";
+        function callbackUpdateRows(result, event) {
+                if(event.type == 'exception') {                    
+                    alert(event.message);                   
+                } else {   
+                   
+                   if (result == null){
+                       flowloadingStop();
+                       alert("לא נמצאו תביעות עבור החשבון");
+                       return;
+                   }
+                  
+                   
+                   if ( typeof(result[0].formId) != "undefined"  && typeof(result[0].recordId) != "undefined" ){
+                      window.open("/apex/NPERFORM__generateForm?sourceObjectDescField=Name&targetId="+result[0].formId+"&sourceObjectsType=Novidea_HPC__Claim__c&sourceId="+result[0].recordId+"&mergeWithPdf=true&lockData=true");
+                      claimIdG =result[0].recordId;    
+                      setTimeout('checkPage()',8000);
+                      
+                      
+                   }
+                    if ( typeof(result[1].formId) != "undefined"  && typeof(result[1].recordId) != "undefined" ){
+                       window.open("/apex/NPERFORM__generateForm?sourceObjectDescField=Name&targetId="+result[1].formId+"&&sourceObjectsType=Novidea_HPC__Claim__c&sourceId="+result[1].recordId+"&mergeWithPdf=true&lockData=true");
+                       if( claimIdG == "" ){ 
+                           claimIdG = result[1].recordId;
+                           setTimeout('checkPage()',8000);
+                       }                
+                    }
+                    if (claimIdG  == ""){
+                        flowloadingStop();
+                    }
+
+               }
+        } 
+        
+       
+        function checkPage() {
+           if( claimIdG !="" ){ 
+             
+                TotalReportHoursCO.deleteClaim(claimIdG ,callBackFromDel);
+                claimIdG ="";               
+                return;              
+           }else{ 
+              
+          }
+        }
+        
+       
+        
+       
+        
+         function callBackFromDel(result, event) {
+                if(event.type == 'exception') {                    
+                    alert(event.message); 
+                    flowloadingStop();                  
+                } else {  flowloadingStop();       }                
+        }            
+
+</script>
+
+
+<apex:includeScript value="{!$Resource.jquery}"/> 
+<apex:form >
+  
+  <apex:pageBlock >
+       
+       <apex:outputLabel value="תאריך התחלה"> </apex:outputLabel>
+       <c:datepicker fieldId="startDateI">
+                              <input type="text" id="startDateI" value="{!startDate}" />
+       </c:datepicker>
+       
+        <apex:outputLabel value="תאריך סיום"> </apex:outputLabel>   
+        <c:datepicker fieldId="endDateI">
+                              <input type="text" id="endDateI"  value="{!endDate}" />
+       </c:datepicker>
+       
+       
+  <apex:pageBlockSection title="הפקת דוח שעות" >  
+  
+  
+    <button   class="btn"  type="button" id="create" onclick="createPdf();" > צור </button>
+   <!--
+        <button   class="btn"  type="button" id="send"  > שלח</button>
+        -->
+   
+   
+  
+   </apex:pageBlockSection> 
+    
+   </apex:pageBlock>
+    
+    
+</apex:form>    
+</apex:page>

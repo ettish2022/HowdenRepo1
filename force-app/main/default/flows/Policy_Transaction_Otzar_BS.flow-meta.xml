@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>52.0</apiVersion>
+    <assignments>
+        <name>setShortLog</name>
+        <label>setShortLog</label>
+        <locationX>176</locationX>
+        <locationY>311</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Short_Log__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>short</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <description>Short Log</description>
+    <formulas>
+        <name>short</name>
+        <dataType>String</dataType>
+        <expression>left({!$Record.Otzar_Interface__Log__c},255)</expression>
+    </formulas>
+    <interviewLabel>Policy Transaction Otzar - BS {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Policy Transaction Otzar - BS</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>setShortLog</targetReference>
+        </connector>
+        <object>Otzar_Interface__Policy_Transaction__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

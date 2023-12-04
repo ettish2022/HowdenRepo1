@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>נושא הבקשה</label>
+    <name>Sub_Subject__c</name>
+    <picklistValues>
+        <masterLabel>Add Insuree</masterLabel>
+        <translation>הוספת מבוטח</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Address Change</masterLabel>
+        <translation>שינוי כתובת</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Agent Appointment</masterLabel>
+        <translation>מינוי סוכן</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Cancel Insured</masterLabel>
+        <translation>ביטול מבוטח</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Cancel Kisui</masterLabel>
+        <translation>ביטול כיסוי</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Change Cover</masterLabel>
+        <translation>שינוי כיסוי</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Change Investment Code</masterLabel>
+        <translation>שינוי מסלול השקעה</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Change Payments Precents</masterLabel>
+        <translation>שינוי אחוזי תשלום</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Claim Entitlement Check</masterLabel>
+        <translation>בירור זכאות לתביעה</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Collection Form</masterLabel>
+        <translation>טופס גביה</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Communication Details Change</masterLabel>
+        <translation>שינוי פרטי תקשורת</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Compensation Report For Employee</masterLabel>
+        <translation>דוח פיצויים לעובד</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Compensation Report For Employer</masterLabel>
+        <translation>דוח פיצויים למעסיק</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Compensation update</masterLabel>
+        <translation>עדכון פיצוי אובדן כושר עבודה</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Credit Card Change</masterLabel>
+        <translation>שינוי כרטיס אשראי</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Customer Refund</masterLabel>
+        <translation>החזר ללקוח</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>External Niud</masterLabel>
+        <translation>ניוד חיצוני</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Hosarim</masterLabel>
+        <translation>חוסרים</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Insurance Confirmation</masterLabel>
+        <translation>אישור ביטוח</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Internal Niud</masterLabel>
+        <translation>ניוד פנימי</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Kitsbah Getting</masterLabel>
+        <translation>קבלת קצבה</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Leaving Work</masterLabel>
+        <translation>עזיבת עבודה</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Loans</masterLabel>
+        <translation>הלוואות</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Management Fees Update</masterLabel>
+        <translation>עדכון דמי ניהול</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Minui Mutavim</masterLabel>
+        <translation>מינוי מוטבים</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>One time deposit</masterLabel>
+        <translation>שיוך הפקדה חד פעמית</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Partial Pidion</masterLabel>
+        <translation>פדיון חלקי</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Period Extension</masterLabel>
+        <translation>הארכת תום תקופה</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Pidion</masterLabel>
+        <translation>פדיון מלא</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Pigur</masterLabel>
+        <translation>פיגור</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Policy Cancellation</masterLabel>
+        <translation>ביטול פוליסה</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Policy Siluk</masterLabel>
+        <translation>סילוק פוליסה</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Preserve</masterLabel>
+        <translation>שימור</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Renounce coverage</masterLabel>
+        <translation>ויתור כיסוי שאירים</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Request For Information</masterLabel>
+        <translation>בקשה לקבלת מידע</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Request For Reports</masterLabel>
+        <translation>בקשה לקבלת דוחות</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Retroactive Payment</masterLabel>
+        <translation>תשלום רטרואקטיבי</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Salary Change</masterLabel>
+        <translation>שינוי שכר</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Send Policy Doc</masterLabel>
+        <translation>קבלת מסמך פוליסה</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Taking Ownership Followup</masterLabel>
+        <translation>קבלת בעלות</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Temporary Coverage</masterLabel>
+        <translation>כיסוי זמני</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Temporary Leave</masterLabel>
+        <translation>עזיבה זמנית</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Temporary Risk</masterLabel>
+        <translation>ריסק זמני</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Theoretical redemption</masterLabel>
+        <translation>פדיון רעיוני</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Tsvira Request</masterLabel>
+        <translation>בקשת צבירה</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Update Employer Details</masterLabel>
+        <translation>עדכון פרטי מעסיק</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Update payment details / credit card details</masterLabel>
+        <translation>עדכון אמצעי תשלום/פרטי כרטיס אשראי</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>UpdateDetails</masterLabel>
+        <translation>עדכון פרטים</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Yipui Koach</masterLabel>
+        <translation>ייפוי כח</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>beneficiate nominate</masterLabel>
+        <translation>מינוי מוטבים</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>check/reset debt</masterLabel>
+        <translation>בדיקת/איפוס חוב</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>צירוף בן משפחה לקולקטיב</masterLabel>
+        <translation></translation>
+    </picklistValues>
+</CustomFieldTranslation>

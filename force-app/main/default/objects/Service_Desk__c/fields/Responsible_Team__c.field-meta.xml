@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Responsible_Team__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF (ISPICKVAL ( Sub_Category__c, &quot;הקמת דוח חדש&quot;),
+&quot;בקרה פיננסית&quot;,
+IF (ISPICKVAL( Sub_Category__c, &quot;סיוע בדיווחים&quot;),
+&quot;בקרה פיננסית&quot;,
+IF (ISPICKVAL( Sub_Category__c, &quot;מחיקת כפילויות&quot;),
+&quot;בקרה פיננסית&quot;,
+IF (ISPICKVAL( Sub_Category__c, &quot;סגירת הצעות/פוטנציאלים&quot;),
+&quot;בקרה פיננסית&quot;,
+IF (ISPICKVAL( Sub_Category__c, &quot;תיקון שכט/עמלה בדיווח&quot;),
+&quot;בקרה פיננסית&quot;,
+IF (ISPICKVAL( Sub_Category__c, &quot;פתיחת משתמש בחברות ביטוח&quot;),
+&quot;בקרה פיננסית&quot;,
+IF (ISPICKVAL( Sub_Category__c, &quot;אי התאמה בין דיווח לפרודוקציה&quot;),
+&quot;בקרה פיננסית&quot;,
+IF (ISPICKVAL( Sub_Category__c, &quot;תקבולים ממבטחים&quot;),
+&quot;בקרה פיננסית&quot;,
+IF (ISPICKVAL( Sub_Category__c, &quot;בירור עמלות&quot;),
+&quot;בקרה פיננסית&quot;,
+IF (ISPICKVAL( Sub_Category__c, &quot;העברת פוליסות בין חשבונות&quot;),
+&quot;בקרה פיננסית&quot;,
+IF (ISPICKVAL( Sub_Category__c, &quot;בירור והקמת הסכם סוכני משנה&quot;),
+&quot;בקרה פיננסית&quot;,
+IF (ISPICKVAL( Sub_Category__c, &quot;הקמת משתמש בחברות ביטוח&quot;),
+&quot;בקרה פיננסית&quot;,
+IF (ISPICKVAL( Sub_Category__c, &quot;שינויים לדוח קיים&quot;),
+&quot;בקרה פיננסית&quot;,
+IF (ISPICKVAL( Sub_Category__c, &quot;BI&quot;),
+&quot;Salesforce&quot;,
+IF (ISPICKVAL( Sub_Category__c, &quot;הקמת מוצרים/מרכזי רווח/שדות&quot;),
+&quot;Salesforce&quot;,
+IF (ISPICKVAL( Sub_Category__c, &quot;הקמת מבטחים חדשים&quot;),
+&quot;Salesforce&quot;,
+IF (ISPICKVAL( Sub_Category__c, &quot;מחיקת רשומות&quot;),
+&quot;Salesforce&quot;,
+IF (ISPICKVAL( Sub_Category__c, &quot;העברת תיוקים בין חשבונות/פוליסות&quot;),
+&quot;Salesforce&quot;,
+IF (ISPICKVAL( Sub_Category__c, &quot;העברת בעלות ברשומות&quot;),
+&quot;Salesforce&quot;,
+IF (ISPICKVAL( Sub_Category__c, &quot;מיזוג חשבונות&quot;),
+&quot;Salesforce&quot;,
+IF (ISPICKVAL( Sub_Category__c, &quot;ביטול נעילת פוליסה&quot;),
+&quot;Salesforce&quot;,
+IF (ISPICKVAL( Sub_Category__c, &quot;דרישה כללית&quot;),
+&quot;Salesforce&quot;,
+IF (ISPICKVAL( Sub_Category__c, &quot;הוספת מרכז רווח בדיווח&quot;),
+&quot;Salesforce&quot;,
+IF (ISPICKVAL( Sub_Category__c, &quot;תקלות דיווח&quot;),
+&quot;Salesforce&quot;,
+IF (ISPICKVAL( Sub_Category__c, &quot;טעינת רשומות&quot;),
+&quot;Salesforce&quot;,
+&quot;Help Desk&quot;)))))))))))))))))))))))))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Responsible Team</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

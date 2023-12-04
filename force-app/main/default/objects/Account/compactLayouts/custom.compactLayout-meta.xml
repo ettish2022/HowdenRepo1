@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>custom</fullName>
+    <fields>Name_Formula__c</fields>
+    <fields>OwnerId</fields>
+    <fields>BillingAddress</fields>
+    <fields>Industry</fields>
+    <fields>Flag_Formula__c</fields>
+    <fields>Flag_Formula_fee__c</fields>
+    <label>custom</label>
+</CompactLayout>

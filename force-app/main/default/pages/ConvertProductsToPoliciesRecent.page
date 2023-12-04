@@ -1,0 +1,3 @@
+<apex:page standardcontroller="Novidea_HPC__Product__c" recordSetVar="products" extensions="ConvertProductsToPoliciesCo" action="{!initRecent}">
+    <apex:pageMessages />
+</apex:page>

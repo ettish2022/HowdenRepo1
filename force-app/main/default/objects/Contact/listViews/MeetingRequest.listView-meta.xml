@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>MeetingRequest</fullName>
+    <booleanFilter>1 AND 2 AND (3 OR 4)</booleanFilter>
+    <columns>FULL_NAME</columns>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>CONTACT.PHONE3</columns>
+    <columns>CONTACT.EMAIL</columns>
+    <columns>Wise_Last_Meeting__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Wise_Activity__c</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <filters>
+        <field>Wise_Last_Meeting__c</field>
+        <operation>lessOrEqual</operation>
+        <value>1/1/2022</value>
+    </filters>
+    <filters>
+        <field>Send_Doco_Form_Time__c</field>
+        <operation>lessThan</operation>
+        <value>1/1/2022 12:00 AM</value>
+    </filters>
+    <filters>
+        <field>Send_Doco_Form_Time__c</field>
+        <operation>equals</operation>
+    </filters>
+    <label>וייז - שליחת הזמנה לפגישה (2021 ומטה)</label>
+    <sharedTo>
+        <role>OperationsHowdenWise</role>
+    </sharedTo>
+</ListView>

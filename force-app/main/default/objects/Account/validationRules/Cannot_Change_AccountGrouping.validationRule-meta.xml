@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Cannot_Change_AccountGrouping</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND (ISCHANGED(Account_Grouping__c)) &amp;&amp; Not( $Permission.Account_Industry )</errorConditionFormula>
+    <errorDisplayField>Account_Grouping__c</errorDisplayField>
+    <errorMessage>אין אפשרות לשנות סיווג לקוח, אנא פנה לבקרה פיננסית</errorMessage>
+</ValidationRule>

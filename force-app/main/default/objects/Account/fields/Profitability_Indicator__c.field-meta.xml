@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Profitability_Indicator__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF  (Total_Net_Worth__c&lt; 0, IMAGE(&apos;/servlet/servlet.FileDownload?file=015D0000002FsoG&apos;,&apos;&apos;),
+IF(Total_Net_Worth__c= 0,
+IMAGE(&apos;/servlet/servlet.FileDownload?file=015D0000002FsoL&apos;,&apos;&apos;),
+  IMAGE(&apos;/servlet/servlet.FileDownload?file=015D0000002FsoV&apos;,&apos;&apos;)
+))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Annual Profitability Indicator</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

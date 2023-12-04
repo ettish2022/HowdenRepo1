@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
+    <activeVersionNumber>1</activeVersionNumber>
+    <description>אם בחשבון מילאו איש קשר לחידושים, מבוצעת בדיקה אם קיימת רשומת קשר מסוג &quot;עסק&quot;, ואם לא, נוצרת רשומה כזו</description>
+    <masterLabel>Doco_Shefi Renewals Account After Change Set Ap Record For Renewal Contact</masterLabel>
+</FlowDefinition>

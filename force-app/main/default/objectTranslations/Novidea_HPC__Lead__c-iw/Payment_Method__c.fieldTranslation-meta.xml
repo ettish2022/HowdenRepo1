@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>אמצעי תשלום</label>
+    <name>Payment_Method__c</name>
+    <picklistValues>
+        <masterLabel>Bank Transfer</masterLabel>
+        <translation>העברה בנקאית</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Cash</masterLabel>
+        <translation>מזומן</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Cheque</masterLabel>
+        <translation>המחאה</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Credit Card</masterLabel>
+        <translation>כרטיס אשראי</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Direct Transfer</masterLabel>
+        <translation>הוראת קבע</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Not relevant</masterLabel>
+        <translation>לא רלוונטי</translation>
+    </picklistValues>
+</CustomFieldTranslation>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>יוצא לדרך כאשר פוליסה הומרה מהצעה - לוקח את כל הרשומות של פוליסות לביטול במכירה שסומנו ויוצר להן בקשות שירות של ביטול פוליסה, ואם ההצעה היא קבלת בעלות - יוצר בקשת שירות למעקב</description>
+    <masterLabel>Create Cancel/TakingOwnership Service Request</masterLabel>
+</FlowDefinition>

@@ -1,0 +1,14 @@
+<apex:page standardController="Task" sidebar="false" showHeader="false" standardStylesheets="true" extensions="NFILING.DocumentViewStdControllerExt">
+    <script>
+        var entstype = "Task";
+        var entid = "{!Task.id}";
+        var entname="{!JSENCODE(Task.Subject)}";
+        var accountId=null;
+        var defaultFaxNumber = "{!JSENCODE(defaultFaxNumber)}";
+        var defaultEmail = "{!JSENCODE(defaultEmail)}";
+        var defaultMobileSMS= "{!JSENCODE(defaultMobileSMS)}";
+    </script>
+    <div style="width:100%;">
+    <NFILING:DocumentSearch psearchparams="{!searchparams}" pdisplayFilter="false"/>
+    </div>
+</apex:page>

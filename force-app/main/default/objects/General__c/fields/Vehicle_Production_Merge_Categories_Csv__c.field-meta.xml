@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Vehicle_Production_Merge_Categories_Csv__c</fullName>
+    <description>csv of category Ids that need a specific automatic matching rule</description>
+    <externalId>false</externalId>
+    <label>Vehicle Production Merge Categories Csv</label>
+    <length>255</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

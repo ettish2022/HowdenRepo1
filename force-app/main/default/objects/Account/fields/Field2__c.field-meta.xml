@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Field2__c</fullName>
+    <description>מקור הפניית לקוח</description>
+    <externalId>false</externalId>
+    <label>מקור הפניית לקוח</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>הפניה מדף נחיתה</fullName>
+                <default>false</default>
+                <label>הפניה מדף נחיתה</label>
+            </value>
+            <value>
+                <fullName>הפניית מלקוח עסקי</fullName>
+                <default>false</default>
+                <label>הפניית מלקוח עסקי</label>
+            </value>
+            <value>
+                <fullName>נסיעה פרטית כהמשך לעסקית</fullName>
+                <default>false</default>
+                <label>נסיעה פרטית כהמשך לעסקית</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

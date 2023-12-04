@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Generate_Cross_Sells</fullName>
+    <availability>online</availability>
+    <displayType>button</displayType>
+    <linkType>page</linkType>
+    <masterLabel>Generate Cross Sells</masterLabel>
+    <openType>replace</openType>
+    <page>Insurance_Cross_Sale_Creator</page>
+    <protected>false</protected>
+</WebLink>

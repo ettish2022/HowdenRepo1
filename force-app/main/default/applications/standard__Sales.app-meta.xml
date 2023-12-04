@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <defaultLandingTab>standard-home</defaultLandingTab>
+    <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
+    <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
+    <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
+    <tabs>standard-Chatter</tabs>
+    <tabs>standard-UserProfile</tabs>
+    <tabs>standard-CollaborationGroup</tabs>
+    <tabs>standard-File</tabs>
+    <tabs>standard-Lead</tabs>
+    <tabs>standard-Account</tabs>
+    <tabs>standard-Contact</tabs>
+    <tabs>standard-Opportunity</tabs>
+    <tabs>standard-report</tabs>
+    <tabs>standard-Dashboard</tabs>
+    <tabs>standard-Product2</tabs>
+    <tabs>standard-Forecasting3</tabs>
+    <tabs>Receipt__c</tabs>
+    <tabs>Car_Model__c</tabs>
+    <tabs>Create_Renewals</tabs>
+    <tabs>Novidea_HPC__Income__c</tabs>
+    <tabs>Novidea_HPC__Collection_From_Carrier__c</tabs>
+    <tabs>Novidea_HPC__Collection__c</tabs>
+    <tabs>Novidea_HPC__Carrier_Product__c</tabs>
+    <tabs>Merge_Production_New</tabs>
+    <tabs>NOVIPROD__Policy_Transaction__c</tabs>
+    <tabs>NOVIPROD__Interface_Field__c</tabs>
+    <tabs>New_Merge_Transaction</tabs>
+    <tabs>NOVU__SMS_Alert__c</tabs>
+    <tabs>Howden_Task__c</tabs>
+    <tabs>Howdenwise_Task__c</tabs>
+    <tabs>standard-WaveHome</tabs>
+    <tabs>Premum_allocation</tabs>
+    <tabs>Service_Desk__c</tabs>
+</CustomApplication>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Target_Chart__c</fullName>
+    <description>Target Chart</description>
+    <externalId>false</externalId>
+    <formula>IMAGE(&quot;http://chart.apis.google.com/chart?chxl=0:|Poor|1:|Average|Great&amp;chxt=x,y&amp;chs=275*100&amp;cht=gm&amp;chd=t:&quot; + 
+TEXT( Open__c )+ &quot;&amp;chl=82%&quot; +TEXT( Open__c ) + &quot;%&amp;chma=0,0,5&quot;, &quot;No Image&quot;, 100,275)
+
+
+
+/*
+chxt=0:|0|1|2|3|4|5|6|7|8|1|Shooting+Star|Nimbus+2000|Nimbus+2001|Firebot&amp;
+chxr=0,0,150&amp;chxt=x,y&amp;chbh=a&amp;chs=450*250&amp;cht=bhs&amp;chco=008800,880000&amp;
+chds=0,8000000,0,8000000&amp;
+chd=t:&quot;
+&quot;1000000,2000000,3000000,7000000|80000000,80000000,80000000,80000000&quot;,&quot;No Image&quot;,100,275)
+*/
+/*
+cht=bvs&amp;chco=4D89F9,C6D9FD&amp;chd=t:&quot; &amp; &quot;10,50,60,80,40|50,60,100,40,20&amp;chds=0,160&quot;,&quot;Image&quot;,275,100)
+*/</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Target Chart</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

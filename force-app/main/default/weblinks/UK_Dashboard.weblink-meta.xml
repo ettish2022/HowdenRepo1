@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomPageWebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <availability>online</availability>
+    <description>Dash board to UK</description>
+    <displayType>link</displayType>
+    <encodingKey>UTF-8</encodingKey>
+    <linkType>url</linkType>
+    <masterLabel>UK Dashboard</masterLabel>
+    <openType>replace</openType>
+    <protected>false</protected>
+    <url>https://eu1.salesforce.com/01ZD00000016g7M</url>
+</CustomPageWebLink>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Process_Compatible_Tx_Without_Account__c</fullName>
+    <defaultValue>true</defaultValue>
+    <description>Used to decide whether to process policy tx when the account onj the tx is not recognized bu the status i scomopatible and there is a matching policy</description>
+    <externalId>false</externalId>
+    <label>Process Compatible Tx Without Account</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

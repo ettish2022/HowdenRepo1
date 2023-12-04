@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help>מנהל הגביה, ברירת המחדל עבור חשבון זה. יועתק באופן אוטומטי לכל פוליסה שמקושרת לחשבון זה</help>
+    <label></label>
+    <name>Novidea_HPC__Collection_Manager__c</name>
+    <relationshipLabel></relationshipLabel>
+</CustomFieldTranslation>

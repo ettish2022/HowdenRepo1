@@ -1,0 +1,315 @@
+<apex:page sidebar="false" showHeader="false" standardController="Insurance_Cross_Sale__c" extensions="InsuranceCrossSalesController" tabstyle="Insurance_Cross_Sale__c">
+<apex:includeScript value="{!$Resource.Novidea_HPC__jquery164min}" />
+<style>
+    .cssValid {  }
+    .cssNotValid { border: 2px solid red; }
+    .hTitle{
+
+        font-size:medium; 
+        color:gray;
+    }
+
+    .hTitleSmall{
+        padding: 0 5px;
+        font-size:small; 
+        color:gray;
+    }
+
+    .opanel{
+        max-height:1000px;
+        overflow:auto;
+        border: solid 1px #fff;
+        background:white;
+        max-width:500px;
+    }
+    
+    ol#two-columns {
+     -moz-column-count: 2;
+     -moz-column-gap: 20px;
+     -webkit-column-count: 2;
+     -webkit-column-gap: 20px;
+     column-count: 2; column-gap: 10px; 
+    }
+
+    td.borderTd{
+        border: 1px solid black;
+        border-right: white;
+        border-bottom: white;
+        border-top:white;
+        padding:1px 5px;
+    }
+    div.inner{
+        /*border:solid 1px black;
+        border-radius:2px;*/
+    }
+    div.inner div{
+        padding:4px;
+       
+    }
+    li{
+        padding-bottom:10px;
+        padding-bottom: 10px;
+        
+    }
+   input[type="checkbox"]{
+        margin-top:0;
+   }
+
+
+    body .bPageBlock, body #bodyCell .bResource .secondaryPalette, body .secondaryPalette.bPageBlock, body .individualPalette .secondaryPalette.bPageBlock, body .bodyDiv .genericTable, body .genericPageBlockTable, body .bodyDiv .bSubBlock, body .bComponentBlock .bPageBlock, body .bMyDashboard .bPageBlock, body.rlHoverFrame .bPageBlock, body.subjectSelectionPopup div.choicesBox, body.lookupTab .secondaryPalette.bPageBlock, body.popupTab .secondaryPalette.bPageBlock, body.UserTagStatsPage .secondaryPalette.bPageBlock {
+
+        background: #fff;
+    }
+
+    body .bPageBlock .detailList tr td, body .bPageBlock .detailList tr th, body table.list tr td, body table.list tr th, body .hoverDetail .bPageBlock .detailList tr td, body .hoverDetail .bPageBlock .detailList tr th {
+        border-color: #E0E0E0;
+    }
+
+</style>
+ <script>
+
+    $( document ).ready(function() {
+       
+    });
+
+  function accord(id) {
+    var allPanels = $('.accordion_' + id +' > div').slideToggle();
+    
+  }
+  </script>
+<apex:sectionHeader title="Cross-Sell Wizard" subtitle="Cross-Sell Parameters"/>
+
+<apex:pageMessages id="theMessage" />
+
+<apex:form >
+<apex:pageBlock >
+    <apex:pageBlockSection collapsible="false" title="1. Filter accounts by owner" columns="1">
+        <table><tr><td>
+            <apex:inputField label="Owner" value="{!dummyInsuranceCrossSale.OwnerId}" required="false"/>
+        </td></tr></table>
+    </apex:pageBlockSection>
+    <apex:pageBlockSection columns="2" collapsible="false" title="2. Define Accounts Target">
+
+ <apex:outputPanel layout="block" style="height:100%;padding:5px;overflow:auto;border: solid 1px;background:white;
+    border-color: #E0E0E0;">
+         <h2 class="hTitle">New Offers </h2>
+         <table>
+         <apex:repeat value="{!toCreateProdDefList}" var="def">
+         <tr>
+            <td>  </td> <!-- replace with image -->
+            <td>  <apex:inputCheckbox value="{!def.selected}"  style="cursor: pointer;" onclick="accord('{!def.id}_A');"/>  </td>
+            <td>  {!def.name}  </td> 
+         </tr>
+         <tr>
+            <td>
+             
+            </td>
+            <td>
+             
+            </td>
+            <td class="accordion_{!def.id}_A" style="">
+             <div style="display: {!if(def.selected,'block','none')};" class="inner">
+
+                <div>
+                    <span style="width:120px;display:inline-table;"><u> Expected Premium</u>  </span>
+                    <span style="width:180px;display:inline-table;">   <input type="text" name="ePremiun"/> </span>
+                </div>
+                <div>
+                    <span style="width:120px;display:inline-table;"><u> Currency</u>  </span>
+                     <span style="width:180px;display:inline-table;"> 
+                        <select>
+                          <option value="usd">USD</option>
+                          <option value="ero">EURO</option>
+                          <option value="ils">ILS</option>
+                        </select>
+
+                    </span>
+                </div>
+                
+             
+            
+            </div>  
+        
+            </td>    
+         </tr>  
+        </apex:repeat>
+       
+        </table>
+           </apex:outputPanel>   
+    
+
+
+         <apex:outputPanel layout="block" style="height:100%;padding:5px;overflow:auto;border: solid 1px;background:white;border-color: #E0E0E0;">
+          <h2 class="hTitle" style="width:60%;display:inline-table;">Existing Covers </h2>
+
+          
+            <div style="display: inline;">Rows filter condition:
+                <select style="display: none;">>
+                    <option value="and">AND</option>
+                    <option value="or">OR</option>
+                </select>
+                <apex:selectList value="{!conditionType}" multiselect="false" size="1">
+                    <apex:selectOption itemValue="and" itemLabel="AND"/>
+                    <apex:selectOption itemValue="or" itemLabel="OR"/>
+                </apex:selectList>
+            </div>
+
+         <table>
+         <apex:repeat value="{!filterDefs}" var="def">
+         <tr>
+            <td>  </td> <!-- replace with image -->
+            <td>  <apex:inputCheckbox value="{!def.selected}"  style="cursor: pointer;" onclick="accord('{!def.id}_B');"/>  </td>
+            <td>  {!def.name}  </td> 
+         </tr>
+         <tr >
+           <td></td>
+           <td></td>
+           
+            <td class="accordion_{!def.id}_B">
+             <div style="display: {!if(def.selected,'block','none')};" class="inner">
+                <div style="">
+
+                    <span style="width:90px;display:inline-table;"> <u>Liability Limit</u> </span>
+                    <span style="width:220px;display:inline-table;"> From: &nbsp; <apex:inputText value="{!def.maxLimit}"   styleClass="{!IF(def.isMaxLimitValid, 'cssValid', 'cssNotValid')}"/></span>
+                    <span style="width:220px;display:inline-table;"> To: &nbsp; <apex:inputText value="{!def.maxLimit}"   styleClass="{!IF(def.isMaxLimitValid, 'cssValid', 'cssNotValid')}"/>  </span>
+
+                 </div>
+             
+                  <div style="">
+
+                    <span style="width:90px;display:inline-table;"> <u>Premium </u> </span>
+                    <span style="width:220px;display:inline-table;"> From: &nbsp; <apex:inputText value="{!def.minPremium}" styleClass="{!IF(def.isMaxLimitValid, 'cssValid', 'cssNotValid')}"/>  </span>
+                    <span style="width:220px;display:inline-table;"> To: &nbsp; <apex:inputText value="{!def.maxPremium}" styleClass="{!IF(def.isMaxLimitValid, 'cssValid', 'cssNotValid')}"/>  </span>
+
+                 </div>
+            </div>  
+        
+            </td>    
+         </tr>  
+        </apex:repeat>
+       
+        </table>
+
+
+
+   </apex:outputPanel>   
+    
+    </apex:pageBlockSection>
+    <apex:pageBlockSection columns="2" collapsible="false" title="3. Define filters">
+     <apex:outputPanel layout="block" style="height:100%;padding:5px;overflow:auto;border: solid 1px;background:white;border-color: #E0E0E0;">
+
+
+    <h2 class="hTitle">Industry </h2>
+    
+   <table id="inner">
+    <tr>
+        <td style=""><input type="checkbox"/> Commercial </td>
+        <td><input type="checkbox"/> Service</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox"/> Constractors</td>
+        <td> <input type="checkbox"/> shipping</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox"/> FI</td>
+        <td> <input type="checkbox"/> Telecommunications</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox"/> Industry</td>
+        <td> <input type="checkbox"/> Transportation</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox"/> Recreation</td>
+        <td><input type="checkbox"/> Retail</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox"/> Utilities</td>
+        <td></td>
+    </tr>
+    </table>
+
+         
+
+
+    </apex:outputPanel>
+     <apex:outputPanel layout="block" style="height:100%;padding:5px;overflow:auto;background:white;">
+            
+            <h2 class="hTitle">Account Value </h2>
+            <div style="height: 21px;"></div>
+            <table id="inner" border="1" rules="NONE" frame="BOX" style="width:100%;border-color: #E0E0E0;">
+                <tr>
+                    <td class="borderTd">
+                         <h2 class="hTitleSmall">Service Level </h2>
+                    </td>
+                    <td class="borderTd">
+                         <h2 class="hTitleSmall">Claim </h2>
+                    </td>
+                    <td class="borderTd">
+                          <h2 class="hTitleSmall">Protfitable </h2>
+                    </td>
+                    <td class="borderTd">
+                          <h2 class="hTitleSmall">Range of Premiums </h2>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="borderTd"> <input type="checkbox"/> Gold </td>
+                    <td class="borderTd"></td>
+                    <td class="borderTd"></td>
+                    <td class="borderTd"></td>
+                </tr>
+                <tr>
+                    <td class="borderTd"> <input type="checkbox"/> Silver </td>
+                    <td class="borderTd">
+                        <input type="radio" name="claim" />Yes
+                        <input type="radio" name="claim"/>No
+                    </td>
+                    <td class="borderTd">
+                        <input type="radio" name="protfitable"/>Yes
+                        <input type="radio" name="protfitable"/>No
+                    </td>
+                     <td class="borderTd" >  From: <input type="Text"/> </td>
+                </tr>
+                 <tr>
+                    <td class="borderTd">
+                     <input type="checkbox"/> Platinume
+                    </td>
+                    <td class="borderTd"></td>
+                    <td class="borderTd"></td>
+                   <td class="borderTd"></td>
+                </tr>
+
+                 <tr>
+                    <td class="borderTd">
+                     <input type="checkbox"/> Bronze
+                    </td>
+                    <td class="borderTd"></td>
+                    <td class="borderTd"></td>
+                     <td class="borderTd"> To: &nbsp; &nbsp; <input type="Text"/> </td>
+                </tr>
+                <tr>
+                  <td class="borderTd"></td>
+                   <td class="borderTd"></td>
+                    <td class="borderTd"></td>
+                     <td class="borderTd"></td>
+                </tr>
+
+                 <tr>
+                  <td class="borderTd"></td>
+                   <td class="borderTd"></td>
+                    <td class="borderTd"></td>
+                     <td class="borderTd"></td>
+                </tr>
+
+            </table>
+
+     </apex:outputPanel>
+  </apex:pageBlockSection>
+    <apex:pageBlockButtons location="bottom">
+        <apex:commandButton action="{!create}" value="{!createButtonText}" onclick="this.style.visibility='hidden'" />
+        <apex:commandButton action="{!back}" value="{!$Label.Novidea_HPC__Back}"/>
+    </apex:pageBlockButtons>
+   
+</apex:pageBlock>
+</apex:form>
+</apex:page>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>האם להעתיק את חשבון המעסיק מהליד ?</label>
+    <name>Copy_Employer_From_Lead__c</name>
+    <picklistValues>
+        <masterLabel>No</masterLabel>
+        <translation>לא</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Yes</masterLabel>
+        <translation>כן</translation>
+    </picklistValues>
+</CustomFieldTranslation>

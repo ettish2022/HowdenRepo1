@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <article>Definite</article>
+        <plural>false</plural>
+        <value>התקבול</value>
+    </caseValues>
+    <caseValues>
+        <article>None</article>
+        <plural>false</plural>
+        <value>תקבול</value>
+    </caseValues>
+    <caseValues>
+        <article>Definite</article>
+        <plural>true</plural>
+        <value>התקבולים</value>
+    </caseValues>
+    <caseValues>
+        <article>None</article>
+        <plural>true</plural>
+        <value>תקבולים</value>
+    </caseValues>
+    <gender>Masculine</gender>
+    <layouts>
+        <layout>BRZ Collection Layout</layout>
+        <sections>
+            <label></label>
+            <section>קישורים מותאמים אישית</section>
+        </sections>
+    </layouts>
+    <nameFieldLabel>אסמכתא</nameFieldLabel>
+    <recordTypes>
+        <label></label>
+        <name>Collection</name>
+    </recordTypes>
+    <recordTypes>
+        <label></label>
+        <name>Collection_BRZ</name>
+    </recordTypes>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>If_policy_front_and_Industry_RI_b_bank</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>check_if_coll_currency_def_prem_currency</name>
+    </validationRules>
+    <webLinks>
+        <label>קבלה</label>
+        <name>Create_Receipt</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>Create_Receipt_lightning</name>
+    </webLinks>
+    <webLinks>
+        <label>תקבול לפוליסה</label>
+        <name>New_Policy_Collection</name>
+    </webLinks>
+</CustomObjectTranslation>

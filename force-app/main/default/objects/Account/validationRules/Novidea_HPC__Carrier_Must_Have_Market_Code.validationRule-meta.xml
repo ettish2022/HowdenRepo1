@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Novidea_HPC__Carrier_Must_Have_Market_Code</fullName>
+    <active>false</active>
+    <description>Account whose record type is &quot;Carrier&quot; MUST have a market code</description>
+    <errorConditionFormula>AND
+(
+  $RecordType.Name = &quot;Carrier&quot;, 
+  ISBLANK(TEXT(Novidea_HPC__Market_Code__c))
+)</errorConditionFormula>
+    <errorDisplayField>Novidea_HPC__Market_Code__c</errorDisplayField>
+    <errorMessage>Please select a value</errorMessage>
+</ValidationRule>

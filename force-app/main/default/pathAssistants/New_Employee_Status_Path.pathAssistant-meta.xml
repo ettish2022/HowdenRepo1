@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PathAssistant xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <entityName>Service_Desk__c</entityName>
+    <fieldName>Status__c</fieldName>
+    <masterLabel>New Employee Status Path</masterLabel>
+    <pathAssistantSteps>
+        <picklistValueName>חדשה</picklistValueName>
+    </pathAssistantSteps>
+    <recordTypeName>HR_Process</recordTypeName>
+</PathAssistant>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label></label>
+    <name>D_Attachment__c</name>
+    <picklistValues>
+        <masterLabel>חתם באמצעות ארגון המהנדסים</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>חתם באמצעות האודן שפי</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>חתם חלקית בארגון המהנדסים</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>חתם חלקית בהאודן שפי - הועבר לארגון המהנדסים</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>לא חתם</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>לא חתם בהאודן שפי - הועבר לארגון המהנדסים</masterLabel>
+        <translation></translation>
+    </picklistValues>
+</CustomFieldTranslation>

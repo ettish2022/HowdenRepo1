@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>carrier_name</fullName>
+    <active>true</active>
+    <description>איסור על שינוי שם חשבון מסוג יצרן</description>
+    <errorConditionFormula>ISCHANGED( Name )&amp;&amp;   RecordTypeId = &apos;012D0000000jeta&apos;</errorConditionFormula>
+    <errorDisplayField>Name</errorDisplayField>
+    <errorMessage>אין אפשרות לשנות את שם המבטח</errorMessage>
+</ValidationRule>

@@ -1,0 +1,15 @@
+<apex:page standardController="AgentWise_IL__Policy__c" sidebar="false" showHeader="false" standardStylesheets="true" extensions="NFILING.DocumentViewStdControllerExt"> 
+    <script>
+        var entstype = "AgentWise_IL__Policy__c";
+        var entid = "{!AgentWise_IL__Policy__c.id}";
+        var entname="{!JSENCODE(AgentWise_IL__Policy__c.name)}";
+        var accountId="{!AgentWise_IL__Policy__c.AgentWise_IL__Account__c}";
+        var contactId="{!contactId}";
+        var defaultFaxNumber = "{!JSENCODE(defaultFaxNumber)}";
+        var defaultEmail = "{!JSENCODE(defaultEmail)}";
+        var defaultMobileSMS= "{!JSENCODE(defaultMobileSMS)}";
+    </script>
+     <div style="width:100%;">
+    <NFILING:DocumentSearch psearchparams="{!searchparams}" pdisplayFilter="false"/>
+    </div>
+</apex:page>

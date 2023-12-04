@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>49.0</apiVersion>
+    <assignments>
+        <name>Update_Lookup_For_Search</name>
+        <label>Update Lookup For Search</label>
+        <locationX>574</locationX>
+        <locationY>123</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Search_Application_Lookup__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>ApplicationRecordId</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.OwnerId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>OwnerId</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_Lookup</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <name>Has_Application</name>
+        <label>Related To Application</label>
+        <locationX>419</locationX>
+        <locationY>119</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Related_To_Application</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Application__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Application_Pens__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Lookup_For_Search</targetReference>
+            </connector>
+            <label>Related To Application</label>
+        </rules>
+    </decisions>
+    <description>בעת יצירת רשומת פוליסה לביטול מהצעה, מסמן דגל בהצעה (לטובת ולידציה בהמשך ההצעה שמילאו רשומות אם סימנו שיש שחלוף)</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>ApplicationRecordId</name>
+        <dataType>String</dataType>
+        <expression>IF(NOT(ISBLANK({!$Record.Application__c})),{!$Record.Application__c},{!$Record.Application_Pens__c})</expression>
+    </formulas>
+    <formulas>
+        <name>CancelledPolicyNumber</name>
+        <dataType>String</dataType>
+        <expression>IF(NOT(ISBLANK({!$Record.Search_Application_Lookup__r.Cancelled_Application_Numbers__c})) &amp;&amp; ISBLANK ({!$Record.Policy__c}), {!$Record.Search_Application_Lookup__r.Cancelled_Application_Numbers__c} &amp; &quot;; &quot; &amp; {!$Record.Extern_Policy_To_Be_Deleted_Number__c},
+IF(NOT(ISBLANK({!$Record.Search_Application_Lookup__r.Cancelled_Application_Numbers__c})) &amp;&amp; NOT(ISBLANK ({!$Record.Policy__c})), 
+{!$Record.Search_Application_Lookup__r.Cancelled_Application_Numbers__c} &amp; &quot;; &quot; &amp; {!$Record.Policy__r.AgentWise_IL__Policy_Number__c},
+IF (ISBLANK({!$Record.Search_Application_Lookup__r.Cancelled_Application_Numbers__c}) &amp;&amp; ISBLANK({!$Record.Policy__c}), {!$Record.Extern_Policy_To_Be_Deleted_Number__c},
+{!$Record.Policy__r.AgentWise_IL__Policy_Number__c})))</expression>
+    </formulas>
+    <formulas>
+        <name>OwnerId</name>
+        <dataType>String</dataType>
+        <expression>IF(LEFT({!$Record.Application_Pens__r.OwnerId},3)=&apos;00G&apos;,
+{!$Record.Application_Pens__r.OwnerId},
+IF(LEFT({!$Record.Application__r.OwnerId},3) = &apos;00G&apos;,
+{!$Record.Application__r.OwnerId},
+{!$User.Id}))</expression>
+    </formulas>
+    <interviewLabel>Application Policies To Cancel Records {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Application Policies To Cancel Records</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <description>משמש ולידציה שתמנע מהמשתמש לשכוח למלא רשומות ביטול אם בחר שיש שחלוף</description>
+        <name>Update_Flag_On_Application</name>
+        <label>Update Flag On Application</label>
+        <locationX>842</locationX>
+        <locationY>123</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>ApplicationRecordId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Cancelled_Application_Numbers__c</field>
+            <value>
+                <elementReference>CancelledPolicyNumber</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Has_Policies_To_Cancel_Records__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <object>AgentWise_IL__Application__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Lookup</name>
+        <label>Update Lookup</label>
+        <locationX>710</locationX>
+        <locationY>123</locationY>
+        <connector>
+            <targetReference>Update_Flag_On_Application</targetReference>
+        </connector>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>50</locationY>
+        <connector>
+            <targetReference>Has_Application</targetReference>
+        </connector>
+        <object>Application_Deleted_Policies__c</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

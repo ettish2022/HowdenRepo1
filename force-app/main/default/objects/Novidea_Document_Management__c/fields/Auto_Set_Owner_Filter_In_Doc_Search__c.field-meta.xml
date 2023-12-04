@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Auto_Set_Owner_Filter_In_Doc_Search__c</fullName>
+    <defaultValue>true</defaultValue>
+    <description>Determines whether to automatically set the owner filter to the current user when loading the document search module. The default is Yes</description>
+    <externalId>false</externalId>
+    <label>Auto Set Owner Filter In Doc Search</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

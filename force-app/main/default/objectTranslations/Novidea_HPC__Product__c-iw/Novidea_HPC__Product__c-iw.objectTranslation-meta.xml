@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <article>Definite</article>
+        <plural>false</plural>
+        <value>המוצר הביטוחי</value>
+    </caseValues>
+    <caseValues>
+        <article>None</article>
+        <plural>false</plural>
+        <value>מוצר ביטוח</value>
+    </caseValues>
+    <caseValues>
+        <article>Definite</article>
+        <plural>true</plural>
+        <value>המוצרים הביטוחיים</value>
+    </caseValues>
+    <caseValues>
+        <article>None</article>
+        <plural>true</plural>
+        <value>מוצרי ביטוח</value>
+    </caseValues>
+    <gender>Masculine</gender>
+    <nameFieldLabel>שם מוצר</nameFieldLabel>
+    <quickActions>
+        <label></label>
+        <name>CreateDocomotionForm</name>
+    </quickActions>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Cannot_Change_To_Converted</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>OnlyCarriers</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>OnlyCarriersInCarrier</name>
+    </validationRules>
+    <webLinks>
+        <label>אושר ע&quot;י לקוח</label>
+        <name>AcceptProductInListViewController</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>AcceptProductInListViewControllerRecent</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>Choose_a_Template</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>ConvertProductsToPolicies</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>ConvertProductsToPoliciesRecent</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>CustomLink1</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>SendMultipleRenew</name>
+    </webLinks>
+</CustomObjectTranslation>

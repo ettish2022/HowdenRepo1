@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
+    <contactEmail>niv.barchel@novideasoft.com</contactEmail>
+    <label>CircleCI</label>
+    <oauthConfig>
+        <callbackUrl>http://localhost:1717/OauthRedirect</callbackUrl>
+        <certificate>MIIDHTCCAgUCFAVXjrv1/j+4uUt51gF1JGCeHu4RMA0GCSqGSIb3DQEBCwUAMEsxCzAJBgNVBAYTAklMMQswCQYDVQQIDAJJTDELMAkGA1UEBwwCSUwxEDAOBgNVBAoMB05vdmlkZWExEDAOBgNVBAsMB25vdmlkZWEwHhcNMjEwOTIzMDkwNTEyWhcNMjIwOTIzMDkwNTEyWjBLMQswCQYDVQQGEwJJTDELMAkGA1UECAwCSUwxCzAJBgNVBAcMAklMMRAwDgYDVQQKDAdOb3ZpZGVhMRAwDgYDVQQLDAdub3ZpZGVhMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtDfkYe2L9vFXXO0YGDh1KStAz1dPEvtkQYetjxEibCgO7CvofkZwzs43L8DTUrTu/Zpbyh/tdLLK96j8k0zWS+pHoKj/Qosi4H2t6BtjgFB1sLG7tWNz8nFw/4Zm0oj2DO7jHTlSXh4IPNp4ye6O2aX5dn0TMHXsustsUIScLS7KcRVlJA01wY4U6a+XZTPBpUigAl+NdKzFIWGT2gDgG/sxhixdPDluO0pryPlagGi2GLRIETvQlnM06UnLzJDF9vYNR9irmrUJj9EEaBVry6IlQ1vCsdwfEJs8OHmXu6z54IgZO02RVePDiotGkrPHJehCqMqw0KeCmWui7vwSOQIDAQABMA0GCSqGSIb3DQEBCwUAA4IBAQAiVMikOScw4fYvq8grLH4KYtYjhQUFEWJt7K67HMfGGCnYe5peK0ifXiHkkVGYiydtT7r3zxFId1/6ssGhcfzt3Fd0tKKlRUy2Fjg1oRCsevKnbiuTlJpRf5o5XaD+ANaQegNZRixU2uHpBiLe7slAeNFRz3Z1nDsVmJaXh4n3a2FfXj1deZAytj8QvNxZQeEGJD1nFxFvOLFzTPVX1EtFFI8f8ev22ezMspNJdzw90+hHls3DmKIcXLm6+GiYCI6La+fdvjdeZTz/+yM+UWnyO7DxhXLf8OfMMNxoxnAUq1hpYd9zECVJIRXJC21U2J9MrG5LK3yGyC3IPkMUbMzg</certificate>
+        <consumerKey>3MVG9PhR6g6B7ps4gq7uOaHzv6NHFTi6J1bpDeBZXMIzV5Z4XmUNVATeVWCaErqCV1akxR27EviO9PAT4NkRd</consumerKey>
+        <isAdminApproved>true</isAdminApproved>
+        <isClientCredentialEnabled>false</isClientCredentialEnabled>
+        <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
+        <isCodeCredentialPostOnly>false</isCodeCredentialPostOnly>
+        <isConsumerSecretOptional>false</isConsumerSecretOptional>
+        <isIntrospectAllTokens>false</isIntrospectAllTokens>
+        <isNamedUserJwtEnabled>false</isNamedUserJwtEnabled>
+        <isSecretRequiredForRefreshToken>true</isSecretRequiredForRefreshToken>
+        <scopes>Api</scopes>
+        <scopes>Web</scopes>
+        <scopes>Full</scopes>
+        <scopes>RefreshToken</scopes>
+    </oauthConfig>
+    <oauthPolicy>
+        <ipRelaxation>ENFORCE</ipRelaxation>
+        <refreshTokenPolicy>infinite</refreshTokenPolicy>
+    </oauthPolicy>
+    <profileName>System Administrator</profileName>
+</ConnectedApp>

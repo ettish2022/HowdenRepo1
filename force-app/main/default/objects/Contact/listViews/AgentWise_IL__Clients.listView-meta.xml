@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AgentWise_IL__Clients</fullName>
+    <columns>CONTACT.LAST_NAME</columns>
+    <columns>CONTACT.FIRST_NAME</columns>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>AgentWise_IL__Gender__c</columns>
+    <columns>CONTACT.BIRTHDATE</columns>
+    <columns>AgentWise_IL__Age__c</columns>
+    <columns>CONTACT.LAST_UPDATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>CONTACT.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Contact.AgentWise_IL__Client</value>
+    </filters>
+    <label>לקוחות</label>
+    <language>en_US</language>
+</ListView>

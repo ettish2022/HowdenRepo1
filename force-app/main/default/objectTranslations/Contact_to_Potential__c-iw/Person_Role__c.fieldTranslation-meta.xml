@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>תפקיד</label>
+    <name>Person_Role__c</name>
+    <picklistValues>
+        <masterLabel>Accountant</masterLabel>
+        <translation>רו&quot;ח</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Administrative Secretary</masterLabel>
+        <translation>מנהל/ת אדמינסטרטיבית</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Attorney</masterLabel>
+        <translation>עו&quot;ד</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Auditor</masterLabel>
+        <translation>מבקר</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Bookkeeper</masterLabel>
+        <translation>מנח&quot;ש</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Brother</masterLabel>
+        <translation>אח</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Brother/Sister</masterLabel>
+        <translation>אח/ות</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Business Contact</masterLabel>
+        <translation>קשר עסקי</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>CEO</masterLabel>
+        <translation>מנכ&quot;ל</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>CFO</masterLabel>
+        <translation>מנהל כספים</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>COO</masterLabel>
+        <translation>מנהל מבצעי</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Child</masterLabel>
+        <translation>ילד</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Clinic Trail Manager</masterLabel>
+        <translation>מנהל קליניקה</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Collection Manager</masterLabel>
+        <translation>מנהל גביה</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Consultant</masterLabel>
+        <translation>יועץ</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Director</masterLabel>
+        <translation>מנהל</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Economist</masterLabel>
+        <translation>כלכלן</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Employee</masterLabel>
+        <translation>עובד</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Executive</masterLabel>
+        <translation>מנהל אקסקיוטיב</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Father</masterLabel>
+        <translation>אב</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Husband</masterLabel>
+        <translation>בעל</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Husband/wife</masterLabel>
+        <translation>בן זוג</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Legal Counsel</masterLabel>
+        <translation>יועץ חוקי</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Mother</masterLabel>
+        <translation>אמא</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Owner</masterLabel>
+        <translation>בעלים</translation>
+    </picklistValues>
+</CustomFieldTranslation>

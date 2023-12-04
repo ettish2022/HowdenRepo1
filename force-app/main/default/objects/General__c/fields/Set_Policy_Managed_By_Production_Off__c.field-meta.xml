@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Set_Policy_Managed_By_Production_Off__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Controlls whether to set the Managed By Production flag on the policy object to false when business logic requires.</description>
+    <externalId>false</externalId>
+    <label>Set Policy Managed By Production Off</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

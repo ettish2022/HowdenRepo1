@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label></label>
+    <name>AgentWise_IL__Credit_Card_Type__c</name>
+    <picklistValues>
+        <masterLabel>American Express</masterLabel>
+        <translation>אמריקן אקספרס</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Diners</masterLabel>
+        <translation>דיינרס</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Isracard</masterLabel>
+        <translation>ישראכארד</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>MasterCard</masterLabel>
+        <translation>מאסטרכארד</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>VISA</masterLabel>
+        <translation>ויזה</translation>
+    </picklistValues>
+</CustomFieldTranslation>

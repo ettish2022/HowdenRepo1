@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MatchingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <matchingRules>
+        <fullName>CheckDupAccountSSN</fullName>
+        <label>בדיקת כפילות מס חפ</label>
+        <matchingRuleItems>
+            <blankValueBehavior>NullNotAllowed</blankValueBehavior>
+            <fieldName>Novidea_HPC__Tax_ID__c</fieldName>
+            <matchingMethod>Exact</matchingMethod>
+        </matchingRuleItems>
+        <ruleStatus>ActivationFailed</ruleStatus>
+    </matchingRules>
+    <matchingRules>
+        <fullName>Duplicate_Carrier</fullName>
+        <label>Duplicate Carrier</label>
+        <matchingRuleItems>
+            <blankValueBehavior>NullNotAllowed</blankValueBehavior>
+            <fieldName>AgentWise_IL__Tax_ID__c</fieldName>
+            <matchingMethod>Exact</matchingMethod>
+        </matchingRuleItems>
+        <ruleStatus>Active</ruleStatus>
+    </matchingRules>
+    <matchingRules>
+        <fullName>NBU__Account_Duplicate_Rule</fullName>
+        <description>UKP-2117</description>
+        <label>Account Duplicate Rule</label>
+        <matchingRuleItems>
+            <blankValueBehavior>NullNotAllowed</blankValueBehavior>
+            <fieldName>NBU__Legal_Entity_Abbr_Group__c</fieldName>
+            <matchingMethod>Exact</matchingMethod>
+        </matchingRuleItems>
+        <ruleStatus>Inactive</ruleStatus>
+    </matchingRules>
+</MatchingRules>

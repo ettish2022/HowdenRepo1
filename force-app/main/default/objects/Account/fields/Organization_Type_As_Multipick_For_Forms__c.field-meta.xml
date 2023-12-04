@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Organization_Type_As_Multipick_For_Forms__c</fullName>
+    <externalId>false</externalId>
+    <label>Organization Type As Multipick For Forms</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>עוסק מורשה / עוסק זעיר</fullName>
+                <default>false</default>
+                <label>עוסק מורשה / עוסק זעיר</label>
+            </value>
+            <value>
+                <fullName>שותפות רשומה</fullName>
+                <default>false</default>
+                <label>שותפות רשומה</label>
+            </value>
+            <value>
+                <fullName>שותפות לא רשומה</fullName>
+                <default>false</default>
+                <label>שותפות לא רשומה</label>
+            </value>
+            <value>
+                <fullName>חברה פרטית</fullName>
+                <default>false</default>
+                <label>חברה פרטית</label>
+            </value>
+            <value>
+                <fullName>חברה ציבורית</fullName>
+                <default>false</default>
+                <label>חברה ציבורית</label>
+            </value>
+            <value>
+                <fullName>אחר</fullName>
+                <default>false</default>
+                <label>אחר</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>3</visibleLines>
+</CustomField>

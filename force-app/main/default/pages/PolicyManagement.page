@@ -1,0 +1,29 @@
+<apex:page standardController="Novidea_HPC__Policy__c" showHeader="false" sidebar="false" standardStylesheets="true" >
+     <div id="ieBrowserFix" style="display:none;" >
+       <apex:sectionHeader title="IE" subtitle="BrowserFix" />
+     </div> 
+     <script>
+        window.onbeforeunload = function(e){
+            //beforeunload is used here because SF is calling the unload event which also triggers our event
+            // currently (2018-01-15) related not working: https://success.salesforce.com/issues_view?id=a1p30000000T3pcAAC
+            // sforce.one.navigateToSObject("{!Novidea_HPC__Policy__c.Id}","related");
+            goBack();
+        }
+
+        function goBack(e){
+            if(typeof sforce !== "undefined" && typeof sforce.one !== "undefined"){
+                sforce.one.back(true);
+            }else{
+                //window.history.back();
+                window.location.assign('/{!Novidea_HPC__Policy__c.Id}');
+            }
+        }
+    </script> 
+     
+    <apex:includeScript value="{!$Resource.Novidea_HPC__jquery3_6_0min}" />
+    <apex:includeScript value="{!$Resource.Novidea_HPC__autocompletejs}" />
+    <apex:includeScript value="{!$Resource.Novidea_HPC__novidea_js_utils}" />
+    <apex:includeScript value="{!$Resource.Novidea_HPC__json2min}"/>
+    <apex:stylesheet value="{!$Resource.Novidea_HPC__autocompletecss}" />
+    <c:ConstructorPoliciesManagement pPolicyId="{!Novidea_HPC__Policy__c.Id}" pNewPolicy="{!Novidea_HPC__Policy__c.Id == null}"/>
+</apex:page>

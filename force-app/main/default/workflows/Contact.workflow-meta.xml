@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>WiseMeetingNew</fullName>
+        <description>הזמנה לפגישה עיתית - וייז</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Email</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>wisedesk@howden.co.il</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>doco__Docomotion_Emails/WiseMeeting</template>
+    </alerts>
+    <fieldUpdates>
+        <fullName>AgentWise_IL__Update_SmokerMandatory_NotSmoking</fullName>
+        <field>AgentWise_IL__Smoker_Mandatory__c</field>
+        <literalValue>Not Smoking</literalValue>
+        <name>Update SmokerMandatory NotSmoking</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>AgentWise_IL__Update_SmokerMandatory_Smoking</fullName>
+        <field>AgentWise_IL__Smoker_Mandatory__c</field>
+        <literalValue>Smoking</literalValue>
+        <name>Update SmokerMandatory Smoking</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>NOVIPROD__SSN_4_Last_Digits</fullName>
+        <field>NOVIPROD__SSN_4_Last_Digits__c</field>
+        <formula>RIGHT(Novidea_HPC__SSN__c,4)</formula>
+        <name>SSN 4 Last Digits</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Otzar_Interface__Update_Contact_OID</fullName>
+        <field>Otzar_Interface__Contact_OID__c</field>
+        <formula>IF(ISPICKVAL(AgentWise_IL__Id_Type__c , &quot;דרכון&quot;),AgentWise_IL__SSN__c, LPAD(IF(ISNUMBER(AgentWise_IL__SSN__c),TEXT(VALUE(AgentWise_IL__SSN__c)),AgentWise_IL__SSN__c),9,&apos;0&apos;))</formula>
+        <name>Update Contact_OID</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Replace_Contact_owner</fullName>
+        <field>OwnerId</field>
+        <lookupValue>admin@howden.co.il</lookupValue>
+        <lookupValueType>User</lookupValueType>
+        <name>Replace Contact owner</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>SET_Contact_Otzar_OID</fullName>
+        <field>Otzar_Interface__Contact_OID__c</field>
+        <formula>LPAD(IF(ISNUMBER( Novidea_HPC__SSN__c ),TEXT(VALUE(Novidea_HPC__SSN__c )),Novidea_HPC__SSN__c ),9,&apos;0&apos;)</formula>
+        <name>SET Contact Otzar OID</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>SET_OID</fullName>
+        <field>External_Id__c</field>
+        <formula>LPAD(IF(ISNUMBER( Novidea_HPC__SSN__c ),TEXT(VALUE(Novidea_HPC__SSN__c )),Novidea_HPC__SSN__c ),9,&apos;0&apos;)</formula>
+        <name>SET OID</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Set_AW_SSN</fullName>
+        <field>AgentWise_IL__SSN__c</field>
+        <formula>LPAD(IF(ISNUMBER( Novidea_HPC__SSN__c ),TEXT(VALUE(Novidea_HPC__SSN__c )),Novidea_HPC__SSN__c ),9,&apos;0&apos;)</formula>
+        <name>Set AW SSN</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <rules>
+        <fullName>AgentWise_IL__Update SmokerMandtory By Smoker False</fullName>
+        <actions>
+            <name>AgentWise_IL__Update_SmokerMandatory_NotSmoking</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>#3700 - picklist value set to &apos;NotSmoking&apos; if  In update - Smoker__c has changed and Smoker__c=false</description>
+        <formula>AND(NOT(ISNEW()),ISCHANGED(AgentWise_IL__Smoker__c) ,AgentWise_IL__Smoker__c==false)</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>AgentWise_IL__Update SmokerMandtory By Smoker True</fullName>
+        <actions>
+            <name>AgentWise_IL__Update_SmokerMandatory_Smoking</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>#3700 - picklist value set to &apos;Smoking&apos; if (one of the cases(OR)):
+- In creation - Smoker__c is true 
+- In update - Smoker__c has changed and  Smoker__c=true</description>
+        <formula>OR(AND(ISNEW(),AgentWise_IL__Smoker__c==true), AND(NOT(ISNEW()),ISCHANGED(AgentWise_IL__Smoker__c) ,AgentWise_IL__Smoker__c==true))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Change Contact inactive owner</fullName>
+        <actions>
+            <name>Replace_Contact_owner</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <criteriaItems>
+            <field>Contact.Is_active_user__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Contact.BRZ__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>NOVIPROD__Update SSN Last 4 Digits</fullName>
+        <actions>
+            <name>NOVIPROD__SSN_4_Last_Digits</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>1=1</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Otzar_Interface__עדכון מזהה חיצוני</fullName>
+        <actions>
+            <name>Otzar_Interface__Update_Contact_OID</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <formula>(isnew() &amp;&amp; ISBLANK(Otzar_Interface__Contact_OID__c) )|| ischanged( AgentWise_IL__SSN__c )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>עדכון מזהה חיצוני</fullName>
+        <actions>
+            <name>SET_Contact_Otzar_OID</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Set_AW_SSN</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>עידכון מזהה חיצוני ושדה  תז חבילת חיים על בסיס תז חבילת אלמנטרי</description>
+        <formula>(isnew() &amp;&amp; ISBLANK(Otzar_Interface__Contact_OID__c) )|| ischanged(  Novidea_HPC__SSN__c )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+</Workflow>

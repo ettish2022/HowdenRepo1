@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Sales Lead</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Sales Leads</value>
+    </caseValues>
+    <layouts>
+        <layout>B4U Lead</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>נתוני ליד</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרטי הליד</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרטי מערכת</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>BusinessLead Layout</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מסמכים</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרטי הליד</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרטי תקשורת מהחשבון</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Lead Layout</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מסמכים</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>נתוני איש קשר קיים במערכת</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>נתוני לקוח שלא הוקם במערכת</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>נתוני פגישה אחרונה בליד</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרטי הליד</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>קשר עובד - מעסיק</section>
+        </sections>
+    </layouts>
+    <nameFieldLabel>Lead Name</nameFieldLabel>
+    <quickActions>
+        <label></label>
+        <name>UpdateMeetingStatus</name>
+    </quickActions>
+    <quickActions>
+        <label></label>
+        <name>Update_Meeting_Was_Held</name>
+    </quickActions>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>B4UMeetingStatusIsSet</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>B4UStatusFinished</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>ClientLeadSourceIsRequired</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>ClientTz_Data_Validity</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>CreateApMustHaveContactAndAccount</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>EmloyeeReferenceIsMandatory</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>InsuredOrNewLeadIsRequired</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>InsuredWithNewLead</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>MeetingDateIsNotLegit</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>MobileNumberIsNotLegit</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>NewLeadDetailsAreMissing</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>PhoneIsNotValid</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>SalesRepMustBeFromRoleSales</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>SplitRequiredWhenMeetingDone</name>
+    </validationRules>
+    <webLinks>
+        <label></label>
+        <name>Create_Private_Client</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>File_a_Document</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>MarkAsSentToB4U</name>
+    </webLinks>
+</CustomObjectTranslation>

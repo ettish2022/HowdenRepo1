@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesSendEmailToMembers>true</doesSendEmailToMembers>
+    <email>yechielp@howden.co.il</email>
+    <name>לידים מהירים</name>
+    <queueMembers>
+        <users>
+            <user>batelle@howden.co.il</user>
+            <user>yechielp@howden.co.il</user>
+            <user>idansa@howden.co.il</user>
+        </users>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>Customer</sobjectType>
+    </queueSobject>
+    <queueSobject>
+        <sobjectType>NFILING__InboundDocument__c</sobjectType>
+    </queueSobject>
+    <queueSobject>
+        <sobjectType>Novidea_HPC__Application__c</sobjectType>
+    </queueSobject>
+    <queueSobject>
+        <sobjectType>Novidea_HPC__Lead__c</sobjectType>
+    </queueSobject>
+</Queue>

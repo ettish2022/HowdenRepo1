@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>סוג ביטול</label>
+    <name>Cancel_Type__c</name>
+    <picklistValues>
+        <masterLabel>ביטול יזום של הסוכנות</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>ביטול על ידי נספח ג</masterLabel>
+        <translation></translation>
+    </picklistValues>
+</CustomFieldTranslation>

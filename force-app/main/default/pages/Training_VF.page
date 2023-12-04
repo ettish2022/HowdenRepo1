@@ -1,0 +1,8 @@
+<apex:page >
+ <div style="width: 100%; text-align: center;" id="adDIV">
+   <iframe width="854" height="480" src="https://www.youtube.com/embed/oT34yKw6PNM?ecver=1" frameborder="0" allowfullscreen="true"></iframe>
+    <br/>
+    <br/>
+    <br/>
+</div>
+</apex:page>

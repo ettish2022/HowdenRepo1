@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <article>Definite</article>
+        <plural>false</plural>
+        <value>הבקשה הפנימית</value>
+    </caseValues>
+    <caseValues>
+        <article>None</article>
+        <plural>false</plural>
+        <value>בקשה פנימית</value>
+    </caseValues>
+    <caseValues>
+        <article>Definite</article>
+        <plural>true</plural>
+        <value>הבקשות הפנימיות</value>
+    </caseValues>
+    <caseValues>
+        <article>None</article>
+        <plural>true</plural>
+        <value>בקשות פנימיות</value>
+    </caseValues>
+    <gender>Feminine</gender>
+    <layouts>
+        <layout>Howden Task Layout</layout>
+        <sections>
+            <label></label>
+            <section>מידע טכני</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מסמכים</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>קישורים מותאמים אישית</section>
+        </sections>
+    </layouts>
+    <nameFieldLabel>בקשה פנימית</nameFieldLabel>
+</CustomObjectTranslation>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>51.0</apiVersion>
+    <assignments>
+        <description>HIL-16</description>
+        <name>Turn_On_Override_field</name>
+        <label>Turn On Override field</label>
+        <locationX>780</locationX>
+        <locationY>111</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Novidea_HPC__Override_Process_Assigned_Recordtype__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <decisions>
+        <description>HIL-16</description>
+        <name>Parent_Policy</name>
+        <label>Parent Policy?</label>
+        <locationX>501</locationX>
+        <locationY>116</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Yes</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.RecordType.DeveloperName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Parent_Policy</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Turn_On_Override_field</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+        <rules>
+            <name>Policy_Bat</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Main_Policy1__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Main_Policy1__r.RecordType.DeveloperName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Parent_Policy</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Turn_On_Override_field</targetReference>
+            </connector>
+            <label>Policy Bat</label>
+        </rules>
+    </decisions>
+    <description>HIL-16</description>
+    <interviewLabel>HPC Policy - Turn On Override RT CB {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>HPC Policy - Turn On Override RT CB</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>50</locationX>
+        <locationY>50</locationY>
+        <connector>
+            <targetReference>Parent_Policy</targetReference>
+        </connector>
+        <object>Novidea_HPC__Policy__c</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

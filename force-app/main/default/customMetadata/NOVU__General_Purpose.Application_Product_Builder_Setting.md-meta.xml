@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Application Product Builder Setting</label>
+    <protected>false</protected>
+    <values>
+        <field>NOVU__General_Editable__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>NOVU__General_Subscriber_Controlled__c</field>
+        <value xsi:type="xsd:string">{&quot;RequiredNotesForLossCauseStatus&quot;:[&quot;Short of Money&quot;,&quot;חברה התפרקה&quot;,&quot;שינוי מבני בפוליסה&quot;,&quot;החברה נרכשה&quot;,&quot;Choose another Agency&quot;,&quot;לא קנה ביטוח&quot;,&quot;ביטול באמצע תקופה&quot;,&quot;לקוח לא רכש ביטוח מסוג זה&quot;],&quot;JSONAutoLossCauseStatus&quot;:[{&quot;Status&quot;:&quot;ניסוי קליני שהסתיים&quot;,&quot;ProductDefId&quot;:&quot;a0PD0000005ljBEMAY&quot;,&quot;PolicyType&quot;:null},{&quot;Status&quot;:&quot;קבלנים שלא חודש&quot;,&quot;ProductDefId&quot;:&quot;a0P4G00000kaSZXUA2&quot;,&quot;PolicyType&quot;:null},{&quot;Status&quot;:&quot;קבלנים שלא חודש&quot;,&quot;ProductDefId&quot;:&quot;a0PD0000005leUrMAI&quot;,&quot;PolicyType&quot;:null},{&quot;Status&quot;:&quot;קבלנים שלא חודש&quot;,&quot;ProductDefId&quot;:&quot;a0P4G00000kaSZSUA2&quot;,&quot;PolicyType&quot;:&quot;Project&quot;},{&quot;Status&quot;:&quot;ראן אוף שנגמר&quot;,&quot;ProductDefId&quot;:null,&quot;PolicyType&quot;:&quot;RunOff&quot;}],&quot;InvalidStatusesAsLossCause&quot;:[&quot;בחר סיבת אובדן&quot;,&quot;ללא&quot;,&quot;None&quot;]}</value>
+    </values>
+    <values>
+        <field>NOVU__General__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>NOVU__Is_Active__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>NOVU__Namespace__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>NOVU__New_Is_Active__c</field>
+        <value xsi:type="xsd:boolean">false</value>
+    </values>
+    <values>
+        <field>NOVU__New_Namespace__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>NOVU__New_SObject__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>NOVU__SObject__c</field>
+        <value xsi:nil="true"/>
+    </values>
+</CustomMetadata>

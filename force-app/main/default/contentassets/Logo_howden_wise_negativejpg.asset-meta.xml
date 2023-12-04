@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentAsset xmlns="http://soap.sforce.com/2006/04/metadata">
+    <isVisibleByExternalUsers>false</isVisibleByExternalUsers>
+    <language>en_US</language>
+    <masterLabel>Logo_howden_wise_negativejpg</masterLabel>
+    <versions>
+        <version>
+            <number>1</number>
+            <pathOnClient>Logo- howden wise negative.jpg</pathOnClient>
+        </version>
+    </versions>
+</ContentAsset>

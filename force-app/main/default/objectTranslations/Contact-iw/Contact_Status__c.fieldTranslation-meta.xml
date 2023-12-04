@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>סטטוס לקוח (וייז)</label>
+    <name>Contact_Status__c</name>
+    <picklistValues>
+        <masterLabel>Active</masterLabel>
+        <translation>פעיל</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>May be Not Active</masterLabel>
+        <translation>חשוד כלא פעיל</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Not Active</masterLabel>
+        <translation>לא פעיל</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Potencial</masterLabel>
+        <translation>פוטנציאלי</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>לא פעיל - עבר לסוכן אחר</masterLabel>
+        <translation></translation>
+    </picklistValues>
+</CustomFieldTranslation>

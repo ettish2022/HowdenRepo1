@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Predefined_File_Selection_Dir_Scan__c</fullName>
+    <description>path for scans</description>
+    <externalId>false</externalId>
+    <label>Predefined File Selection Dir Scan</label>
+    <length>255</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

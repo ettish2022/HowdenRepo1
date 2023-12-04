@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <valueTranslation>
+        <masterLabel>Meeting Postponed</masterLabel>
+        <translation>פגישה נדחתה</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Meeting Was Held - No Sell</masterLabel>
+        <translation>פגישה התקיימה ללא מכירה</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Meeting Was Held - Sold</masterLabel>
+        <translation>פגישה הסתיימה במכירה</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Meeting Was Held Waiting For Customer Decision</masterLabel>
+        <translation>פגישה התקיימה, ממתין להחלטת הלקוח</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Meeting Was Held Waiting For Customer Signature</masterLabel>
+        <translation>פגישה התקיימה, ממתין לחתימת הלקוח</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Reschedule Meeting</masterLabel>
+        <translation>ממתין לתיאום מחודש</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Service Meeting With Changes</masterLabel>
+        <translation>פגישת שירות עם שינויים/עדכון פיצול</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Service Meeting Without Changes</masterLabel>
+        <translation>פגישת שירות ללא שינויים</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>טרם נבחר</masterLabel>
+        <translation><!-- טרם נבחר --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>פגישה בוטלה</masterLabel>
+        <translation><!-- פגישה בוטלה --></translation>
+    </valueTranslation>
+</GlobalValueSetTranslation>

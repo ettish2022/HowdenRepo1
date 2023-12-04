@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Custom_Contact</fullName>
+    <fields>Name</fields>
+    <fields>Title</fields>
+    <fields>AccountId</fields>
+    <fields>Phone</fields>
+    <fields>Email</fields>
+    <fields>MobilePhone</fields>
+    <fields>OwnerId</fields>
+    <fields>Flag_Formula_Claim_Contact__c</fields>
+    <fields>Flag_Formula_fee_Contact__c</fields>
+    <label>Custom Contact</label>
+</CompactLayout>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>ענפים מרכזים פעילים בתיק</label>
+    <name>Active_Insurance_Types__c</name>
+    <picklistValues>
+        <masterLabel>Business</masterLabel>
+        <translation>עסק</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Car Fleet</masterLabel>
+        <translation>צי רכב</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Constructors</masterLabel>
+        <translation>קבלנים</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Credit</masterLabel>
+        <translation>אשראי</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Crime</masterLabel>
+        <translation>פשיעה</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Cyber</masterLabel>
+        <translation>סייבר</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Directors</masterLabel>
+        <translation>דירקטורים</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Household</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Liability</masterLabel>
+        <translation>אחריות מקצועית</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Life</masterLabel>
+        <translation>ביטוח חיים</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Marine</masterLabel>
+        <translation>ימי</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Medical Research</masterLabel>
+        <translation>ניסויים קליניים</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Motor</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Other Insurance Products</masterLabel>
+        <translation>מוצרי ביטוח אחרים</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>PL CGL</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Travel</masterLabel>
+        <translation>נסיעות</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>War and Terror</masterLabel>
+        <translation>טרור</translation>
+    </picklistValues>
+</CustomFieldTranslation>

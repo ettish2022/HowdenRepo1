@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <valueTranslation>
+        <masterLabel>Claims</masterLabel>
+        <translation>תביעות</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Collection</masterLabel>
+        <translation>גביה</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Credit</masterLabel>
+        <translation><!-- Credit --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Finance</masterLabel>
+        <translation>כספים</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Howden FI</masterLabel>
+        <translation><!-- Howden FI --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Howden Industries</masterLabel>
+        <translation><!-- Howden Industries --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Howden Israelit</masterLabel>
+        <translation><!-- Howden Israelit --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Howden Law Firms</masterLabel>
+        <translation><!-- Howden Law Firms --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Howden Medical</masterLabel>
+        <translation><!-- Howden Medical --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Howden Personal Lines</masterLabel>
+        <translation><!-- Howden Personal Lines --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Howden Prime Tech</masterLabel>
+        <translation><!-- Howden Prime Tech --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Howden Reinsurance</masterLabel>
+        <translation><!-- Howden Reinsurance --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Howden Shefi</masterLabel>
+        <translation><!-- Howden Shefi --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Howden Surety</masterLabel>
+        <translation><!-- Howden Surety --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Howden Travel and PA</masterLabel>
+        <translation><!-- Howden Travel and PA --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Howden VC</masterLabel>
+        <translation><!-- Howden VC --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Howden W&amp;I</masterLabel>
+        <translation><!-- Howden W&amp;I --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Howden Wise</masterLabel>
+        <translation><!-- Howden Wise --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>M.M.I</masterLabel>
+        <translation>מ.מ.י</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Management</masterLabel>
+        <translation>הנהלה</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other</masterLabel>
+        <translation><!-- Other --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Secretary</masterLabel>
+        <translation>מזכירות</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Sub agents</masterLabel>
+        <translation><!-- Sub agents --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Telemeeting</masterLabel>
+        <translation>טלמיטינג</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>מערכות מידע</masterLabel>
+        <translation><!-- מערכות מידע --></translation>
+    </valueTranslation>
+</GlobalValueSetTranslation>

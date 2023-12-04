@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Format__c</fullName>
+    <externalId>false</externalId>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText>the Commission_Upload__c RT name</inlineHelpText>
+    <label>Format</label>
+    <referenceTo>Commission_Upload_Format__mdt</referenceTo>
+    <relationshipLabel>Commission Upload Field Mappings</relationshipLabel>
+    <relationshipName>Commission_Upload_Field_Mappings</relationshipName>
+    <required>true</required>
+    <type>MetadataRelationship</type>
+    <unique>false</unique>
+</CustomField>

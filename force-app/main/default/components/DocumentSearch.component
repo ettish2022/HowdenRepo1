@@ -1,0 +1,1294 @@
+<apex:component controller="DocumentSearchController" extensions="DocumentSearchFacade">
+    <apex:attribute name="psearchparams" type="DocumentSearchParams" required="false" assignTo="{!searchparams}"
+        description="holds initial fitering and sorting params" />
+    <apex:attribute name="pdisplayFilter" type="boolean" required="false" default="true" assignTo="{!bDisplayFilter}"
+        description="determines whether the filter part will be displayed" />
+        <!-- Diana 18/07/2013 -->
+    <input type="hidden" id="emailsFromTemplateSelectionMulti"  onchange="sendMailWithTemplateMulti();"/>
+    <input type="hidden" id="resultFieldId"  onchange="sendMailWithTemplate();"/>
+    <input type="hidden" id="physicalPath" />
+  
+    <script>
+        if (typeof console == "undefined") {
+          this.console = {
+            log: function() {},
+            info: function() {},
+            error: function() {},
+            warn: function() {}
+          };
+        }
+    </script>
+    <apex:includeScript value="{!$Resource.json2min}"/>
+    <apex:includeScript value="{!URLFOR($Resource.autocompletejs)}" />
+    <apex:includeScript value="{!$Resource.jquery164min}"/>
+    <apex:includeScript value="{!$Resource.datatablesmin19}"/>
+    <apex:includeScript value="{!$Resource.jquery_min_ui}/ui/minified/jquery.ui.core.min.js"/>
+    <apex:includeScript value="{!$Resource.jquery_min_ui}/ui/minified/jquery.ui.widget.min.js"/>
+    <apex:includeScript value="{!$Resource.jquery_min_ui}/ui/minified/jquery.ui.position.min.js"/>
+    <apex:includeScript value="{!$Resource.jquery_min_ui}/ui/minified/jquery.ui.dialog.min.js"/>
+    <apex:includeScript value="{!$Resource.documentmanagementjs}"/>
+    <apex:stylesheet value="{!$Resource.jquery_min_ui}/themes/base/jquery.ui.all.css"/>                
+    
+    <apex:stylesheet value="{!$Resource.autocompletecss}"/>
+        <apex:stylesheet value="{!$Resource.datatablecss}/css/jquery.dataTables.css"/>     
+
+    <style type="text/css">
+
+    .capitalLetter{
+        font-size:150%;
+        color:#3399CC;
+        padding: 5px;
+        padding-{!$Label.Text_Alignment}: 10px;        
+    }
+    
+    .switchDiv {        
+        padding-{!$Label.Text_Alignment}: 15px;
+        height: 11px;
+        margin: 10px;   
+    }
+    .switchDiv.selectedOn{
+        background: transparent url('/img/alohaSkin/twisty_sprite{!IF($Label.direction== 'rtl','','_rtl')}.png') 0 -11px no-repeat;
+        background-position-x: {!$Label.Text_Alignment};
+    }
+    
+    .switchDiv.selectedOff{                 
+        background: transparent url('/img/alohaSkin/twisty_sprite{!IF($Label.direction== 'rtl','_rtl','')}.png') 0 0 no-repeat;      
+        background-position-x: {!$Label.Text_Alignment};
+    }
+    
+div#mask { display: none; cursor: wait; z-index: 9999; 
+position: absolute; top: 0; {!$Label.Text_Alignment_Reverse}: 0; height: 100%; 
+width: 100%; background-color: #fff; opacity: 0; filter: alpha(opacity = 0);}
+          
+    .paginate_button {
+        background: #E8E8E9 url('/img/alohaSkin/btn_sprite.png') repeat-x {!$Label.Text_Alignment_Reverse} top;
+        font-weight: bold;
+        font-size: 14px !important;
+    }
+
+    
+    .dataTables_length {
+        float: {!$Label.Text_Alignment};
+    }
+    
+    .dataTables_filter{
+        padding-{!$Label.Text_Alignment}: 20px;
+    }        
+    
+    .dataTables_paginate {
+        text-align: center;
+        float:none;
+        padding-top:5px;
+    }   
+            
+        .searchArea{
+            background-color: transparent;
+            font-size: 14px;
+            font-weight: normal;
+            font-family: Arial,Helvetica;
+            border: 1px solid gray;
+            background-image: url('{!$Resource.search_loopa15}');
+            background-repeat: no-repeat;
+            background-position: top {!$Label.Text_Alignment_Reverse};
+            background-size: 15px;
+            padding-{!$Label.Text_Alignment_Reverse}: 20px;  
+            width:80px;
+        }      
+        
+        .searchLabel{
+            white-space: nowrap;
+        }
+        
+        #doctypes td{
+            max-width:90px;
+            overflow-x:hidden;
+            white-space: nowrap;
+        }
+        
+        #tblFilter{
+        /*required because IE&lt;9 doesn't support frame=&quot;border&quot; well. so need to draw*/
+             border-top-color: gray; 
+             border-{!$Label.Text_Alignment}-color: gray; 
+             border-bottom-color: gray; 
+             border-{!$Label.Text_Alignment_Reverse}-color: gray; 
+             border-top-width: 1px; 
+             border-{!$Label.Text_Alignment}-width: 1px; 
+             border-bottom-width: 1px; 
+             border-{!$Label.Text_Alignment_Reverse}-width: 1px; 
+             border-top-style: solid; 
+             border-{!$Label.Text_Alignment}-style: solid; 
+             border-bottom-style: solid; 
+             border-{!$Label.Text_Alignment_Reverse}-style: solid;
+        }
+        
+            /* Sorting */
+          th {
+             background:url("/img/alohaSkin/grid_headerbg.gif") repeat-x scroll 0 bottom #FFFFFF;
+          }
+          .trBackround{
+                background:url("/img/alohaSkin/grid_headerbg.gif") repeat-x scroll 0 bottom #FFFFFF;
+          }
+          .trBackround th{
+            text-align:{!$Label.Text_Alignment};
+          }
+           
+          thead tr.headerRow{
+                background:url("/img/alohaSkin/grid_headerbg.gif") repeat-x scroll 0 bottom #FFFFFF;
+          }
+
+          .subjectCol{  
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow-x: hidden;
+            width:150px;
+           }
+           .dateCol{
+                direction:{!$Label.direction_reverse};
+                text-align:{!$Label.Text_Alignment};
+           }
+           .sorting_asc,.sorting_desc,.sorting {
+            cursor:pointer;
+           }
+
+           table.dataTable tr.docshighlight_row{
+                background-color: #ECFFB3;
+            }
+            table.dataTable tr.docshighlight_click{
+                background-color: #FCFFB3;
+            }
+            .ui-dialog-titlebar{
+                display:none;
+            }
+            .paginate_button{
+                cursor:pointer;
+                padding:15px;
+            }
+            .dataTables_paginate{
+            
+            }
+        
+            table.dataTable tr.even td.sorting_1 {
+            background-color: white;
+            }
+            
+        table.dataTable tr.odd td.sorting_1 {
+                background-color: #E2E4FF;
+        }
+       
+    </style>
+    <apex:outputpanel rendered="{!pdisplayFilter}" layout="block">
+        <script>
+            function loadTableData(oTable) {
+                var initObject = {!strInitSearchResult};
+                j$('#docs').dataTable().fnAddData(initObject) ;
+                setTableExFunctionality(oTable);
+            }
+        </script>
+    </apex:outputpanel>
+    <apex:outputpanel rendered="{!NOT(pdisplayFilter)}" layout="block">
+        <script>
+            function loadTableData(oTable) {
+                var initObject = {!strInitSearchResult};
+                j$('#docs').dataTable().fnAddData(initObject);
+                setTableExFunctionality(oTable);
+
+                // Handle situation of second load of data (from one of the Object pages, they are the only ones that specify the entstype parameter)
+                if (entstype != null){
+                    DocumentSearchFacade.doRemoteSearch('{!JSENCODE(searchparams.json)}',showResult,{escape:true});
+                    return;
+                }
+
+                var params = {};
+                if (entstype == "Account")
+                    params.act = entid;
+                if (entstype == "Contact")
+                    params.cnt = entid;
+                if (entstype == "Task")
+                    params.tsk = entid;
+                    
+                    
+                if (params.customEnts == null)
+                    params.customEnts = new Object();
+
+              <apex:repeat value="{!filingCriterionObjects}" var="critObj">
+                if (entstype.toLowerCase() == '{!critObj.apiName}'.toLowerCase()){
+                    params.customEnts.{!critObj.jsonPrefix} = new Object();
+                    params.customEnts.{!critObj.jsonPrefix}.idStr = entid; 
+                }
+              </apex:repeat>
+
+                if (param.acts == null){
+                    params.acts = new Array();
+                }
+
+                if (accountId != null){
+                    params.acts[0] = new Object();
+                    params.acts[0].idStr = accountId;
+                }
+                
+                params.doctype = [];
+                params.splitQueryByImportedVSCreated = true;
+                params.orderby = [{"fieldName":"CreatedDate" ,"sortdir":"DESC"}, {"fieldName":"Date_Received__c" ,"sortdir":"DESC"}]; 
+                DocumentSearchFacade.doRemoteSearch(JSON.stringify(params),showResult,{escape:true});
+            }
+        </script>
+    </apex:outputpanel>
+    <apex:outputpanel rendered="{!novideaDocumentManagment.Fax_Method__c=1}">
+        <script>
+          function sendFax(path){
+               var faxNumber;
+               try{
+                 faxNumber = getValidatedFaxNumberFromUser();
+               }
+               catch(ex){
+                alert(ex);
+                return;
+               }
+               var formatedNumber = getFormatedFaxNumber(faxNumber);
+               openNewOutlookMail([formatedNumber], path);
+          }
+       </script>
+    </apex:outputpanel>
+    <apex:outputpanel rendered="{!novideaDocumentManagment.Fax_Method__c=2}">
+        <script>
+          function sendFax(path){
+               var flavour = (path==null?null:path.substring(path.lastIndexOf(".")+1));
+               var faxPrinterName = "{!novideaDocumentManagment.Fax_Printer_Name__c}";
+               var applet = document.getElementById("filingapp");
+               var strRes = applet.printDocumentTo(path, flavour, faxPrinterName);
+               var oRes = JSON.parse(strRes);
+               if(!oRes.success){
+                alert(oRes.errormessage);
+               }
+          }
+      </script>
+    </apex:outputpanel>
+    
+    
+    <script>
+    
+        function openNewOutlookMailMultipleAttachments(emailStructure, paths){
+           var applet = document.getElementById("filingapp");
+           var strRes = applet.openVBSOutlook(emailStructure.to,emailStructure.cc,emailStructure.bcc,emailStructure.subject,emailStructure.body,null,paths,"{!JSENCODE($Setup.Novidea_Document_Management__c.Network_Base_Path__c)}");
+        }
+        function openNewOutlookMail(addresses, path){
+           var applet = document.getElementById("filingapp");
+           var strRes = applet.openNewOutlookMail(addresses,path);
+           var oRes = JSON.parse(strRes);
+           if(!oRes.success){
+                alert(oRes.errormessage);
+           }
+        }
+        
+        //Diana 29/08/2013
+        function sendMail(docId,path){
+             document.getElementById('physicalPath').value = path;
+             window.open('/apex/SelectEmailTemplate?entid=' + entid + '&docId=' + docId,'_blank','height= 400px width= 700px scrollbars= yes');
+        }
+
+        function sendSMSSingle(){
+            window.open('/apex/SelectEmailTemplate?type=sms&mobile=' + defaultMobileSMS + '&entid=' + entid + '&docId=undefined','_blank','height= 400px width= 700px scrollbars= yes');            
+        }
+
+        function sendMailMulti(){
+            var paths = new Array();
+            j$('input[name=selectedDocument]:checked').each( 
+                function() { 
+                    paths.push(this.value);
+                }
+             ); 
+             document.getElementById('physicalPath').value = JSON.stringify(paths);
+             window.open('/apex/SelectEmailTemplate?entid=' + entid + '&docId=undefined','_blank','height= 400px width= 700px scrollbars= yes');
+        }
+        
+        //Diana 29/08/2013
+        function sendMailWithTemplateMulti(){
+            var physicalPaths = JSON.parse(document.getElementById('physicalPath').value);
+            physicalPaths.forEach(function(path){
+                    path = path.replace(' ', '\ ');
+                });
+            var emailStructure = JSON.parse(document.getElementById('emailsFromTemplateSelectionMulti').value);
+            openNewOutlookMailMultipleAttachments(emailStructure, physicalPaths);
+        }
+        function sendMailWithTemplate() {
+            var arr;
+            var physicalPath = document.getElementById('physicalPath').value;
+            arr = [document.getElementById('resultFieldId').value];
+            if(arr!=null && arr!=""){
+                if(physicalPath != null && physicalPath != "" && physicalPath != "undefined")
+                    openNewOutlookMail(arr, physicalPath);
+                else
+                    openNewOutlookMail(arr);
+            }
+        }
+        
+        function sendMailsWithTemplate() {
+            var arr;
+            var physicalPaths = JSON.parse(document.getElementById('physicalPath').value);
+            arr = [resultFieldId.value];
+            if(arr!=null && arr!=""){
+                if(physicalPath != null && physicalPath != "" && physicalPath != "undefined")
+                    openNewOutlookMail(arr, physicalPath);
+                else
+                    openNewOutlookMail(arr);
+            }
+        }
+
+        function formatString(instr) {
+            var args = arguments;
+            if(instr==null || instr===undefined || instr==""){
+                if(args.length>1) return args[1];
+                else return "";
+            }
+            return instr.replace(/\{(\d+)\}/g, function() {
+                var argNum = new Number(arguments[1]);
+                if(args.length>(argNum+1))
+                    return args[argNum+1];
+                else return "{" + arguments[1]+ "}";
+            });
+        }
+        function getValidatedFaxNumberFromUser(){
+            var faxNum = getFaxNumberFromUser();
+            if(faxNum==null || faxNum==""){
+                throw "יש להזין מספר פקס";
+            }
+            return faxNum;
+        }
+        
+        function getEmailFromUser(){
+            return prompt("{!JSENCODE($Label.Enter_Default_Email)}",typeof(defaultEmail)=="undefined"?"":defaultEmail);
+        }
+        function getFaxNumberFromUser(){
+              return prompt("{!JSENCODE($Label.Enter_Default_Fax_Number)}",typeof(defaultFaxNumber)=="undefined"?"":defaultFaxNumber);
+        }
+        function getFormatedFaxNumber(faxNumber){
+               var formatedNumber = formatString("{!novideaDocumentManagment.Fax_Number_Format__c}",faxNumber);
+               return formatedNumber;
+        }
+    
+        var maxLengthComment = 40;
+            function initContact(cName, cId){
+                 j$("#cntfilter").attr("acname", cName).attr("acid",cId);
+            }
+            
+            function initAccount(cName, cId){       
+                 j$("#actfilter").attr("acname", cName).attr("acid",cId);
+            }
+            
+            function initOwner(cName, cId){
+                 j$("#ownerfilter").attr("acname", cName).attr("acid",cId);
+            }
+
+            function initOwnerExt(cName, cId){
+                initOwner(cName, cId);
+                 j$("#ownerfilter").val(cName);
+            }
+            
+          <apex:repeat value="{!filingCriterionObjects}" var="critObj">
+            function init{!JSENCODE(critObj.name)}(cName, cId){       
+                 j$("#{!JSENCODE(critObj.jsonPrefix)}filter").attr("acname", cName).attr("acid",cId);
+            }
+          </apex:repeat>
+            
+            
+    
+           var allowEnterSubmission = false;
+           function preventEnterSubmission(event) 
+           {    
+               if (event == null)
+                   return true;
+               if (event.keyCode == 13 && !allowEnterSubmission) {
+                   event.cancelBubble = true;
+                   event.returnValue = false;
+                   return false;
+               }
+               return true;
+           } 
+           
+           function getFileIconPath(filepath){
+                var alt ="{!$Label.Unknown}";
+                var resource = "/sfc/images/docicons/doctype_unknown_16.png";
+                if(filepath!==undefined && filepath!=null){
+                    if(null!=filepath.match(/\.pdf$/i)){
+                        resource = "/sfc/images/docicons/doctype_pdf_16.png";
+                        alt = "pdf";
+                    }
+                    else if (null!=filepath.match(/\.xlsx?$/i)){
+                        resource = "/sfc/images/docicons/doctype_excel_16.png";
+                        alt = "{!JSINHTMLENCODE($Label.excel_file)}";
+                    }
+                    else if (null!=filepath.match(/\.csv$/i)){
+                        resource = "/sfc/images/docicons/doctype_csv_16.png";
+                    }
+                    else if (null!=filepath.match(/\.docx?$/i)){
+                        resource = "/sfc/images/docicons/doctype_word_16.png";
+                        alt = "{!JSINHTMLENCODE($Label.Word_File)}";
+                    }
+                    else if (null!=filepath.match(/\.pptx?$/i)){
+                        resource = "/sfc/images/docicons/doctype_ppt_16.png";
+                        alt = "{!JSINHTMLENCODE($Label.Powerpoint)}";
+                    }
+                    else if (null!=filepath.match(/\.html?$/i)){
+                        resource = "/sfc/images/docicons/doctype_html_16.png";
+                        alt = "HTML";
+                    }
+                    else if (null!=filepath.match(/\.xml?$/i)){
+                        resource = "/sfc/images/docicons/doctype_xml_16.png";
+                        alt = "XML";
+                    }
+                    else if (null!=filepath.match(/\.(msg|eml)$/i)){
+                        resource = "{!URLFOR($Resource.email16)}";
+                        alt = '{!JSINHTMLENCODE($Label.E_Mail)}';
+                    }
+                    else if (null!=filepath.match(/\.txt$/i)){
+                        resource = "/sfc/images/docicons/doctype_txt_16.png";
+                        alt = "{!JSINHTMLENCODE($Label.Text_File)}";
+                    }
+                }
+                return {resource:resource, alt:alt};                                                        
+           }
+           
+            function padZeros(number, length) {
+                var str = '' + number;
+                while (str.length < length) {
+                    str = '0' + str;
+                }
+                return str;
+            }
+            
+            
+            function getDate(val){
+                var d;
+                if(typeof(val)=="string") d = getDateFromString(val);
+                else d = new Date(val);
+                return d;
+            }
+            function getFormatedDate(val){
+                var d = getDate(val);
+                // either formatDate or formatDateWithTime
+                return {!novideaDocumentManagment.Date_Format_Javascript_Function__c}(d);
+            }
+           
+            function getDateFromString(val){
+                var strval = val.replace(/\+0000$/,"Z");
+                var strd =  /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2}(?:\.\d*)?)Z$/.exec(strval);
+                var d = new Date(Date.UTC(+strd[1], +strd[2] - 1, +strd[3], +strd[4],+strd[5], +strd[6]));
+                return d;
+            }
+            function formatDate(date){
+                return  padZeros(date.getDate(),2) + "/" + padZeros(date.getMonth()+1,2) + "/" + date.getFullYear();
+            }
+            function formatDateWithTime(date){
+                return  padZeros(date.getDate(),2) + "/" + padZeros(date.getMonth()+1,2) + "/" + date.getFullYear() + " " + 
+                        padZeros(date.getHours(),2) +":" + padZeros(date.getMinutes(),2)+ ":" + padZeros(date.getSeconds(),2);
+            }
+            
+            function buildDoctypesStructure(arrDocTypes){
+                var tblDocTypes = document.getElementById("doctypes");
+                var span,cbk,lbl, firstChrElem, firstChr=null;
+                for(var i=0;i<arrDocTypes.length;++i){
+                    span = document.createElement("span");
+                    cbk = document.createElement("input");
+                    cbk.type="checkbox";
+                    cbk.value=arrDocTypes[i].value;
+                    lbl = document.createElement("label");
+                    lbl.innerText = arrDocTypes[i].label;
+                    
+                    if (firstChr != arrDocTypes[i].label.substring(0,1)){
+
+                        if (firstChr != null)
+                            span.appendChild(document.createElement("hr"));
+
+                        firstChr = arrDocTypes[i].label.substring(0,1);
+                        firstChrElem = document.createElement("label");
+                        firstChrElem.innerText = firstChr;
+                        firstChrElem.className += "capitalLetter";
+                        span.appendChild(firstChrElem);                        
+                    }
+                    
+                    span.appendChild(cbk);
+                    span.appendChild(lbl);
+                    tblDocTypes.appendChild(span);
+                }
+            }
+            
+            function getQueryStringMap(){
+                var oRetval = {};
+                var str = window.location.search;
+                if(str!="")str=str.substring(1);
+                var queryStringArray = str.split("&");
+                for(var i=0;i<queryStringArray.length;++i){
+                    var crumbs = queryStringArray[i].split("=");
+                    oRetval[crumbs[0]] = (crumbs.length==2?crumbs[1]:"");
+                }
+                return oRetval;
+            }
+           
+           ///////////     start jquey functions      /////////////////
+           
+           var j$ = jQuery.noConflict();
+           
+           j$(document).ready(function() {
+                   //populate variables when entering advanced search
+                   if(typeof entid =="undefined"){
+                        var qstringObj = getQueryStringMap();
+                        if(qstringObj!=null && qstringObj["entid"]!=null && qstringObj["entid"]!=""){
+                            entid = qstringObj["entid"];
+                            entstype = qstringObj["entstype"];
+                            entname = qstringObj["entname"];
+                            defaultFaxNumber = qstringObj["deffax"];
+                            defaultEmail = qstringObj["defemail"];
+                            defaultMobileSMS = qstringObj["defSMS"];
+                        }
+                   }
+                   var keyBinding = function(event) {
+                      var keycode = (event.keyCode ? event.keyCode : (event.which ? event.which : event.charCode));
+                      if (event.target.nodeName.toLowerCase() == 'input' && keycode == 13) {
+                         search();                 
+                         return false;
+                      } 
+                      else  {
+                         return true;
+                      }
+                   };
+                   
+                   j$("#freetextfilter,#startDate,#endDate,#actfilter,#cntfilter").bind("keydown", keyBinding);
+                   <apex:repeat value="{!filingCriterionObjects}" var="critObj">
+                    j$("#{!JSENCODE(critObj.jsonPrefix)}filter").bind("keydown", keyBinding);
+                   </apex:repeat>
+                            
+           
+                    var btest = false;
+                    var columnsBeforeOrder = {
+                                                "subject": {
+                                                "header": '<th>{!$Label.File_Name}</th>',
+                                                "data": {
+                                                    "bSortable": true,
+                                                    "bSearchable" :true,
+                                                    "mDataProp": "Subject__c",
+                                                  //  "sWidth":"100px", 
+                                                    "sType":"html",
+                                                    "sDefaultContent":"",
+                                                    "bUseRendered":false, 
+                                                    "fnRender":function ( obj, val ){
+                                                        return "<div class=\"subjectCol\" title=\"" + val + "\">" + val + "</div>" 
+                                                    }
+                                                }},
+                                                "type" : {
+                                                "header": '<th>{!$Label.File_Type}</th>',
+                                                "data": { 
+                                                    "bSortable": true,
+                                                    "mDataProp": "Type__c",
+                                                    "sDefaultContent":"",                                            
+                                                    "bSearchable" :true
+                                                }},                                              
+                                                "account" : {
+                                                "header": '<th>{!$ObjectType.Account.Label}</th>',
+                                                "data": { 
+                                                    "bSortable": true,
+                                                    "mDataProp": "account__r",
+                                                    "sDefaultContent":"",                                            
+                                                    "bSearchable" :true,
+                                                    "fnRender":function(obj, val){
+                                                        return val==null?"":val.Name; 
+                                                    }
+                                                }},                                              
+                                                "date_received" : {
+                                                "header": '<th>{!$Label.Date_Sent_Received}</th>',
+                                                "data": {
+                                                    "bVisible":true, 
+                                                    "bSortable": true,
+                                                    "bSearchable" :true,
+                                                    "mDataProp": function (data, type, full ) {
+                                                        if(type == 'display' || type == 'filter') {
+                                                          return getFormatedDate(data.Date_Received__c);
+                                                        }
+                                                        else{
+                                                            return getDate(data.Date_Received__c);
+                                                        }
+                                                    }
+                                                }},  
+                                                "createddate" :  {
+                                                "header": '<th>{!$Label.Filing_Date}</th>',
+                                                "data": {
+                                                    "bSortable": true,
+                                                    "bSearchable" :true,
+                                                    "mDataProp": function (data, type, full ) {
+                                                        if(type == 'display' || type == 'filter') {
+                                                          return getFormatedDate(data.CreatedDate);
+                                                        }
+                                                        else{
+                                                            return getDate(data.CreatedDate);
+                                                        }
+                                                    }
+                                                }},
+                                                "owner" : {
+                                                "header": '<th>{!$Label.Owner}</th>',
+                                                "data":  {
+                                                    "bSortable": true,
+                                                    "bSearchable" :true,
+                                                   // "sWidth":"80px", 
+                                                    "mDataProp": "Owner.Name"
+                                                }},
+                                                "private" : {
+                                                "header": '<th>{!$ObjectType.InboundDocument__c.fields.Private__c.Label}</th>',
+                                                "data":  {
+                                                    "bSortable": true,
+                                                    "bSearchable" :true,
+                                                   // "sWidth":"80px", 
+                                                    "mDataProp": function (data, type, full ) {
+                                                        return data.Private__c?'{!$ObjectType.InboundDocument__c.fields.Private__c.Label}':'';
+                                                    }
+                                                }},
+                                                "comments" : {
+                                                "header": '<th>{!$Label.Remarks}</th>',
+                                                "data": { 
+                                                    "bSortable": true,
+                                                    "mDataProp": "Comments__c", 
+                                                    "bSearchable" :true,
+                                                    "sDefaultContent":"",                                            
+                                                    "sType" : "string",
+                                                    "bVisible": true,
+                                                    "fnRender":function ( obj, val ){
+                                                        if (val.length > 0) {
+                                                            val = val.replace(/_/gi,'');
+                                                            var returnValue = '';
+                                                            var stringArray = val.split('\n');
+                                                            for (var stringIndex = 0; stringIndex < stringArray.length; stringIndex++) {
+                                                                if (returnValue != '')
+                                                                    returnValue += '\n';
+                                                                if (stringArray[stringIndex].length <= maxLengthComment) {
+                                                                    returnValue += stringArray[stringIndex];
+                                                                } else {
+                                                                    var createSplittedText = true;
+                                                                    while (createSplittedText) {
+                                                                        returnValue += stringArray[stringIndex].substring(0, Math.min(stringArray[stringIndex].length,maxLengthComment));
+                                                                        if (stringArray[stringIndex].length <= maxLengthComment) {
+                                                                            createSplittedText = false;
+                                                                        } else {
+                                                                            returnValue += '\t\n';
+                                                                            stringArray[stringIndex] = stringArray[stringIndex].substring(maxLengthComment, stringArray[stringIndex].length);
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            return returnValue;
+                                                        } 
+                                                    }
+                                                }}
+                                             };
+                    
+                    var orderedColumn = [{
+                                         "mDataProp": null,
+                                         "bSortable": false,
+                                         "sType":"string",
+                                         "sWidth":"120px", 
+                                         "fnRender": function ( obj ) {
+                                                 var docId;
+                                                 if(obj.aData.attributes!==undefined && obj.aData.attributes!=null){
+                                                     var url = obj.aData.attributes.url;
+                                                     docId = url.substring(url.lastIndexOf("/"));
+                                                 }
+                                                 else{
+                                                    docId = "/" + obj.aData.Id;
+                                                 }
+
+                                                 var path = obj.aData.Physical_Path__c;
+                                                 var pathres = getFileIconPath(path);
+                                                 var alt =pathres.alt;
+                                                 var resource = pathres.resource;
+
+                                                 var retval = "<div style=\"height:20px; overflow:hidden; margin-{!$Label.Text_Alignment_Reverse}:-8px; width:120px;\" class=\"expandingControls\">";
+
+                                                 retval += "<input type=\"hidden\" value=\"" + docId.substring(1) + "\" name=\"rowdocid\" />";
+
+                                                 retval += "<input type=\"checkbox\" name=\"selectedDocument\" value=\"" + (path==null?"null":path.replace(/['\\]/g, function(){return "\\" + arguments[0];})) + "\"/>";                                                 
+
+                                                 retval += "<img style=\"padding-{!$Label.Text_Alignment_Reverse}:5px;width:15px;height:15px;\" src=\"{!$Resource.open_doc}\" title=\"{!$Label.File_Properties}\" onclick=\"window.open('" + docId + "');\"/>";                   
+                                                 
+                                                 retval += "<img style=\"width:15px;height:15px;cursor:pointer;padding-{!$Label.Text_Alignment_Reverse}:5px;\" alt=\"" + alt + "\" title=\"" + alt + "\" src=\"" + resource + "\"/>"; 
+                                                 
+                                                 var alt1 = "{!JSINHTMLENCODE($Label.Send_Fax)}";
+                                                 retval+= "<img style=\"width:15px;height:15px;cursor:pointer;padding-{!$Label.Text_Alignment_Reverse}:5px;\" alt=\"" + alt1 + "\" title=\"" + alt1 + "\" src=\"{!$Resource.fax}\" onclick=\"sendFax(" + (path==null?"null":"'" + path.replace(/['\\]/g, function(){return "\\" + arguments[0];}) + "'") + ");\"/>";
+                                                 
+                                                 alt1 = "{!JSINHTMLENCODE($Label.Print_Document)}";
+                                                 retval+= "<img style=\"width:15px;height:15px;cursor:pointer;padding-{!$Label.Text_Alignment_Reverse}:5px;\" alt=\"" + alt1 + "\" title=\"" + alt1 + "\" src=\"{!$Resource.printDoc}\" onclick=\"if(!confirm('להדפיס מסמך?'))return false; printDoc(" + (path==null?"null":"'" + path.replace(/['\\]/g, function(){return "\\" + arguments[0];}) + "'") + ");\"/>";
+
+                                                 alt1 = "{!JSINHTMLENCODE($Label.AttachAndEmail)}";
+                                                 retval+= "<img style=\"width:15px;height:15px;cursor:pointer;padding-{!$Label.Text_Alignment_Reverse}:5px;\" alt=\"" + alt1 + "\" title=\"" + alt1 + "\" src=\"{!$Resource.AttachAndEmail}\"  onclick=\"sendMail(" + "'" + docId.substring(1) + "'," +
+                                                            (path==null?"null":"'" + path.replace(/['\\]/g, function(){return "\\" + arguments[0];}) + "'") + ");\"/>";
+                  
+                  
+                                                retval +="</div>";
+                  
+                                                 return retval;
+                                            }
+                                        }];
+                    var colmunsFromCustomSetting = '{!novideaDocumentManagment.Columnns_in_Search_Table__c}'.split(/,/g);
+                    var tableHeadersByName = {
+                        
+                    };
+                    var tableHeader = j$('#tableHeader');
+                    for (var index in colmunsFromCustomSetting)
+                        if (typeof colmunsFromCustomSetting[index] != 'function' && columnsBeforeOrder[colmunsFromCustomSetting[index].toLowerCase()] != null) {
+                            orderedColumn.push(columnsBeforeOrder[colmunsFromCustomSetting[index].toLowerCase()].data);
+                            tableHeader.append(columnsBeforeOrder[colmunsFromCustomSetting[index].toLowerCase()].header);
+                            
+                    }
+                    var oTable  = j$('#docs').dataTable({
+                                    "sScrollY": {!pdisplayFilter}?"300px":"200px",
+                                    "bPaginate": {!pdisplayFilter},
+                                    "bAutoWidth": true,
+                                    //"bScrollAutoCss": true,
+                                    //"bScrollCollapse":true,
+                                    //"bJQueryUI": true,
+                                    "sPaginationType": "full_numbers",
+                                    //"sDom":"<'tabletop'lf>tr<'tablebottom'ip>",
+
+                                     "sPaginationType": "full_numbers", 
+                                     "iDisplayLength": -1,                           
+                                    "oLanguage": {
+                                        "sLengthMenu": '{!$Label.Showing} <select>'+
+                                        '<option value="10">10</option>'+
+                                        '<option value="20">20</option>'+
+                                        '<option value="30">30</option>'+
+                                        '<option value="40">40</option>'+
+                                        '<option value="50">50</option>'+
+                                        '<option value="-1">{!$Label.All}</option>'+
+                                        '</select> {!$Label.Files}',
+                                    
+                                       "sEmptyTable": "{!$Label.No_Available_Files}",
+                                       "sInfoEmpty": "{!$Label.No_Available_Files}",
+                                       "sInfoFiltered": " - {!$Label.Filterd_from} _MAX_ {!$Label.Files}",
+                                       "sLoadingRecords":"{!$Label.Loading_Files}",
+                                       "sZeroRecords": "{!$Label.No_Available_Files}",
+                                       "sInfo": '{!JSINHTMLENCODE($Label.Showing_Total_of)} _TOTAL_ {!$Label.Files} (_START_ {!$Label.to} _END_)',
+                                       "oPaginate": {
+                                           "sFirst": "{!$Label.First_Page}",
+                                           "sLast": "{!$Label.Last_Page}",
+                                           "sNext": "{!$Label.Next_Page}",
+                                           "sPrevious": "{!$Label.Previous_Page}"
+                                           },
+                                       "sSearch": '{!JSINHTMLENCODE($Label.Search)}: (<span id="searchLabel">{!MAX_RECORDS}</span> {!$Label.Search_Context})'  
+                                    },
+                                    "aoColumns": orderedColumn
+                     } );
+
+                    loadTableData(oTable);
+                    
+                    j$(window).bind('resize', function () {
+                        oTable.fnAdjustColumnSizing();
+                    });                                       
+                    
+                    if({!pdisplayFilter}){
+                        buildDoctypesStructure({!jsonDocTypes});
+                        populateparams();
+                    }
+                    else{
+                        var cmdAdvSearch = createAdvSearchButton();
+                        j$(cmdAdvSearch).appendTo(j$("#docs_filter"));
+                        var cmdMark = createSelectObjectButton();
+                        j$(cmdMark).appendTo(j$("#docs_filter"));
+                        var cmdSend = createSendEmailButton();
+                        j$(cmdSend).appendTo(j$("#docs_filter"));                        
+                        
+                        if('{!$Setup.Novidea_Document_Management__c.SMS_Single__c}' == 'true'){
+                            var cmdSMS = createSendSMSSingleButton();
+                            j$(cmdSMS ).appendTo(j$("#docs_filter"));                        
+                        }
+                    }
+                    
+                    j$("body").keyup(function (evt){
+                        if(27==evt.keyCode && j$("#previewDialog").dialog("isOpen")){
+                            j$("#previewDialog").dialog("close");
+                        }
+                    });
+                    
+                    initOwnerExt("{!searchparams.ownername}","{!searchparams.owner}");
+                 }); // end of the ready function 
+                 
+                 function createSendSMSSingleButton(){
+                    var cmdBtn = document.createElement("input");
+                    cmdBtn.type="button";
+                    cmdBtn.id = "sendSMSSingleButton";
+                    cmdBtn.value = "{!JSINHTMLENCODE($Label.Send_SMS)}"; 
+                    cmdBtn.style.cursor = "pointer";
+                    cmdBtn.onclick = function(){ sendSMSSingle(); };
+                    return cmdBtn;
+                 }
+                 
+                 function createSendEmailButton() {
+                    var cmdBtn = document.createElement("input");
+                    cmdBtn.type="button";
+                    cmdBtn.id = "sendEmailButton";
+                    cmdBtn.value = "{!JSINHTMLENCODE($Label.Send_Email)}";
+                    cmdBtn.style.cursor = "pointer";
+                    cmdBtn.onclick = function(){ sendMailMulti(); };
+                    return cmdBtn;
+                 }
+                 
+                 
+                 function createSelectObjectButton() {
+                    var cmdBtn = document.createElement("input");
+                    cmdBtn.type="button";
+                    cmdBtn.id = "markingButton";
+                    cmdBtn.value = "{!JSINHTMLENCODE($Label.Mark_for_Filing)}";
+                    cmdBtn.style.cursor = "pointer";
+                    cmdBtn.onclick = function(){ doMark(); };
+                    return cmdBtn;
+                 }
+                 function doMark() {
+                     DocumentSearchController.markObject(entid, entstype, afterMark);
+                     j$("#markingButton")[0].value = "{!JSINHTMLENCODE($Label.Record_Marked_for_Filing)}";
+                     alert("{!JSINHTMLENCODE($Label.Record_Marked_for_Filing)}");
+                 }
+                 function afterMark() {
+                     j$("#markingButton").value = "{!JSINHTMLENCODE($Label.Record_Marked_for_Filing)}";
+                 }
+                 function createAdvSearchButton(){
+                    var cmdAdvSearch = document.createElement("input");
+                    cmdAdvSearch.type="button";
+                    cmdAdvSearch.value = "{!$Label.Advanced_Search}";
+                    cmdAdvSearch.style.cursor = "pointer";
+                    cmdAdvSearch.onclick = function(){window.open("/apex/DocumentSearchTab?entid="+entid + "&entstype=" + entstype +"&entname=" + entname + "&deffax=" + defaultFaxNumber + "&defemail=" + defaultEmail);};
+                    return cmdAdvSearch;
+                 }
+                 
+                 function populateparams(){
+                   var oParams = {!searchparams.json};
+                   if(oParams.actname != null && oParams.act != null){
+                       j$("#actfilter").val(oParams.actname);
+                       initAccount(oParams.actname, oParams.act);
+                       return;
+                   }
+                       
+                   if(oParams.cntname != null && oParams.cnt != null){
+                       j$("#cntfilter").val(oParams.cntname);
+                       initContact(oParams.cntname, oParams.cnt);
+                       return;
+                   }
+                   
+                   <apex:repeat value="{!filingCriterionObjects}" var="critObj">
+                      if(oParams.customEnts !=null && oParams.customEnts.{!JSENCODE(critObj.jsonPrefix)} != null && oParams.customEnts.{!JSENCODE(critObj.jsonPrefix)}.idStr != null){
+                          j$("#{!JSENCODE(critObj.jsonPrefix)}filter").val(oParams.customEnts.{!JSENCODE(critObj.jsonPrefix)}.name);
+                          init{!JSENCODE(critObj.name)}(oParams.customEnts.{!JSENCODE(critObj.jsonPrefix)}.name, oParams.customEnts.{!JSENCODE(critObj.jsonPrefix)}.idStr);
+                          return;
+                      }
+                   </apex:repeat>
+                 }
+                 
+                 function setTableExFunctionality(oTable,bRemote){
+                 
+                    j$(oTable.fnGetNodes()).click(function(){
+                        j$("#docs").find("*").removeClass("docshighlight_click");
+                        j$(this).addClass('docshighlight_click');
+                        var thisRowData = oTable.fnGetData(this);
+                        var path = unescapeRemoteDocSearchResult(thisRowData.Physical_Path__c);
+                        openfile(path);
+                    }).css("cursor","pointer");
+                    
+                    j$("#docs tbody td:first-child").click(function(event){
+                        event.stopImmediatePropagation();
+                    });
+                    
+                    j$(oTable.fnGetNodes()).hover( 
+                        function(eventData) {
+                            j$("#docs").find("*").removeClass("docshighlight_row");
+                            j$(this).addClass("docshighlight_row");
+                        }, 
+                        function() {
+                            j$(this).removeClass("docshighlight_row");
+                        } 
+                    );
+                    //makes sure bremote doesn't stay the same as 1st load
+                   j$('#docs tbody').undelegate("#docs td", "mouseover");
+                   j$('#docs tbody').delegate("#docs td", "mouseover", {remote:bRemote},
+                        function(eventData) {
+                            //if no rows - do nothing
+                           if(!oTable.fnSettings().fnRecordsTotal())return;
+                           
+                           var pos = oTable.fnGetPosition(this);
+                           /*show preview only from subject column*/
+                           if(pos[1].valueOf()!=1)return;
+                           var thisRowData = oTable.fnGetData(pos[0]);
+                           var preview = thisRowData.Email_Preview__c;
+                           var subject = thisRowData.Subject__c;
+                           var atts = thisRowData.Attachments__c;
+                           var comments = thisRowData.Comments__c;
+                           if(comments!==undefined && comments!=null)
+                                comments = comments.replace(/\t\n/gi,'');
+                           var bRemote = eventData.data.remote;
+                           if(bRemote){
+                               subject = unescapeRemoteDocSearchResult(subject);
+                               comments = unescapeRemoteDocSearchResult(comments);
+                           }
+                           if(atts!=null && atts.replace(/\s/g)!=""){
+                               if(bRemote){
+                                   atts = unescapeRemoteDocSearchResult(atts);
+                                   preview = unescapeRemoteDocSearchResult(preview);
+                               }
+                               atts = JSON.parse(atts);
+                           }
+                           var alignRight = true;//"right"=="{$Label.Text_Alignment}";
+                           var width = 600;
+                           var physicalPath = thisRowData.Physical_Path__c;
+                           var bEmail = physicalPath==null?true:physicalPath.match(/\.msg$/g)!=null;
+                           //if(bEmail){
+                               var strAtts ="";
+                               if(atts!=null && typeof(atts)=="object" && atts.length>0){
+                                   for(var i=0;i<atts.length;++i){
+                                       strAtts+=atts[i].name+"; ";
+                                   }
+                               }
+                               j$("#previewDialog").
+                               dialog({minWidth: width, 
+                                       //height: 40, 
+                                       resizable:false,
+                                       closeOnEscape: true,
+                                       zIndex:100010, 
+                                       position:["{!$Label.Text_Alignment_Reverse}","center"]}).css("z-index","100010").
+                                       find("#prvSubject,#prvPreview,#prvAttachments,#prvComments").each(function(index){
+                                                                                               if(this.id=="prvSubject")j$(this).val(subject).parent().attr("title",subject);
+                                                                                               else if(this.id=="prvPreview"){
+                                                                                                    if(!bEmail){
+                                                                                                    j$(this).parent().parent().css("display","none");
+                                                                                                    }
+                                                                                                    else{
+                                                                                                       j$(this).val(preview);
+                                                                                                       j$(this).parent().parent().css("display","table-row");
+                                                                                                    }
+                                                                                               }
+                                                                                               else if(this.id=="prvAttachments"){
+                                                                                                    if(!bEmail || strAtts==null || strAtts==""){
+                                                                                                        j$(this).parent().parent().css("display","none");
+                                                                                                    }
+                                                                                                    else{ 
+                                                                                                        j$(this).val(strAtts);
+                                                                                                        var areaHeight = (strAtts.length+70)/70;
+                                                                                                        if(areaHeight>4)areaHeight=4;
+                                                                                                        j$(this).attr("rows",areaHeight);
+                                                                                                        j$(this).parent().parent().css("display","table-row");
+                                                                                                    }
+                                                                                                }
+                                                                                                else if(this.id=="prvComments"){
+                                                                                                    if(comments==null || comments==""){
+                                                                                                    j$(this).parent().parent().css("display","none");
+                                                                                                    }
+                                                                                                    else{
+                                                                                                       j$(this).val(comments);
+                                                                                                       j$(this).parent().parent().css("display","table-row");
+                                                                                                    }
+                                                                                                }
+                                                                                           });
+                            });
+                             
+                             
+                            j$('#docs tbody').delegate("#docs td", "mouseleave", 
+                                                        function() {
+                                                            j$("#previewDialog").dialog("close");
+                                                        });
+                 }   
+                      
+          function search() {
+              var freetext = document.getElementById("freetextfilter").value;
+              if(freetext.length==1) return alert("{!$Label.Search_Length_Warning}");
+              
+              var act = document.getElementById("actfilter");
+              var cnt = document.getElementById("cntfilter");
+              var owner = document.getElementById("ownerfilter");
+              <apex:repeat value="{!filingCriterionObjects}" var="critObj">
+                 var {!critObj.jsonPrefix} = document.getElementById("{!critObj.jsonPrefix}filter");
+              </apex:repeat>
+              var startDate = document.getElementById("startDate").value;
+              var endDate = document.getElementById("endDate").value;
+              var doctype = j$("#doctypes").find("input:checkbox:checked");
+              var params = {};
+              params.freeText = freetext;
+
+              params.act = act.value!=""?act.getAttribute("acid"):"";
+              if (act.value!=""){
+                params.acts = [];
+                params.acts.push({idStr:act.getAttribute("acid"), name:act.getAttribute("acname")});
+              }
+              params.cnt = cnt.value!=""?cnt.getAttribute("acid"):"";
+              params.owner = owner.value!=""?owner.getAttribute("acid"):"";
+              if (params.customEnts == null)
+                params.customEnts = new Object();
+              <apex:repeat value="{!filingCriterionObjects}" var="critObj">
+                if (params.customEnts.{!critObj.jsonPrefix} == null)
+                    params.customEnts.{!critObj.jsonPrefix} = new Object();
+                params.customEnts.{!JSENCODE(critObj.jsonPrefix)}.idStr = {!critObj.jsonPrefix}.value!=""?{!critObj.jsonPrefix}.getAttribute("acid"):"";
+              </apex:repeat>
+              params.startDate = startDate;
+              params.endDate = endDate;
+              params.doctype = [];
+              if(doctype!=null && doctype.length>0){
+                 doctype.each(function(){
+                     params.doctype.push(j$(this).val());
+                 });
+              }
+              //remove comment to enable getting the data sorted according to current sort
+              /*var arrSort = j$("#docs").dataTable().fnSettings().aaSorting;
+              var aoColumns = j$("#docs").dataTable().fnSettings().aoColumns;
+              if(arrSort!=null && arrSort.length>0){
+                 params.orderby = []; 
+                 for(var i=0;i<arrSort.length;++i){
+                     //add nly sortable columns
+                     if(!aoColumns[arrSort[i][0]].bSortable)continue;
+                     params.orderby[i] = {"fieldName":aoColumns[arrSort[i][0]].mDataProp ,"sortdir":arrSort[i][1]};
+                 }
+              }*/
+              
+              startFlowloading();
+              
+              DocumentSearchFacade.doRemoteSearch(JSON.stringify(params),showResult,{escape:true});
+         }
+           
+           ///////////     end of jqueryFunction     /////////////////
+           
+         function showResult(result, event) {
+             flowloadingStop();
+             if(event.type == 'exception') {
+                 alert(event.message);
+             } 
+             else {     
+                 var oTable = j$('#docs').dataTable();               
+                 //rz 06/5/2013: try/catch added to support some IE8 issues
+                 try{
+                    oTable.fnClearTable();
+                 }
+                 catch(ex){}
+                 for(var i=0;i< oTable.fnSettings().aoColumns.length;++i){
+                      if(oTable.fnSettings().aoColumns[i].sClass !==undefined && oTable.fnSettings().aoColumns[i].sClass=="dateCol"){
+                          oTable.fnSettings().aoColumns[i].sType = "numeric";
+                      }
+                 }
+                 //rz 06/5/2013: try/catch added to support some IE8 issues
+                 try{
+                    oTable.fnAddData(result.documents);
+                 }
+                 catch(ex){}
+                 j$('#searchLabel').text(result.maximumSize);
+                 setTableExFunctionality(oTable,true);
+             }
+         }
+           
+         function handleClearAutocomplete(event,elem){
+              if(event.keyCode == 13)return;
+              elem.setAttribute("cid","");
+              elem.setAttribute("acname","");
+         }  
+           
+        function openfile(path){
+            var applet = document.getElementById("filingapp");
+            var strRes = applet.openShellFile(path);
+            var oRes = JSON.parse(strRes);
+            if(!oRes.success){
+                alert(oRes.errormessage);
+            }
+        }    
+               
+        function startFlowloading(){
+            document.getElementById('mask').style.display = 'block';
+            document.body.style.cursor='wait';
+        }
+        function flowloadingStop(){
+           document.body.style.cursor='default';
+           document.getElementById('mask').style.display = 'none';                
+        }
+        
+        function generateValidationIndication(elem){
+            // Color the free text in Red if there are less than 2 charachters
+            if(j$.trim(elem.value).length==1 && elem.style.borderRightColor!='red'){
+                elem.style.borderRightColor='red';
+                elem.parentNode.appendChild(document.createElement("BR"));
+                var lbl = document.createElement("DIV");
+                lbl.innerText = "{!$Label.Search_Length_Warning}";
+                lbl.style.fontWeight = "bold";
+                lbl.style.width = elem.parentNode.style.width;
+                lbl.style.fontSize= "8px";
+                lbl.style.color = "red";
+                elem.parentNode.appendChild(lbl);
+            } 
+            else if (elem.style.borderRightColor == 'red'){
+                elem.style.borderRightColor='gray';
+                elem.parentNode.removeChild(elem.parentNode.childNodes[4]);
+                elem.parentNode.removeChild(elem.parentNode.childNodes[3]);
+            }
+                        
+        }
+       
+      function printDoc(path){
+           var applet = document.getElementById("filingapp");
+           applet.printDocument(path);          
+      }
+               
+    </script>
+
+
+   <APPLET code="com.novidea.dm.Filing" width="0" height="0" archive="{!$Resource.FilingApplet}" id="filingapp"></APPLET>
+   
+   <div id="mask" style="display:none;"/>
+   
+     <apex:actionStatus id="loadingStatus" onstart="startFlowloading();" onstop="flowloadingStop();"/>
+   
+    <div id="previewDialog" style="direction:{!$Label.direction};display:none;background:url('/img/alohaSkin/grid_headerbg.gif') repeat-x scroll 0 bottom #FFFFFF;">
+        <table>
+            <tr>
+                <td>{!$LAbel.Name}:</td>
+                <td><div class="subjectCol" style="width:100%;" title=""><input value="" id="prvSubject" style="width:99%;" readonly="readonly"/></div></td>
+            </tr>
+            <tr>
+                <td>{!$Label.Preview}:</td>
+                <td><textarea cols="70" rows="4" id="prvPreview" style="resize:none;overflow: hidden;" readonly="readonly"></textarea></td>
+            </tr>
+            <tr>
+                <td>{!$Label.Files}:</td>
+                <td><textarea cols="70" rows="4" id="prvAttachments" style="resize:none;overflow: hidden;" readonly="readonly"></textarea></td>
+            </tr>
+            <tr>
+                <td>{!$Label.Remarks}:</td>
+                <td><textarea cols="70" rows="4" id="prvComments" style="resize:none;overflow: hidden;" readonly="readonly"></textarea></td>
+            </tr>
+        </table>
+    </div>
+    <apex:outputpanel dir="{!$Label.direction}" rendered="{!pdisplayFilter}" layout="block">
+          <table style="width:100%" id="tblFilter"> 
+              <tr>
+                  <td class="td{!$Label.Text_Alignment}"> 
+                       <table>
+                        <tr>
+                            <td>
+                               <label  class="searchLabel">{!$Label.from_Date}</label>
+                            </td>
+                            <td>       
+                               <c:datepicker fieldId="startDate">
+                                <input type="text"  id="startDate" value="" />
+                               </c:datepicker>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label  class="searchLabel">{!$Label.to_Date}</label>
+                            </td>
+                            <td>       
+                               <c:datepicker fieldId="endDate">
+                                <input type="text" id="endDate" value="" />
+                               </c:datepicker>
+                            </td>
+                        </tr>
+                       </table>
+                  </td >
+                  <td class="td{!$Label.Text_Alignment}"> 
+                       <table>
+                        <tr>
+                            <td>
+                                <label  class="searchLabel">{!$ObjectType.Account.Label}</label>
+                            </td>
+                            <td>       
+                               <input type="text" id="actfilter"  Class="searchArea" onkeypress="handleClearAutocomplete(event,this);"/>
+                               <c:autocomplete width="200" className="autocomplete" inputId="actfilter" autoCompleteId="actAC" objectName="Account" selectedCallBack="initAccount" />             
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                               <label class="searchLabel">{!$ObjectType.Contact.Label}</label> 
+                            </td>
+                            <td>       
+                               <input type="text" id="cntfilter"  Class="searchArea" onkeypress="handleClearAutocomplete(event,this);"/>
+                               <c:autocomplete width="200" className="autocomplete" inputId="cntfilter" autoCompleteId="cntAC" objectName="Contact" selectedCallBack="initContact" />             
+                            </td>
+                        </tr>
+                       </table>
+                  </td >
+            <apex:repeat value="{!filingCriterionPairs}" var="critPair">
+                <td class="td{!$Label.Text_Alignment}"> 
+                    <table>
+                    <apex:outputPanel layout="none" rendered="{!critPair.fco1 != null}">
+                        <tr>
+                            <td>
+                                <label  class="searchLabel">{!HTMLENCODE(critPair.fco1.label)}</label>
+                            </td>
+                            <td>       
+                                <input type="text"  id="{!HTMLENCODE(critPair.fco1.jsonPrefix)}filter" Class="searchArea" onkeypress="handleClearAutocomplete(event,this);"/> 
+                                <c:autocomplete width="200" className="autocomplete" inputId="{!HTMLENCODE(critPair.fco1.jsonPrefix)}filter" autoCompleteId="{!HTMLENCODE(critPair.fco1.jsonPrefix)}" objectName="{!HTMLENCODE(critPair.fco1.apiName)}" selectedCallBack="init{!HTMLENCODE(critPair.fco1.name)}" />
+                            </td>
+                        </tr>
+                    </apex:outputPanel>
+                    <apex:outputPanel layout="none" rendered="{!critPair.fco2 != null}">
+                        <tr>
+                            <td>
+                                <label  class="searchLabel">{!HTMLENCODE(critPair.fco2.label)}</label>
+                            </td>
+                            <td>       
+                                <input type="text"  id="{!HTMLENCODE(critPair.fco2.jsonPrefix)}filter" Class="searchArea" onkeypress="handleClearAutocomplete(event,this);"/> 
+                                <c:autocomplete width="200" className="autocomplete" inputId="{!HTMLENCODE(critPair.fco2.jsonPrefix)}filter" autoCompleteId="{!HTMLENCODE(critPair.fco2.jsonPrefix)}" objectName="{!HTMLENCODE(critPair.fco2.apiName)}" selectedCallBack="init{!HTMLENCODE(critPair.fco2.name)}" />
+                            </td>
+                        </tr>
+                    </apex:outputPanel>
+                    </table>
+                </td>
+            </apex:repeat>
+                  <td class="td{!$Label.Text_Alignment}"> 
+                    <table>
+                        <tr>
+                            <td>
+                                <label class="searchLabel">{!$Label.Owner}</label> 
+                            </td>
+                            <td>       
+                               <input type="text" id="ownerfilter"  Class="searchArea" style="width:120px;" onkeypress="handleClearAutocomplete(event,this);"/>
+                               <c:autocomplete width="200" className="autocomplete" inputId="ownerfilter" autoCompleteId="ownerAC" objectName="User" selectedCallBack="initOwner" />             
+                            </td>
+                        </tr>                                                
+                        <apex:outputpanel layout="none">
+                        <tr>
+                            <td>
+                                <label class="searchLabel" style="font-weight:bold;">{!$Label.Free_Text}</label> 
+                            </td>
+                            <td>       
+                               <input type="text" id="freetextfilter" Class="searchArea" onchange="generateValidationIndication(this);" style="background:none;width:70px;border:2px solid gray;"/>
+                            </td>
+                        </tr>                           
+                        </apex:outputpanel>                     
+                    </table>
+                 </td>
+              </tr>
+                <tr>
+                    <td colspan="{!filingCriterionPairs.size + 3}">
+                        <div style="cursor:pointer;" class="switchDiv selectedOff"
+                        onclick="j$('#doctypesContainer').slideToggle('normal'); j$(this).toggleClass('selectedOff'); j$(this).toggleClass('selectedOn');">
+                            <b style="font-size: 1.2em;">{!$Label.File_Types}</b>
+                        </div>
+                        <div id="doctypesContainer" style="direction: {!$Label.direction_reverse};padding-top: 10px;padding-bottom: 10px;max-height:150px;width:100%;overflow:auto;display:none;border:1px solid gray;">
+                            <div id="doctypes" style="direction: {!$Label.direction};"></div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="{!calculatedColspan}">
+                        <button type="button" class="btn" onclick="window.open('/apex/OutlookAddin?mode=0',null,'fullscreen=0,width=500,height=700,resizable=1,menubar=0,toolbar=0,location=0,scrollbars=1');" style="float:{!$Label.Text_Alignment_Reverse};height:30px;width:85px;">{!$Label.File_a_File} </button> 
+                        <button type="button" class="btn" onclick="search();" style="float:{!$Label.Text_Alignment_Reverse};height:30px;width:85px;">{!$Label.Search} </button> 
+                    </td>
+                </tr>
+          </table>
+        </apex:outputpanel>
+           
+       <apex:pageBlock dir="{!$Label.direction}">  
+           <table id="docs" class="list"  border="0" cellspacing="0" cellpadding="0"  width="100%">
+               <thead >
+                   <tr class="trBackround" id="tableHeader">
+                         <th>{!$Label.File}</th>
+<!--                        <th>{!$Label.File_Name}</th>
+                        <th>{!$Label.File_Type}</th>
+                        <th>{!$ObjectType.Account.Label}</th>
+                        <th>{!$Label.Date_Sent_Received}</th>
+                        <th>{!$Label.Filing_Date}</th>
+                        <th>{!$Label.Owner}</th>                        
+                        <th>{!$Label.Remarks}</th> -->
+                    </tr>
+               </thead>
+               <tbody>
+               </tbody>
+           </table>
+       </apex:pageBlock>
+</apex:component>

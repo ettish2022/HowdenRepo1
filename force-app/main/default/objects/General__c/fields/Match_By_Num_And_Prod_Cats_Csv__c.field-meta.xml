@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Match_By_Num_And_Prod_Cats_Csv__c</fullName>
+    <description>Used to determine for which categories the matching of policies WITH numbers will be by  product as well as the number (in case same policy number received for 2 different products). All Other non specified categories - the productions with prod defs belonging to them - will be matched to policies by numbers only.
+If no csv specified then all categories\product defs will be matched by number AND product</description>
+    <externalId>false</externalId>
+    <label>Match By Num And Prod Cats Csv</label>
+    <length>255</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

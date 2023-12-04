@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <article>Definite</article>
+        <plural>false</plural>
+        <value>תוקף הפוליסה</value>
+    </caseValues>
+    <caseValues>
+        <article>None</article>
+        <plural>false</plural>
+        <value>תוקף פוליסה</value>
+    </caseValues>
+    <caseValues>
+        <article>Definite</article>
+        <plural>true</plural>
+        <value>תוקף הפוליסות</value>
+    </caseValues>
+    <caseValues>
+        <article>None</article>
+        <plural>true</plural>
+        <value>תוקף פוליסות</value>
+    </caseValues>
+    <gender>Masculine</gender>
+    <layouts>
+        <layout>Validity Manager Layout</layout>
+        <sections>
+            <label></label>
+            <section>קישורים מותאמים אישית</section>
+        </sections>
+    </layouts>
+    <nameFieldLabel>שם הרשומה</nameFieldLabel>
+    <webLinks>
+        <label></label>
+        <name>New_Policy</name>
+    </webLinks>
+</CustomObjectTranslation>

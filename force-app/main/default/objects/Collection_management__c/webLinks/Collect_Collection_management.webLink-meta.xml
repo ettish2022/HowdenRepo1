@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Collect_Collection_management</fullName>
+    <availability>online</availability>
+    <displayType>button</displayType>
+    <encodingKey>UTF-8</encodingKey>
+    <height>600</height>
+    <linkType>url</linkType>
+    <masterLabel>גביה</masterLabel>
+    <openType>noSidebar</openType>
+    <protected>false</protected>
+    <url>/apex/Novidea_HPC__PolicyPaymentsReceive?id={!Collection_management__c.Policy_ID__c}&amp;name={!URLENCODE( Collection_management__c.Elementar_Policy__c )}&amp;number={!Collection_management__c.Policy_Number__c}
++&apos;&amp;backgroundContext=%2Flightning%2Fr%2FCollection_management__c%2F{!Collection_management__c.Id}%2Fview</url>
+</WebLink>

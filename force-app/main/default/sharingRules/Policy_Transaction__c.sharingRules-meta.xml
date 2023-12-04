@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>Support</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Support</label>
+        <sharedTo>
+            <role>Chair_Man</role>
+        </sharedTo>
+        <criteriaItems>
+            <field>CreatedById</field>
+            <operation>notEqual</operation>
+            <value>&quot; &quot;</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingOwnerRules>
+        <fullName>BRZ_Production_Policy</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>BRZ_Production_Policy</label>
+        <sharedTo>
+            <roleAndSubordinates>BarZivRavid</roleAndSubordinates>
+        </sharedTo>
+        <sharedFrom>
+            <roleAndSubordinates>BarZivRavid</roleAndSubordinates>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>HowdenPersonal</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>עובדי פרט</label>
+        <sharedTo>
+            <group>HowdenPersonal</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>HowdenPersonal</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+</SharingRules>

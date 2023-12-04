@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help></help>
+    <label>האם הופקה חשבונית שכ&quot;ט</label>
+    <name>Is_FFS_invoice_produced__c</name>
+</CustomFieldTranslation>

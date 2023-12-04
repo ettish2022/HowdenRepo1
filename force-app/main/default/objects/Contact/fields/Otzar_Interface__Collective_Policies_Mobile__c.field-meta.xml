@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Otzar_Interface__Collective_Policies_Mobile__c</fullName>
+    <deprecated>false</deprecated>
+    <externalId>false</externalId>
+    <label>טלפון מקובץ יצרנים</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Phone</type>
+</CustomField>

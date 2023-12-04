@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>KPI_Account__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>ניהול לקוחות KPI ברמת ארגון</description>
+    <externalId>false</externalId>
+    <label>KPI Account</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SLA__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF (ISPICKVAL(Sub_Category__c, &quot;מייל מנותק/לא מסונכרן&quot;),
+&quot;עד 3 שעות&quot;,
+IF (ISPICKVAL(Sub_Category__c, &quot;תקלת חיבור&quot;),
+&quot;עד 3 שעות&quot;,
+IF (ISPICKVAL(Sub_Category__c, &quot;מקרן&quot;),
+&quot;עד 3 שעות&quot;,
+IF (ISPICKVAL(Sub_Category__c, &quot;טלפון&quot;),
+&quot;עד 3 שעות&quot;,
+IF (ISPICKVAL(Sub_Category__c, &quot;מחשב&quot;),
+&quot;עד 3 שעות&quot;,
+IF (ISPICKVAL(Sub_Category__c, &quot;אתר לא עובד&quot;),
+&quot;עד 3 שעות&quot;,
+IF (ISPICKVAL ( Sub_Category__c, &quot;הקמת דוח חדש&quot;),
+&quot;עד 48 שעות&quot;,
+IF (ISPICKVAL( Sub_Category__c, &quot;סיוע בדיווחים&quot;),
+&quot;עד 24 שעות&quot;,
+IF (ISPICKVAL( Sub_Category__c, &quot;מחיקת כפילויות&quot;),
+&quot;עד 24 שעות&quot;,
+IF (ISPICKVAL( Sub_Category__c, &quot;סגירת הצעות/פוטנציאלים&quot;),
+&quot;עד 24 שעות&quot;,
+IF (ISPICKVAL( Sub_Category__c, &quot;הוספת שכר טרחה/תיקון שכר טרחה בדיווח&quot;),
+&quot;עד 24 שעות&quot;,
+IF (ISPICKVAL( Sub_Category__c, &quot;הקמת משתמש בחברות ביטוח&quot;),
+&quot;עד 24 שעות&quot;,
+IF (ISPICKVAL( Sub_Category__c, &quot;אי התאמה בין דיווח לפרודוקציה&quot;),
+&quot;עד 24 שעות&quot;,
+IF (ISPICKVAL( Sub_Category__c, &quot;תקבולים ממבטחים&quot;),
+&quot;עד 24 שעות&quot;,
+IF (ISPICKVAL( Sub_Category__c, &quot;בירור עמלות&quot;),
+&quot;עד 24 שעות&quot;,
+IF (ISPICKVAL( Sub_Category__c, &quot;העברת פוליסות בין חשבונות&quot;),
+&quot;עד 24 שעות&quot;,
+IF (ISPICKVAL( Sub_Category__c, &quot;בירור והקמת הסכם סוכני משנה&quot;),
+&quot;עד 24 שעות&quot;,
+IF (ISPICKVAL( Sub_Category__c, &quot;שינויים לדוח קיים&quot;),
+&quot;עד 24 שעות&quot;,
+IF (ISPICKVAL( Category__c , &quot;משאבי אנוש&quot;),
+&quot;עד תאריך תחילת/סיום טיפול&quot;,
+&quot;עד 5 שעות&quot;)))))))))))))))))))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>SLA</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

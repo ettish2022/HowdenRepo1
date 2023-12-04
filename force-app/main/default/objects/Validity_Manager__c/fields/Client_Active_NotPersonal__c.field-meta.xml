@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Client_Active_NotPersonal__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <externalId>false</externalId>
+    <label>Client Active NotPersonal</label>
+    <referenceTo>Account</referenceTo>
+    <relationshipLabel>Validity Managers (Client Active NotPersonal)</relationshipLabel>
+    <relationshipName>Client_Active_NotPersonal</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

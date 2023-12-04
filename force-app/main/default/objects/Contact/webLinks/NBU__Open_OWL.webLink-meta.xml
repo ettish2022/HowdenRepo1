@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>NBU__Open_OWL</fullName>
+    <availability>online</availability>
+    <displayType>massActionButton</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>Open OWL</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <requireRowSelection>true</requireRowSelection>
+    <url>window.open(&quot;/apex/ActionableInteligence?autoMapValues=1&amp;inline=1&amp;core.apexpages.framework.ApexViewServlet.getInlinedContentRequest=1&amp;id=0010Y00001P4o2w&amp;isFullPage=true&quot;, &apos;actionableFullPage&apos;,&apos;height=560,width=900&apos;);</url>
+</WebLink>

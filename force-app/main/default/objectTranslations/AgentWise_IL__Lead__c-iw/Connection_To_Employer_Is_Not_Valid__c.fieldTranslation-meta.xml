@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>קשר למעסיק אינו בתוקף</label>
+    <name>Connection_To_Employer_Is_Not_Valid__c</name>
+</CustomFieldTranslation>

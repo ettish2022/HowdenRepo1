@@ -1,0 +1,6 @@
+<apex:page standardController="Contact">
+<script>
+     window.open("/apex/NFILING__OutlookAddin?mode=0&entid={!Contact}" ,null,"fullscreen=0,width=680,height=720,resizable=1,menubar=0,toolbar=0,location=0,scrollbars=1");
+     window.history.back();
+</script>
+</apex:page>

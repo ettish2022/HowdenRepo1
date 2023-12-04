@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>תת נושא</label>
+    <name>SubStatus__c</name>
+    <picklistValues>
+        <masterLabel>Clearinghouse</masterLabel>
+        <translation>מסלקה</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Health</masterLabel>
+        <translation>בריאות</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Life</masterLabel>
+        <translation>חיים</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Saving Policy</masterLabel>
+        <translation>פוליסת חסכון</translation>
+    </picklistValues>
+</CustomFieldTranslation>

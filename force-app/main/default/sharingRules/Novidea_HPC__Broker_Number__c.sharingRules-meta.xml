@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>Agents</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>סוכנים</label>
+        <sharedTo>
+            <roleAndSubordinates>AgentsOnly</roleAndSubordinates>
+        </sharedTo>
+        <criteriaItems>
+            <field>Is_external_agent__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>BarZivRavid</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>בר זיו רביד</label>
+        <sharedTo>
+            <roleAndSubordinates>BarZivRavid</roleAndSubordinates>
+        </sharedTo>
+        <criteriaItems>
+            <field>Is_external_agent__c</field>
+            <operation>notEqual</operation>
+            <value>True</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Howden</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>עובדי האודן</label>
+        <sharedTo>
+            <roleAndSubordinates>HowdenIsrael</roleAndSubordinates>
+        </sharedTo>
+        <criteriaItems>
+            <field>Is_external_agent__c</field>
+            <operation>notEqual</operation>
+            <value>True</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+</SharingRules>

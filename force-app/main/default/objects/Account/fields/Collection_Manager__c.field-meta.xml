@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Collection_Manager__c</fullName>
+    <externalId>false</externalId>
+    <formula>If(AND((ISPICKVAL(Industry, &apos;Hi Tech&apos;)), (First_Letter__c = true), NOT((ISPICKVAL(Account_Grouping__c, &apos;מ.מ.י יועצים בע&quot;מ&apos;))), NOT((ISPICKVAL(Account_Grouping__c, &apos;ארגון מהנדסים ואדריכלים&apos;)))),
+&apos;נטלי כהן&apos;,
+
+If(OR(AND((ISPICKVAL(Industry, &apos;Hi Tech&apos;)), (First_Letter__c = false),  NOT((ISPICKVAL(Account_Grouping__c, &apos;מ.מ.י יועצים בע&quot;מ&apos;))), NOT((ISPICKVAL(Account_Grouping__c, &apos;ארגון מהנדסים ואדריכלים&apos;)))), AND((ISPICKVAL(Industry, &apos;FI&apos;)), NOT((ISPICKVAL(Account_Grouping__c, &apos;מ.מ.י יועצים בע&quot;מ&apos;))), NOT((ISPICKVAL(Account_Grouping__c, &apos;ארגון מהנדסים ואדריכלים&apos;))))),
+&apos;גילה פרנבוק&apos;,
+
+If(AND((ISPICKVAL(Industry, &apos;Medical&apos;)), NOT((ISPICKVAL(Account_Grouping__c, &apos;מ.מ.י יועצים בע&quot;מ&apos;))), NOT((ISPICKVAL(Account_Grouping__c, &apos;ארגון מהנדסים ואדריכלים&apos;)))),
+&apos;ליזה ברובוסאני&apos;,
+
+If(AND((ISPICKVAL(Industry, &apos;VC&apos;)), NOT((ISPICKVAL(Account_Grouping__c, &apos;מ.מ.י יועצים בע&quot;מ&apos;))), NOT((ISPICKVAL(Account_Grouping__c, &apos;ארגון מהנדסים ואדריכלים&apos;)))),
+&apos;ליזה ברובוסאני&apos;,
+
+
+If(OR(AND(ISPICKVAL(Industry, &apos;Law Firm&apos;)), (ISPICKVAL(Industry, &apos;הנדסי/ Engineering&apos;)),(ISPICKVAL(Industry, &apos;רואי חשבון&apos;)), (ISPICKVAL(Industry, &apos;מהנדסים&apos;)), (ISPICKVAL(Industry, &apos;הנדסאים&apos;)), (ISPICKVAL(Industry, &apos;אדריכלים&apos;)), (ISPICKVAL(Industry, &apos;מתכנני ערים&apos;)), (ISPICKVAL(Account_Grouping__c, &apos;מ.מ.י יועצים בע&quot;מ&apos;)), (ISPICKVAL(Account_Grouping__c, &apos;ארגון מהנדסים ואדריכלים&apos;))),
+&apos;אירנה מורושק&apos;, &apos;גבי גרשטיין&apos;)))))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Collection Manager</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

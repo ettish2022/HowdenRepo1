@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>לקוח פוליסת פרט בתוקף</label>
+    <name>Client_Active_Personal__c</name>
+    <relationshipLabel>פוליסות פרט בתוקף</relationshipLabel>
+</CustomFieldTranslation>

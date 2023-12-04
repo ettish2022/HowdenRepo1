@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Request_Owner__c</fullName>
+    <externalId>false</externalId>
+    <label>גורם מטפל</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>סיגל</fullName>
+                <default>false</default>
+                <label>סיגל</label>
+            </value>
+            <value>
+                <fullName>בתאל</fullName>
+                <default>false</default>
+                <label>בתאל</label>
+            </value>
+            <value>
+                <fullName>Novidea</fullName>
+                <default>false</default>
+                <label>Novidea</label>
+            </value>
+            <value>
+                <fullName>נתן דולב</fullName>
+                <default>false</default>
+                <label>נתן דולב</label>
+            </value>
+            <value>
+                <fullName>אוריון הכהן</fullName>
+                <default>false</default>
+                <label>אוריון הכהן</label>
+            </value>
+            <value>
+                <fullName>UBTECH</fullName>
+                <default>false</default>
+                <label>UBTECH</label>
+            </value>
+            <value>
+                <fullName>SYSTEM</fullName>
+                <default>false</default>
+                <label>SYSTEM</label>
+            </value>
+            <value>
+                <fullName>HELPDESK</fullName>
+                <default>false</default>
+                <label>HELPDESK</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

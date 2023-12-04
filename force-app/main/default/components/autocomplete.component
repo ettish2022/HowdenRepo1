@@ -1,0 +1,99 @@
+<apex:component access="global" controller="AutoComplete_Controller">
+
+<apex:attribute access="global" name="InputId" description="Id of the InputField to which the AutoComplete Component will belong, use {!$Component.THEID}" type="String" required="true"/>
+<apex:attribute access="global" name="AutoCompleteId" description="Unique Id for this AutoComplete Component" type="String" required="false" />
+<apex:attribute access="global" name="searchField" description="name of field to search if ommited search is by name" type="String" required="false" />
+<apex:attribute access="global" name="distinct" description="Indicator that defines the returning list should include distinct values." type="String" required="false" />
+<apex:attribute access="global" name="ObjectName" description="This is the lookup Object." type="String" required="true"/>
+<apex:attribute access="global" name="RecordTypeName" description="Record Type for filtering. Optional." type="String" required="false"/>
+<apex:attribute access="global" name="CustomWhereClause" description="Where clause for filtering. Optional." type="String" required="false"/>
+<apex:attribute access="global" name="ClassName" description="This is the name of the CSS Class used to style the AutoComplete Menu." type="String" required="true"/>
+<apex:attribute access="global" name="Width" description="AutoComplete Width, In case you need to adjust it for certain inputs" type="Integer" required="true"/>
+<apex:attribute access="global" name="selectedCallBack" description="" type="String" required="true"/>        
+
+   
+<div id="suggestions{!IF(ISBLANK(AutoCompleteId),id,AutoCompleteId)}" class="{!ClassName}" 
+      style="position:absolute;display:none;width:{!Width}px !important;"/>
+
+<script>
+  
+      new AutoCompleteAJAX(
+            document.getElementById('{!InputId}'),
+            document.getElementById('suggestions{!IF(ISBLANK(AutoCompleteId),id,AutoCompleteId)}'),
+            'searchText',
+            clear('{!IF(ISBLANK(AutoCompleteId),id,AutoCompleteId)}'),
+            '{!ObjectName}:{!RecordTypeName}:{!IF(ISBLANK(AutoCompleteId),id,AutoCompleteId)}:' + ({!ISBLANK(searchField)}?'Name':'{!searchField}')
+                    + ':' + ({!ISBLANK(distinct)}?'false':'{!distinct}') + ':{!CustomWhereClause}',
+            '{!selectedCallBack}', '{!$Label.searching}', '{!$Label.No_Results_Found}');
+  //igall copied from datepicker
+        jQuery('#suggestions{!IF(ISBLANK(AutoCompleteId),id,AutoCompleteId)}').click(        
+            function() {
+           
+                var inst = {};
+                inst.target=jQuery('#{!InputId}');
+                inst.div=jQuery('#suggestions{!IF(ISBLANK(AutoCompleteId),id,AutoCompleteId)}');
+                inst.alignment="bottom";
+                inst.isRTL = true;
+        
+                var base = (inst.target.is(':hidden') && inst.trigger ? inst.trigger : inst.target);
+                var offset = base.offset();
+                var isFixed = false;
+                jQuery(inst.target).parents().each(function() {
+                    isFixed |=jQuery(this).css('position') == 'fixed';
+                    return !isFixed;
+                });
+                if (isFixed && jQuery.browser.opera) { // Correction for Opera when fixed and scrolled
+                    offset.left -= document.documentElement.scrollLeft;
+                    offset.top -= document.documentElement.scrollTop;
+                }
+                var browserWidth = (!jQuery.browser.mozilla || document.doctype ?
+                    document.documentElement.clientWidth : 0) || document.body.clientWidth;
+                var browserHeight = (!jQuery.browser.mozilla || document.doctype ?
+                    document.documentElement.clientHeight : 0) || document.body.clientHeight;
+                if (browserWidth == 0) {
+                    inst.div.css({left: offset.left, top: offset.top});         
+                }else{
+                var alignment = inst.alignment;
+                var isRTL = inst.isRTL;
+                var scrollX = document.documentElement.scrollLeft || document.body.scrollLeft;
+                var scrollY = document.documentElement.scrollTop || document.body.scrollTop;
+                var above = offset.top - inst.div.outerHeight() -
+                    (isFixed && jQuery.browser.opera ? document.documentElement.scrollTop : 0);
+                var below = offset.top + base.outerHeight();
+                var alignL = offset.left;
+                var alignR = offset.left + base.outerWidth() - inst.div.outerWidth() -
+                    (isFixed && jQuery.browser.opera ? document.documentElement.scrollLeft : 0);
+                var tooWide = (offset.left + inst.div.outerWidth() - scrollX) > browserWidth;
+                var tooHigh = (offset.top + inst.target.outerHeight() + inst.div.outerHeight() -
+                    scrollY) > browserHeight;
+                if (alignment == 'topLeft') {
+                    offset = {left: alignL, top: above};
+                }
+                else if (alignment == 'topRight') {
+                    offset = {left: alignR, top: above};
+                }
+                else if (alignment == 'bottomLeft') {
+                    offset = {left: alignL, top: below};
+                }
+                else if (alignment == 'bottomRight') {
+                    offset = {left: alignR, top: below};
+                }
+                else if (alignment == 'top') {
+                    offset = {left: (isRTL || tooWide ? alignR : alignL), top: above};
+                }
+                else { // bottom
+                    offset = {left: (isRTL || tooWide ? alignR : alignL),
+                        top: (tooHigh ? above : below)};
+                }
+                offset.left = Math.max((isFixed ? 0 : scrollX), offset.left - (isFixed ? scrollX : 0));
+                offset.top = Math.max((isFixed ? 0 : scrollY), offset.top - (isFixed ? scrollY : 0));
+        
+                inst.div.css({left: offset.left, top: offset.top});
+                }
+                
+        });
+      
+
+</script>                                                                                                  
+            
+</apex:component>

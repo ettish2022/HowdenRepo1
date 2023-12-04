@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Insurance Cross Sell</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Insurance Cross Sells</value>
+    </caseValues>
+    <layouts>
+        <layout>Insurance Cross Sale Layout</layout>
+        <sections>
+            <label></label>
+            <section>Analysis</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Dashboards</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>New Section</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+    <webLinks>
+        <label></label>
+        <name>Analysis</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>Generate_Cross_Sells</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>Notify_by_Email</name>
+    </webLinks>
+</CustomObjectTranslation>

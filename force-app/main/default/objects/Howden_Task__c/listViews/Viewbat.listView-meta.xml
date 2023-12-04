@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Viewbat</fullName>
+    <columns>NAME</columns>
+    <columns>Requested_By__c</columns>
+    <columns>Status__c</columns>
+    <columns>Status_details__c</columns>
+    <columns>Department__c</columns>
+    <columns>Subject__c</columns>
+    <columns>Detailes__c</columns>
+    <columns>Request_date__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Request_Owner__c</field>
+        <operation>equals</operation>
+        <value>בתאל</value>
+    </filters>
+    <label>משימות בתאל</label>
+    <language>iw</language>
+    <sharedTo>
+        <roleAndSubordinates>DirectorofFinanceandAdministration</roleAndSubordinates>
+    </sharedTo>
+</ListView>

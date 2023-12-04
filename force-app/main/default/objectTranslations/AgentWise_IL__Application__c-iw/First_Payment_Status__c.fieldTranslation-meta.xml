@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>סטטוס גביה ראשונה</label>
+    <name>First_Payment_Status__c</name>
+    <picklistValues>
+        <masterLabel>Client Regreted</masterLabel>
+        <translation>לקוח התחרט</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>First Payment Recieved</masterLabel>
+        <translation>גביה ראשונה בוצעה</translation>
+    </picklistValues>
+</CustomFieldTranslation>

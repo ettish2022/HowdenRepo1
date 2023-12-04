@@ -1,0 +1,4 @@
+<apex:page standardController="Novidea_HPC__Product__c" recordSetVar="products" extensions="AcceptProductInListViewController" sidebar="false"
+    showHeader="false" action="{!initRecent}">
+    <apex:pageMessages />
+</apex:page>

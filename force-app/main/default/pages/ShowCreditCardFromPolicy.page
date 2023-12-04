@@ -1,0 +1,38 @@
+<apex:page standardController="Novidea_HPC__Policy__c" extensions="ShowCreditCardController" standardStylesheets="false" sidebar="false" showHeader="false" action="{!init}" >
+
+   <style>
+       div{direction:rtl;}
+       span{font-weight: bold;}
+   </style>
+   <apex:outputPanel id="thePanelError" layout="block" rendered="{!noCreditCard}">
+   <span>{!creditCard}</span>
+   </apex:outputPanel>
+
+	<apex:outputPanel id="thePanel" layout="block" rendered="{!!noCreditCard}">
+   	 <div>
+    שם בעלים של כרטיס האשראי : 
+    <span>{!CreditCardOwnerName}</span> 
+    </div>  
+     <div>
+    ת.ז. משלם בכרטיס אשראי : 
+    <span>{!CreditCardOwnerSSN}</span>  
+    </div>  
+    <div> 
+     מספר אשראי :   
+    <span>{!creditCard}</span>
+    </div>
+    <div>
+    סוג כרטיס אשראי : 
+    <span>{!CreditCardsType}</span> 
+    </div>
+    <div>
+    תוקף :  
+    <span>{!CreditExpirationDate}</span>
+     </div>
+    <div>
+    מספר תשלומים : 
+    <span>{!NumberOfPayments}</span> 
+    </div>   
+    </apex:outputPanel>
+ 
+</apex:page>

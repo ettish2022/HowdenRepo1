@@ -1,0 +1,501 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <article>Definite</article>
+        <plural>false</plural>
+        <value>הפוטנציאל</value>
+    </caseValues>
+    <caseValues>
+        <article>None</article>
+        <plural>false</plural>
+        <value>פוטנציאל</value>
+    </caseValues>
+    <caseValues>
+        <article>Definite</article>
+        <plural>true</plural>
+        <value>הפוטנציאלים</value>
+    </caseValues>
+    <caseValues>
+        <article>None</article>
+        <plural>true</plural>
+        <value>פוטנציאלים</value>
+    </caseValues>
+    <fieldSets>
+        <label></label>
+        <name>Car_Details</name>
+    </fieldSets>
+    <fieldSets>
+        <label></label>
+        <name>Dwelling</name>
+    </fieldSets>
+    <fieldSets>
+        <label></label>
+        <name>rani</name>
+    </fieldSets>
+    <fieldSets>
+        <label></label>
+        <name>renewals</name>
+    </fieldSets>
+    <gender>Masculine</gender>
+    <layouts>
+        <layout>BRZ Lead  - New Client</layout>
+        <sections>
+            <label>פרטי התקשרות</label>
+            <section>Contact Information</section>
+        </sections>
+        <sections>
+            <label>פרטי איש קשר</label>
+            <section>Contact Person Details</section>
+        </sections>
+        <sections>
+            <label>מעקב התקשרות</label>
+            <section>Follow up Details</section>
+        </sections>
+        <sections>
+            <label>פרטי הפוליסה</label>
+            <section>Policy Deatils</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מוצרים</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מסמכים</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Car Quala admin</layout>
+        <sections>
+            <label>קישורים מותאמים אישית</label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label>מוצרים</label>
+            <section>Products</section>
+        </sections>
+        <sections>
+            <label>פרטי מערכת</label>
+            <section>System Information</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>ממשק קואלה</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מסמכים</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרטי איש קשר מבוטח</section>
+        </sections>
+        <sections>
+            <label>טיפול בליד</label>
+            <section>פרטי הביטוח</section>
+        </sections>
+        <sections>
+            <label>פרטי ביטוח קיים</label>
+            <section>פרטי מערכת</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרטי רכב</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרטים כללים</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>קבלת מידע על הרכב</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>תשלום</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Lead For Dewelind - New Client</layout>
+        <sections>
+            <label></label>
+            <section>כיסוי מבנה וכיסוי תכולה</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>כיסויים נוספים</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מוצרים</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מיגונים</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מסמכים</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>עבר ביטוחי</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרטי התקשרות</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>תאריכי ביטוח</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>תיאור הנכס וכיסוי נדרש</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>תשלום</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Lead For Deweling - Existing Client</layout>
+        <sections>
+            <label></label>
+            <section>מוצרים</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מסמכים</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרטי הביטוח</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרטי התקשרות</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרטים כללים</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>תיאור הנכס וכיסוי נדרש</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>תשלום</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Lead For Personal Auto - Existing Client</layout>
+        <sections>
+            <label></label>
+            <section>חיתום</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מוצרים</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מסמכים</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מקטע חדש</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>סימולטור הצעות מחיר רכב</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרטי הצעה</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרטי הרכב</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרטי התקשרות</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרטי נהגים</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>תיאור</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>תשלום</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Lead For Personal Auto - New Client</layout>
+        <sections>
+            <label></label>
+            <section>היסטוריית תביעות</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מוצרים</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מסמכים</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרטי איש קשר</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרטי הצעה</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרטי התקשרות</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרטי רכב ונהגים</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>תשלום</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Lead for Car</layout>
+        <sections>
+            <label></label>
+            <section>הצעות ביטוח</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מסמכים</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרטי התקשרות</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרטי רכב</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Lead for Client</layout>
+        <sections>
+            <label></label>
+            <section>New Section</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מסמכים</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מקטע חדש</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרטי התקשרות</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Standard Lead</layout>
+        <sections>
+            <label></label>
+            <section>Contact</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Current Information</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מסמכים</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מקטע חדש</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Telemeeting</layout>
+        <sections>
+            <label></label>
+            <section>מסמכים</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פירוט הביטוח הפוטנציאלי</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרטי איש קשר חדש</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרטי הפגישה</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>UK Lead for Client</layout>
+        <sections>
+            <label>פרטי קשר</label>
+            <section>Contact Information</section>
+        </sections>
+        <sections>
+            <label>מסמכים</label>
+            <section>Documents</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>New Section</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מקטע חדש</section>
+        </sections>
+    </layouts>
+    <nameFieldLabel>שם הפוטנציאל</nameFieldLabel>
+    <recordTypes>
+        <description></description>
+        <label></label>
+        <name>Car_Lead</name>
+    </recordTypes>
+    <recordTypes>
+        <label></label>
+        <name>Car_Lead_Existing_Client</name>
+    </recordTypes>
+    <recordTypes>
+        <description></description>
+        <label></label>
+        <name>Car_Lead_New_Client</name>
+    </recordTypes>
+    <recordTypes>
+        <description></description>
+        <label>דירה - לקוח חדש</label>
+        <name>Dwelling</name>
+    </recordTypes>
+    <recordTypes>
+        <label></label>
+        <name>Dwelling_Exist_Client</name>
+    </recordTypes>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Mandatory_Agent_By_Source</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Mandatory_Consultant_By_Source</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Mandatory_Description_By_Source</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Min_Driver_Age_is_Mandatory</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Must_update_Drivers_Number</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Must_update_Driving_seniority</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Numeric_Model_Code</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Valid_Next_Activity_Date</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Valid_Renewal_Date</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>change_ownership_from_manager_to_tel</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>mandatory_field_when_lead_source_isOther</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>mandatory_field_when_status_NotRelevant</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>update_effective_and_expriration_date</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>update_other_agent_if_agent_equal_other</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>update_service_provider</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>update_telemeeting_field</name>
+    </validationRules>
+    <webLinks>
+        <label>פוטנציאל עסקי</label>
+        <name>Business_Potential</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>ConvertToPolicy</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>Convert_Lead</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>CreateExcel</name>
+    </webLinks>
+    <webLinks>
+        <label>צור טופס</label>
+        <name>Create_Form</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>Documents</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>Log_a_call</name>
+    </webLinks>
+    <webLinks>
+        <label>פוטנציאל לקוח קיים</label>
+        <name>Potential_With_Client</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>Reject</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>SendEmail</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>Show_Credit_Card_Number</name>
+    </webLinks>
+</CustomObjectTranslation>

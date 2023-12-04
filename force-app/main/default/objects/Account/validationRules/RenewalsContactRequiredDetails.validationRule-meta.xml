@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RenewalsContactRequiredDetails</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+ $Setup.Novidea_HPC__Trigger__c.Novidea_HPC__Stop_Validation_Rule__c = FALSE,
+NOT(ISNEW()),
+NOT(ISBLANK( Renewals_Contact__c )),
+OR(
+ISBLANK ( Renewals_Contact__r.Email ),
+ISBLANK ( Renewals_Contact__r.MobilePhone )))</errorConditionFormula>
+    <errorDisplayField>Renewals_Contact__c</errorDisplayField>
+    <errorMessage>חובה להגדיר לאיש הקשר מייל וטלפון</errorMessage>
+</ValidationRule>

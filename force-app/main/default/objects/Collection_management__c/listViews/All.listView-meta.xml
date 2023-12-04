@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All</fullName>
+    <booleanFilter>1 OR 2</booleanFilter>
+    <columns>NAME</columns>
+    <columns>Account__c</columns>
+    <columns>Carrier_Income__c</columns>
+    <columns>OWNER.ALIAS</columns>
+    <columns>Industry__c</columns>
+    <columns>Insurance_Type__c</columns>
+    <columns>Endorsement_Number__c</columns>
+    <columns>B_Premium_Income__c</columns>
+    <columns>Agency_Fee_income__c</columns>
+    <columns>Premium_currency_income__c</columns>
+    <columns>Product__c</columns>
+    <columns>Status_policy__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>Effective_date__c</columns>
+    <columns>Date_to_Contact__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Unpaid_premium__c</field>
+        <operation>notEqual</operation>
+        <value>0</value>
+    </filters>
+    <filters>
+        <field>Unpaid_Agancy_Fee__c</field>
+        <operation>notEqual</operation>
+        <value>0</value>
+    </filters>
+    <label>All</label>
+    <sharedTo>
+        <role>Collection_Manager</role>
+    </sharedTo>
+</ListView>

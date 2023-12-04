@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingOwnerRules>
+        <fullName>All_BZR_Created_BZR_See</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>All_BZR_Created_BZR_See</label>
+        <sharedTo>
+            <roleAndSubordinates>BarZivRavid</roleAndSubordinates>
+        </sharedTo>
+        <sharedFrom>
+            <roleAndSubordinates>BarZivRavid</roleAndSubordinates>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>HowdenRFP3</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>הצעות ליצרן חאודן</label>
+        <sharedTo>
+            <roleAndSubordinates>HowdenIsrael</roleAndSubordinates>
+        </sharedTo>
+        <sharedFrom>
+            <roleAndSubordinates>HowdenIsrael</roleAndSubordinates>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>RFPtoHowden</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>האודן הצעות ליצרן</label>
+        <sharedTo>
+            <roleAndSubordinates>Vice_CEO</roleAndSubordinates>
+        </sharedTo>
+        <sharedFrom>
+            <roleAndSubordinates>Chair_Man</roleAndSubordinates>
+        </sharedFrom>
+    </sharingOwnerRules>
+</SharingRules>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>NBU__Is_Trust_Account__c</fullName>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <description>Support dynamic representation of broker&apos;s trust accounts on the closing docs according to the settlement currency</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Support dynamic representation of broker&apos;s trust accounts on the closing docs according to the settlement currency</inlineHelpText>
+    <label>Is Trust Account</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

@@ -1,0 +1,501 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label></label>
+    <name>Type__c</name>
+    <picklistValues>
+        <masterLabel>אופנוע</masterLabel>
+        <translation>Motorcycle</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>אחר</masterLabel>
+        <translation>Other</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>אישור הסרת שיעבוד</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>אישור כיסוי</masterLabel>
+        <translation>Approval of coverage</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>אישור כיסוי ללקוח</masterLabel>
+        <translation>Approval of client coverage</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>אישור לפקיד שומה</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>אישור מס</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>אישור מקדמה</masterLabel>
+        <translation>Advance Approval</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>אישור עריכת ביטוח</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>אישור פקס</masterLabel>
+        <translation>Fax confirmation</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>אישור קיום ביטוח</masterLabel>
+        <translation>Confirmation Insurance existance</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>אישור קיום ביטוחים</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>אישורי מסירה</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>אישורי קריאה</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>אסמכתא</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>ביטול פוליסה</masterLabel>
+        <translation>Policy Cancellation</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>בקשה לאישור קיום ביטוח</masterLabel>
+        <translation>A request to approve the existence of insurance</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>בקשה/אישור הכללת הנפקה</masterLabel>
+        <translation>Request /  Permit the inclusion of Issue</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>ד. תשלום DEBIT NOTE</masterLabel>
+        <translation>Debit Note</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>דוח סוקר לדירה</masterLabel>
+        <translation>Apartment Review report</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>דוחות כספיים</masterLabel>
+        <translation>Financial Statements</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>דירה</masterLabel>
+        <translation>Apartment</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>דף סיכום פגישה</masterLabel>
+        <translation>Summary of Meeting</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>דף תמחור</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>דרישת תשלום</masterLabel>
+        <translation>Request for payment</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>דרישת/תשלום השתתפות עצמית</masterLabel>
+        <translation>Request for payment of deductible</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>הארכת פוליסה</masterLabel>
+        <translation>Extension of policy</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>הודעה מוקדמת</masterLabel>
+        <translation>Advance notice</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>הודעה ממבוטח על ארוע</masterLabel>
+        <translation>A message from Insured on event</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>הודעת ארוע למבטח</masterLabel>
+        <translation>A message to Insured on event</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>החלפת רכב</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>היסטוריה טרום שפי</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>הנפקה ( פרטית / ציבורית)</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>הסבה</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>הסכם התקשרות</masterLabel>
+        <translation>Contracting agreement</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>הסכם סודיות - NDA</masterLabel>
+        <translation>Confidentiality Agreement - NDA</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>הערות לחוזים</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>הערכת תכולה</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>הצהרת בריאות</masterLabel>
+        <translation>Health Statement</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>הצהרת העדר תביעות NCD</masterLabel>
+        <translation>No Claims Declaration - NCD</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>הצעה (לקוח חדש)</masterLabel>
+        <translation>Proposal- -New Client</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>הצעה לחידוש</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>הצעה ללקוח קיים</masterLabel>
+        <translation>Proposal- -Existing Client</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>הצעה מן המבטח</masterLabel>
+        <translation>Proposal from Insurer</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>חוות דעת שמאי</masterLabel>
+        <translation>Appraiser&apos;s Review</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>חוזים</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>חומר חדש מהלקוח</masterLabel>
+        <translation>New material from client</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>חומר לחו&quot;ל</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>חומר לחידוש מהלקוח</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>חריג חדלות פרעון</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>חשבונית/קבלה</masterLabel>
+        <translation>Invoice / receipt</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>טבלת בעלי מניות</masterLabel>
+        <translation>Schedule of Shareholders</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>טופס הודעה</masterLabel>
+        <translation>Notification Form</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>טופס הצעה</masterLabel>
+        <translation>Proposal Form</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>טופס מיגון לרכב</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>טיוטא עותק לבדיקה</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>כולם</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>כפיפויות</masterLabel>
+        <translation>Subordination</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>כתב כיסוי</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>כתב כיסוי אחריות מקצועית</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>כתב כיסוי תאונות אישיות</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>כתב מינוי סוכן</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>כתבה על החברה</masterLabel>
+        <translation>Report on the Company</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>לחברת ביטוח Submission</masterLabel>
+        <translation>Submission to Insurance Company</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>מיגון</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>מייל ללקוח לאחר פגישה</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>מכתב אי חידוש</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>מכתב ביטול</masterLabel>
+        <translation>Termination letter</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>מכתב ביטול עקב אי תשלום</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>מכתב דחייה</masterLabel>
+        <translation>Rejection letter</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>מכתב התראה</masterLabel>
+        <translation>Warning letter</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>מכתב חידוש</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>מכתב נלווה לפוליסה</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>מכתב עו&quot;ד</masterLabel>
+        <translation>Lawyer&apos;s letter</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>מכתב ערעור</masterLabel>
+        <translation>Letter of Appeal</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>מסמכי גבייה</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>מפרט יועץ</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>מצגת של הלקוח</masterLabel>
+        <translation>Client Presentation</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>משאיות /נגררים</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>נסיון תביעות</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>נספחים / הרחבות לפוליסה</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>נתונים פיננסים</masterLabel>
+        <translation>Financial Data</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>סירוב מבטח להגיש הצעה</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>סקר סיכונים לעסק</masterLabel>
+        <translation>Business Risk Review</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>סריקה חיצונית</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>עמלות</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>פוליסה</masterLabel>
+        <translation>Policy</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>פוליסה לשליחה ללקוח</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>פירם אורדר - Firm Order</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>פניה לחברת ביטוח לקבלת הצעה</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>פנייה לחידוש</masterLabel>
+        <translation>Renewal request</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>פנייה ללקוח חדש</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>צמ&quot;ה/ מלגזה</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>קבלה מחברת הביטוח</masterLabel>
+        <translation>Receipt from Insurance company</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>קבלנים</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>רישיון רכב</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>רכב</masterLabel>
+        <translation>Vehicle</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>שינויי תמליל לפוליסה</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>שיעבוד לבנק</masterLabel>
+        <translation>Bank Lien</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>תביעה</masterLabel>
+        <translation>Claim</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>תביעה כספית</masterLabel>
+        <translation>Financial Claim</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>תביעה משפטית</masterLabel>
+        <translation>Lawsuit</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>תביעת תאונות אישיות</masterLabel>
+        <translation>Personal injury Claim</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>תוספת לפוליסה</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>תיירים/עובדים זרים</masterLabel>
+        <translation>Tourists / Foreign workers</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>תיעוד שיחות עם לקוח</masterLabel>
+        <translation>Documentation of Client Calls</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>תיעוד שיחות עם מבטח</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>תכתובות עם האודן לונדון / US</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>תכתובת עם יועץ</masterLabel>
+        <translation>Correspondence with Consultant</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>תכתובת עם לקוח</masterLabel>
+        <translation>Correspondence with Client</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>תכתובת עם מבטח</masterLabel>
+        <translation>Correspondence with Insurer</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>תכתובת עם מבטח ולקוח</masterLabel>
+        <translation>Correspondence with Insurer and Client</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>תכתובת עם מוניטור</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>תכתובת עם סוכן משנה</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>תכתובת עם עו&quot;ד המייצג</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>תכתובת פנימית</masterLabel>
+        <translation>Internal Correspondence</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>תמליל פוליסה</masterLabel>
+        <translation>Transcript of Policy</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>תעודת ביטוח חובה</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>תשלום לחברת ביטוח</masterLabel>
+        <translation>Payment to Insurance Company</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>תשלום למבוטח</masterLabel>
+        <translation>Payment to Insured</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>תשלום למבטח משנה</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>תשלום לפנים משורת הדין</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>תשלום שכ&quot;ט</masterLabel>
+        <translation>Payment of fees</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>תשלום תביעה</masterLabel>
+        <translation></translation>
+    </picklistValues>
+</CustomFieldTranslation>

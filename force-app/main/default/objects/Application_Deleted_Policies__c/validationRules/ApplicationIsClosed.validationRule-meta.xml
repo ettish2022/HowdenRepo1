@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ApplicationIsClosed</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND($Setup.Novidea_HPC__Trigger__c.Novidea_HPC__Stop_Validation_Rule__c != True,
+CASESAFEID( $User.Id) != &apos;0054G00000BYsVVQA1&apos;,
+$Profile.Name != &apos;מנהל מערכת&apos;,
+ISNEW(),
+OR(
+AND(
+NOT(ISBLANK( Application__c )),
+NOT(ISBLANK( Application__r.Close_Date__c ))),
+AND(
+NOT(ISBLANK( Application_Pens__c )),
+NOT(ISBLANK(  Application_Pens__r.Close_Date__c)))))</errorConditionFormula>
+    <errorMessage>לא ניתן להוסיף רשומת ביטול/ניוד בהצעה שנסגרה</errorMessage>
+</ValidationRule>

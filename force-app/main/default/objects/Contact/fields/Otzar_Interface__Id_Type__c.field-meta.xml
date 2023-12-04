@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Otzar_Interface__Id_Type__c</fullName>
+    <deprecated>false</deprecated>
+    <description>DON&apos;T USE!!!
+This field is deprecated in favor of AgentWise_IL__Id_Type__c and will be removed in future versions.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>DON&apos;T USE!!!
+This field is deprecated in favor of AgentWise_IL__Id_Type__c and will be removed in future versions.</inlineHelpText>
+    <label>DEPRECATED</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>תעודת זהות</fullName>
+                <default>false</default>
+                <label>תעודת זהות</label>
+            </value>
+            <value>
+                <fullName>דרכון</fullName>
+                <default>false</default>
+                <label>דרכון</label>
+            </value>
+            <value>
+                <fullName>תאגיד</fullName>
+                <default>false</default>
+                <label>תאגיד</label>
+            </value>
+            <value>
+                <fullName>אחר</fullName>
+                <default>false</default>
+                <label>אחר</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

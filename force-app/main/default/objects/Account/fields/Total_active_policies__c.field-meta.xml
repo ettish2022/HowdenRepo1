@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Total_active_policies__c</fullName>
+    <externalId>false</externalId>
+    <formula>Total_Apartment_active_policies__c + Total_Business_policies__c + Total_Casco_active_policies__c + Total_Health_policies__c + Total_Hova_active_policies__c + Total_Other_active_policies__c + Total_Other_car_active_policies__c + Total_PA_Active_policies__c + Total_Riders_policies__c + Total_RI_policies__c + Total_Special_Risks_policies__c + Total_Travel_insurance_Active_policies__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Total active policies</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

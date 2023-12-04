@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <article>Definite</article>
+        <plural>false</plural>
+        <value>הצעות חיים</value>
+    </caseValues>
+    <caseValues>
+        <article>None</article>
+        <plural>false</plural>
+        <value>הצעות חיים</value>
+    </caseValues>
+    <caseValues>
+        <article>Definite</article>
+        <plural>true</plural>
+        <value>הצעות חיים</value>
+    </caseValues>
+    <caseValues>
+        <article>None</article>
+        <plural>true</plural>
+        <value>הצעות חיים</value>
+    </caseValues>
+    <gender>Feminine</gender>
+    <layouts>
+        <layout>Pensiony Layout</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מידע בהפקה</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מסמכים</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרטי ההצעה</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרטי המבוטחים</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרטי מערכת</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרמיות וסכומים בהצעה</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>שכר ופיצולים</section>
+        </sections>
+    </layouts>
+    <nameFieldLabel>הצעות חיים</nameFieldLabel>
+    <quickActions>
+        <label></label>
+        <name>CustomConvertToPolicy</name>
+    </quickActions>
+    <recordTypes>
+        <label>השקעות אלטרנטיביות</label>
+        <name>Alternative_Investments</name>
+    </recordTypes>
+    <recordTypes>
+        <label>ביטוח בריאות קולקטיבי</label>
+        <name>Health_For_Collective_Application</name>
+    </recordTypes>
+    <recordTypes>
+        <label>תיק השקעות</label>
+        <name>Invesments_Account_Application</name>
+    </recordTypes>
+    <recordTypes>
+        <label>תיק מנוהל</label>
+        <name>Managed_File</name>
+    </recordTypes>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>ActualPremiumIsMissing</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>ActualPremiumIsNotLegit</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>ApplicationClosedDontChangeStatus</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>ApplicationClosedWithoutPolicy</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>ApplicationMustHaveContactWhenItOpens</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Application_Source_Not_From_Lead</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Archive_Reason_Required</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>AtLeastOnePremiumIsRequired</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>CopyEmployerOnKeyPersonRisk</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>EmployerIsMissing</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>FirstPaymentStatus</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>KeyPersonIndicationIsMissing</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>NewApplicationWithoutLeadMeeting</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>NotConvertedByButton</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>PensionFundTypeIsMissing</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>PoliciesToCancelNotUpdated</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>RejectHandledReasonIsRequired</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>RejectReasonIsRequired</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>SalesRepIsRequired</name>
+    </validationRules>
+    <webLinks>
+        <label>תייק קבצים</label>
+        <name>File_a_Document</name>
+    </webLinks>
+</CustomObjectTranslation>

@@ -1,0 +1,2029 @@
+<apex:page controller="OutlookAddinController" sidebar="false" showHeader="false" action="{!init}" standardStylesheets="true">
+<apex:includeScript value="{!$Resource.autocompletejs}"/>
+<!--json2 is required for use inside the outlook plugin. If a built-in JSON parser exists it does nothing.-->
+<apex:includeScript value="{!$Resource.jquery164min}"/>
+<!-- <apex:includeScript value="{!$Resource.jquery183}"/> -->
+<apex:includeScript value="{!$Resource.json2min}"/>
+<style>
+  .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+        border: 1px solid gray;
+        background: white;
+        font-weight: normal;
+        color: inherit;
+    }
+
+  
+    .ui-widget-content{
+        background: white;
+    }
+    
+    .ui-widget-content a {
+        color: black;
+    }
+    .ui-button-icon-only .ui-icon {
+        {!$Label.Text_Alignment_Reverse}: 10%;
+        margin-{!$Label.Text_Alignment_Reverse}: 0px;
+    }
+    .ui-menu .ui-menu-item{
+        float:none;
+    }
+    
+    .ui-autocomplete{
+        overflow-y: auto;
+        overflow-x: hidden;
+        max-height: 200px;
+    }
+    
+    .ui-combobox {
+        position: relative;
+        display: inline-block;
+    }
+    .ui-combobox-toggle {
+        position: absolute;
+        top: 1px;
+        bottom: 0;
+        margin-{!$Label.Text_Alignment_Reverse}: -1px;
+        padding: 0;
+        width: 18px;
+        height: 18px;
+        zoom:0;
+   }
+    .ui-combobox-input {
+        top: 0px;
+        margin: 0;
+        padding: 0 0.3em 0 0.3em;
+    }
+    </style>
+
+
+<apex:stylesheet value="{!$Resource.autocompletecss}"/>
+  <script>  
+    //TODO:REMOVE - SAMPLE ONLY
+    /*
+   jQuery(document).ready(function() {
+      generateSampleEmailData(3);
+    });
+    
+    //generate test data
+    function generateSampleEmailData(emailsAmount){
+        var arrOEmail = new Array();
+        var testEmailsArray = ["barr_tim@grandhotels.com","bond_john@grandhotels.com","lboyle@uog.com","ldcruz@uog.com","efrank@genepoint.com","igall@novideasoft.com"];
+        for(var i=0;i<emailsAmount;++i){
+            arrOEmail.push({isfiled:false,
+                            subject:"איך בונים אלוף עולם ' " + i,
+                            datereceived:"2012-02-0" +(i%10==0?(i+1)%10:i%10) + "T13:00:00", 
+                            attachments:[{size:1024,name:"trial attachment file name" + i, index:1},{index:2, size:1024,name:"trial attachment file name" + i+1},{index:3,size:1024,name:"trial attachment file name" + i+2}],
+                            to:[{email:"trial@r-45q16hk5e3u7uaqzbf3cuara7.dc3dkeai.dl.apex.salesforce.com"+i,nick:""},
+                                {email:i%3==0?testEmailsArray[i%5]:("raniz@novideasoft.com"+i),nick:("Nick for " + (i%3==0?testEmailsArray[i%5]:("raniz@novideasoft.com"+i)))+""}],
+                            cc:[{email:"go@jojo.com",nick:"go"},{email:i%3==1?testEmailsArray[i%5]:("raniz@novideasoft.com"+i),nick:""}],
+                            bcc:[{email:"getback@jojo.com",nick:"getback"},{email:"igall@novideasoft.com", nick:""},{email:i%3==2?testEmailsArray[i%5]:("raniz@novideasoft.com"+i),nick:""}],
+                            sender:{email:"raniz@novideasoft.com"+i, nick:"'Rani'"},
+                            preview:"Apex script unhandled trigger exception by user/organization: 005D00000021r0w/00DD0000000nCCT\n" +
+                                    "SomePrefix.FormatDeleteBefore: execution of BeforeDelete\n" + 
+                                    "caused by: System.SObjectException: SObject row was retrieved via SOQL without querying the requested field: Mapping__cFormat__c\n" +
+                                    "Trigger..FormatDeleteBefore: line 7, column 32"});
+        } 
+        passEmailsData(arrOEmail);
+        return arrOEmail;
+      }
+      */
+    ///////// END REMOVE ///////////
+    
+      /*
+        handles message display. Either from form or from page
+      */
+      function showMessage(message, type, buttons){
+        alert(message);
+      } 
+      
+      function getSaveBasePath(){
+        return "{!JSENCODE(networkBasePath)}";
+      }
+    
+      function getPredefFileSelnDir(){
+        if({!usePredefDir}) return "{!JSENCODE(predefFileSelDir)}";
+        else return null;
+      }
+      
+     function getDocTemplatePath(){
+        return "{!JSENCODE(docTemplatePath)}";
+     }
+     
+     function initAccount(aName, aId){
+        var actname = ui.actname;
+        actname.selectedid = aId;
+        resetAcountSelection();
+        handleAccountDataFetch(aId);
+      }
+     function initTskAssignedTo(userName, userId){
+        ui.tskAssignedToName.value = userName;
+        ui.tskAssignedToId.value = userId;
+      }
+      
+      function resetAcountSelection(){
+        if(ui.selectAccounts!=null)
+            ui.selectAccounts.selectedIndex = 0;
+      }
+
+      function passEmailsData(arrOEmail){
+        filesData.emails = arrOEmail;
+        // When dateReceived is null from the .Net, then we receive the year 4501, in this case the filing crashes. TODO: Find more effective way to handle this.
+        if(filesData.emails[0].datereceived.indexOf("4501")!==-1)
+            filesData.emails[0].datereceived = '{!TodaysDateFiling}';
+        populateEmailHeader(filesData.emails[0]);
+        populateAccounts(ui,jsonInitialData, filesData.emails[0]);
+        populateContacts(ui, jsonInitialData, filesData.emails[0]);
+        ui.toggleDisableFileButtons(false);
+      }
+      
+      function passEmailsDataAsJsonStringArray(jsonEmailString){
+        if(typeof(jsonEmailString)!="string" || jsonEmailString.length==0) return;
+        try{
+            var arrOEmail = JSON.parse(jsonEmailString);
+            passEmailsData(arrOEmail);
+        }
+        catch(ex){
+            showMessage(ex.description);
+            throw ex;
+        }
+      }
+      
+      var jsonInitialData = {!jsonInitialData};
+      //files holds a ui tab data; emails holds emails data 
+      var filesData ={emails:[], arrVarying:[]};
+      var currentFile = 0;
+      var userEmail="{!NULLVALUE(userEmail,'')}";
+      //true for email, false for files
+      var filingMode = {!filingMode};
+      
+      var actdata;
+      var savedata;
+      
+      var bPredefinedProccessed = false;
+      
+      jQuery(document).ready(function() {
+        var bValid = validateBasePath();
+        if(!bValid)document.getElementById("close").click();
+        setSelectedTimeForTask();
+        
+        var filePath = getURLParam('filePath');
+        if({!isCreateFileOpen}){
+            setCreateFileOpen(getDocTemplatePath());
+        }
+        else if (filePath != null){
+            var applet = document.getElementById("filingapp");
+            var strRes = applet.openShellFile(filePath);
+            var oRes = JSON.parse(strRes);
+            if(!oRes.success){
+                 showMessage(oRes.errormessage);
+            }
+            programaticallyChooseFile(filePath);
+        }
+        j$('#tskDueDate').bind('onchange',function(){j$('#tskRemind').val(j$('#tskDueDate').datepick().val())});
+      });
+      
+      
+     
+        jQuery(window).unload(function(){ 
+           window.location.href = "/apex/blank"; 
+        });
+
+      
+        function getURLParam(name) {
+            return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[null,""])[1].replace(/\+/g, '%20'))||null;
+        }
+    
+        function setCreateFileOpen(filePath){
+            if({!!isCreateFileOpen})return;
+            ui.inFilename.title = ui.inFilename.value = getFileNameWithoutExtension(filePath);
+            
+            ui.filesize.innerText = '-'; // fileSize;
+            ui.filetype.innerText = getFileExtension(filePath);
+            email = new Object(); 
+            filesData.emails.push(email);
+            email.isfiled = false;
+            email.datereceived = '{!TodaysDateFiling}';
+            email.attachments = new Array();
+            attachment = new Object();
+            email.attachments.push(attachment);
+            attachment.size= 0; // fileSize
+            attachment.name = filePath;
+            jQuery('#delete').prop('checked', false);
+            jQuery('#delete').attr('disabled', true);
+            jQuery('#imgSelectFile').hide();
+            
+        } 
+      
+      function setSelectedTimeForTask(){
+            var d = new Date();
+            var hour = d.getHours();
+            var ceil = Math.ceil(d.getMinutes()/30);
+            var elem = document.getElementById("tskRemindTime");
+            try{
+                if(hour==23 && ceil==2) elem.selectedIndex = 0;
+                else elem.selectedIndex = hour*2+ceil;
+            }
+            catch(e){
+                elem.selectedIndex = 17;
+            } 
+      }
+      
+      function validateBasePath(){
+            var bValid = true;
+            if(!filingMode){
+               var applet = document.getElementById("filingapp");
+                //TODO: make sure the path is tested (the applets has the method when it loads)
+                if (applet == null && applet.validateBasePath == null){
+                    alert('אנא ודא תקינות של Java ולאחר מכן נסה שוב');
+                    return false;
+                }
+                         
+               if(!applet.validateBasePath(getSaveBasePath())){
+                    bValid = false
+               }
+            }
+            else{
+                if(typeof(window.external)=="object"){
+                    try{
+                        if(!window.external.validateBasePath(getSaveBasePath())){
+                            bValid = false;
+                        }
+                    }
+                    catch(e){}
+                }
+            }
+            if(!bValid){
+                var msg = "נתיב השמירה הבסיסי לא קיים:" + "\n" + 
+                            getSaveBasePath() + "\n" + 
+                            "יש למפות נתיב שמירה תקף ב-\n" + 
+                            "custom settings->Novidea Document Management->Network Base Path"; 
+                showMessage(msg);
+                return false;
+            }
+            return true;
+      }
+      
+      function taskConnectChange(selectElem){
+        while(ui.selectTaskConnectToCnt.options.length>0) ui.selectTaskConnectToCnt.options.remove(0);
+        //contact selected
+        if(selectElem.value=="cnt"){
+            //populate select Contacts
+            var arrCntData = getContactsData();
+            var optElem;
+            for(var i=0;i<arrCntData.length;++i){
+                if(""==arrCntData[i].name || arrCntData[i].name==null || 
+                    ((arrCntData[i].acid=="" || arrCntData[i].acid==null) && !arrCntData[i].newcnt && !arrCntData[i].filecnt)) continue;
+                optElem = document.createElement("option");
+                optElem.value = (arrCntData[i].acid!=null && arrCntData[i].acid!=""?arrCntData[i].acid:arrCntData[i].name);
+                optElem.text = arrCntData[i].name;
+                ui.selectTaskConnectToCnt.options.add(optElem);
+            }
+            ui.selectTaskConnectToCnt.style.display="inline";
+        }
+        else{
+            ui.selectTaskConnectToCnt.style.display="none";
+        }
+      }
+      
+      function accountSelectChanged(selectElem){
+        resetAccountAutocomplete();
+        handleAccountDataFetch(selectElem.value); 
+      }
+      
+      function resetAccountAutocomplete(){
+        ui.actname.value = "";
+        ui.actname.selectedid="";
+      }
+      
+      function handleAccountDataFetch(accId){
+           OutlookAddinController.getAccountRelatedDataLists(accId,function(result,event){
+                                                                            if (event.status) {
+                                                                                handleReturningAccountData(result, currentFile);
+                                                                            } 
+                                                                            else if (event.type === 'exception') {
+                                                                                showMessage(event.message);
+                                                                            } 
+                                                                            else {
+                                                                                showMessage(event.message);
+                                                                            }                                                                                   
+                                                                        },
+                                                                        {escape:false});
+      }
+      
+      //TODO: handle moving def mail to another radio: 
+      //make sure the routine is carried out when activated from radio selected 
+      function switchEmail(rowId, isCloneFileParamsChecked, isDefaultRadioSelected,evt){
+      
+        var emailNumber = new Number(rowId.substr(rowId.indexOf("e")+1));
+        //TODO: using the event is a hack. change to seperate call from radio change and call from click or identfy more elegantly
+        //it also works only partially when there is no file data to the email that def has moved to.
+        if(emailNumber.valueOf()==currentFile.valueOf() && 
+            !(evt.srcElement.tagName.toLowerCase()=="input" && evt.srcElement.type=="radio"))return;
+        var bDisableTab = !isDefaultRadioSelected && isCloneFileParamsChecked || filesData.emails[emailNumber].isfiled;
+        //TODO: same thing as above
+        if(!(evt.srcElement.tagName.toLowerCase()=="input" && evt.srcElement.type=="radio")){
+            buildVarying(currentFile);
+        }
+        actdata = null;
+        refreshFileTab(emailNumber, bDisableTab);
+        currentFile = emailNumber;
+      }
+      
+      function refreshFileTab(emailNumber, bDisableTab){
+        populateVaryingFromData(emailNumber);
+        populateEmailHeader(filesData.emails[emailNumber]);
+        toggleDisableFileTab(emailNumber);
+        toggleDisableFileOneButton(emailNumber);
+      }
+      
+      function populateVaryingFromData(emailNumber){
+        ui.comment.value = filesData.arrVarying[emailNumber]!==undefined?filesData.arrVarying[emailNumber].comment:"";
+      }
+      
+      function buildVarying(emailNumber){
+            if(filesData.arrVarying[emailNumber]==null)
+                filesData.arrVarying[emailNumber] = new Object();
+            filesData.arrVarying[emailNumber].comment = ui.comment.value;
+      }
+      
+      function populateEmailHeader(oEmail){
+        if(oEmail==null)return;
+        var subject, preview, to , from, attachment;
+        subject = document.getElementById("subject");
+        if (subject == null)
+            return;
+        preview = document.getElementById("preview");
+        to = document.getElementById("to");
+        from = document.getElementById("from");
+        //diana 20/06/13
+        if (ui.selectAttach != null){
+            for(var i=0;i<oEmail.attachments.length;++i){
+                attachment = document.createElement("option");
+                attachment.value = oEmail.attachments[i] == null?"":oEmail.attachments[i].index;
+                attachment.text = oEmail.attachments[i] == null?"":oEmail.attachments[i].name;       
+                ui.selectAttach.options.add(attachment);        
+            }
+        }
+        
+        //
+        subject.title = subject.innerText = oEmail.subject==null?"":oEmail.subject;
+        preview.title = preview.innerText = oEmail.preview==null?"":oEmail.preview;
+        var tempObj, seperatingChar="";
+        to.innerText="";
+        for(var i=0; i<oEmail.to.length;++i){
+            tempObj = oEmail.to[i];
+            to.innerText += (tempObj!=null?(seperatingChar + (tempObj.nick!=null && tempObj.nick!=""?tempObj.nick:tempObj.email!=null?tempObj.email:"")):"");
+            if(i==0)seperatingChar="; ";
+        }
+        to.title = to.innerText;
+        tempObj = oEmail.sender;
+        from.innerText = (tempObj!=null?(tempObj.nick!=null && tempObj.nick!=""?tempObj.nick:tempObj.email!=null?tempObj.email:""):"");
+      }
+      
+      
+      function cloneFile(oFile){
+        return jQuery.extend(true, {}, oFile); 
+      }
+      
+      function File(istemplate, id, dtypes, act, cnts, cmnt, newtsk, tsk){
+            this.istemplate = istemplate;
+            this.id = id; 
+            this.dtypes = dtypes; 
+            this.act =  act; 
+            this.cnts = cnts; 
+            this.cmnt =  cmnt;
+            this.newtsk = newtsk; 
+            this.tsk = tsk;
+      }
+      
+      //build a Fiole Object
+      function buildFile(){
+            
+            var retFile = new File(true, 0, [ui.selectDocType.value], 
+                {acid:(ui.actname.selectedid!==undefined?ui.actname.selectedid:""), acname:ui.actname.value, name:ui.actname.value}, 
+                [], 
+
+                ui.comment.value, 
+                ui.newTask.checked, 
+                {status:ui.selectTaskStatus.value,
+                connectto:ui.selectTaskConnectedTo.value,connecttocnt:ui.selectTaskConnectToCnt.value,
+                assignedTo:ui.tskAssignedToId.value,
+                prio:ui.selectTaskPrio.value, subject:ui.tskSubject.value, 
+                due:ui.tskDueDate.value, remind:ui.tskRemind.value, remindtime:ui.tskRemindTime.value}
+                );
+            
+            retFile.dynEnts = new Object();
+            retFile.act.dynEntFilters = new Object();
+            <apex:repeat value="{!filingCriterionObjects}" var="critObj">
+                retFile.act.dynEntFilters.{!JSENCODE(critObj.jsonPrefix)} = ui.{!JSENCODE(critObj.jsonPrefix)}Status.value;  
+                retFile.dynEnts.{!JSENCODE(critObj.jsonPrefix)} = {selId:ui.select{!JSENCODE(critObj.jsonPrefixCap)}.value, selName:ui.select{!JSENCODE(critObj.jsonPrefixCap)}.options[ui.select{!JSENCODE(critObj.jsonPrefixCap)}.selectedIndex].text};
+            </apex:repeat>
+            
+
+            retFile.prvt = {!showSetPrivate}?ui.isprivate.checked:false;
+
+            //list of accounts will be populated from initial data crossed with emails
+            retFile.act.selId = ui.selectAccounts.value;
+            retFile.act.selName = ui.selectAccounts.options[ui.selectAccounts.selectedIndex].text;
+
+            var arrCntData = getContactsData();
+            if(arrCntData.length>0){
+                for(var i=0;i<arrCntData.length;i++){
+                    retFile.cnts.push(arrCntData[i]);
+                }
+            }
+            return retFile;
+      }
+
+      
+      
+      function getContactsData(){
+        var retarray = new Array();
+        var cntname, newcnt, cntemail, filecnt;
+        for(var i=0;i<ui.tblContacts.rows.length;++i){
+            cntname = jQuery(ui.tblContacts.rows[i]).find("[id='cntnameCnt" + i + "']")[0];
+            newcnt = jQuery(ui.tblContacts.rows[i]).find("[id='cbkNewCnt" + i + "']")[0];
+            if(filingMode)cntemail = jQuery(ui.tblContacts.rows[i]).find("[id='lblEmailCnt" + i + "']")[0];
+            filecnt = jQuery(ui.tblContacts.rows[i]).find("[id='cbkFileCnt" + i + "']")[0];
+            retarray.push({acid:cntname.selectedid!==undefined?cntname.selectedid:null, email:cntemail?cntemail.innerText:null, 
+                                name:cntname.value, newcnt:newcnt.checked, filecnt:filecnt.checked});
+        }
+        return retarray;
+      }
+      
+      /*
+        populates either app, policy or claim select list according to given data in jsonObj
+      */
+      function populateSelectRetAccountData(jsonObj, selectElem, filter, entityArrayName, entityStatusName, entityIdName, entityNameName, selectValue){
+        if(jsonObj==null)return;
+        if (isNullOrUndefined(selectElem)){
+            alert('selectElem was null');
+            return;
+        }
+        if (isNullOrUndefined(selectElem.options)){
+            alert('options was null for selectElem:'+selectElem);
+            return;
+        }   
+        while(selectElem.options.length>1)selectElem.options.remove(1);
+        var bSelectedValueInOptions = false;
+        for(var j=0;j<jsonObj.acts.length;++j){
+
+            if (isNullOrUndefined(selectElem.options)){
+                alert('options was null for selectElem:'+selectElem);
+                return;
+            }
+
+            if (isNullOrUndefined(jsonObj.acts[j][entityArrayName])){
+                alert('acts was null for entityArrayName:'+entityArrayName + ' @'+j);
+                return;
+            }
+                
+            for(var k =0;k<jsonObj.acts[j][entityArrayName].length;k++){
+                if(filter=="1" || (filter=="0" && jsonObj.acts[j][entityArrayName][k][entityStatusName])){
+                     newOptElem = document.createElement("option");
+                     newOptElem.value = jsonObj.acts[j][entityArrayName][k][entityIdName];
+                     if(selectValue===newOptElem.value)bSelectedValueInOptions = true;
+                     newOptElem.text = jsonObj.acts[j][entityArrayName][k][entityNameName];
+                     selectElem.options.add(newOptElem);
+                }
+            }
+            if(selectValue==="undefined" || selectValue=="" || selectValue==null || selectValue=="0") 
+                selectElem.options[0].selected=true;
+            else{
+                if(!bSelectedValueInOptions) {
+                    newOptElem = document.createElement("option");
+                     newOptElem.value = selectValue;
+                     var bNameAssigned = false;
+                     if(jsonInitialData!=null && jsonInitialData.init!==undefined && jsonInitialData.init!=null){ 
+                        if(jsonInitialData.init.entName!==undefined && jsonInitialData.init.entName!=null){
+                            newOptElem.text = jsonInitialData.init.entName;
+                            bNameAssigned = true;
+                        }
+                        else if(jsonInitialData.init.entities!==undefined && jsonInitialData.init.entities!=null && jsonInitialData.init.entities.length>0){
+                            for(var i =0;i<jsonInitialData.init.entities.length;++i){
+                                if(jsonInitialData.init.entities[i].entId==selectValue){
+                                    newOptElem.text = jsonInitialData.init.entities[i].entname;
+                                    bNameAssigned = true;
+                                    break;
+                                }
+                            }
+                        }
+                     }
+                     else if(!bNameAssigned) newOptElem.text = selectValue;
+                     selectElem.options.add(newOptElem);
+                }
+                selectElem.value = selectValue;
+            }
+            bSelectedValueInOptions = false;
+        }       
+      }
+      
+      
+      
+      /*
+        handles data returning in response to account change
+      */
+      function handleReturningAccountData(jsondata, emailNumber){
+        var jsonObj = JSON.parse(jsondata);
+        //if(filesData.files[emailNumber]==null)filesData.files[emailNumber]= new Object();
+        //keep the current account data in cache that will be emptied once moving to another tab
+        actdata = jsonObj;
+        var oSelectedValues = new Object();
+        <apex:repeat value="{!filingCriterionObjects}" var="critObj">
+            oSelectedValues.{!JSENCODE(critObj.jsonPrefix)}SelectedValue = null;
+        </apex:repeat>
+        //rz change 13/12/2012: to accomodate different jsonInitialData formats for file filing and email filing.
+        //TODO: need to create common format
+        
+        if(!bPredefinedProccessed && jsonInitialData!=null && 
+            jsonInitialData.init!==undefined && jsonInitialData.init!=null && 
+            (jsonInitialData.init.entities != null && jsonInitialData.init.entities.length > 0 || 
+            jsonInitialData.init.enttype!==undefined && jsonInitialData.init.enttype!=null && jsonInitialData.init.enttype!="")
+          ){
+            if(jsonInitialData.init.entities != null){
+                for(var i=0; i< jsonInitialData.init.entities.length;++i){
+                    setCriteriaSelectedValueAndStatus(jsonInitialData.init.entities[i].enttype, jsonInitialData.init.entities[i].entId, oSelectedValues);
+                }
+            }
+            else{
+                setCriteriaSelectedValueAndStatus(jsonInitialData.init.enttype, jsonInitialData.init.entId, oSelectedValues);
+            }
+        }
+        
+        <apex:repeat value="{!filingCriterionObjects}" var="critObj">
+            populateSelectRetAccountData(jsonObj, ui.select{!JSENCODE(critObj.jsonPrefixCap)}, ui.{!JSENCODE(critObj.jsonPrefix)}Status.value, "{!JSENCODE(critObj.jsonPrefix)}s","{!JSENCODE(critObj.jsonPrefix)}Status", "{!JSENCODE(critObj.jsonPrefix)}Id", "{!JSENCODE(critObj.jsonPrefix)}Name", oSelectedValues.{!JSENCODE(critObj.jsonPrefix)}SelectedValue);
+        </apex:repeat>
+      } 
+      
+      function setCriteriaSelectedValueAndStatus (enttype, entId, oSelectedValues){
+        var filingCriterionsMap = new Object();
+        <apex:repeat value="{!filingCriterionObjects}" var="critObj">
+            if (enttype.toLowerCase() == '{!JSENCODE(critObj.apiName)}'.toLowerCase()){
+                oSelectedValues.{!JSENCODE(critObj.jsonPrefix)}SelectedValue = entId;
+                ui.{!JSENCODE(critObj.jsonPrefix)}Status.value ="1";
+            }
+        </apex:repeat>
+      }
+
+      /*
+        handles app, plc, clm, ptl status change
+      */
+      function statusChanged(selectElem,affectedSelectElem, entityArrayName, entityStatusName, entityIdName, entityNameName){
+        if(actdata==null)return;
+        //0=active; 1=all
+        var filter = selectElem.value;
+        populateSelectRetAccountData(actdata, affectedSelectElem, filter, 
+                                    entityArrayName, entityStatusName, entityIdName, entityNameName, affectedSelectElem.value);
+      }
+      
+      function toggleTaskTable(){
+        jQuery("#tblTask").toggle();
+      }
+      
+      function cloneFileParamsChanged(emailNumber, isCloneFileParamsChecked, isDefaultRadioSelected){
+        masterTable = document.getElementById("master");
+        if(currentFile.valueOf()==emailNumber.valueOf()){
+            var bDisable = !isDefaultRadioSelected && isCloneFileParamsChecked || filesData.emails[emailNumber].isfiled;
+            refreshFileTab(emailNumber, bDisable);
+        }
+      }
+    
+      /*
+        handles both cases where 
+        1. currentFile.valueOf()==emailNumber.valueOf()
+        2. radio selected in other than current tab: move to that tab
+        TODO: if moving to the tab is not acceptable then:
+        a. generate dat file for the tab with the selected radio
+        b. make sure current tab is reloaded with default data from the newly selected radio's tab
+      */
+      function defRadioChecked(emailNumber){
+        //activates switchEmail;
+        jQuery('#file' + emailNumber).find(".imgFile:first")[0].onclick();
+      }
+      
+      
+      function toggleDisableFileTab(emailNumber){
+         ui.toggleDisableFileTab(filesData.emails[emailNumber].isfiled);
+      }
+    
+      function toggleDisableFileOneButton(emailNumber){
+            ui.toggleDisableFileOneButton(filesData.emails[emailNumber].isfiled);
+      }
+      
+      function toggleDisableFileAllButton(){
+        if(filesData==null || filesData.emails==null || filesData.emails.length==0)return;
+        for(var i=0;i<filesData.emails.length;++i){
+            if(!filesData.emails[i].isfiled){
+                ui.toggleDisableFileAllButton(false);
+                return;
+            }
+        }
+        ui.toggleDisableFileAllButton(true);
+      }
+      
+      function resetSelectOption(selectElem, optionValue){
+        for(var i=1;i<selectElem.options.length;++i){
+            if(selectElem.options[i].value.toLowerCase()==optionValue.toLowerCase()){
+                selectElem.options[i].selected=true; 
+                break;
+            }
+        }
+      }
+      function resetFileTab(ui){
+            while(ui.selectAccounts.options.length>1) ui.selectAccounts.options.remove(1);
+            ui.selectAccounts.options[0].selected=true;
+            resetSelectOption(ui.selectDocType, "{!$Label.Conversation_With_Customer}");
+            resetSelectOption(ui.selectTaskStatus, "not started");
+            resetSelectOption(ui.selectTaskPrio, "normal");
+            resetSelectOption(ui.tskRemindTime, "08:00");
+            clearContacts(ui);
+        <apex:repeat value="{!filingCriterionObjects}" var="critObj">
+            while(ui.select{!JSENCODE(critObj.jsonPrefixCap)}s.options.length > 1) 
+                ui.select{!JSENCODE(critObj.jsonPrefixCap)}s.options.remove(1);
+        </apex:repeat>
+            ui.actname.value = "";
+            ui.actname.selectedid = "";
+        <apex:repeat value="{!filingCriterionObjects}" var="critObj">
+            ui.{!JSENCODE(critObj.jsonPrefix)}Status.value = "0";
+        </apex:repeat>
+            ui.comment.value = "";
+            ui.selectTaskConnectedTo.options[0].selected= true;
+            while(ui.selectTaskConnectToCnt.options.length>0) ui.selectTaskConnectToCnt.options.remove(0);
+            ui.tskDueDate.value= "{!currDate}";
+            ui.tskSubject.value = "";
+            ui.tskAssignedToName.value = "";
+            ui.tskAssignedToId.value = "";
+            ui.tskRemind.value = "{!currDate}";
+            if(ui.newTask.checked){ui.newTask.checked=false;ui.newTask.onclick();}
+        }
+            
+        function clearContacts(ui){
+            for(var i=ui.tblContacts.rows.length-1;i>=0;--i){
+                if(i==0){
+                    var cntname = jQuery(ui.tblContacts.rows[i]).find("[id='cntnameCnt0']")[0];
+                    var newcnt = jQuery(ui.tblContacts.rows[i]).find("[id='cbkNewCnt0']")[0];
+                    var cntemail = jQuery(ui.tblContacts.rows[i]).find("[id='lblEmailCnt0']")[0];
+                    var fileCnt = jQuery(ui.tblContacts.rows[i]).find("[id='cbkFileCnt0']")[0];
+                    cntname.value="";
+                    if(cntname.selectedid!=="undefined")cntname.selectedid="";
+                    // TODO: Rolan, added if cause of js error
+                    if(cntemail != null)
+                        cntemail.innerText = "";
+                    newcnt.checked=false;
+                    fileCnt.checked = false;
+                    jQuery(ui.tblContacts.rows[i]).css("display","none");
+                }
+                else{
+                    ui.tblContacts.deleteRow(i);
+                }
+            }       
+        }
+        
+            
+        function createUnifiedEmailList(oEmail){
+            var emailsObject = new Object();
+            if(oEmail.sender!=null && oEmail.sender.email!=null && oEmail.sender.email!="" && oEmail.sender.email.toLowerCase()!=userEmail.toLowerCase())
+                emailsObject[oEmail.sender.email] = true;
+            var bfound;
+            if(oEmail.to!=null && oEmail.to.length>0){
+                for(var i =0;i<oEmail.to.length>0;++i){
+                    if(emailsObject[oEmail.to[i].email] || oEmail.to[i].email!==undefined && oEmail.to[i].email!=null && oEmail.to[i].email.toLowerCase()==userEmail.toLowerCase()) continue;
+                    emailsObject[oEmail.to[i].email]=true;
+                }
+            }
+            if(oEmail.cc!=null && oEmail.cc.length>0){
+                for(var i =0;i<oEmail.cc.length>0;++i){
+                    if(emailsObject[oEmail.cc[i].email] || oEmail.cc[i].email!==undefined && oEmail.cc[i].email!=null && oEmail.cc[i].email.toLowerCase()==userEmail.toLowerCase()) continue;
+                    emailsObject[oEmail.cc[i].email]=true;
+                }
+            }
+            if(oEmail.bcc!=null && oEmail.bcc.length>0){
+                for(var i =0;i<oEmail.bcc.length>0;++i){
+                    if(emailsObject[oEmail.bcc[i].email] || oEmail.bcc[i].email!==undefined && oEmail.bcc[i].email!=null && oEmail.bcc[i].email.toLowerCase()==userEmail.toLowerCase()) continue;
+                    emailsObject[oEmail.bcc[i].email]=true;
+                }
+            }
+            return emailsObject;
+        }
+        
+        function populateContacts(ui, jsonInitialData, oEmail){
+            clearContacts(ui);
+            emails = createUnifiedEmailList(oEmail);
+            var i = 0;
+            var cnt = null, clonedElem=null;
+            var originalElem = jQuery(ui.tblContacts.rows[0]);
+            for (var key in emails) {
+                if(jsonInitialData.acts!=null && jsonInitialData.acts.length>0){
+                    for(var j=0;j<jsonInitialData.acts.length;j++){
+                        if(jsonInitialData.acts[j].cnts!=null && jsonInitialData.acts[j].cnts.length>0){
+                            for(var k=0;k<jsonInitialData.acts[j].cnts.length;++k){
+                                if(jsonInitialData.acts[j].cnts[k].email===undefined || jsonInitialData.acts[j].cnts[k].email==null) continue;
+                                if(jsonInitialData.acts[j].cnts[k].email.toLowerCase()==key.toLowerCase()) {
+                                    cnt = jsonInitialData.acts[j].cnts[k];
+                                    break;
+                                }
+                                if(cnt!=null)break;
+                            }
+                        }
+                        if(cnt!=null)break;
+                    }
+                }
+                if(cnt==null && jsonInitialData.indcnts!=null && jsonInitialData.indcnts.length>0){
+                    for(var j=0;j<jsonInitialData.indcnts.length;j++){
+                        if(jsonInitialData.indcnts[j].email===undefined || jsonInitialData.indcnts[j].email==null)continue;
+                        if(jsonInitialData.indcnts[j].email.toLowerCase()==key.toLowerCase()){
+                            cnt = jsonInitialData.indcnts[j];
+                            break;
+                        }
+                    }
+                }
+                if(i==0){
+                    clonedElem = originalElem.css("display","inline");
+                } 
+                else {
+                    clonedElem = originalElem.clone(true,true);
+                    clonedElem.find("*[id$='Cnt0']").each(function(index){this.id = this.id.replace("Cnt0","Cnt" + i);});
+                    clonedElem.appendTo(jQuery(ui.tblContacts));
+                    //this handles script element speartly because it does not clone;
+                    var scriptElem;
+                    originalElem.find("script").each(function(index){
+                        scriptElem = document.createElement("script");
+                        scriptElem.text = this.text.replace(/Cnt0/gi,"Cnt"+i);
+                        //find the span elem for the autocomplete and add the script there
+                        clonedElem.find("[id$='auCnt" + i + "']")[0].appendChild(scriptElem);
+                    });
+                    scriptElem = null;
+                }
+                clonedElem.find("[id='lblEmailCnt" + i + "']").text(key).attr("title",key);
+                clonedElem.find("[id='cntnameCnt" + i + "']")[0].value = (cnt!=null?cnt.cntName:"");
+                clonedElem.find("[id='cntnameCnt" + i + "']")[0].selectedid = (cnt!=null?cnt.cntId:"");
+                i++;
+                cnt= null;
+                clonedElem = null;
+           }
+           if(filingMode)populatePresetContact(jsonInitialData, originalElem);
+       }
+        
+        /*
+            if a contact was marked for filing, this method will take
+            care of populating it on the first contact record
+            The method will overwrite an existing contact in the 1st line
+        */
+       function populatePresetContact(jsonInitialData, originalElem){
+           if(jsonInitialData.init!==undefined && jsonInitialData.init.entities!==undefined && 
+                jsonInitialData.init.entities!=null && jsonInitialData.init.entities.length>0){
+                for(var i=0; i<jsonInitialData.init.entities.length;++i){
+                    if(jsonInitialData.init.entities[i].enttype!="contact")continue;
+                    var presetCntId = jsonInitialData.init.entities[i].entId;
+                    for(var j=0;j<jsonInitialData.indcnts.length;++j){
+                        if(jsonInitialData.indcnts[j].cntId != presetCntId)continue;
+                        originalElem.css("display","inline");
+                        document.getElementById("cntnameCnt0").value = jsonInitialData.indcnts[j].cntName;
+                        document.getElementById("lblEmailCnt0").innerText = document.getElementById("lblEmailCnt0").title = "{!$Label.Record_Marked_for_Filing}";
+                        document.getElementById("cbkFileCnt0").checked = "checked";
+                        document.getElementById("cbkNewCnt0").parentNode.style.display = "none";
+                        initContact_Cnt0(jsonInitialData.indcnts[j].cntName, presetCntId);
+                        break;
+                    }
+                    break;
+                }
+            }
+       }  
+            
+       /*
+        builds the list of accounts to select. 
+        locates the accounts of contacts that there email was in the given emails 
+       */     
+       function populateAccounts (ui, jsonInitialData, oEmail){
+            clearContacts(ui);
+            emails = createUnifiedEmailList(oEmail);
+            var i = 0;
+            var acts = new Object();
+            for (var key in emails) {
+                if(jsonInitialData.acts!=null && jsonInitialData.acts.length>0){
+                    for(var j=0;j<jsonInitialData.acts.length;j++){
+                        if(jsonInitialData.acts[j].cnts!=null && jsonInitialData.acts[j].cnts.length>0) {
+                            for(var k=0;k<jsonInitialData.acts[j].cnts.length;++k){
+                                if(jsonInitialData.acts[j].cnts[k].email===undefined || jsonInitialData.acts[j].cnts[k].email==null)continue;
+                                if(jsonInitialData.acts[j].cnts[k].email.toLowerCase()==key.toLowerCase()) {
+                                    acts[jsonInitialData.acts[j].actId]=jsonInitialData.acts[j].actName;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            var newOptElem;
+            for(var key in acts){
+                newOptElem = document.createElement("option");
+                newOptElem.value = key;
+                newOptElem.text = acts[key];
+                ui.selectAccounts.options.add(newOptElem);
+            }
+        }
+        
+       function populateAccountsFileOnly (ui, accountsToPopulate){
+            for(var i=0; i < accountsToPopulate.length; i++){
+                newOptElem = document.createElement("option");
+                newOptElem.value = accountsToPopulate[i].actId;
+                newOptElem.text = accountsToPopulate[i].actName;
+                ui.selectAccounts.options.add(newOptElem);
+            }
+        }
+
+        /*
+            this method currently valid only for file filing
+            populates pre defined filing criteria give in jsonInitiualData
+        */
+        function populateInitialFilingValues(){
+            if(jsonInitialData.init===undefined || jsonInitialData==null || jsonInitialData.init==null)return;
+            var actId,actName;
+            if(jsonInitialData.init.enttype.toLowerCase()=="contact"){
+                var cnt = document.getElementById("cntnameCnt0").value = jsonInitialData.init.entName;
+                document.getElementById("cbkFileCnt0").checked = "checked";
+                document.getElementById("cbkNewCnt0").parentNode.style.display = "none";
+                initContact_Cnt0(jsonInitialData.init.entName, jsonInitialData.init.entId);
+                if(jsonInitialData.init.acts!=null && jsonInitialData.init.acts.length>0){
+                    actId = jsonInitialData.init.acts[0].actId;
+                    actName= jsonInitialData.init.acts[0].actName;
+                }
+            }
+            else{
+                if(jsonInitialData.init.enttype.toLowerCase()=="account"){
+                    actId= jsonInitialData.init.entId;
+                    actName= jsonInitialData.init.entName;
+                }
+                else if(jsonInitialData.init.acts!=null && jsonInitialData.init.acts.length>0){
+                    actId= jsonInitialData.init.acts[0].actId;
+                    actName= jsonInitialData.init.acts[0].actName;
+                }
+             }
+             if(actId!==undefined && actId!=null){
+                  ui.actname.value=actName;
+                  initAccount(actName, actId);
+             }
+        }
+        
+        function verifyMandatoryFieldsForFile(oFile, realFileNumber){
+            if(oFile.dtypes==null || oFile.dtypes.length==0){
+                if(filingMode)showMessage("לא נבחר סוג מסמך עבור email מספר " + realFileNumber + " \n נושא: " + filesData.emails[oFile.id].subject);
+                else showMessage("לא נבחר סוג מסמך");
+                return false;
+            }
+            if(filingMode){
+                if((oFile.act.acid===undefined || oFile.act.acid==null || oFile.act.acid=="") && 
+                (oFile.act.selId===undefined || oFile.act.selId==null || oFile.act.selId=="" || oFile.act.selId=="0")){
+                    showMessage("לא נבחר לקוח עבור email מספר " + realFileNumber + " \n נושא: " + filesData.emails[oFile.id].subject);
+                    return false;
+                }
+            }
+            else{
+                if((oFile.act.acid===undefined || oFile.act.acid==null || oFile.act.acid=="") && 
+                (oFile.act.selId===undefined || oFile.act.selId==null || oFile.act.selId=="" || oFile.act.selId=="0")){
+                    showMessage("לא נבחר לקוח");
+                    return false;
+                }
+            }
+            return true;
+        }
+        
+        function verifyMandatoryFields(fileNumber){
+            //if a file does not have filing data and is not marked as copy filing
+            //alert and exit
+            var fileArray = new Array();
+            //all
+            if(fileNumber==-1 || fileNumber.valueOf()==-1){
+                fileArray = filesData.files;
+            }
+            else{
+                fileArray.push(filesData.files[fileNumber]);            
+            }
+            var oFile, realFileNumber=null;
+            if(fileArray.length==1 && !(fileNumber==-1 || fileNumber.valueOf()==-1))realFileNumber = fileNumber+1;
+            for(var i=0;i<fileArray.length;++i){
+                if(realFileNumber==null)realFileNumber = i+1;
+                if((fileArray[i]==null || fileArray[i].file==null) && !ui.isTemplate(i) && !ui.isDuplicateFiling(i)){
+                    showMessage("אין נתוני תיוק ל-email מספר " + realFileNumber + " \n נושא: " + filesData.emails[i].subject);
+                    return false;
+                }
+                else if ((fileArray[i]==null || fileArray[i].file==null) && !ui.isTemplate(i) && ui.isDuplicateFiling(i)){
+                    oFile = filesData.files[ui.getCurrentDefaultFilingNumber()].file;
+                }
+                else oFile = fileArray[i].file;
+                if(!verifyMandatoryFieldsForFile(oFile, realFileNumber)){
+                    return false;
+                }
+                realFileNumber = null;
+            }
+            return true;
+        }
+        
+        function logicalFiling(jsondata, bSingleFiling){
+            OutlookAddinController.file(jsondata,bSingleFiling,filingMode,handleLogicalSaveResult,{escape:false});
+            return true;
+        }
+        
+        function openShellFile(filePath){
+            var applet = document.getElementById("filingapp");
+            var strRes = applet.openShellFile(filePath);
+            var oRes = JSON.parse(strRes);
+            if(!oRes.success){
+                 showMessage(oRes.errormessage);
+            }
+        }
+        
+        function handleLogicalSaveResult(result,event){
+            if (event.status) {
+                 if(result.success){
+                     if(filingMode){
+                         deleteFiledItems(result.isSingleFiling);
+                     }
+                     else{
+                         deleteFiledItems(result.isSingleFiling, filesData.emails[0].attachments[0].name, savedata.files[0].file.path);
+                         if({!isCreateFileOpen}){
+                            openShellFile(savedata.files[0].file.path);
+                            document.getElementById("close").click();
+                         }
+                     }
+                     //isSingleFiling will appear when filing a single email from a group 
+                     //or when filing a single file. In either case the window should not be closed 
+                     if(!result.isSingleFiling){
+                         showMessage("{!$Label.File_Success_Message}");
+                         if(window.external)window.external.CloseContainer();
+                     }
+                     else{
+                         //TODO: is this viable: couldn't the tab change until the reply comes back?
+                         //18/11/2012: the tabs are locked until single filing is done
+                         filesData.emails[currentFile].isfiled = true;
+                         //do not disable for files (as opposed to emails) since the window needs to enable further filing
+                         if(filingMode){
+                             ui.toggleDisableFileTab(true);
+                             toggleDisableFileOneButton(currentFile);
+                             //check if all mails already filed
+                             toggleDisableFileAllButton();
+                         }
+                         else if({!!isCreateFileOpen})showMessage("{!$Label.File_Success_Message}");
+                     }
+                }
+                else if(!result.success){
+                     showMessage(result.errordesc);
+                }
+            } 
+            else if (event.type === 'exception') {
+                showMessage("{!$Label.File_Error_Message}: " +  event.message);
+            } 
+            else {
+                showMessage("{!$Label.File_Error_Message}: " +  event.message);
+            }                                                                                   
+            if(ui.filesbar!=null)ui.filesbar.disabled=false;
+            flowloadingStop();
+        }
+        
+        function physicalFiling(oSaveData, bSingleFiling){
+            if(!validateBasePath())return {success:false, showmsg:false};
+            if(filingMode) {
+            //TODO: JSON.stringify duplictes default data. need to remove 
+                var jsondata = JSON.stringify(oSaveData);
+                return physicalFilingEmail(jsondata, bSingleFiling);
+            }
+            else return physicalFilingFile(oSaveData, bSingleFiling);
+        }
+        
+        function physicalFilingEmail(jsondata, bSingleFiling){
+            var oRes;
+            if(typeof(window.external)=="object"){
+                try{
+                    var res = window.external.BrowserSubmitFile(jsondata, bSingleFiling);
+                    var oRes = JSON.parse(res);
+                    if(!oRes.success) throw(oRes.errorMessage);
+                }
+                catch(ex){
+                    //alert("got to error in physicalFilingEmail");
+                    return {success:false, message:ex};
+                }
+            }
+            else{
+                var msg = "filing callback not found";
+                return {success:false, message:msg};
+            }
+            return oRes;
+        }
+
+
+        function physicalFilingFile(oSaveData, bSingleFiling){
+            
+            startFlowloading();
+            
+            var oRes;
+            var applet = document.getElementById("filingapp");
+            try{
+                var res;
+                if({!isCreateFileOpen}){
+                    res = applet.saveFile(oSaveData.emails[0].attachments[0].name, getSaveBasePath(), ui.deleteAfterFile.checked, 
+                                        oSaveData.files[0].file.act.acname, oSaveData.files[0].file.act.acid, oSaveData.emails[0].subject);
+                }
+                else{
+                    res = applet.saveFile(oSaveData.emails[0].attachments[0].name, getSaveBasePath(), ui.deleteAfterFile.checked, 
+                                        oSaveData.files[0].file.act.acname, oSaveData.files[0].file.act.acid);
+                }
+                var oRes = JSON.parse(res.replace(/\\/g,"\\\\"));
+                if(!oRes.success){
+                    throw(oRes.errormessage);
+                }
+            }
+            catch(ex){
+                flowloadingStop();
+                return {success:false, message:ex};         
+            }
+            
+            flowloadingStop();
+            return oRes;
+        }
+
+        function deleteFiledItems(bSingleFiling, pathToDelete, pathToFiled){
+             
+            if(!ui.deleteAfterFile.checked) return;
+
+            startFlowloading();
+            if(filingMode) {
+                deleteEmails(bSingleFiling);
+            }
+            else{
+                deleteFiles(bSingleFiling,pathToDelete, pathToFiled);
+            }
+            flowloadingStop();
+        }
+        
+        function deleteFiles(bSingleFiling, pathToDelete, pathToFiled){
+            startFlowloading();
+            var applet = document.getElementById("filingapp");
+            applet.deleteFile(pathToDelete, pathToFiled);
+            flowloadingStop();
+        }
+        
+        
+        function deleteEmails(bSingleFiling){
+          startFlowloading();
+            if(typeof(window.external)=="object"){
+                if(bSingleFiling)window.external.deleteSingleEmail(filesData.emails[currentFile].entryid);
+                else window.external.deleteAllEmails();
+            }
+            flowloadingStop();
+        }
+
+        
+        
+        function fileAll(){
+        
+            //make sure an *updated* data file is created for the current tab
+            var file = buildFile();
+            //verify all files have accounts (or other mandatory fields)
+            //if(!verifyMandatoryFields(-1))return;
+            if(!verifyMandatoryFieldsForFile(file,1)) return;
+            savedata = {files:[],emails:[]};
+            //copy data and remove unneccessary fileds
+            for(var i=0;i<filesData.emails.length;++i){
+                var clonedFile = cloneFile(file);
+                clonedFile.id=i;
+                if(typeof currentFile == "object" && i!=currentFile.valueOf() || i!=currentFile ){
+                    clonedFile.cmnt = filesData.arrVarying[i]!==undefined?filesData.arrVarying[i].comment:"";
+                }
+                clonedFile.istemplate = false;
+                savedata.files.push({file:clonedFile});
+                savedata.emails.push(filesData.emails[i]);
+            }
+            //diana added 23/06/2013 
+            if(savedata.files !=null && savedata.files.length > 0 && savedata.files[0] != null && savedata.files[0].file!=null){
+                savedata.files[0].file.fileWhat = {!fileWhatParam}; 
+                if(ui.selectAttach!=null){
+                    savedata.files[0].file.fileAttachmentInds = new Array();
+                    savedata.files[0].file.fileAttachmentInds.push(new Number(ui.selectAttach.value));
+                }
+            }
+            txFile(savedata, false);
+            
+        }
+        
+        function fileOneCreateAndOpen(){
+            var bInvalid = false;
+            var fileName = ui.inFilename.value + '.' + ui.filetype.innerText; 
+            if({!!isCreateFileOpen} || (bInvalid =!validateFileName(fileName))) {
+                if(bInvalid) showMessage("The file cannot be created and filed because its name\nshould conform with naming conventions in:\nhttp://msdn.microsoft.com/en-us/library/windows/desktop/aa365247(v=vs.85).aspx");
+                return;
+            }
+            filesData.emails[currentFile].subject = fileName;
+            fileOne();
+            fileOneClicked = true;
+        }
+        
+        function fileOne(){
+            if(filesData.emails.length==0)return;
+            var file = buildFile();
+            if(!verifyMandatoryFieldsForFile(file,1))return;
+            savedata = {files:[],emails:[]};
+            savedata.files.push({file:file});
+            savedata.files[0].file.id=currentFile; 
+            savedata.emails.push(filesData.emails[currentFile]);
+            txFile(savedata, true);
+        }
+        
+        function txFile(oSaveData,bSingleFiling){
+            startFlowloading();
+            if(ui.filesbar!=null) ui.filesbar.disabled=true;
+            //first send data to fs interaction for physical save
+            var res = physicalFiling(oSaveData, bSingleFiling);
+            if(res.success){
+                //if succeeded - send data to server for logical save
+                for(var i=0;i<oSaveData.files.length;++i){
+                    if(oSaveData.files[i].file!=null)
+                        //TODO: fix res structure so that a file path can be identified by its Id. 
+                        //Cover cases where there where no files sent for each mail (only by exception)
+                        if(res.paths.length>0 && res.paths[i]!=null && res.paths[i]!="")oSaveData.files[i].file.path = res.paths[i];
+                }
+                if(!verifyPhysicalFilingConsistancy(oSaveData))return false;
+                //TODO: this duplicates data for each reference to the default object
+                var strSaveData = JSON.stringify(oSaveData);
+                logicalFiling(strSaveData,bSingleFiling);
+                return true;
+            }
+            else{
+                if(!isNullOrUndefined(res.showmsg) && !res.showmsg)return false;
+                return handleTxFileException(res.message);
+            }       
+            flowloadingStop();
+            if(ui.filesbar!=null) ui.filesbar.disabled=false;
+        }
+    
+    function verifyPhysicalFilingConsistancy(oSaveData){
+         var message = "";
+         var MESSAGE_PREFIX = "תקלת תיוק מספר ";
+         var MESSAGE_SUFFIX= "\nמסך התיוק עומד להסגר.\nאנא העתק/י את השגיאה ועדכן את התמיכה במייל:\nsupport_...@novideasoft.com.";
+         if(isNullOrUndefined(oSaveData))
+            message = MESSAGE_PREFIX + "001";
+         else if(isNullOrUndefined(oSaveData.emails)){
+            message = MESSAGE_PREFIX + "002";
+         }
+         else if(isNullOrUndefined(oSaveData.files)){
+            message = MESSAGE_PREFIX + "003";
+         }
+         else if(oSaveData.emails.length != oSaveData.files.length){
+            message = MESSAGE_PREFIX + "004";
+         }
+         if(message==""){
+             for(var i=0;i<oSaveData.files.length;++i){
+                if(isNullOrUndefined(oSaveData.files[i])){
+                    message = MESSAGE_PREFIX + "005." + i;
+                    break;
+                }
+                else if(isNullOrUndefined(oSaveData.files[i].file)){
+                    message = MESSAGE_PREFIX + "006." + i;
+                    break;
+                }
+                else if(!isNullOrUndefined(oSaveData.emails[i].isfiled) && !oSaveData.emails[i].isfiled && isNullOrUndefined(oSaveData.files[i].file.path)){
+                    message = MESSAGE_PREFIX + "007." + i;
+                    break;
+                }
+                else if(!isNullOrUndefined(oSaveData.emails[i].isfiled) && !oSaveData.emails[i].isfiled && oSaveData.files[i].file.path==""){
+                    message = MESSAGE_PREFIX + "008." + i;
+                    break;
+                }
+             }
+         }
+         if(message=="")return true;
+         message+=MESSAGE_SUFFIX;
+         return handleTxFileException(message);
+    }
+    
+    function validateFileName(val){
+        //< > : "/ \| ? *,  CON, PRN, AUX, NUL, COM1, COM2, COM3, COM4, COM5, COM6, COM7, COM8, COM9, LPT1, LPT2, LPT3, LPT4, LPT5, LPT6, LPT7, LPT8, and LPT9
+        var re = /^(?!(?:CON|PRN|AUX|NUL|COM[1-9]|LPT[1-9] )(?:\.[^.]*)?$)[^<>:\"/\\|\?\*\x00-\x1F]*[^<>:\"/\\|\?\*\x00-\x1F\\ .]$/i;
+        return re.test(val);
+    }
+    
+    function isNullOrUndefined(inval){
+        return inval===undefined || inval==null;
+    }
+    
+    function handleTxFileException(message){
+        showMessage(message); 
+        document.getElementById("close").click(); 
+        flowloadingStop();
+        if(ui.filesbar!=null) ui.filesbar.disabled=false;
+        return false;
+    }    
+    
+    function programaticallyChooseFile(filePath){
+        // Determine the file name
+        var fileName = getURLParam('fileName');
+        if (fileName == null || fileName.trim() == '')
+            fileName = getFileName(filePath);
+    
+        ui.filename.title = ui.filename.innerText =  fileName;
+        ui.filesize.innerText = '-'; // fileSize;
+        ui.filetype.innerText = getFileExtension(filePath);
+        email = new Object(); 
+        filesData.emails.push(email);
+        email.isfiled = false;
+        email.datereceived = '{!TodaysDateFiling}';
+        email.subject = fileName;
+        email.attachments = new Array();
+        attachment = new Object();
+        email.attachments.push(attachment);
+        attachment.size= 0; // fileSize
+        attachment.name = filePath;
+        jQuery('#delete').prop('checked', true);
+        jQuery('#delete').attr('disabled', true);
+        jQuery('#imgSelectFile').hide();
+        //ui.hfile.parentNode.removeChild(ui.hfile);
+    }
+    
+    function getFileExtension(fname){
+        var extIdx = fname.lastIndexOf(".");
+        if (extIdx > 0 )
+            return fname.substring(extIdx+1);
+        else
+            return '-';
+    } 
+
+    function getFileNameWithoutExtension(fname){
+        var tmpName = getFileName(fname);
+        var extIdx = tmpName.lastIndexOf(".");
+        if (extIdx > 0 )
+            return tmpName.substring(0,extIdx);
+        else
+            return '-';
+    } 
+
+    function getFileName(fname){
+        var fnameIdx = fname.lastIndexOf("/");
+        if (fnameIdx > 0 ) return fname.substring(fnameIdx+1);
+        else {
+            fnameIdx = fname.lastIndexOf("\\");
+            if(fnameIdx > 0) return fname.substring(fnameIdx+1);
+        }
+        return fname;
+    } 
+    
+    
+    function selectFile(){
+        var applet = document.getElementById("filingapp");
+        var selectres = null;
+        try{
+            var path = getPredefFileSelnDir();
+            if(path==null)
+                selectres = applet.openFileChooser();
+            else
+                selectres = applet.openFileChooser(path);
+        }
+        catch(e){
+            showMessage(e);
+            return;
+        }
+        if(selectres!=null){
+            ui.filename.title = ui.filename.innerText =  selectres.path;
+            ui.filesize.innerText = selectres.size;
+            ui.filetype.innerText = selectres.type;
+            var email, attachment;
+            if(filesData.emails.length==0){
+                email = new Object(); 
+                filesData.emails.push(email);
+            }
+            else email = filesData.emails[0];
+            email.isfiled = false;
+            email.datereceived = selectres.lastmodifieddate;
+            email.subject = selectres.filename;
+            if(email.attachments==null)
+                email.attachments = new Array();
+            if(email.attachments.length==0){
+                attachment = new Object();
+                email.attachments.push(attachment);
+            }
+            else attachment = email.attachments[0];
+            attachment.size=selectres.size;
+            attachment.name = selectres.path;
+        }
+    }
+    
+    function startFlowloading(){
+        blockScreen();
+        document.body.style.cursor='wait';
+    }
+    function flowloadingStop(){
+        document.body.style.cursor='default';
+        releaseScreen();  
+    }
+    function blockScreen(bwhite){
+        if(bwhite){
+            document.getElementById("mask").style.display = "block";
+            document.getElementById('mask').className = "notTransparent";
+        }
+        else{
+            document.getElementById("mask").style.display = "block";
+        }
+    }
+    function releaseScreen(){
+        document.getElementById("mask").style.display = "none";
+        document.getElementById('mask').className = "";
+    }
+      
+  </script>
+  <style>
+  
+        div#mask {display: none; cursor: wait; z-index: 9999; 
+                position: absolute; top: 0; {!$Label.Text_Alignment_Reverse}: 0; height: 875px; 
+                width: 100%; background-color: #fff; }
+        .notTransparent {
+            /* Theoretically for IE 8  9 (more valid)... but not required as filter works too */
+            /* should come BEFORE filter */
+            -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+            /* This works in IE 8  9 too... but also 5, 6, 7 */
+            filter: alpha(opacity=100);
+            /* Older than Firefox 0.9 */
+            -moz-opacity:1;
+            /* Safari 1.x (pre WebKit!) */
+            -khtml-opacity: 1;
+            /* Modern! Firefox 0.9+, Safari 2?, Chrome any?  Opera 9+, IE 9+ */
+            opacity: 1;
+        }
+      .searchArea{
+        background-color: transparent;
+        font-size: 14px;
+        font-weight: normal;
+        font-family: Arial,Helvetica;
+        border: 1px solid gray;
+        background-image: url('{!$Resource.search_loopa15}');
+        background-repeat: no-repeat;
+        background-position: top {!$Label.Text_Alignment};
+        background-size: 15px;
+        padding-{!$Label.Text_Alignment}: 20px;
+      } 
+      
+      #master>tbody>tr>td:first-child {
+        text-align: {!$Label.Text_Alignment_Reverse};
+      }
+      .nofilterselect {
+        width: 369px;
+      }
+      .withfilterselect{
+        width: {!IF($Label.Language_Code=='he','287px','187px')};
+      }
+      .filterselect{
+        width:{!IF($Label.Language_Code=='he','62px','80px')};
+      }
+      #master > tbody > tr > td:first-child+td{
+        vertical-align:middle;
+      }
+      
+
+    .dataCell{
+        width: {!IF($Label.Language_Code=='he','370px','270px')};
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+    .labelCol{
+        text-align:{!$Label.Text_Alignment_Reverse};
+        white-space: nowrap;
+    }
+          
+    .mainFrame{
+        float:{!$Label.Text_Alignment};
+        border:1px solid #1F497D;
+        direction:{!$Label.direction};
+        width:{!IF(filingmode,'570px','498px')};
+        padding-top: 10px;
+        padding-bottom: 10px;        
+    }
+    
+   
+    
+    .filesBar{
+        float:{!$Label.Text_Alignment};
+        width:70px;
+        height:610px;
+        overflow-y:auto;
+        margin-top: 20px;
+    }
+    
+    .filesArea{        
+        margin-top: 0px;
+    }
+    
+    .dataArea, .taskArea, .fileArea{        
+        border: 1px dashed #1F497D;
+        margin: 0px 10px 0px 0px;
+        border-radius: 25px;
+        width: 450px;
+        padding: 10px;
+        margin-bottom: 20px;
+    }
+    
+    .taskArea{
+        margin-top:20px;
+        margin-bottom:20px;
+    }
+    
+    .fileArea{
+        margin-top:20px;
+        margin-bottom:20px;
+    }
+    
+    #onlyFile{
+        display: block;
+        height: 35px;   
+    }
+    
+    .imgFile{
+        width:40px;
+        height:40px;
+    }
+    
+    .mainFrame label, .dataCell span{
+        color: #1F497D;
+        font-weight:normal;
+        font-size:14px;        
+    }
+    
+    .dataCell span{
+        color: black;
+        font-size:12px;
+    }
+    
+    .buttonsArea {
+        margin: 0px 30px 10px 30px;
+        width: 370px;
+        float: {!$Label.Text_Alignment_Reverse};
+        margin: 0px 30px 0px 30px;
+        text-align: {!$Label.Text_Alignment_Reverse};
+    }
+    
+    .areaCaption {
+        background: white;
+        margin-top: -20px;
+        margin-bottom: 10px;
+        margin-{!$Label.Text_Alignment_Reverse}: 10px;
+        margin-{!$Label.Text_Alignment}: 30px;
+        padding: 0px;
+        padding-{!$Label.Text_Alignment}: 10px;
+        padding-{!$Label.Text_Alignment_Reverse}: 10px;
+        float: {!$Label.Text_Alignment};
+    }
+    
+    .taskArea input, .taskArea select{
+        width:120px;
+    }
+    
+    .logo {
+        width:{!IF(filingmode,'570px','500px')};
+        text-align: {!$Label.Text_Alignment_Reverse};
+        margin: -5px;
+        margin-{!$Label.Text_Alignment}:0;
+        margin-bottom: -30px;
+    }
+
+    
+
+    .btnImage{
+        width:80px;
+        cursor:pointer;        
+    }
+        
+  </style>
+  
+   
+  <div class="mainFrame" Id="main">        
+
+        <div id="mask" class="notTransparent" style="display: none;"></div>
+        
+        <div class="logo">
+            <apex:image value="{!$Resource.novidea_logo}" width="100px" style="position: absolute;top: 14px;{!$Label.Text_Alignment_Reverse}: 30px;"/>
+        </div> 
+
+        <div class="filesBar" style="display:{!IF(filingmode,'block','none')}">
+                <apex:outputpanel rendered="{!filingmode}" id="filesdiv" layout="block" styleClass="filesArea">
+                    <table id="files">
+                       <tr id="file0">
+                        <td>
+                            <table style="display:none;">
+                                <tr>
+                                    <td><input type="checkbox" id="cbkDup0" checked="checked" title="שכפל פרטי תיוק" onclick="var rowNumber=new Number(this.id.substr(this.id.indexOf('p')+1));cloneFileParamsChanged(rowNumber, this.checked, jQuery('#' + ui.isTemplateIdPrefix + rowNumber)[0].checked);"></input></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="radio" id="rdDef0" name="defFileRadio" title="קבע כברירת מחדל" onclick="var rowNumber=new Number(this.id.substr(this.id.indexOf('f')+1));defRadioChecked(rowNumber);"></input></td>
+                                </tr>
+                            </table>
+                        </td>
+                           <td valign="top">
+                               <img alt="תיוק" src="{!$resource.email_out}" class="imgFile" style="cursor: pointer;border-radius:3px;"
+                               onclick="jQuery('.imgFile').css('background-color','transparent');this.style.backgroundColor='#F9A910';var rowelem =this.parentNode.parentNode; switchEmail(rowelem.id,jQuery(rowelem).find('input:checkbox')[0].checked,jQuery(rowelem).find('input:radio')[0].checked, event);"></img>
+                           </td>
+                       </tr>
+                    </table>
+                </apex:outputpanel>
+         </div>
+         
+         <div style="float:{!$Label.Text_Alignment};" id="globalArea">                 
+          <div id="master" style="padding-top: 10px;">
+            <div id="hemail" class="fileArea">
+                    <div class="areaCaption">
+                        <label>{!$Label.General}</label>
+                    </div>
+                 <table cellspacing="5px">
+                  <tr>
+                      <td class="labelCol" style="vertical-align: top;"><label>{!$Label.Subject}:</label></td>
+                      <td>
+                          <div class="dataCell" style="cursor:default;white-space:normal;max-height:15px;"><span id="subject"></span></div>
+                      </td>
+                  </tr>
+                  <tr>
+                      <td class="labelCol"><label>{!$Label.Sender}:</label></td>
+                      <td>
+                          <div class="dataCell"><span id="from"></span></div>
+                      </td>
+                  </tr>
+                  <tr>
+                      <td class="labelCol" style="vertical-align: top;"><label>{!$Label.Receiver}:</label></td>
+                      <td>
+                          <div style="max-height:50px;cursor:default;" class="dataCell"><span id="to"></span></div>                                            
+                      </td>
+                  </tr>
+                  <tr>
+                      <td class="labelCol" style="vertical-align: top;"><label>{!$Label.Preview}:</label></td>
+                      <td>
+                          <div style="white-space:normal;max-height:60px;cursor:default;" class="dataCell"><span id="preview"></span></div>                                            
+                      </td>
+                  </tr>
+                  </table>
+              </div>
+              <div id="hfile" class="fileArea">
+                  <div class="areaCaption">
+                     <label>{!$Label.General}</label>
+                 </div>
+                <table>
+                  <tr>                                        
+                      <td colspan="2" style="text-align: center;">
+                          <img src="{!IF($Label.Language_Code='he',$Resource.selectFile,$Resource.selectFileEn)}" 
+                                  id="imgSelectFile" class="btnImage" onclick="selectFile();" alt="בחר קובץ לתיוק"/>                                                                                            
+                      </td>
+                  </tr>
+                  <tr>
+                      <td  class="labelCol" valign="top"><label>{!$Label.File_Name}:</label></td>
+                      <td>
+                           <div class="dataCell" style="cursor:default;text-align:{!$Label.Text_Alignment};direction:{!$Label.direction_reverse};white-space:nowrap;text-overflow:ellipsis;">
+                            <span id="filename" style="display:{!IF(isCreateFileOpen,'none','inline')};"></span>
+                            <input id="inFilename" style="width:250px;display:{!IF(isCreateFileOpen,'inline','none')};"/>
+                           </div> 
+                      </td>                                                                                          
+
+                  </tr>
+                  <tr>
+                      <td  class="labelCol" valign="top"><label>{!$Label.File_Type}:</label></td>
+                      <td>
+                        <div class="dataCell" style="cursor:default;"><span id="filetype"></span></div> 
+                      </td>
+                  </tr>
+                  <tr>
+                      <td class="labelCol"><label>{!$Label.File_Size}:</label></td>
+                      <td>
+                          <div class="dataCell" style="cursor:default;"><span id="filesize"></span></div> 
+                      </td>
+                  </tr>
+                  </table>
+              </div>
+             </div>
+             
+            <!--diana add 19/06/13-->
+            <apex:outputPanel id="thePanel" layout="block" rendered="{!If(fileWhatParam==1,true,false)}">  
+            <div id="onlyFile" class="fileArea">
+                <div class="areaCaption">
+                    <label>{!$Label.Mail_Attachment}</label>
+                </div>  
+            <select style="float: {!$Label.Text_Alignment_Reverse}; width:375px" class="withfilterselect" id="attachment">
+            </select>                                            
+            </div>
+            </apex:outputPanel>
+            <!--  -->
+             <div class="dataArea">
+                    <div class="areaCaption">
+                        <label>{!$Label.File_Properties}</label>
+                    </div>
+                     
+                    <table cellspacing="5px" id="fileCriteria">
+                         <tr>
+                             <td class="labelCol"><label>{!$Label.File_Type}:</label></td>
+                             <td>
+                                <table style="width:100%;">
+                                    <tr>
+                                        <td>
+                                            <apex:outputpanel layout="{!IF(!showSetPrivate,'block','inline')}" styleclass="dataCell">
+                                                <select class="nofilterselect" id="doctype" style="{!IF($Label.Language_Code=='he',IF(showSetPrivate,'width:196px;','width:320px'),'width:120px')}"></select>
+                                            </apex:outputpanel>
+                                        </td>
+                                        <td>
+                                            <apex:outputpanel style="float:{!$Label.Text_Alignment_Reverse};" layout="inline" rendered="{!showSetPrivate}">
+                                                <input id="isprivate" type="checkbox" value="פרטי"/>
+                                                <label for="isprivate">{!$ObjectType.InboundDocument__c.fields.Private__c.Label}</label>
+                                            </apex:outputpanel>
+                                        </td>
+                                    </tr>
+                                </table>
+                             </td>
+                         </tr>
+                         <tr>
+                             <td class="labelCol"><label>{!$ObjectType.Account.Label}:</label></td>
+                             <td>
+                                 <table><tr>
+                                 <td>
+                                     <div style="{!IF(filingmode,'float:{!$Label.Text_Alignment};','')}">
+                                         <input id="actname" style="width:174px;" class="searchArea"></input>
+                                         <div style="{!IF(filingmode,'/*position:relative;{!$Label.Text_Alignment}:-174px;*/','')}">
+                                            <c:autocomplete width="300" searchField="{!accountDisplayFieldsCsv}" className="autocomplete" inputId="actname" objectName="Account" selectedCallBack="initAccount" />
+                                         </div>
+                                     </div>
+                                     </td><td>
+                                     <apex:outputpanel style="float:{!$Label.Text_Alignment_Reverse};" layout="inline">
+                                         <select class="nofilterselect" id="act" onchange="accountSelectChanged(this);" style="{!IF($Label.Language_Code=='he','width: 170px;','width: 130px;')}"><option value="0">--{!IF($Label.Language_Code=='he','ללא','None')}--</option></select>
+                                     </apex:outputpanel>                                                
+                                 </td>
+                                 </tr></table>
+                             </td>
+                         </tr>
+                         <tr>
+                             <td class="labelCol"><label>{!$Label.Contacts}:</label></td>
+                             <td></td>                                                
+                         </tr>
+                         <tr>
+                             <td colspan="2">
+                                 <div class="dataCell" style="margin-bottom: 5px; width: 435px;border: 1px solid gray;white-space:normal;">
+                                     <div style="{!IF(filingmode,'max-height:100px;overflow-y:auto;','')}">
+                                         <table id="cnt">
+                                             <tr>
+                                                 <td><input type="checkbox" id="cbkFileCnt0"/></td>
+                                                 <td>
+                                                     <apex:outputpanel style="cursor:default;direction: {!$Label.direction_reverse};overflow-x:hidden;width:180px;max-height:16px;overflow-y:hidden;text-overflow:ellipsis;white-space:nowrap;" layout="block" rendered="{!filingmode}">
+                                                         <span id="lblEmailCnt0"></span>
+                                                     </apex:outputpanel>
+                                                 </td>
+                                                  <td>
+                                                     <script>
+                                                            function initContact_Cnt0(cName, cId){
+                                                              var cntname = document.getElementById("cntnameCnt0");
+                                                              cntname.selectedid = cId;
+                                                            }                     
+                                                      </script>
+                                                      <input id="cntnameCnt0" style="width:120px;" class="searchArea" onkeypress="this.selectedid='';"/>
+                                                      <div>
+                                                        <c:autocomplete id="auCnt0" width="300" className="autocomplete" inputId="cntnameCnt0" objectName="Contact" selectedCallBack="initContact_Cnt0" />
+                                                      </div>
+                                                  </td>
+                                                 <td><input type="checkbox" id="cbkNewCnt0"/><span>{!$Label.New}</span></td>
+                                             </tr>
+                                         </table>
+                                     </div>
+                                 </div>
+                             </td>
+                         </tr>
+                        <apex:repeat value="{!filingCriterionObjects}" var="critObj">
+                             <tr>
+                                 <td class="labelCol"><label>{!HTMLENCODE(critObj.label)}</label></td>
+                                 <td>
+                                     <div class="dataCell">
+                                        <select style="float: {!$Label.Text_Alignment_Reverse};" class="withfilterselect" id="{!HTMLENCODE(critObj.jsonPrefix)}">
+                                            <option value="0" selected="selected">--{!IF($Label.Language_Code=='he','ללא','None')}--</option>
+                                        </select>                                            
+                                        <select  class="filterselect" id="{!HTMLENCODE(critObj.jsonPrefix)}Status" onchange="statusChanged(this,document.getElementById('{!HTMLENCODE(critObj.jsonPrefix)}'),'{!HTMLENCODE(critObj.jsonPrefix)}s','{!HTMLENCODE(critObj.jsonPrefix)}Status', '{!HTMLENCODE(critObj.jsonPrefix)}Id', '{!HTMLENCODE(critObj.jsonPrefix)}Name');">
+                                            <option value="0" selected="selected">{!$Label.In_Process}</option>
+                                            <option value="1">{!$Label.All}</option>
+                                        </select>
+                                     </div>
+                                 </td>
+                             </tr>
+                        </apex:repeat>
+
+                         <tr>
+                             <td class="labelCol" valign="top"><label>{!$Label.Remarks}:</label></td>
+                             <td>
+                                 <div class="dataCell">
+                                     <textarea id="comment" rows="2" cols="49" style="resize: none;" ></textarea>
+                                 </div>
+                             </td>
+                         </tr>
+                         <tr>
+                             <td class="labelCol">
+                                <input id="newtask" type="checkbox" value="{!$Label.Open_new_task}" onclick="toggleTaskTable();"/>
+                             </td>
+                             <td>
+                                <div class="dataCell">
+                                    <label for="newtask">{!$Label.Open_new_task}</label>
+                                </div>
+                             </td>
+                        </tr>                                    
+                 </table>
+             </div>
+             
+             <div class="taskArea" id="tblTask" style="display:none;">
+                     <div class="areaCaption">
+                             <label>{!$Label.new_task}</label>
+                      </div>
+                  <table>
+                        <tr>
+                            <td class="labelCol"><label>{!$ObjectType.Task.fields.Subject.label}:</label></td>
+                            <td><input  id="tskSubject"></input></td>
+                            <td class="labelCol"><label>{!$Label.Related_To}:</label></td>
+                            <td>
+                            <!--  TODO: Rolan: Change the options to be generated automatically base on the custom setting, except inbound document -->
+                                <select id="tskConnectTo"  onchange="taskConnectChange(this);">
+                                    <option value="0" selected="selected">--{!IF($Label.Language_Code=='he','ללא','None')}--</option>
+                                    <option value="1">{!$ObjectType.InboundDocument__c.Label}</option>
+                                    <option value="act">{!$ObjectType.Account.Label}</option>
+                                    <option value="cnt">{!$ObjectType.Contact.Label}</option>
+                        <apex:repeat value="{!filingCriterionObjects}" var="critObj">
+                            <option value="{!critObj.jsonPrefix}">{!HTMLENCODE(critObj.label)}</option>
+                        </apex:repeat>
+                                </select>
+                                <select id="tskConnectToCnt" style="display:none;"></select>
+                            </td>
+                        </tr>
+                        <tr>                                                    
+                            <td class="labelCol"><label>{!$ObjectType.Task.fields.Status.Label}:</label></td>
+                            <td><select id="tskStatus"></select></td>
+                            <td class="labelCol"><label>{!$ObjectType.Task.fields.Priority.Label}:</label></td>
+                            <td><select  id="tskPrio"></select></td>                              
+                        </tr>
+                        <tr>
+                            <td class="labelCol"><label>{!$ObjectType.Task.fields.ActivityDate.Label}:</label></td>
+                            <td>
+                                <c:datepicker fieldId="tskDueDate">
+                                    <input style="width:100px" id="tskDueDate" value="{!currDate}"></input>
+                                </c:datepicker>
+                            </td>
+                            <td class="labelCol"><label>{!$Label.Assign_To}:</label></td>
+                            <td>
+                                  <input id="tskAssignedToName" style="width:117px;" class="searchArea"></input>
+                                  <input type="hidden" id="tskAssignedToId" style="width:174px;" class="searchArea"></input>
+                                  <c:autocomplete width="300" searchField="Name" className="autocomplete" inputId="tskAssignedToName" objectName="User" selectedCallBack="initTskAssignedTo" customWhereClause="isActive=true"/>
+                            </td>
+                       </tr>
+                       <tr>     
+                            <td class="labelCol"><label>{!$Label.reminder}:</label></td>
+                            <td colspan="3">
+                                <div>
+                                <c:datepicker fieldId="tskRemind">
+                                    <input style="width:100px" id="tskRemind" value="{!currDate}"></input>
+                                </c:datepicker>
+                                <select id="tskRemindTime" style="width:60px">
+                                    <option value="00:00">00:00</option>
+                                    <option value="00:30">00:30</option>
+                                    <option value="01:00">01:00</option>
+                                    <option value="01:30">01:30</option>
+                                    <option value="02:00">02:00</option>
+                                    <option value="02:30">02:30</option>
+                                    <option value="03:00">03:00</option>
+                                    <option value="03:30">03:30</option>
+                                    <option value="04:00">04:00</option>
+                                    <option value="04:30">04:30</option>
+                                    <option value="05:00">05:00</option>
+                                    <option value="05:30">05:30</option>
+                                    <option value="06:00">06:00</option>
+                                    <option value="06:30">06:30</option>
+                                    <option value="07:00">07:00</option>
+                                    <option value="07:30">07:30</option>
+                                    <option value="08:00">08:00</option>
+                                    <option value="08:30">08:30</option>
+                                    <option value="09:00">09:00</option>
+                                    <option value="09:30">09:30</option>
+                                    <option value="10:00">10:00</option>
+                                    <option value="10:30">10:30</option>
+                                    <option value="11:00">11:00</option>
+                                    <option value="11:30">11:30</option>
+                                    <option value="12:00">12:00</option>
+                                    <option value="12:30">12:30</option>
+                                    <option value="13:00">13:00</option>
+                                    <option value="13:30">13:30</option>
+                                    <option value="14:00">14:00</option>
+                                    <option value="14:30">14:30</option>
+                                    <option value="15:00">15:00</option>
+                                    <option value="15:30">15:30</option>
+                                    <option value="16:00">16:00</option>
+                                    <option value="16:30">16:30</option>
+                                    <option value="17:00">17:00</option>
+                                    <option value="17:30">17:30</option>
+                                    <option value="18:00">18:00</option>
+                                    <option value="18:30">18:30</option>
+                                    <option value="19:00">19:00</option>
+                                    <option value="19:30">19:30</option>
+                                    <option value="20:00">20:00</option>
+                                    <option value="20:30">20:30</option>
+                                    <option value="21:00">21:00</option>
+                                    <option value="21:30">21:30</option>
+                                    <option value="22:00">22:00</option>
+                                    <option value="22:30">22:30</option>
+                                    <option value="23:00">23:00</option>
+                                    <option value="23:30">23:30</option>
+                                </select>
+                                </div>
+                            </td>
+                                                                             
+                        </tr>
+                    </table>
+             </div>
+             
+        <div class="buttonsArea" id="buttonsArea" style="padding-bottom:50px;"> 
+           <div>
+               <img class="btnImage" src="{!IF($Label.Language_Code='he',$Resource.attachCurrent,$Resource.attachCurrentEn)}" alt="{!$Label.File_Action}" onclick="if({!!isCreateFileOpen})fileOne(); else fileOneCreateAndOpen();" id="btnFileOne" style="cursor:pointer;"/>               
+           </div>
+           <br/>
+           <div>
+               <span style="float:{!$Label.Text_Alignment};display:none;">
+                   <input disabled="disabled" type="checkbox" id="delete" value=""></input><label>{!IF(filingmode,$Label.Outlook_Delete_Message,$Label.Filing_Delete_Message)}</label>
+               </span>           
+               <img class="btnImage" id="btnFileAll" 
+                       src="{!IF($Label.Language_Code='he',$Resource.attachAll,$Resource.attachAllEn)}" alt="{!$Label.File_All_Action}" onclick="fileAll();" style="cursor:pointer;display:{!IF(filingmode,'inline-block','none')};"/>               
+               <img class="btnImage" id="close" 
+                       src="{!IF($Label.Language_Code='he',$Resource.close,$Resource.closeEn)}" alt="{!$Label.Close}" onclick="handleClose();" style="cursor:pointer;"/>               
+           </div>
+        </div>
+      </div>
+  </div>
+  <script>
+    var fileOneClicked = false;
+    function handleClose(){
+    
+        var bfailed = false;
+        if(typeof(window.external)=='object'){
+            try{
+                window.external.CloseContainer();
+            }
+            catch(e){
+                bfailed=true;
+            }
+        }
+        if(bfailed){
+            /*if({!isCreateFileOpen} && fileOneClicked){
+                //window.opener.location.reload();
+            }*/
+            window.top.close();
+        }
+    }
+    
+    function UIObject(){
+        this.selectAttach = document.getElementById("attachment"); //Diana 20/06/2013
+        this.hemail = document.getElementById("hemail");
+        this.hfile = document.getElementById("hfile");
+        this.masterTable = document.getElementById("globalArea");
+        this.selectDocType = document.getElementById("doctype");
+        this.selectAccounts = document.getElementById("act");
+        this.actname = document.getElementById("actname");
+        this.tblContacts = document.getElementById("cnt");
+
+        <apex:repeat value="{!filingCriterionObjects}" var="critObj">
+            this.select{!JSENCODE(critObj.jsonPrefixCap)} = document.getElementById("{!JSENCODE(critObj.jsonPrefix)}");
+            this.{!JSENCODE(critObj.jsonPrefix)}Status = document.getElementById("{!JSENCODE(critObj.jsonPrefix)}Status");
+        </apex:repeat>
+    
+        this.comment = document.getElementById("comment");
+        this.newTask = document.getElementById("newtask");
+        this.isprivate =  document.getElementById("isprivate");
+        this.selectTaskStatus = document.getElementById("tskStatus");
+        this.selectTaskConnectedTo = document.getElementById("tskConnectTo");
+        this.tskSubject = document.getElementById("tskSubject");
+        this.tskDueDate = document.getElementById("tskDueDate");
+        this.tskRemind = document.getElementById("tskRemind");
+        this.tskRemindTime = document.getElementById("tskRemindTime");
+        this.selectTaskPrio = document.getElementById("tskPrio");
+        this.selectTaskConnectToCnt = document.getElementById("tskConnectToCnt");
+        this.tskAssignedToName = document.getElementById("tskAssignedToName");
+        this.tskAssignedToId = document.getElementById("tskAssignedToId");
+        this.tskDueDate = document.getElementById("tskDueDate");
+        this.deleteAfterFile = document.getElementById("delete");
+        this.isTemplateIdPrefix = "rdDef";
+        this.dupFilingIdPrefix = "cbkDup";
+        this.btnFileOne = document.getElementById("btnFileOne");
+        this.btnFileAll = document.getElementById("btnFileAll");
+        this.imgSelectFile = document.getElementById("imgSelectFile");
+        this.filename = document.getElementById("filename");
+        this.inFilename =  document.getElementById("inFilename");
+        this.filetype = document.getElementById("filetype");
+        this.filesize = document.getElementById("filesize");
+        this.filesbar = document.getElementById("{!$Component.filesdiv}");
+        this.isTemplate = function (fileNumber){
+            return jQuery("#" + this.isTemplateIdPrefix + fileNumber)[0].checked;
+        }
+        
+        this.isDuplicateFiling = function(fileNumber){
+            return jQuery("#" + this.dupFilingIdPrefix + fileNumber)[0].checked;
+        }       
+        this.getCurrentDefaultFilingNumber = function() {
+            var rowId = jQuery("input:radio[name='defFileRadio']:checked")[0].id;
+            var emailNumber = new Number(rowId.substr(rowId.indexOf("f")+1));
+            return emailNumber;
+        }
+        this.toggleDisableFileOneButton =  function(bDisable){
+             if(bDisable) this.btnFileOne.onclick = null;
+             else this.btnFileOne.onclick = fileOne;
+             jQuery(this.btnFileOne).attr("disabled", bDisable).css("cursor",bDisable?"default":"pointer");
+        }
+        
+        this.toggleDisableFileAllButton =  function(bDisable){
+             if(bDisable) this.btnFileAll.onclick = null;
+             else this.btnFileAll.onclick = fileAll;
+             jQuery(this.btnFileAll).attr("disabled", bDisable).css("cursor",bDisable?"default":"pointer");
+        }
+        
+        this.toggleDisableFileButtons=  function(bDisable){
+            jQuery("#buttonsArea").attr("disabled", bDisable);
+        }
+        this.toggleDisableFileTab = function(bDisable){
+         jQuery(this.masterTable).find("input,select,textarea").attr("disabled", bDisable);
+         jQuery(this.btnFileOne).css("cursor",bDisable?"default":"pointer");
+        }
+    }
+    
+    
+    //TODO: split initial load (setFileTabs=true) and later loads  (setFileTabs=false) there is nothing in common
+    function initialPopulation(setFileTabs, bDisableTab, oEmail){
+        var newOptElem;
+        //var ui = new UIObject();
+        if(setFileTabs){
+            for(var j=0;j<jsonInitialData.taskstatus.length;++j){
+              newOptElem = document.createElement("option");
+              newOptElem.value = jsonInitialData.taskstatus[j].value;
+              newOptElem.text = jsonInitialData.taskstatus[j].label;
+              if(newOptElem.value.toLowerCase()=="not started")newOptElem.selected=true;
+              ui.selectTaskStatus.options.add(newOptElem);
+            }
+            
+            for(var j=0;j<jsonInitialData.taskprio.length;++j){
+              newOptElem = document.createElement("option");
+              newOptElem.value = jsonInitialData.taskprio[j].value;
+              newOptElem.text = jsonInitialData.taskprio[j].label;
+              if(newOptElem.value.toLowerCase()=="normal")newOptElem.selected=true;
+              ui.selectTaskPrio.options.add(newOptElem);
+            }
+         
+            for(var j=0;j<jsonInitialData.doctypes.length;++j){
+              newOptElem = document.createElement("option");
+              newOptElem.value = jsonInitialData.doctypes[j].value;
+              newOptElem.text = jsonInitialData.doctypes[j].label;
+              if(newOptElem.value.toLowerCase()=="תכתובת עם לקוח")newOptElem.selected=true;
+              ui.selectDocType.options.add(newOptElem);
+            }
+            //only for emails
+            if(filingMode){
+                var fileTableElem = document.getElementById("files");
+                var numberOfEmails = jsonInitialData.emailnum;
+                var masterFileRow = fileTableElem.rows[0];
+                var clonedElem;
+                //for 1st existing email
+                //filesData.files.push(null);
+                for(var i=1;i<numberOfEmails;++i){
+                  clonedElem = jQuery(masterFileRow).clone().attr("id","file"+i).appendTo(jQuery(fileTableElem));
+                  jQuery(clonedElem).find("#" + ui.dupFilingIdPrefix + 0)[0].id= ui.dupFilingIdPrefix+i;
+                  jQuery(clonedElem).find("#" + ui.isTemplateIdPrefix + 0)[0].id= ui.isTemplateIdPrefix+i;
+                  //filesData.files.push(null);
+                }
+                jQuery(masterFileRow).find("#" + ui.isTemplateIdPrefix + 0)[0].checked=true;
+            }
+        }
+        else{
+            resetFileTab(ui);
+            populateAccounts(ui,jsonInitialData, oEmail);
+            populateContacts(ui,jsonInitialData, oEmail);
+            //toggleDisableFileTab(ui.masterTable, bDisableTab,false);
+        }
+        if (filingMode){
+            if(!bPredefinedProccessed && jsonInitialData.init!==undefined && jsonInitialData!=null && jsonInitialData.init!=null){
+                ui.actname.value=jsonInitialData.init.actName;
+                initAccount(jsonInitialData.init.actName, jsonInitialData.init.actId);
+            }
+        } else if (jsonInitialData!=null && jsonInitialData.init != null && jsonInitialData.init.acts != null){
+            // Pupulate drop down of accounts for file
+            populateAccountsFileOnly(ui,jsonInitialData.init.acts);
+        }
+    }
+    
+    var ui = new UIObject();
+    if(filingMode){
+        ui.hfile.parentNode.removeChild(ui.hfile);
+    }
+    else {
+        ui.hemail.parentNode.removeChild(ui.hemail);
+        var elem = document.createElement("applet");
+        elem.code = "com.novidea.dm.Filing";
+        elem.style.width = "0";
+        elem.style.height = "0";
+        elem.archive = "{!$Resource.FilingApplet}";
+        elem.id = "filingapp";
+        document.getElementById("imgSelectFile").parentNode.appendChild(elem);
+        //ui.hfile.rows[0].cells[1].appendChild(elem);
+        populateInitialFilingValues();          
+    }
+    initialPopulation(true, false);
+    if(filingMode) {
+        document.getElementById("file0").getElementsByTagName("img")[0].style.backgroundColor='#F9A910';
+        if(jsonInitialData.emailnum==1)document.getElementById("btnFileOne").style.display="none";
+        ui.toggleDisableFileButtons(true);
+    }
+    if({!uiActivateDeleteAfterFile})jQuery("#delete").removeAttr("disabled").parent().css("display","inline");
+</script>
+</apex:page>

@@ -1,0 +1,15 @@
+<apex:page standardController="Account" sidebar="false" showHeader="false" standardStylesheets="true" extensions="NFILING.DocumentViewStdControllerExt"> 
+ <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+     <script>
+        var entstype = "Account";
+        var entid = "{!Account.id}";
+        var entname="{!JSENCODE(Account.name)}";
+        var accountId="{!Account.id}";
+        var defaultFaxNumber = "{!JSENCODE(defaultFaxNumber)}";
+        var defaultEmail = "{!JSENCODE(defaultEmail)}";
+        var defaultMobileSMS= "{!JSENCODE(defaultMobileSMS)}";
+    </script>
+    <div style="width:100%;">
+    <NFILING:DocumentSearch psearchparams="{!searchparams}" pdisplayFilter="false"/>
+    </div>
+</apex:page>

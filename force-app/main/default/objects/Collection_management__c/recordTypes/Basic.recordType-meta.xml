@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Basic</fullName>
+    <active>true</active>
+    <label>ניהול גביה</label>
+    <picklistValues>
+        <picklist>Insurance_Reminder__c</picklist>
+        <values>
+            <fullName>AIG</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CFC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PRS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>WS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>איילון</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>גאסט קריגר</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>הכשרה</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>הפניקס</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>הראל</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>חקלאי</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>כלל</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>לונדון</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>מגדל</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>מנורה</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>סלה גרופ</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>פרייס פורבס</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>שלמה</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>status_collection__c</picklist>
+        <values>
+            <fullName>בדיקת תשלום</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>דיווח NCB</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>הושלם</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>התראה לפני ביטול</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>חדש</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>חוב%2Fזכות אצל המבטח %E2%80%93 פוליסה %2F תוספת לא מדווחת</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>מייל חריגה</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>מייל שני</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>מעקב לזיכוי לקוח</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>פוליסה מדווחת אין דרישה</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>תזכורת לתשלום</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>תזכורת לתשלום תוספת</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>תזכורת ראשונה</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>תשלום שכ%22ט</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>תשלום תוספת</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Create_collection</fullName>
+    <availability>online</availability>
+    <displayType>button</displayType>
+    <encodingKey>UTF-8</encodingKey>
+    <hasMenubar>false</hasMenubar>
+    <hasScrollbars>true</hasScrollbars>
+    <hasToolbar>false</hasToolbar>
+    <height>600</height>
+    <isResizable>true</isResizable>
+    <linkType>url</linkType>
+    <masterLabel>יצירת תקבול</masterLabel>
+    <openType>newWindow</openType>
+    <position>none</position>
+    <protected>false</protected>
+    <showsLocation>false</showsLocation>
+    <showsStatus>false</showsStatus>
+    <url>/lightning/o/Novidea_HPC__Collection__c/new?useRecordTypeCheck=1&amp;
+defaultFieldValues=
+Novidea_HPC__Policy__c={!Collection_management__c.Policy_ID__c}&amp;
+backgroundContext=%2Flightning%2Fr%2FCollection_management__c%2F{!Collection_management__c.Id}%2Fview</url>
+</WebLink>

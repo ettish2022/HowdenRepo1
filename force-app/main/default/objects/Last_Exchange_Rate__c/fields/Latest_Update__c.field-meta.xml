@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Latest_Update__c</fullName>
+    <description>מעיד על מועד ביצוע הריצה ולא על מועד תוקף הנתונים
+מועד תוקף הנתונים נגזר מתקינות הריצות של מנגנון שערי ההמרה</description>
+    <externalId>false</externalId>
+    <label>Latest Update</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

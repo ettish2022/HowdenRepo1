@@ -1,0 +1,47 @@
+<apex:page >
+    <style>
+        .btn-wdt{
+            width: 7;
+            margin-bottom: 5px;
+            text-align: center;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var displayFilingArray = {};
+            displayFilingArray['filingRecords'] = {!$Setup.Novidea_Document_Management__c.Display_filing_records__c};
+            displayFilingArray['filingScans'] = {!$Setup.Novidea_Document_Management__c.Display_Filing_scans__c};
+            displayFilingArray['filingFiles'] = {!$Setup.Novidea_Document_Management__c.Display_Filing_Files__c};
+            
+            for(var key in displayFilingArray){
+                var displayFiling = displayFilingArray[key];
+                var filingButton = document.getElementById(key);
+                filingButton.style.display = displayFiling ? 'block' : 'none';
+            }
+        });
+        function openFieldFilesWindow(){
+            var entid =  "{!$CurrentPage.parameters.Id}";
+            window.open("/apex/OutlookAddin?mode=0&entid=" +entid,null,"fullscreen=0,width=680,height=720,resizable=1,menubar=0,toolbar=0,location=0,scrollbars=1"); 
+        }
+            
+        function openFieldRecordsWindow(){
+            var entid = "{!$CurrentPage.parameters.Id}";
+            window.open("/apex/OutlookAddin?mode=0&entid=" +entid + "&usepath=1",null,"fullscreen=0,width=680,height=720,resizable=1,menubar=0,toolbar=0,location=0,scrollbars=1"); 
+        }
+        
+         function openFieldScansWindow(){
+            var entid = "{!$CurrentPage.parameters.Id}";    
+            window.open("/apex/OutlookAddin?mode=0&entid=" +entid + "&usepath=2",null,"fullscreen=0,width=680,height=720,resizable=1,menubar=0,toolbar=0,location=0,scrollbars=1"); 
+        }
+    </script>
+    <div style="text-align: center;">
+        <input class="btn-wdt" style="font-size: 10pt; cursor: pointer;" id="filingFiles" onclick="openFieldFilesWindow();" value="{!$Label.Filing_files}" type="button"/>
+    </div>
+    
+    <div style="text-align: center">
+        <input class="btn-wdt" style="font-size: 10pt; cursor: pointer" id="filingRecords" onclick="openFieldRecordsWindow();" value="{!$Label.Filing_records}" type="button"/>
+    </div>
+    <div style="text-align: center">
+        <input class="btn-wdt" style="font-size: 10pt; cursor: pointer" id="filingScans" onclick="openFieldScansWindow();" value="{!$Label.Filing_scans}" type="button"/>
+    </div>
+</apex:page>

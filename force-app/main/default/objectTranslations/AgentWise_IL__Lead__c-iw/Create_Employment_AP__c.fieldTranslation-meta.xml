@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>צור רשומת עובד-מעסיק</label>
+    <name>Create_Employment_AP__c</name>
+</CustomFieldTranslation>

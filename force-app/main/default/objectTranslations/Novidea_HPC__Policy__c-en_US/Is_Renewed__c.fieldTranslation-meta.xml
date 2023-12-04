@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help></help>
+    <label>Renewal</label>
+    <name>Is_Renewed__c</name>
+    <picklistValues>
+        <masterLabel>חודש</masterLabel>
+        <translation>Renewed</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>לא חודש</masterLabel>
+        <translation>Not renewed</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>ממתין ללקוח</masterLabel>
+        <translation>Awaiting Customer</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>נדחה ע&quot;י לקוח</masterLabel>
+        <translation>Rejected By Customer</translation>
+    </picklistValues>
+</CustomFieldTranslation>

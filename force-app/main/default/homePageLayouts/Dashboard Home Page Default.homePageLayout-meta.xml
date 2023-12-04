@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<HomePageLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <narrowComponents>howdenlogo</narrowComponents>
+    <narrowComponents>standard-UsefulLinks</narrowComponents>
+    <narrowComponents>קישורים ניהוליים</narrowComponents>
+    <narrowComponents>standard-RecentItems</narrowComponents>
+    <narrowComponents>תיוק קבצים וסריקות</narrowComponents>
+    <narrowComponents>NFILING__Filing</narrowComponents>
+    <narrowComponents>standard-CreateNew</narrowComponents>
+    <wideComponents>standard-ProcessWorkitems</wideComponents>
+    <wideComponents>standard-Calendar</wideComponents>
+    <wideComponents>standard-Tasks</wideComponents>
+    <wideComponents>standard-Dashboard</wideComponents>
+</HomePageLayout>

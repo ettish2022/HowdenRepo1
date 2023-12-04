@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>New_Policy</fullName>
+    <availability>online</availability>
+    <displayType>massActionButton</displayType>
+    <encodingKey>UTF-8</encodingKey>
+    <linkType>url</linkType>
+    <masterLabel>פוליסה חדשה</masterLabel>
+    <openType>replace</openType>
+    <protected>false</protected>
+    <requireRowSelection>false</requireRowSelection>
+    <url>{!URLFOR(&apos;/setup/ui/recordtypeselect.jsp?&apos; + 
+&apos;&amp;ent=01ID0000000y8f8&apos;  +
+&apos;&amp;retURL=&apos; + Account.Id )}&amp;save_new_url={!URLFOR(&apos;/a0N/e?&apos; + Novidea_HPC__Policy__c.Id  
+ )}</url>
+</WebLink>

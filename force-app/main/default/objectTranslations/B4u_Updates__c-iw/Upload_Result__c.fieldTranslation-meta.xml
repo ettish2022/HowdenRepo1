@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>תוצאת עדכון</label>
+    <name>Upload_Result__c</name>
+    <picklistValues>
+        <masterLabel>Cant Be Updated</masterLabel>
+        <translation>לא רלוונטי לעדכון</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Check Dates</masterLabel>
+        <translation>תאריכי יצירה אינם תואמים את תאריך הפגישה, לבדוק</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Found Meeting Id And Updated Meeting And Also Lead</masterLabel>
+        <translation>נמצאו ליד ופגישה ועודכנו שניהם</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Found Only Lead Without Meeting</masterLabel>
+        <translation>נמצא רק ליד ללא פגישה או יותר מפגישה אחת</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Found Only Meeting Without Lead</masterLabel>
+        <translation>נמצאה רק פגישה ללא ליד</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Record Id For Update Not Found</masterLabel>
+        <translation>לא נמצאה רשומת ליד/פגישה במזהה זה</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>RecordId For Update Is Not Legit</masterLabel>
+        <translation>מזהה לא חוקי לעדכון (לא ליד או פגישה)</translation>
+    </picklistValues>
+</CustomFieldTranslation>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label></label>
+    <name>Field2DebtAging__c</name>
+    <picklistValues>
+        <masterLabel>1- 60 יום</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>2- 75 יום חריגה</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>3- 90 יום פוליסה לפני ביטול</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>4- פוליסה מבוטלת</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>5- חוב שכ&quot;ט</masterLabel>
+        <translation></translation>
+    </picklistValues>
+</CustomFieldTranslation>

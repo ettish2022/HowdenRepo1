@@ -1,0 +1,376 @@
+﻿	var noRsultsFound;
+ 	function searchTextFunction(stext,params){
+ 
+		if (stext == null || stext.length < 2)
+			return;
+ 
+        var objectname = params.split(':')[0];
+        var recordType = params.split(':')[1];
+        var compId     = params.split(':')[2];
+        var searchField = params.split(':')[3];
+        var fieldToSearchIn = params.split(':')[4];
+        var distinct = false;
+        params.split(':')[5] != '' ? distinct = params.split(':')[5] : distinct = false;
+		
+		if (typeof(Novidea_HPC) == "object") 
+			AutoComplete_Controller = Novidea_HPC.AutoComplete_Controller;                    				
+		
+		remoteFunctionSelector(compId,objectname, recordType, stext, searchField, distinct, (fieldToSearchIn === "NULL" ? null : fieldToSearchIn) );
+    }
+ 	
+    function remoteFunctionSelector(compId,objectname, recordType, stext, searchField, distinct,fieldToSearchIn){
+    	AutoComplete_Controller.searchSuggestionArray3(objectname, recordType, stext, searchField, distinct,fieldToSearchIn,
+				function (result, event){
+					if (event.status) {
+						searchSuccess(compId,replaceXmlEntities(result));
+					} 
+					else if (event.type === 'exception') {
+						searchFailure(compId, event.message);
+					} 
+					else {
+						searchFailure(compId, event.message);
+					}
+				}, 
+		{escape:true});
+    }
+    function replaceXmlEntities(value){
+    	if(value==null || value=="") return value;
+    	return value.replace(/&amp;amp;/g,"&amp;").replace(/&amp;quot;/g,"\"").replace(/&amp;apos;/g,"'").replace(/&amp;lt;/g,"&lt;").replace(/&amp;gt;/g,"&gt;").replace(/&quot;/g, '"').replace(/&amp;/g,"&");
+    }
+				
+    function searchSuccess(compId,jsonListValues){
+        try{
+			var results = JSON.parse(jsonListValues);
+			clear(compId);
+			if (results.length == 0) {
+				noResultsFailure(compId);
+			}
+			for (var resultIndex in results) {
+				 resultElement = results[resultIndex];															
+				 if (typeof resultElement == 'object'){
+					 var myElement = document.createElement('div');
+					 myElement.className = 'optionClass';
+					 myElementId = document.createElement('div');
+					 myElementId.style.display="none";								 
+					 textNodeSid = document.createTextNode(resultElement.sid);                                               
+					 textNodeS = document.createTextNode(resultElement.name);
+					 
+					 var description = '';
+					 for (var field in resultElement)
+							if (field != 'name' && field != 'sid' && resultElement[field] != null)
+								description += resultElement[field] + ' | ';
+					 
+					 if (description == '')
+						 description = resultElement.name;
+					 
+					 myElement.title = description;
+					 
+					 myElement.appendChild(textNodeS);
+					 myElementId.appendChild(textNodeSid);                        
+					 var container = document.getElementById('suggestions' + compId);
+					 container.appendChild(myElement);       
+					 container.appendChild(myElementId);
+				}
+			}
+		}
+		catch(e){
+			alert(e.description);
+		}
+        
+        /* why???
+		   if(document.getElementById('{!InputId}').type == 'hidden'){
+             var cont=document.getElementById('suggestions' + compId);cont.innerHTML='';
+             cont.style.display='none';
+          }*/
+    }
+    
+    function searchFailure(compId, err){
+        noResultsFailure(compId);
+    }
+    
+    function noResultsFailure(compId){
+        var myElement = document.createElement('div');
+        myElement.className = 'optionClass';
+        myElementId = document.createElement('div');
+        myElement.id = 'suggestions' + compId + 'N_R';
+        myElement.style.background = "#CCCCFF";
+        textNodeS = document.createTextNode(noRsultsFound);
+        myElement.appendChild(textNodeS);
+        var container = document.getElementById('suggestions' + compId);
+        container.appendChild(myElement);       
+        container.appendChild(myElementId);
+    }
+    
+    function clear(compId) {
+        var container = document.getElementById('suggestions' + compId);
+        container.innerHTML = '';
+    } 
+
+//----- Igall ends
+
+				
+AutoCompleteAJAX = function(input,suggestions,searchFunction,clearfunction,objectn, callback, searchString, noRsultsFoundLabel)
+	{
+
+	//Global Variables
+	
+	var IS_IE = true;
+	var timer;
+	var bgColor = "#699FB1";
+	var searchColor = "#699FB1";
+	//raniz change 29/10/2012
+	//var bgColorRGB = unescape("rgb%2842%2C63%2C70%29");
+	var bgColorRGB= unescape("rgb%28105%2C%20159%2C%20177%29");
+	noRsultsFound = noRsultsFoundLabel;
+	var searchID = suggestions.id+"tmpsearch";
+	var clearFunction = clearfunction;
+	var noResultsID = suggestions.id+"N_R";
+	
+	//Attach Event Handlers
+
+	if(input.attachEvent){
+		input.attachEvent("onkeyup", handleKeyUp);
+		input.attachEvent("onkeydown", handleArrows);
+		input.attachEvent("onblur",handleBlur);
+		input.attachEvent("onfocus",handleFocus);
+		suggestions.attachEvent("onmouseover",initializeMouseOver);
+	}
+	else{
+		IS_IE = false;
+		//raniz change 29/10/2012
+		//bgColor= "#699FB1";
+		//bgColorRGB= unescape("rgb%28105%2C%20159%2C%20177%29");
+		input.onkeyup=handleKeyUp;
+		input.onkeydown=handleArrows;
+		input.onblur=handleBlur; 
+		input.onfocus=handleFocus;
+		suggestions.onmouseover=initializeMouseOver;
+	}
+
+	function hideAutoComplete(){
+		suggestions.innerHTML = "";
+		suggestions.style.display = "none";
+	}
+       
+	function getCursor()
+	{
+		if(suggestions.innerHTML.length == 0){
+			return -1;
+		}else{
+	
+			if(suggestions.childNodes[0].id == searchID || suggestions.childNodes[0].id == noResultsID){
+				return -1;
+			}
+			
+			for (var i = 0; i < suggestions.childNodes.length; i++){
+				if (suggestions.childNodes[i].style.backgroundColor.toUpperCase() == bgColor || suggestions.childNodes[i].style.backgroundColor.toLowerCase() == bgColorRGB){
+					return i;
+				}
+			}
+			return suggestions.childNodes.length;
+		}
+	}
+	
+	
+	function initializeMouseOver(event)
+	{
+
+		if(suggestions.childNodes.length > 0){
+		
+			if(suggestions.childNodes[0].id == searchID || suggestions.childNodes[0].id == noResultsID){
+				return;
+			}else{
+			
+				if(IS_IE){
+				
+					for (var i = 0; i < suggestions.childNodes.length; i++){
+						suggestions.childNodes[i].detachEvent("onmouseover",handleMouseOver);
+						suggestions.childNodes[i].attachEvent("onmouseover",handleMouseOver);
+						suggestions.childNodes[i].detachEvent("onmouseout",handleMouseOut);
+						suggestions.childNodes[i].attachEvent("onmouseout",handleMouseOut);
+						suggestions.childNodes[i].detachEvent("onmousedown",handleMouseClick);
+						suggestions.childNodes[i].attachEvent("onmousedown",handleMouseClick);		
+					}
+					
+				}else{
+
+					for (var i = 0; i < suggestions.childNodes.length; i++){
+											
+							suggestions.childNodes[i].onmouseover = handleMouseOver;
+							suggestions.childNodes[i].onmouseout = handleMouseOut;
+							suggestions.childNodes[i].onmousedown = handleMouseClick;		
+					}
+										
+				}	
+			}
+		}
+	}
+	
+	function handleMouseClick(event){
+
+		var sid;
+		
+		if(IS_IE){		
+			if(event.srcElement.id)
+				input.value = event.srcElement.id;
+			else
+				input.value = event.srcElement.innerText;
+
+			if(event.srcElement.nextSibling!=null) sid = event.srcElement.nextSibling.innerText;
+		}else{
+			if(event.target.id)
+				input.value =  event.target.id;			
+			else
+				input.value =  event.target.textContent;
+
+			if(event.target.nextSibling!=null) sid = event.target.nextSibling.textContent
+		}
+		
+		var s = input.value;
+					
+		eval(callback + '("' + s.replace(/\"/g,"\\\"") + '","' + sid + '");');
+		
+	}
+	
+	function handleMouseOver(event){
+
+		if(IS_IE){
+			if(event.srcElement.style.backgroundColor.toUpperCase() != bgColor) {
+				for (var i = 0; i < suggestions.childNodes.length; i++)
+					suggestions.childNodes[i].style.backgroundColor = "";
+				event.srcElement.style.backgroundColor = searchColor;				
+			}
+		}else{
+			if(event.target.style.backgroundColor.toLowerCase() != bgColorRGB) {
+				for (var i = 0; i < suggestions.childNodes.length; i++)
+					suggestions.childNodes[i].style.backgroundColor = "";
+				event.target.style.backgroundColor = searchColor;				
+			}
+		}
+	}
+	
+	function handleMouseOut(event){
+
+		if(IS_IE){
+			if(event.srcElement.style.backgroundColor.toUpperCase() != bgColor)
+				event.srcElement.style.backgroundColor = "";		
+		}else{
+			if(event.target.style.backgroundColor.toLowerCase() != bgColorRGB)	
+				event.target.style.backgroundColor = "";
+		}
+	}
+	
+	function handleKeyUp(event){
+	
+		//if key is not an arrow or enter
+		if (event.keyCode != 40 && event.keyCode != 38 && event.keyCode != 13 && event.keyCode != 37 && event.keyCode != 39 && event.keyCode != 27){
+
+			if(timer!=null){clearTimeout(timer);timer=null;}
+				if (input.value.length == 0){
+					hideAutoComplete();
+				}else{ 		 
+	               	 timer = setTimeout(function(){window[searchFunction](input.value,objectn);displayStatus();},350);
+	            }
+		}
+		
+	}
+
+	function displayStatus(){
+	
+       	suggestions.innerHTML='';
+        suggestions.style.display='';
+        var myElement = document.createElement('div');
+        myElement.id = searchID;
+        myElement.className = 'searchingClass';
+        var textNode = document.createTextNode(searchString);
+        myElement.appendChild(textNode);
+        suggestions.appendChild(myElement);
+	
+	}
+	
+	function handleArrows(event){
+	
+		if(input.value.length == 0 || event.keyCode == 27){
+			//make sure autocomplete has no values
+			hideAutoComplete();
+			return;
+		}
+		
+		try{
+		
+			var cursor = getCursor();
+					
+			if (event.keyCode == 13 || event.keyCode == 9){
+	
+				if (cursor != -1 && cursor < suggestions.childNodes.length)
+				{
+					var id = "";
+					if (IS_IE){
+						if(suggestions.childNodes[cursor].id)
+							input.value = suggestions.childNodes[cursor].id;
+						else
+							input.value = suggestions.childNodes[cursor].innerText;
+						//raniz: this works for IE 7-9, textContent doesn't work for 8
+						id = suggestions.childNodes[cursor + 1].innerText;
+					}
+					else{
+						if(suggestions.childNodes[cursor].id)
+							input.value = suggestions.childNodes[cursor].id;
+						else
+							input.value = suggestions.childNodes[cursor].textContent;
+						id = suggestions.childNodes[cursor + 1].textContent;
+					}
+					
+					eval(callback + '("' + input.value.replace(/\"/g,"\\\"") + '","' + id + '");');
+
+					hideAutoComplete();
+				}
+			
+			}else if(event.keyCode == 40 || event.keyCode == 38){
+			
+			
+				if (cursor != -1){
+			
+					if (event.keyCode == 40)
+					{
+						if (cursor == suggestions.childNodes.length){
+							suggestions.childNodes[0].style.backgroundColor = bgColor;
+							suggestions.childNodes[suggestions.childNodes.length - 1].style.backgroundColor = "";
+						}else if (cursor < suggestions.childNodes.length - 1){
+							suggestions.childNodes[cursor].style.backgroundColor = "";
+							suggestions.childNodes[cursor + 2].style.backgroundColor = bgColor;
+						}
+						
+	
+					}else{
+						if (cursor > 0){
+							suggestions.childNodes[cursor].style.backgroundColor = "";
+							suggestions.childNodes[cursor - 2].style.backgroundColor = bgColor;
+						
+						}else{
+							hideAutoComplete();
+						}
+					}
+				}
+			}
+			
+		}catch(e){}
+	
+	}
+	
+	function handleBlur(event)
+	{		
+		if(timer!=null){
+			clearTimeout(timer);
+			timer=null;
+		}
+		hideAutoComplete();
+		
+	}
+	
+	function handleFocus(event){
+	
+		hideAutoComplete();
+	
+	}
+}

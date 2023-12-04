@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>57.0</apiVersion>
+    <environments>Default</environments>
+    <interviewLabel>YH _debug del flow interviews {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>YH _debug del flow interviews</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <recordDeletes>
+        <name>Delete_Interviews</name>
+        <label>Delete Interviews</label>
+        <locationX>176</locationX>
+        <locationY>278</locationY>
+        <inputReference>Get_Interviews_To_Delete</inputReference>
+    </recordDeletes>
+    <recordLookups>
+        <name>Get_Interviews_To_Delete</name>
+        <label>Get Interviews To Delete</label>
+        <locationX>176</locationX>
+        <locationY>158</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Delete_Interviews</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>InterviewLabel</field>
+            <operator>StartsWith</operator>
+            <value>
+                <stringValue>YH</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>FlowInterview</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Interviews_To_Delete</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+</Flow>

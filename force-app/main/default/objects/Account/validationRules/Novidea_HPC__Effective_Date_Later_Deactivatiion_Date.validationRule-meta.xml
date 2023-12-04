@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Novidea_HPC__Effective_Date_Later_Deactivatiion_Date</fullName>
+    <active>true</active>
+    <description>The Approval Date To can not be earlier than Approval Date From</description>
+    <errorConditionFormula>CONTAINS(RecordType.DeveloperName, &quot;Business&quot;) &amp;&amp;   NOT(ISNULL(Novidea_HPC__Deactivation_Date__c))  &amp;&amp; (Novidea_HPC__Business_Effective_Date__c &gt; Novidea_HPC__Deactivation_Date__c)</errorConditionFormula>
+    <errorMessage>The Approval Date To can not be earlier than Approval Date From</errorMessage>
+</ValidationRule>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Personal_Category__c</fullName>
+    <description>SHould be populated with csv of categories.
+Policy transaction with product definitions that point to these categories can be used to create multiple policies in one button click.</description>
+    <externalId>false</externalId>
+    <label>Personal Category</label>
+    <length>255</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

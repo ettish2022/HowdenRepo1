@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Novidea_HPC__Collect</fullName>
+    <availability>online</availability>
+    <displayType>button</displayType>
+    <linkType>page</linkType>
+    <masterLabel>Collect</masterLabel>
+    <openType>replace</openType>
+    <page>Novidea_HPC__CollectAccount</page>
+    <protected>false</protected>
+</WebLink>

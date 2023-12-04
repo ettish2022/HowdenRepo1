@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Default_Email_Field__c</fullName>
+    <description>This is the default email to send when an inboundDocument is being emailed from a list in this entity, or when its single view is opened from a list in this entity and then emailed</description>
+    <externalId>false</externalId>
+    <label>Default Email Field</label>
+    <length>255</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

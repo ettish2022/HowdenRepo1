@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sector_Account__c</fullName>
+    <externalId>false</externalId>
+    <label>סקטור</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Medical</fullName>
+                <default>false</default>
+                <label>Medical</label>
+            </value>
+            <value>
+                <fullName>Industries</fullName>
+                <default>false</default>
+                <label>Industries</label>
+            </value>
+            <value>
+                <fullName>RI</fullName>
+                <default>false</default>
+                <label>RI</label>
+            </value>
+            <value>
+                <fullName>הנדסי</fullName>
+                <default>false</default>
+                <label>הנדסי</label>
+            </value>
+            <value>
+                <fullName>מקצועות חופשיים</fullName>
+                <default>false</default>
+                <label>מקצועות חופשיים</label>
+            </value>
+            <value>
+                <fullName>עו&quot;ד</fullName>
+                <default>false</default>
+                <label>עו&quot;ד</label>
+            </value>
+            <value>
+                <fullName>FI</fullName>
+                <default>false</default>
+                <label>FI</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+            <value>
+                <fullName>סוכנים</fullName>
+                <default>false</default>
+                <label>סוכנים</label>
+            </value>
+            <value>
+                <fullName>פרט</fullName>
+                <default>false</default>
+                <label>פרט</label>
+            </value>
+            <value>
+                <fullName>Hi Tech</fullName>
+                <default>false</default>
+                <label>Hi Tech</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

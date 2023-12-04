@@ -1,0 +1,510 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Policy_Record_Page4</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+        <pageOrSobjectType>Novidea_HPC__Policy__c</pageOrSobjectType>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Policy_Record_Page4</content>
+        <formFactor>Small</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+        <pageOrSobjectType>Novidea_HPC__Policy__c</pageOrSobjectType>
+    </actionOverrides>
+    <brand>
+        <headerColor>#0070D2</headerColor>
+        <logo>MicrosoftTeamsimage4</logo>
+        <logoVersion>1</logoVersion>
+        <shouldOverrideOrgTheme>true</shouldOverrideOrgTheme>
+    </brand>
+    <formFactors>Small</formFactors>
+    <formFactors>Large</formFactors>
+    <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
+    <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
+    <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
+    <label>Howden פרט</label>
+    <navType>Standard</navType>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Record_Page16</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Novidea_HPC__Lead__c</pageOrSobjectType>
+        <recordType>Novidea_HPC__Lead__c.HPCLeadEx__Home</recordType>
+        <type>Flexipage</type>
+        <profile>Individual File Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Record_Page16</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Novidea_HPC__Lead__c</pageOrSobjectType>
+        <recordType>Novidea_HPC__Lead__c.HPCLeadEx__Home</recordType>
+        <type>Flexipage</type>
+        <profile>מנהל פרט</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Record_Page16</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Novidea_HPC__Lead__c</pageOrSobjectType>
+        <recordType>Novidea_HPC__Lead__c.HPCLeadEx__Home_qualification</recordType>
+        <type>Flexipage</type>
+        <profile>מנהל פרט</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Record_Page16</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Novidea_HPC__Lead__c</pageOrSobjectType>
+        <recordType>Novidea_HPC__Lead__c.HPCLeadEx__Home_qualification</recordType>
+        <type>Flexipage</type>
+        <profile>מנהל פרט</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Record_Page16</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Novidea_HPC__Lead__c</pageOrSobjectType>
+        <recordType>Novidea_HPC__Lead__c.Novidea_HPC__Individual_Lead</recordType>
+        <type>Flexipage</type>
+        <profile>Individual File Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Record_Page16</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Novidea_HPC__Lead__c</pageOrSobjectType>
+        <recordType>Novidea_HPC__Lead__c.HPCLeadEx__Home</recordType>
+        <type>Flexipage</type>
+        <profile>מנהל פרט</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Record_Page16</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Novidea_HPC__Lead__c</pageOrSobjectType>
+        <recordType>Novidea_HPC__Lead__c.HPCLeadEx__Home_qualification</recordType>
+        <type>Flexipage</type>
+        <profile>Individual File Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Record_Page16</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Novidea_HPC__Lead__c</pageOrSobjectType>
+        <recordType>Novidea_HPC__Lead__c.HPCLeadEx__Home_qualification</recordType>
+        <type>Flexipage</type>
+        <profile>Individual File Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Record_Page16</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Novidea_HPC__Lead__c</pageOrSobjectType>
+        <recordType>Novidea_HPC__Lead__c.Novidea_HPC__Individual_Lead</recordType>
+        <type>Flexipage</type>
+        <profile>Individual File Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Record_Page16</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Novidea_HPC__Lead__c</pageOrSobjectType>
+        <recordType>Novidea_HPC__Lead__c.Novidea_HPC__Individual_Lead</recordType>
+        <type>Flexipage</type>
+        <profile>מנהל פרט</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Record_Page16</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Novidea_HPC__Lead__c</pageOrSobjectType>
+        <recordType>Novidea_HPC__Lead__c.Novidea_HPC__Individual_Lead</recordType>
+        <type>Flexipage</type>
+        <profile>מנהל פרט</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Record_Page16</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Novidea_HPC__Lead__c</pageOrSobjectType>
+        <recordType>Novidea_HPC__Lead__c.Novidea_HPC__Standard_Lead</recordType>
+        <type>Flexipage</type>
+        <profile>Individual File Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Record_Page16</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Novidea_HPC__Lead__c</pageOrSobjectType>
+        <recordType>Novidea_HPC__Lead__c.Novidea_HPC__Standard_Lead</recordType>
+        <type>Flexipage</type>
+        <profile>Individual File Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Record_Page16</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Novidea_HPC__Lead__c</pageOrSobjectType>
+        <recordType>Novidea_HPC__Lead__c.Novidea_HPC__Standard_Lead</recordType>
+        <type>Flexipage</type>
+        <profile>מנהל פרט</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Record_Page16</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Novidea_HPC__Lead__c</pageOrSobjectType>
+        <recordType>Novidea_HPC__Lead__c.Novidea_HPC__Standard_Lead</recordType>
+        <type>Flexipage</type>
+        <profile>מנהל פרט</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Record_Page16</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Novidea_HPC__Lead__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Individual File Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Record_Page16</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Novidea_HPC__Lead__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>מנהל פרט</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Record_Page16</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Novidea_HPC__Lead__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>מנהל פרט</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Record_Page16</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Novidea_HPC__Lead__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Individual File Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Record_Page16</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Novidea_HPC__Lead__c</pageOrSobjectType>
+        <recordType>Novidea_HPC__Lead__c.Dwelling</recordType>
+        <type>Flexipage</type>
+        <profile>Individual File Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Record_Page16</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Novidea_HPC__Lead__c</pageOrSobjectType>
+        <recordType>Novidea_HPC__Lead__c.Dwelling</recordType>
+        <type>Flexipage</type>
+        <profile>Individual File Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Record_Page16</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Novidea_HPC__Lead__c</pageOrSobjectType>
+        <recordType>Novidea_HPC__Lead__c.Dwelling</recordType>
+        <type>Flexipage</type>
+        <profile>מנהל פרט</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Record_Page16</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Novidea_HPC__Lead__c</pageOrSobjectType>
+        <recordType>Novidea_HPC__Lead__c.Dwelling</recordType>
+        <type>Flexipage</type>
+        <profile>מנהל פרט</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Record_Page16</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Novidea_HPC__Lead__c</pageOrSobjectType>
+        <recordType>Novidea_HPC__Lead__c.Dwelling_Exist_Client</recordType>
+        <type>Flexipage</type>
+        <profile>Individual File Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Record_Page16</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Novidea_HPC__Lead__c</pageOrSobjectType>
+        <recordType>Novidea_HPC__Lead__c.Dwelling_Exist_Client</recordType>
+        <type>Flexipage</type>
+        <profile>Individual File Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Record_Page16</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Novidea_HPC__Lead__c</pageOrSobjectType>
+        <recordType>Novidea_HPC__Lead__c.Dwelling_Exist_Client</recordType>
+        <type>Flexipage</type>
+        <profile>מנהל פרט</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Record_Page16</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Novidea_HPC__Lead__c</pageOrSobjectType>
+        <recordType>Novidea_HPC__Lead__c.HPCLeadEx__Car_qualification</recordType>
+        <type>Flexipage</type>
+        <profile>Individual File Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Record_Page16</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Novidea_HPC__Lead__c</pageOrSobjectType>
+        <recordType>Novidea_HPC__Lead__c.HPCLeadEx__Car_qualification</recordType>
+        <type>Flexipage</type>
+        <profile>מנהל פרט</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Record_Page16</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Novidea_HPC__Lead__c</pageOrSobjectType>
+        <recordType>Novidea_HPC__Lead__c.HPCLeadEx__Car_qualification</recordType>
+        <type>Flexipage</type>
+        <profile>מנהל פרט</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Record_Page16</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Novidea_HPC__Lead__c</pageOrSobjectType>
+        <recordType>Novidea_HPC__Lead__c.HPCLeadEx__Home</recordType>
+        <type>Flexipage</type>
+        <profile>Individual File Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Record_Page16</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Novidea_HPC__Lead__c</pageOrSobjectType>
+        <recordType>Novidea_HPC__Lead__c.Dwelling_Exist_Client</recordType>
+        <type>Flexipage</type>
+        <profile>מנהל פרט</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Record_Page16</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Novidea_HPC__Lead__c</pageOrSobjectType>
+        <recordType>Novidea_HPC__Lead__c.Car_Lead</recordType>
+        <type>Flexipage</type>
+        <profile>Individual File Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Record_Page16</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Novidea_HPC__Lead__c</pageOrSobjectType>
+        <recordType>Novidea_HPC__Lead__c.Car_Lead</recordType>
+        <type>Flexipage</type>
+        <profile>Individual File Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Record_Page16</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Novidea_HPC__Lead__c</pageOrSobjectType>
+        <recordType>Novidea_HPC__Lead__c.Car_Lead</recordType>
+        <type>Flexipage</type>
+        <profile>מנהל פרט</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Record_Page16</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Novidea_HPC__Lead__c</pageOrSobjectType>
+        <recordType>Novidea_HPC__Lead__c.Car_Lead</recordType>
+        <type>Flexipage</type>
+        <profile>מנהל פרט</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Record_Page16</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Novidea_HPC__Lead__c</pageOrSobjectType>
+        <recordType>Novidea_HPC__Lead__c.Car_Lead_New_Client</recordType>
+        <type>Flexipage</type>
+        <profile>Individual File Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Record_Page16</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Novidea_HPC__Lead__c</pageOrSobjectType>
+        <recordType>Novidea_HPC__Lead__c.Car_Lead_New_Client</recordType>
+        <type>Flexipage</type>
+        <profile>Individual File Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Record_Page16</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Novidea_HPC__Lead__c</pageOrSobjectType>
+        <recordType>Novidea_HPC__Lead__c.Car_Lead_New_Client</recordType>
+        <type>Flexipage</type>
+        <profile>מנהל פרט</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Record_Page16</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Novidea_HPC__Lead__c</pageOrSobjectType>
+        <recordType>Novidea_HPC__Lead__c.Car_Lead_New_Client</recordType>
+        <type>Flexipage</type>
+        <profile>מנהל פרט</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Record_Page16</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Novidea_HPC__Lead__c</pageOrSobjectType>
+        <recordType>Novidea_HPC__Lead__c.Car_Lead_Existing_Client</recordType>
+        <type>Flexipage</type>
+        <profile>Individual File Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Record_Page16</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Novidea_HPC__Lead__c</pageOrSobjectType>
+        <recordType>Novidea_HPC__Lead__c.Car_Lead_Existing_Client</recordType>
+        <type>Flexipage</type>
+        <profile>Individual File Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Record_Page16</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Novidea_HPC__Lead__c</pageOrSobjectType>
+        <recordType>Novidea_HPC__Lead__c.Car_Lead_Existing_Client</recordType>
+        <type>Flexipage</type>
+        <profile>מנהל פרט</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Record_Page16</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Novidea_HPC__Lead__c</pageOrSobjectType>
+        <recordType>Novidea_HPC__Lead__c.Car_Lead_Existing_Client</recordType>
+        <type>Flexipage</type>
+        <profile>מנהל פרט</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Record_Page16</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Novidea_HPC__Lead__c</pageOrSobjectType>
+        <recordType>Novidea_HPC__Lead__c.HPCLeadEx__Business</recordType>
+        <type>Flexipage</type>
+        <profile>Individual File Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Record_Page16</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Novidea_HPC__Lead__c</pageOrSobjectType>
+        <recordType>Novidea_HPC__Lead__c.HPCLeadEx__Business</recordType>
+        <type>Flexipage</type>
+        <profile>Individual File Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Record_Page16</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Novidea_HPC__Lead__c</pageOrSobjectType>
+        <recordType>Novidea_HPC__Lead__c.HPCLeadEx__Business</recordType>
+        <type>Flexipage</type>
+        <profile>מנהל פרט</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Record_Page16</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Novidea_HPC__Lead__c</pageOrSobjectType>
+        <recordType>Novidea_HPC__Lead__c.HPCLeadEx__Business</recordType>
+        <type>Flexipage</type>
+        <profile>מנהל פרט</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Record_Page16</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Novidea_HPC__Lead__c</pageOrSobjectType>
+        <recordType>Novidea_HPC__Lead__c.HPCLeadEx__Car</recordType>
+        <type>Flexipage</type>
+        <profile>Individual File Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Record_Page16</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Novidea_HPC__Lead__c</pageOrSobjectType>
+        <recordType>Novidea_HPC__Lead__c.HPCLeadEx__Car</recordType>
+        <type>Flexipage</type>
+        <profile>Individual File Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Record_Page16</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Novidea_HPC__Lead__c</pageOrSobjectType>
+        <recordType>Novidea_HPC__Lead__c.HPCLeadEx__Car</recordType>
+        <type>Flexipage</type>
+        <profile>מנהל פרט</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Record_Page16</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Novidea_HPC__Lead__c</pageOrSobjectType>
+        <recordType>Novidea_HPC__Lead__c.HPCLeadEx__Car</recordType>
+        <type>Flexipage</type>
+        <profile>מנהל פרט</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Record_Page16</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Novidea_HPC__Lead__c</pageOrSobjectType>
+        <recordType>Novidea_HPC__Lead__c.HPCLeadEx__Car_qualification</recordType>
+        <type>Flexipage</type>
+        <profile>Individual File Manager</profile>
+    </profileActionOverrides>
+    <tabs>standard-home</tabs>
+    <tabs>standard-Account</tabs>
+    <tabs>standard-Contact</tabs>
+    <tabs>Novidea_HPC__Lead__c</tabs>
+    <tabs>Novidea_HPC__Application__c</tabs>
+    <tabs>Novidea_HPC__Policy__c</tabs>
+    <tabs>standard-Task</tabs>
+    <tabs>standard-report</tabs>
+    <tabs>Novidea_HPC__Product__c</tabs>
+    <tabs>Service_Desk__c</tabs>
+    <uiType>Lightning</uiType>
+    <utilityBar>Howden_UtilityBar3</utilityBar>
+</CustomApplication>

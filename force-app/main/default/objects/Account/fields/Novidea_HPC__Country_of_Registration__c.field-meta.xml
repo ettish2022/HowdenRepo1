@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Novidea_HPC__Country_of_Registration__c</fullName>
+    <deprecated>false</deprecated>
+    <description>The country the business is Registered</description>
+    <externalId>false</externalId>
+    <label>Country of Registration</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Israel</fullName>
+                <default>true</default>
+                <label>Israel</label>
+            </value>
+            <value>
+                <fullName>United States of America</fullName>
+                <default>false</default>
+                <label>United States of America</label>
+            </value>
+            <value>
+                <fullName>United Kingdom</fullName>
+                <default>false</default>
+                <label>United Kingdom</label>
+            </value>
+            <value>
+                <fullName>France</fullName>
+                <default>false</default>
+                <label>France</label>
+            </value>
+            <value>
+                <fullName>Germany</fullName>
+                <default>false</default>
+                <label>Germany</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

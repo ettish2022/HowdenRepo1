@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>NewAccountForWiseOnlyFromButton</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+ISNEW(),
+ISBLANK( AgentWise_IL__DUNS_Number__c ),
+CASESAFEID(RecordTypeId) = &apos;012D0000000jetZIAQ&apos;,
+OR(
+CASESAFEID($Profile.Id) = &apos;00e4G000001oUufQAE&apos;,
+CASESAFEID($Profile.Id) = &apos;00e4G000001oVBHQA2&apos;,
+CASESAFEID($Profile.Id) = &apos;00e4G000001oV9VQAU&apos;))</errorConditionFormula>
+    <errorMessage>עובדי וייז נדרשים לפתוח מעסיק/חשבון דרך כפתור &quot;וייז - צור חשבון מעסיק&quot; בפעולות הגבלובליות (בפלוס למעלה במסך)</errorMessage>
+</ValidationRule>

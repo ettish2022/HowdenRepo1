@@ -1,0 +1,609 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <layouts>
+        <layout>BZR Business Liability Layout</layout>
+        <sections>
+            <label></label>
+            <section>Claim</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>הערות</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מסמכים</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מקטע חדש</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>ניהול כספי</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>נתוני הנהג</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>נתוני צד ג&apos;</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרטי איש קשר</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרטי האירוע</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>תיאור האירוע</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>BZR Car Insurance Layout</layout>
+        <sections>
+            <label></label>
+            <section>Car Driver Information</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Claim</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Financial Data</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Policy Information</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Service Information</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Third Party information</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מסמכים</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מקטע חדש</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרטי מערכת</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>תיאור האירוע</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>BZR Personal Accidents Layout</layout>
+        <sections>
+            <label></label>
+            <section>Claim</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>הערות</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מסמכים</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מקטע חדש</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>ניהול כספי</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>נתוני צד ג&apos;</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרטי איש קשר</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>תיאור האירוע</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>BZR Property Claim Layout</layout>
+        <sections>
+            <label></label>
+            <section>Claim</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>הערות</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מסמכים</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מקטע חדש</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>ניהול כספי</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>נתוני הנהג</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>נתוני צד ג&apos;</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרטי איש קשר</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרטים</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>תיאור האירוע</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>BZR Special Risks Layout</layout>
+        <sections>
+            <label></label>
+            <section>Claim</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>הערות</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מסמכים</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מקטע חדש</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>ניהול כספי</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרטי איש קשר</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>תיאור האירוע</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Business Liability Layout</layout>
+        <sections>
+            <label></label>
+            <section>Claim</section>
+        </sections>
+        <sections>
+            <label>Documents</label>
+            <section>מסמכים</section>
+        </sections>
+        <sections>
+            <label>New Section</label>
+            <section>מקטע חדש</section>
+        </sections>
+        <sections>
+            <label>Financial Issues</label>
+            <section>ניהול כספי</section>
+        </sections>
+        <sections>
+            <label>Driver</label>
+            <section>נתוני הנהג</section>
+        </sections>
+        <sections>
+            <label>3rd Side</label>
+            <section>נתוני צד ג&apos;</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרטי איש קשר</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרטי הפוליסה</section>
+        </sections>
+        <sections>
+            <label>Event Description</label>
+            <section>תיאור האירוע</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Business Property Layout</layout>
+        <sections>
+            <label></label>
+            <section>Claim</section>
+        </sections>
+        <sections>
+            <label>Documents</label>
+            <section>מסמכים</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מקטע חדש</section>
+        </sections>
+        <sections>
+            <label>Financial Issues</label>
+            <section>ניהול כספי</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרטי איש קשר</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרטי הפוליסה</section>
+        </sections>
+        <sections>
+            <label>Event Description</label>
+            <section>תיאור האירוע</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Claim Layout</layout>
+        <sections>
+            <label></label>
+            <section>Claim</section>
+        </sections>
+        <sections>
+            <label>Remarks</label>
+            <section>הערות</section>
+        </sections>
+        <sections>
+            <label>Documents</label>
+            <section>מסמכים</section>
+        </sections>
+        <sections>
+            <label>New Section</label>
+            <section>מקטע חדש</section>
+        </sections>
+        <sections>
+            <label>Finance Management</label>
+            <section>ניהול כספי</section>
+        </sections>
+        <sections>
+            <label>Driver Information</label>
+            <section>נתוני הנהג</section>
+        </sections>
+        <sections>
+            <label>Third Party Information</label>
+            <section>נתוני צד ג&apos;</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרטי איש קשר</section>
+        </sections>
+        <sections>
+            <label>Event Description</label>
+            <section>תיאור האירוע</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Complex_claim</layout>
+        <sections>
+            <label>Documents</label>
+            <section>מסמכים</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מקטע חדש</section>
+        </sections>
+        <sections>
+            <label>Event Description</label>
+            <section>תיאור האירוע</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Personal Accidents Layout</layout>
+        <sections>
+            <label></label>
+            <section>Claim</section>
+        </sections>
+        <sections>
+            <label>Documents</label>
+            <section>מסמכים</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מקטע חדש</section>
+        </sections>
+        <sections>
+            <label>Financial Issues</label>
+            <section>ניהול כספי</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרטי איש קשר</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרטי הפוליסה</section>
+        </sections>
+        <sections>
+            <label>Event Description</label>
+            <section>תיאור האירוע</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Personal Layout</layout>
+        <sections>
+            <label></label>
+            <section>Claim</section>
+        </sections>
+        <sections>
+            <label>Documents</label>
+            <section>מסמכים</section>
+        </sections>
+        <sections>
+            <label>New Section</label>
+            <section>מקטע חדש</section>
+        </sections>
+        <sections>
+            <label>Financial Issues</label>
+            <section>ניהול כספי</section>
+        </sections>
+        <sections>
+            <label>Driver</label>
+            <section>נתוני הנהג</section>
+        </sections>
+        <sections>
+            <label>3rd Party</label>
+            <section>נתוני צד ג&apos;</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרטי איש קשר</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרטי הפוליסה</section>
+        </sections>
+        <sections>
+            <label>Event Description</label>
+            <section>תיאור האירוע</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Personal Liability Layout</layout>
+        <sections>
+            <label></label>
+            <section>Claim</section>
+        </sections>
+        <sections>
+            <label>Documents</label>
+            <section>מסמכים</section>
+        </sections>
+        <sections>
+            <label>New Section</label>
+            <section>מקטע חדש</section>
+        </sections>
+        <sections>
+            <label>Financial Issues</label>
+            <section>ניהול כספי</section>
+        </sections>
+        <sections>
+            <label>Driver</label>
+            <section>נתוני הנהג</section>
+        </sections>
+        <sections>
+            <label>3rd Side</label>
+            <section>נתוני צד ג&apos;</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרטי איש קשר</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרטי הפוליסה</section>
+        </sections>
+        <sections>
+            <label>Event Description</label>
+            <section>תיאור האירוע</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Special Risks Layout</layout>
+        <sections>
+            <label>Remarks</label>
+            <section>הערות</section>
+        </sections>
+        <sections>
+            <label>Documents</label>
+            <section>מסמכים</section>
+        </sections>
+        <sections>
+            <label>New Section</label>
+            <section>מקטע חדש</section>
+        </sections>
+        <sections>
+            <label>Financial Issues</label>
+            <section>ניהול כספי</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרטי הפוליסה</section>
+        </sections>
+        <sections>
+            <label>Event Description</label>
+            <section>תיאור האירוע</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Tzama</layout>
+        <sections>
+            <label></label>
+            <section>Accounting</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Claim</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Event Description</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>New Section</section>
+        </sections>
+        <sections>
+            <label>Documents</label>
+            <section>מסמכים</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>נתוני צד ג&apos;</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>UK Special Risks Layout</layout>
+        <sections>
+            <label></label>
+            <section>Claim Details</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Documents</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Event Information</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Financial Information</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Remarks</section>
+        </sections>
+        <sections>
+            <label>New Section</label>
+            <section>מקטע חדש</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label></label>
+        <name>Edit_Claim</name>
+    </quickActions>
+    <recordTypes>
+        <description></description>
+        <label></label>
+        <name>BZRClaims</name>
+    </recordTypes>
+    <recordTypes>
+        <label></label>
+        <name>Complex_claim</name>
+    </recordTypes>
+    <recordTypes>
+        <label></label>
+        <name>Construction_Equipment</name>
+    </recordTypes>
+    <recordTypes>
+        <label></label>
+        <name>Marine_Claim</name>
+    </recordTypes>
+    <recordTypes>
+        <label></label>
+        <name>Personal_Liability</name>
+    </recordTypes>
+    <recordTypes>
+        <label></label>
+        <name>Travel_Abroad</name>
+    </recordTypes>
+    <validationRules>
+        <errorMessage>No client exist in claim</errorMessage>
+        <name>Client_Exist</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Must_Fill_Remarks</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Started_Date_Cant_be_greater_than_today</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Update_Claim_Payment_Amount</name>
+    </validationRules>
+    <webLinks>
+        <label>Activities Journal Report</label>
+        <name>ActivityJournal</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>Claim_Task_button</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>Create_Claim</name>
+    </webLinks>
+    <webLinks>
+        <label>Documents</label>
+        <name>Documents</name>
+    </webLinks>
+    <webLinks>
+        <label>תייק קבצים</label>
+        <name>File_a_Document</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>Generate_With_Perform</name>
+    </webLinks>
+    <webLinks>
+        <label>Hours Report</label>
+        <name>Hours_Report</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>Log_a_call</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>NewClaimOverrideAccount</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>New_Connected_Claim</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>New_Lightning_Claim</name>
+    </webLinks>
+    <workflowTasks>
+        <name>ActionTaskSSS</name>
+        <subject></subject>
+    </workflowTasks>
+</CustomObjectTranslation>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <article>Definite</article>
+        <plural>false</plural>
+        <value>בקשת השירות</value>
+    </caseValues>
+    <caseValues>
+        <article>None</article>
+        <plural>false</plural>
+        <value>בקשת שירות</value>
+    </caseValues>
+    <caseValues>
+        <article>Definite</article>
+        <plural>true</plural>
+        <value>בקשות השירות</value>
+    </caseValues>
+    <caseValues>
+        <article>None</article>
+        <plural>true</plural>
+        <value>בקשות שירות</value>
+    </caseValues>
+    <gender>Feminine</gender>
+    <nameFieldLabel>מספר בקשה</nameFieldLabel>
+    <quickActions>
+        <label></label>
+        <name>CreateMeeting</name>
+    </quickActions>
+    <recordTypes>
+        <label>ביטול פוליסה / ניוד קופה</label>
+        <name>Cancel_Policy_No_Preserve</name>
+    </recordTypes>
+    <recordTypes>
+        <label>בירור זכאות לתביעה</label>
+        <name>Claim_Entitlement_Check</name>
+    </recordTypes>
+    <recordTypes>
+        <label>פיגורים</label>
+        <name>Pigurim</name>
+    </recordTypes>
+    <recordTypes>
+        <label>שינויים בפוליסה</label>
+        <name>Policy_Changes</name>
+    </recordTypes>
+    <recordTypes>
+        <label>שימור</label>
+        <name>Preserve</name>
+    </recordTypes>
+    <recordTypes>
+        <label>כיסוי זמני</label>
+        <name>Temporary_Coverage</name>
+    </recordTypes>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>AgentAppointmentForSavingPolicyClosure</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>AgentAppointmentSubStatus</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>CancelResultIsRequired</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>LeavingWorkCloseRequest</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>MarkPolicyAsCancelled</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>NewSrWithoutLeadMeeting</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>NiudSumRequired</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>OpenClosedNiudSrIsNotAllowed</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>PartialPidionCloseRequest</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>PreserveResultIsRequired</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>SilukResultIsRequired</name>
+    </validationRules>
+    <webLinks>
+        <label>תייק קבצים</label>
+        <name>File_a_Document</name>
+    </webLinks>
+</CustomObjectTranslation>

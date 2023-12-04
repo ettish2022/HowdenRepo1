@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label></label>
+    <name>WaterDamageCoverage__c</name>
+    <picklistValues>
+        <masterLabel>איילון מרכז ישירות לקוחות בטל&apos;  6679* או 072-2228678</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>הכשרה ביטוח מוקד בטל&apos; 073-3735414 או *8659</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>הפניקס מ.תביעות בטל *5070</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>הראל באמצעות חברת נץ בטל&apos;  9746* או  מילגם בטל&apos; *5041</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>כלל מוקד נזקי מים בטלפון *6564</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>מגדל  מרכז שירות בטלפון  076-8865055</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>מילגם - בטל&apos; 03-7295300</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>מנורה מוקד מנורה נזקי מים בטל&apos; 072-2707779  או *9042</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>פמי פרימיום - בטל&apos; 656*</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>ש.כ.ל. - בטל&apos; 8888*</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>שחר אסיסטנס - בטל&apos; 2008*</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>שלמה מוקד שירות ותיאום בטלפון 073-2039584</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>שרברב פרטי מטעם הלקוח</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>שרברב פרטי מטעם המבוטח</masterLabel>
+        <translation></translation>
+    </picklistValues>
+</CustomFieldTranslation>

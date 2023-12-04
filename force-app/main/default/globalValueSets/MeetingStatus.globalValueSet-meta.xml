@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Meeting Was Held - Sold</fullName>
+        <default>false</default>
+        <label>Meeting Was Held - Sold</label>
+    </customValue>
+    <customValue>
+        <fullName>Reschedule Meeting</fullName>
+        <default>false</default>
+        <label>Reschedule Meeting</label>
+    </customValue>
+    <customValue>
+        <fullName>Meeting Postponed</fullName>
+        <default>false</default>
+        <label>Meeting Postponed</label>
+    </customValue>
+    <customValue>
+        <fullName>Meeting Was Held - No Sell</fullName>
+        <default>false</default>
+        <label>Meeting Was Held - No Sell</label>
+    </customValue>
+    <customValue>
+        <fullName>Meeting Was Held Waiting For Customer Decision</fullName>
+        <default>false</default>
+        <label>Meeting Was Held Waiting For Customer Decision</label>
+    </customValue>
+    <customValue>
+        <fullName>Meeting Was Held Waiting For Customer Signature</fullName>
+        <default>false</default>
+        <label>Meeting Was Held Waiting For Customer Signature</label>
+    </customValue>
+    <customValue>
+        <fullName>Meeting was canceled</fullName>
+        <default>false</default>
+        <label>פגישה בוטלה</label>
+    </customValue>
+    <customValue>
+        <fullName>Service Meeting Without Changes</fullName>
+        <default>false</default>
+        <label>Service Meeting Without Changes</label>
+    </customValue>
+    <customValue>
+        <fullName>Service Meeting With Changes</fullName>
+        <default>false</default>
+        <label>Service Meeting With Changes</label>
+    </customValue>
+    <customValue>
+        <fullName>טרם נבחר</fullName>
+        <default>false</default>
+        <label>טרם נבחר</label>
+    </customValue>
+    <customValue>
+        <fullName>Key Person Meeting</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Key Person Meeting</label>
+    </customValue>
+    <masterLabel>MeetingStatus</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

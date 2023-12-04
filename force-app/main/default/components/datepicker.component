@@ -1,0 +1,71 @@
+<apex:component access="global">               
+    <apex:attribute access="global" name="fieldId" type="String" description="field id to update"/>
+    <apex:stylesheet value="{!$Resource.Novidea_HPC__jquery_datepick}/redmond.datepick.css"/>
+    <apex:includeScript value="{!$Resource.jquery_datepick_single}"/>
+    
+    <style>
+        .datepick-month select {
+            font-size: 12px;
+        }
+    </style>
+
+    <script type="text/javascript">
+        var DATE_FORMAT = '{!IF(true,'dd/mm/yyyy','dd/mm/yyyy')}';  //TODO: use user defined format
+        var j$ = jQuery.noConflict(); 
+        j$(document).ready(function() {  
+            console.log(j$('input[id*="{!fieldId}"]'));
+            j$('input[id*="{!fieldId}"]').attr('size','7');
+            j$('input[id*="{!fieldId}"]').datepick(
+                                {showOnFocus: true,
+                                 minDate: new Date(1900, 1 - 1, 26),                                  
+                                 defaultDate: new Date(), 
+                                 dateFormat: DATE_FORMAT,
+                                 showTrigger: '<img style="padding-right:5px" src="{!$Resource.jquery_datepick}/calendar-blue.gif" class="trigger"/>',
+                                 onSelect: function(dates){j$('input[id*="{!fieldId}"]').trigger('onchange');}
+                                 });
+
+            var split = j$('input[id*="{!fieldId}"]').val().split('/');
+            var intDate = Date.parse(split[2] + "-" + split[1] + "-" + split[0]);
+            
+            if (!isNaN(intDate)){
+                var dDate = new Date(intDate);                
+                var dpDate = j$.datepick.newDate(dDate.getFullYear(), dDate.getMonth() + 1, dDate.getDate());                
+                var strDate = j$.datepick.formatDate(DATE_FORMAT,dpDate);
+                j$('input[id*="{!fieldId}"]').val(strDate);
+            }
+        });  
+        
+        function makeDatePicker(jqSelector){
+            
+            j$(jqSelector).each(function (index){
+
+                    j$(this).datepick(
+                                {showOnFocus: true,
+                                 minDate: new Date(1900, 1 - 1, 26),                                  
+                                 defaultDate: new Date(), 
+                                 dateFormat: DATE_FORMAT,
+                                 showTrigger: '<img style="padding-right:5px" src="{!$Resource.jquery_datepick}/calendar-blue.gif" class="trigger"/>',
+                                 onSelect: function(dates){j$(this).trigger('onchange');}
+                                 });
+                    
+                                var intDate = Date.parse(j$(this).val());
+                                
+                                if (!isNaN(intDate)){
+                                    var dDate = new Date(intDate);                
+                                    var dpDate = j$.datepick.newDate(dDate.getFullYear(), dDate.getMonth() + 1, dDate.getDate());                
+                                    var strDate = j$.datepick.formatDate(DATE_FORMAT,dpDate);
+                                    j$(this).val(strDate);
+                                }
+            
+            
+            
+            });                        
+        }
+                     
+    </script>
+
+    <apex:componentBody />
+
+        
+    
+</apex:component>

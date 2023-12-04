@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Match_vehicle_prod_by_broker_number__c</fullName>
+    <defaultValue>true</defaultValue>
+    <description>Determines whether to include broker number in the  vehicle production match</description>
+    <externalId>false</externalId>
+    <label>Match vehicle prod by broker number</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

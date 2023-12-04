@@ -1,0 +1,122 @@
+<apex:page standardController="Novidea_HPC__Proposal__c" extensions="ApprovedProposalsController,AutoComplete_Controller" action="{!convertToPolicy}" recordSetVar="proposals" showHeader="false" sidebar="false">
+    <apex:includeScript value="{!$Resource.Novidea_HPC__jquery3_6_0min}" />
+    <!-- <apex:includeScript value="{!$Resource.jqueryMigrateDevelopment}" /> -->
+    <apex:includeScript value="{!$Resource.Novidea_HPC__autocompletejs}" />
+    <apex:includeScript value="{!$Resource.Novidea_HPC__novidea_js_utils}" />
+    <apex:includeScript value="{!$Resource.Novidea_HPC__json2min}"/>
+    <apex:stylesheet value="{!$Resource.Novidea_HPC__autocompletecss}" />
+    <style>
+        div#mask { 
+            display: none; cursor: wait; z-index: 9999;
+            position: absolute; top: 0; left: 0; height: 100%; 
+            width: 100%; background-color: #fff; opacity: 0; filter: alpha(opacity = 0);
+        }
+    </style>
+    <div id="mask" style="display:none;"></div>
+    <script>
+        function startLoading(){
+                document.getElementById('mask').style.display = 'block';
+                document.body.style.cursor='wait';
+            }
+      function stopLoading(){
+                document.body.style.cursor='default';
+                document.getElementById('mask').style.display = 'none';                
+            }
+    </script>
+    <apex:actionStatus id="loadingStatus" onstart="startLoading();" onstop="stopLoading();"/>
+    <apex:slds rendered="{!$Setup.Novidea_HPC__Trigger__c.Novidea_HPC__Demo_Improvements_On__c=true}"/>
+    <apex:outputpanel id="pagewrapper" styleclass="{!IF($Setup.Novidea_HPC__Trigger__c.Novidea_HPC__Demo_Improvements_On__c=true,'slds-scope','')}">
+        <apex:pagemessages />
+        <apex:outputText value="{!$Label.novidea_hpc__Page} {!pageNumber} {!$Label.novidea_hpc__Of} {!onlySelectedProposalAcceptedProudcsList.size + 1}" rendered="{!AND(pageNumber>=0,NOT(disableManagementPolicy))}"/>
+        <apex:form id="frm" rendered="{!pageNumber==1}">  
+           <apex:pageBlock mode="{!IF($Setup.Novidea_HPC__Trigger__c.Novidea_HPC__Demo_Improvements_On__c=true,'maindetail','detail')}">
+               <apex:pageblockButtons >
+                    <apex:commandButton value="{!$Label.novidea_hpc__Back}" action="{!cancel}" oncomplete="self.close();" status="loadingStatus"/>
+                    <apex:commandButton value="{!$Label.novidea_hpc__Continue}" action="{!convertingProductTopolicy}" rendered="{!!hasErrors}" rerender="pagewrapper" status="loadingStatus"/>
+               </apex:pageblockButtons>
+               
+               <apex:pageblockSection rendered="{!AND(isComplexPolicy, complexPolicyBranches.size > 1, $Setup.Novidea_HPC__Trigger__c.Novidea_HPC__Demo_Improvements_On__c!=true)}">
+                    <apex:outputLabel value="{!$Label.novidea_hpc__Choose_branch_number_of_business}" for="branch" />
+                    <apex:selectList value="{!selectedBranch}" id="branch" size="1" >
+                        <apex:selectOptions value="{!complexPolicyBranches}"/>
+                    </apex:selectList>
+                </apex:pageblockSection>
+               
+               <apex:pageblockSection rendered="{!$Setup.Novidea_HPC__Trigger__c.Novidea_HPC__Demo_Improvements_On__c!=true}">
+                    <apex:outputLabel value="{!$Label.novidea_hpc__Choose_profit_center}" for="profitCenter" />
+                    <apex:selectList value="{!selectedProfitCenter}" id="profitCenters" size="1" >
+                        <apex:selectOptions value="{!profitCenters}"/>
+                    </apex:selectList>
+                </apex:pageblockSection>
+               
+               <apex:outputPanel rendered="{!$Setup.Novidea_HPC__Trigger__c.Novidea_HPC__Demo_Improvements_On__c=true}" layout="block" style="width:70%;" styleClass="slds-m-left_small"><!-- rendered="{!$Setup.Novidea_HPC__Hierarchical_General_Settings__c.Force_One_Product_Per_RFP__c}"-->
+                    <table class="slds-table slds-table_bordered slds-table_cell-buffer slds-table_col-bordered slds-border_right slds-border_left">
+                      <thead>
+                        <tr class="slds-text-title_caps">
+                          <th scope="col">
+                            <div class="slds-truncate" title="{!$ObjectType.Novidea_HPC__Carrier_Product__c.labelPlural}">{!$ObjectType.Novidea_HPC__Carrier_Product__c.labelPlural}</div>
+                          </th>
+                          <th scope="col">
+                            <div class="slds-truncate" title="{!$ObjectType.Novidea_HPC__Request_for_Proposal__c.Fields.Novidea_HPC__Carrier__c.label}">{!$ObjectType.Novidea_HPC__Request_for_Proposal__c.Fields.Novidea_HPC__Carrier__c.label}</div>
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <apex:repeat value="{!onlySelectedProposalAcceptedProudcsList}" var="prod">
+                            <tr>
+                              <th scope="row" data-label="Product Def">
+                                <div class="slds-truncate" title="{!prod.product.Novidea_HPC__Product_Definition__r.Name}"><a href="javascript:void(0);">{!prod.product.Novidea_HPC__Product_Definition__r.Name}</a></div>
+                              </th>
+                              <td data-label="Insurer">
+                                <div class="slds-truncate" title="{!prod.proposal.Novidea_HPC__Carrier__r.Name}">{!prod.proposal.Novidea_HPC__Carrier__r.Name}</div>
+                              </td>
+                            </tr>
+                        </apex:repeat>
+                    </tbody>
+                </table>
+               </apex:outputPanel>
+               <apex:pageblockSection title="{!duplicateProductDefMessage}" columns="1" rendered="{!AND(hasDuplicateProductDefs,OR(NOT(enableSameProductDef), enableSameProductDefMsg))}">
+                   <apex:pageBlockTable value="{!onlySelectedProposalAcceptedProudcsList}" var="ptp">
+                       <apex:column rendered="{!ptp.showOverride}"  >
+                           <apex:facet name="header">{!$Label.Application}</apex:facet>
+                           <apex:outputField value="{!ptp.proposal.Name}" rendered="{!ptp.showOverride}"/> 
+                       </apex:column>
+                       <apex:column rendered="{!ptp.showOverride}" >
+                           <apex:facet name="header">{!$Label.novidea_hpc__Policy}</apex:facet>
+                           <apex:outputField value="{!ptp.policy.Name}" rendered="{!AND(ptp.showOverride,!ISBLANK(ptp.policy))}"/>
+                       </apex:column>
+                       <apex:column rendered="{!ptp.showOverride}" >
+                           <apex:facet name="header">{!$Label.novidea_hpc__Product}</apex:facet>
+                           <apex:outputField value="{!ptp.product.Name}" rendered="{!ptp.showOverride}"/>
+                       </apex:column>
+                   </apex:pageBlockTable>
+               </apex:pageblockSection>
+               
+           </apex:pageBlock>   
+        </apex:form>
+        <apex:form rendered="{!pageNumber!=1}">
+            <apex:actionFunction name="policyCompleted" action="{!turnPage}" rerender="pagewrapper" status="loadingStatus"/>
+        </apex:form>
+        <apex:outputpanel rendered="{!OR(AND(pageNumber<0,asyncModeVal != true),shortConvertion,AND(disableManagementPolicy,pageNumber>1))}">
+            <script>
+                // window.close();
+                if({!!advancedModeVal})window.close();
+                else window.open("/{!applicationId}", "_top");
+            </script>
+        </apex:outputpanel>
+        <apex:form rendered="{!AND(pageNumber<0,asyncModeVal == true)}">
+            <apex:actionPoller action="{!checkAsyncConversion}" rerender="pagewrapper" interval="5" enabled="{!!asyncConversionFinished}"/>
+            <div align="center">
+                <apex:outputPanel rendered="{!!asyncConversionFinished}">
+                    <img src="/img/loading32.gif" width="35" height="35"/>
+                    <br/>
+                    <apex:outputLabel value="{!$Label.Converting_Please_Wait}"/>
+                </apex:outputPanel>
+                <apex:commandButton value="{!$Label.novidea_hpc__Continue}" action="{!continueFromAsyncConversion}" rendered="{!asyncConversionFinished}" rerender="pagewrapper" status="loadingStatus"/>
+            </div>
+        </apex:form>
+        <apex:outputpanel rendered="{!AND(pageNumber>1, disableManagementPolicy != true)}">
+            <c:ConstructorPoliciesManagement pPolicyId="{!currentPolicy.policyId}" pControlledByFlow="true" pNewPolicy="true" pAdvancedMode="{!advancedModeVal}" pFromConversion="true" pFilterId="{!filterId}"/>
+        </apex:outputpanel>
+    </apex:outputpanel>
+</apex:page>

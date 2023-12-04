@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Insurance_Type__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(ISPICKVAL( Elementar_Policy__r.Novidea_HPC__Insurance_Type__c, &apos;Local&apos; ), &apos;מקומי&apos; ,
+
+IF(ISPICKVAL( Elementar_Policy__r.Novidea_HPC__Insurance_Type__c, &apos;Direct&apos; ),&apos;ישיר&apos; ,
+
+IF(ISPICKVAL( Elementar_Policy__r.Novidea_HPC__Insurance_Type__c, &apos;Front&apos; ),&apos;פרונט&apos; ,
+&apos;&apos;
+
+)))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>סוג ביטוח</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>53.0</apiVersion>
+    <assignments>
+        <name>Update_Employer_Account</name>
+        <label>Update Employer Account</label>
+        <locationX>442</locationX>
+        <locationY>123</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Employer_Account__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Associated_Person_Employee_Record__r.Novidea_HPC__Account__c</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <interviewLabel>Customer Service Request BS Set Employer Account By AP {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Customer Service Request BS Set Employer Account By AP</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>50</locationX>
+        <locationY>50</locationY>
+        <connector>
+            <targetReference>Update_Employer_Account</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Associated_Person_Employee_Record__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <object>AgentWise_IL__Service_Request__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

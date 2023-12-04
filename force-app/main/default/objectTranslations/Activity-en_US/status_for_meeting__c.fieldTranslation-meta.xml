@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label></label>
+    <name>status_for_meeting__c</name>
+    <picklistValues>
+        <masterLabel>הפגישה התקיימה</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>נקבעה פגישה</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>תואמה שיחה טלפונית</masterLabel>
+        <translation></translation>
+    </picklistValues>
+</CustomFieldTranslation>

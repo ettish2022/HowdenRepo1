@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>עדיפות</label>
+    <name>Priority__c</name>
+    <picklistValues>
+        <masterLabel>בהול - לא ניתן לעבוד</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>דחוף - טיפול נדרש בטווח זמן מיידי</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>נמוך - ממתין לפגישת תיעדוף</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>רגיל - טיפול נדרש בטווח זמן של שבוע קלנדרי</masterLabel>
+        <translation></translation>
+    </picklistValues>
+</CustomFieldTranslation>

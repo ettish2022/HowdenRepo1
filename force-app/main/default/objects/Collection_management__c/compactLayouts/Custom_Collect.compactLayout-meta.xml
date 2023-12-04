@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Custom_Collect</fullName>
+    <fields>Name</fields>
+    <fields>Account__c</fields>
+    <fields>Elementar_Policy__c</fields>
+    <fields>Unpaid_premium__c</fields>
+    <fields>Premium_amount_currency__c</fields>
+    <fields>Unpaid_Agancy_Fee__c</fields>
+    <fields>Agency_Fees_Currency__c</fields>
+    <label>Custom Collect</label>
+</CompactLayout>

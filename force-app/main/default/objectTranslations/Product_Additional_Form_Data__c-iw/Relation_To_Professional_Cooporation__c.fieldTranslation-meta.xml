@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>האם יש שיכות לתאגיד מקצועי</label>
+    <name>Relation_To_Professional_Cooporation__c</name>
+    <picklistValues>
+        <masterLabel>כן</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>לא</masterLabel>
+        <translation></translation>
+    </picklistValues>
+</CustomFieldTranslation>

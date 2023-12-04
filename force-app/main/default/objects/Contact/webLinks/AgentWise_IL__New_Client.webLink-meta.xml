@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AgentWise_IL__New_Client</fullName>
+    <availability>online</availability>
+    <displayType>massActionButton</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>New Client</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <requireRowSelection>false</requireRowSelection>
+    <url>{!REQUIRESCRIPT(&quot;/soap/ajax/53.0/connection.js&quot;)}
+{!REQUIRESCRIPT(&quot;/soap/ajax/53.0/apex.js&quot;)}
+
+sforce.connection.session = &quot;{!$Api.Session_ID}&quot;;
+
+var result = sforce.connection.query(&quot;Select Name, Id From RecordType where SobjectType = &apos;Contact&apos; and Name = &apos;Client&apos; Limit 1&quot;);
+var records = result.getArray(&quot;records&quot;);
+
+url = &apos;/003/e?retURL=/{!Account.Id}&amp;ent=Contact&amp;con4={!JSINHTMLENCODE(Account.Name)}&amp;con4_lkid={!Account.Id}&apos; +
+&apos;&amp;RecordType=&apos; + records[0].Id +&apos;&amp;name_lastcon2={!Contact.LastName}&apos; + &apos;&amp;con4_lkid={!Account.Id}&apos; ;
+window.location = url;</url>
+</WebLink>

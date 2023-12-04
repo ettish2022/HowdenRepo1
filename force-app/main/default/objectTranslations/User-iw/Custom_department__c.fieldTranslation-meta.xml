@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label></label>
+    <name>Custom_department__c</name>
+    <picklistValues>
+        <masterLabel>Finance</masterLabel>
+        <translation>כספים</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Howden FI</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Howden Industries</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Howden Israelit</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Howden Law Firms</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Howden Medical</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Howden Personal Lines</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Howden Prime Tech</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Howden Reinsurance</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Howden Shefi</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Howden Travel and PA</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Howden VC</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Howden W&amp;I</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Howden Wise</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Management</masterLabel>
+        <translation>הנהלה</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Secretary</masterLabel>
+        <translation>מזכירות</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Sub agents</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Telemeeting</masterLabel>
+        <translation>טלמיטינג</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>מערכות מידע</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>תביעות אלמנטרי</masterLabel>
+        <translation></translation>
+    </picklistValues>
+</CustomFieldTranslation>

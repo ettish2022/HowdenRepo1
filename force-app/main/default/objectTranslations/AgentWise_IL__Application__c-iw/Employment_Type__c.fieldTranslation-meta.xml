@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>סוג העסקה</label>
+    <name>Employment_Type__c</name>
+    <picklistValues>
+        <masterLabel>Company Employee</masterLabel>
+        <translation>שכיר</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Self Employed</masterLabel>
+        <translation>עצמאי</translation>
+    </picklistValues>
+</CustomFieldTranslation>

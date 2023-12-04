@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <layouts>
+        <layout>Task Layout</layout>
+        <sections>
+            <label>Documents</label>
+            <section>מסמכים</section>
+        </sections>
+        <sections>
+            <label>Custom Links</label>
+            <section>קישורים מותאמים אישית</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>claim_layout</layout>
+        <sections>
+            <label></label>
+            <section>מסמכים</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>קישורים מותאמים אישית</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label></label>
+        <name>Defer</name>
+    </quickActions>
+    <quickActions>
+        <label></label>
+        <name>EditDescription</name>
+    </quickActions>
+    <quickActions>
+        <label></label>
+        <name>UpdatePriority</name>
+    </quickActions>
+    <quickActions>
+        <label></label>
+        <name>UpdateStatus</name>
+    </quickActions>
+    <recordTypes>
+        <label></label>
+        <name>Claim_Task_M</name>
+    </recordTypes>
+    <recordTypes>
+        <label></label>
+        <name>default</name>
+    </recordTypes>
+    <webLinks>
+        <label></label>
+        <name>File_a_Document</name>
+    </webLinks>
+</CustomObjectTranslation>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <name>הנדסי</name>
+    <queueMembers>
+        <users>
+            <user>alona@howden.co.il</user>
+            <user>zhannat@howden.co.il</user>
+            <user>yosefd@howden.co.il</user>
+            <user>reuts@howden.co.il</user>
+            <user>shirico@howden.co.il</user>
+            <user>saria@howden.co.il</user>
+        </users>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>Novidea_HPC__Policy__c</sobjectType>
+    </queueSobject>
+</Queue>

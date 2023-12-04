@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Claim_Task</fullName>
+    <active>true</active>
+    <label>Claim Task</label>
+    <picklistValues>
+        <picklist>Classification__c</picklist>
+        <values>
+            <fullName>הרשאות</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>טיוב מידע</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ישום</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ממשקים חיצוניים</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>פריסה</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>תכונות חסרות</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>תקלה</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>תרגום</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Close_Reason__c</picklist>
+        <values>
+            <fullName>הוגדר כלא רלבנטי</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>טופל</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>נדחה למועד לא ידוע</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Handler__c</picklist>
+        <values>
+            <fullName>בת אל</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ליאת</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>מיכל</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>נובידאה יישום</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>נובידאה פיתוח</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>נובידאה תמיכה</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>נתן ואוריון</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Priority__c</picklist>
+        <values>
+            <fullName>בהול - לא ניתן לעבוד</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>דחוף - טיפול נדרש בטווח זמן מיידי</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>נמוך - ממתין לפגישת תיעדוף</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>רגיל - טיפול נדרש בטווח זמן של שבוע קלנדרי</fullName>
+            <default>true</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Status__c</picklist>
+        <values>
+            <fullName>בביצוע</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>חדש</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>ממתין לתחילת ביצוע</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>נסגר</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

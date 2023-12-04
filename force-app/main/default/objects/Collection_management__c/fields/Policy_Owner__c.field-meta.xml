@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Policy_Owner__c</fullName>
+    <externalId>false</externalId>
+    <formula>HYPERLINK(&quot;mailto:&quot;+Elementar_Policy__r.Owner:User.Email+&quot;?subject=לקוח%20-%20&quot; +  Account__r.Name_Formula__c  + &quot;%20 - פוליסה%20מספר%20-%20&quot; + Elementar_Policy__r.Novidea_HPC__Policy_Number__c +&quot;&amp;body=%0Dhttps://howdenil.lightning.force.com/lightning/r/Novidea_HPC__Policy__c/&quot; + Elementar_Policy__r.Id +&quot;/view&quot;,Elementar_Policy__r.Owner:User.Contact_Name__c)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>בעלים: פוליסה</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
+    <activeVersionNumber>9</activeVersionNumber>
+    <description>פלוו אפטר סייב על פגישת וויז, מעדכן ברשומת הפגישה את הקישור לתיק הלקוח ומעדכן בליד את פרטי הפגישה ומונה</description>
+    <masterLabel>Event Triggered Connect WhoId From Lead And Update Lead Fields With Meeting</masterLabel>
+</FlowDefinition>

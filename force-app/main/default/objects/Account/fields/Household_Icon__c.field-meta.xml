@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Household_Icon__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(  Has_Household__c , IMAGE(&quot;https://howdenil--c.documentforce.com/sfc/servlet.shepherd/version/renditionDownload?rendition=ORIGINAL_Jpg&amp;versionId=0684G00000CgyKE&amp;operationContext=CHATTER&amp;contentId=05T4G00000cSZMt&quot;, &quot;has Household&quot;, $Setup.IconSize__c.small__c, $Setup.IconSize__c.small__c),IMAGE(&quot;https://howdenil--c.documentforce.com/sfc/servlet.shepherd/version/renditionDownload?rendition=ORIGINAL_Jpg&amp;versionId=0684G00000CgyQ9&amp;operationContext=CHATTER&amp;contentId=05T4G00000cSYK4&quot;,&quot;Does not have Household&quot;, $Setup.IconSize__c.small__c, $Setup.IconSize__c.small__c))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Household</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

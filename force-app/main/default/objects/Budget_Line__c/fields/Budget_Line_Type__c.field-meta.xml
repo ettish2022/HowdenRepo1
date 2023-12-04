@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Budget_Line_Type__c</fullName>
+    <externalId>false</externalId>
+    <label>קטגוריה</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>מלאי קיים</fullName>
+                <default>false</default>
+                <label>מלאי קיים</label>
+            </value>
+            <value>
+                <fullName>רבעון אבוד</fullName>
+                <default>false</default>
+                <label>רבעון אבוד</label>
+            </value>
+            <value>
+                <fullName>הפשרה</fullName>
+                <default>false</default>
+                <label>הפשרה</label>
+            </value>
+            <value>
+                <fullName>הפשרה רבעון אבוד</fullName>
+                <default>false</default>
+                <label>הפשרה רבעון אבוד</label>
+            </value>
+            <value>
+                <fullName>ממי</fullName>
+                <default>false</default>
+                <label>ממי</label>
+            </value>
+            <value>
+                <fullName>מנורה עמולות חובה</fullName>
+                <default>false</default>
+                <label>מנורה עמולות חובה</label>
+            </value>
+            <value>
+                <fullName>חדש בגין רבעון אבוד</fullName>
+                <default>false</default>
+                <label>חדש בגין רבעון אבוד</label>
+            </value>
+            <value>
+                <fullName>חדש</fullName>
+                <default>false</default>
+                <label>חדש</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

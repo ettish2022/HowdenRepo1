@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <article>Definite</article>
+        <plural>false</plural>
+        <value>המשתתף בפוליסה</value>
+    </caseValues>
+    <caseValues>
+        <article>None</article>
+        <plural>false</plural>
+        <value>משתתף בפוליסה</value>
+    </caseValues>
+    <caseValues>
+        <article>Definite</article>
+        <plural>true</plural>
+        <value>המשתתפים בפוליסה</value>
+    </caseValues>
+    <caseValues>
+        <article>None</article>
+        <plural>true</plural>
+        <value>משתתפים בפוליסה</value>
+    </caseValues>
+    <gender>Masculine</gender>
+    <nameFieldLabel>מזהה רשומה</nameFieldLabel>
+</CustomObjectTranslation>

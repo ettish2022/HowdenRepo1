@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>B4U Stage Ended</fullName>
+        <default>false</default>
+        <label>B4U Stage Ended</label>
+    </customValue>
+    <customValue>
+        <fullName>לא נוצר קשר</fullName>
+        <default>false</default>
+        <label>לא נוצר קשר</label>
+    </customValue>
+    <customValue>
+        <fullName>אין מענה</fullName>
+        <default>false</default>
+        <label>אין מענה</label>
+    </customValue>
+    <customValue>
+        <fullName>להתקשר מאוחר יותר</fullName>
+        <default>false</default>
+        <label>להתקשר מאוחר יותר</label>
+    </customValue>
+    <customValue>
+        <fullName>לא ניתן להשיג</fullName>
+        <default>false</default>
+        <label>לא ניתן להשיג</label>
+    </customValue>
+    <customValue>
+        <fullName>מספר שגוי</fullName>
+        <default>false</default>
+        <label>מספר שגוי</label>
+    </customValue>
+    <customValue>
+        <fullName>לא רלוונטי</fullName>
+        <default>false</default>
+        <label>לא רלוונטי</label>
+    </customValue>
+    <customValue>
+        <fullName>לא מעוניין</fullName>
+        <default>false</default>
+        <label>לא מעוניין</label>
+    </customValue>
+    <customValue>
+        <fullName>בתהליך</fullName>
+        <default>false</default>
+        <label>בתהליך</label>
+    </customValue>
+    <customValue>
+        <fullName>נקבעה פגישה</fullName>
+        <default>false</default>
+        <label>נקבעה פגישה</label>
+    </customValue>
+    <customValue>
+        <fullName>פגישה טלפונית</fullName>
+        <default>false</default>
+        <label>פגישה טלפונית</label>
+    </customValue>
+    <customValue>
+        <fullName>פגישת זום</fullName>
+        <default>false</default>
+        <label>פגישת זום</label>
+    </customValue>
+    <customValue>
+        <fullName>לתאם פגישה נוספת</fullName>
+        <default>false</default>
+        <label>לתאם פגישה נוספת</label>
+    </customValue>
+    <customValue>
+        <fullName>פגישה התקיימה</fullName>
+        <default>false</default>
+        <label>פגישה התקיימה</label>
+    </customValue>
+    <customValue>
+        <fullName>פגישה נדחתה</fullName>
+        <default>false</default>
+        <label>פגישה נדחתה</label>
+    </customValue>
+    <customValue>
+        <fullName>פגישה בוטלה</fullName>
+        <default>false</default>
+        <label>פגישה בוטלה</label>
+    </customValue>
+    <customValue>
+        <fullName>נשלח למסלקה</fullName>
+        <default>false</default>
+        <label>נשלח למסלקה</label>
+    </customValue>
+    <customValue>
+        <fullName>לא נשלח סטטוס</fullName>
+        <default>false</default>
+        <label>לא נשלח סטטוס</label>
+    </customValue>
+    <customValue>
+        <fullName>Meeting Cancelled</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Meeting Cancelled</label>
+    </customValue>
+    <customValue>
+        <fullName>Meeting To Be Rescheduled</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Meeting To Be Rescheduled</label>
+    </customValue>
+    <customValue>
+        <fullName>Meeting Set</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Meeting Set</label>
+    </customValue>
+    <masterLabel>B4U Status</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

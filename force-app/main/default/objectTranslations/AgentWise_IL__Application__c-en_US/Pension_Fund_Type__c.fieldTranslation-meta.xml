@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label></label>
+    <name>Pension_Fund_Type__c</name>
+    <picklistValues>
+        <masterLabel>ותיקה (יסוד)</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>מקיפה</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>משלימה (כללית)</masterLabel>
+        <translation></translation>
+    </picklistValues>
+</CustomFieldTranslation>

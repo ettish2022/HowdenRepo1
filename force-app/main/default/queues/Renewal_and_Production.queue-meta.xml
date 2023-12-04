@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <name>Renewal and Production</name>
+    <queueSobject>
+        <sobjectType>Novidea_HPC__Application__c</sobjectType>
+    </queueSobject>
+    <queueSobject>
+        <sobjectType>Novidea_HPC__Policy__c</sobjectType>
+    </queueSobject>
+    <queueSobject>
+        <sobjectType>Novidea_HPC__Product_Category__c</sobjectType>
+    </queueSobject>
+    <queueSobject>
+        <sobjectType>Novidea_HPC__Product__c</sobjectType>
+    </queueSobject>
+    <queueSobject>
+        <sobjectType>Novidea_HPC__Proposal__c</sobjectType>
+    </queueSobject>
+    <queueSobject>
+        <sobjectType>Novidea_HPC__Request_for_Proposal__c</sobjectType>
+    </queueSobject>
+</Queue>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Insured_Had_Policy_In_The_Last_5_Years__c</fullName>
+    <externalId>false</externalId>
+    <label>Insured Had Policy In The Last 5 Years</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>כן</fullName>
+                <default>false</default>
+                <label>כן</label>
+            </value>
+            <value>
+                <fullName>לא</fullName>
+                <default>false</default>
+                <label>לא</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

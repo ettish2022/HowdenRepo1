@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>counsellor__c</fullName>
+    <externalId>false</externalId>
+    <label>יועץ בתיק</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>true</sorted>
+            <value>
+                <fullName>FRC – רועי פרידמן ניהול סיכונים</fullName>
+                <default>false</default>
+                <label>FRC – רועי פרידמן ניהול סיכונים</label>
+            </value>
+            <value>
+                <fullName>אאון</fullName>
+                <default>false</default>
+                <label>אאון</label>
+            </value>
+            <value>
+                <fullName>אברי ורדי, פרידמן ניהול סיכונים</fullName>
+                <default>false</default>
+                <label>אברי ורדי, פרידמן ניהול סיכונים</label>
+            </value>
+            <value>
+                <fullName>אדר סקופ</fullName>
+                <default>false</default>
+                <label>אדר סקופ</label>
+            </value>
+            <value>
+                <fullName>אורי אורלנד משרד יועצים לניהול סיכונים</fullName>
+                <default>false</default>
+                <label>אורי אורלנד משרד יועצים לניהול סיכונים</label>
+            </value>
+            <value>
+                <fullName>אייקי שוורץ</fullName>
+                <default>false</default>
+                <label>אייקי שוורץ</label>
+            </value>
+            <value>
+                <fullName>אילן מיכאליס</fullName>
+                <default>false</default>
+                <label>אילן מיכאליס</label>
+            </value>
+            <value>
+                <fullName>איציק בידרמן</fullName>
+                <default>false</default>
+                <label>איציק בידרמן</label>
+            </value>
+            <value>
+                <fullName>אלי אליאס</fullName>
+                <default>false</default>
+                <label>אלי אליאס</label>
+            </value>
+            <value>
+                <fullName>ארז קדם</fullName>
+                <default>false</default>
+                <label>ארז קדם</label>
+            </value>
+            <value>
+                <fullName>בועז ליטאי ושות&apos; ניהול סיכונים</fullName>
+                <default>false</default>
+                <label>בועז ליטאי ושות&apos; ניהול סיכונים</label>
+            </value>
+            <value>
+                <fullName>בקשי יפת</fullName>
+                <default>false</default>
+                <label>בקשי יפת</label>
+            </value>
+            <value>
+                <fullName>ברוך ודקל בראון</fullName>
+                <default>false</default>
+                <label>ברוך ודקל בראון</label>
+            </value>
+            <value>
+                <fullName>בר זיו רביד</fullName>
+                <default>false</default>
+                <label>בר זיו רביד</label>
+            </value>
+            <value>
+                <fullName>גבי סכנין</fullName>
+                <default>false</default>
+                <label>גבי סכנין</label>
+            </value>
+            <value>
+                <fullName>גדעון ארמן</fullName>
+                <default>false</default>
+                <label>גדעון ארמן</label>
+            </value>
+            <value>
+                <fullName>גורדון אור</fullName>
+                <default>false</default>
+                <label>גורדון אור</label>
+            </value>
+            <value>
+                <fullName>גיל סמסונוב</fullName>
+                <default>false</default>
+                <label>גיל סמסונוב</label>
+            </value>
+            <value>
+                <fullName>גילת בראון</fullName>
+                <default>false</default>
+                <label>גילת בראון</label>
+            </value>
+            <value>
+                <fullName>דבש נובה (נזי)</fullName>
+                <default>false</default>
+                <label>דבש נובה (נזי)</label>
+            </value>
+            <value>
+                <fullName>דוד גוברין</fullName>
+                <default>false</default>
+                <label>דוד גוברין</label>
+            </value>
+            <value>
+                <fullName>דודי זלמנוביץ</fullName>
+                <default>false</default>
+                <label>דודי זלמנוביץ</label>
+            </value>
+            <value>
+                <fullName>דורון פרמדר</fullName>
+                <default>false</default>
+                <label>דורון פרמדר</label>
+            </value>
+            <value>
+                <fullName>דותן לופט, עו&quot;ד</fullName>
+                <default>false</default>
+                <label>דותן לופט, עו&quot;ד</label>
+            </value>
+            <value>
+                <fullName>דניס מאיר ניהול סיכונים</fullName>
+                <default>false</default>
+                <label>דניס מאיר ניהול סיכונים</label>
+            </value>
+            <value>
+                <fullName>דנתן – תומס שפיס</fullName>
+                <default>false</default>
+                <label>דנתן – תומס שפיס</label>
+            </value>
+            <value>
+                <fullName>דקל בראון</fullName>
+                <default>false</default>
+                <label>דקל בראון</label>
+            </value>
+            <value>
+                <fullName>חזקי פרידמן</fullName>
+                <default>false</default>
+                <label>חזקי פרידמן</label>
+            </value>
+            <value>
+                <fullName>חיים-לוי</fullName>
+                <default>false</default>
+                <label>חיים לוי</label>
+            </value>
+            <value>
+                <fullName>טמיר עמיקם עו&quot;ד</fullName>
+                <default>false</default>
+                <label>טמיר עמיקם עו&quot;ד</label>
+            </value>
+            <value>
+                <fullName>יגאל שגיא</fullName>
+                <default>false</default>
+                <label>יגאל שגיא</label>
+            </value>
+            <value>
+                <fullName>יגאל שלמי</fullName>
+                <default>false</default>
+                <label>יגאל שלמי</label>
+            </value>
+            <value>
+                <fullName>יואב ישראלי</fullName>
+                <default>false</default>
+                <label>יואב ישראלי</label>
+            </value>
+            <value>
+                <fullName>יואל אמת</fullName>
+                <default>false</default>
+                <label>יואל אמת</label>
+            </value>
+            <value>
+                <fullName>יוסי גבעוני</fullName>
+                <default>false</default>
+                <label>יוסי גבעוני</label>
+            </value>
+            <value>
+                <fullName>יורי קיזנר/עודד ורמל</fullName>
+                <default>false</default>
+                <label>יורי קיזנר/עודד ורמל</label>
+            </value>
+            <value>
+                <fullName>יורם זוהר כיועץ</fullName>
+                <default>false</default>
+                <label>יורם זוהר כיועץ</label>
+            </value>
+            <value>
+                <fullName>יותם שני</fullName>
+                <default>false</default>
+                <label>יותם שני</label>
+            </value>
+            <value>
+                <fullName>יעקב חדש</fullName>
+                <default>false</default>
+                <label>יעקב חדש</label>
+            </value>
+            <value>
+                <fullName>יעקב פירר</fullName>
+                <default>false</default>
+                <label>יעקב פירר</label>
+            </value>
+            <value>
+                <fullName>יקי אלגורטי</fullName>
+                <default>false</default>
+                <label>יקי אלגורטי</label>
+            </value>
+            <value>
+                <fullName>ל.ה.ד לאובר יועצים בע&quot;מ</fullName>
+                <default>false</default>
+                <label>ל.ה.ד לאובר יועצים בע&quot;מ</label>
+            </value>
+            <value>
+                <fullName>ליאת הר טוב</fullName>
+                <default>false</default>
+                <label>ליאת הר טוב</label>
+            </value>
+            <value>
+                <fullName>ליאת חן</fullName>
+                <default>false</default>
+                <label>ליאת חן</label>
+            </value>
+            <value>
+                <fullName>לידרים</fullName>
+                <default>false</default>
+                <label>לידרים</label>
+            </value>
+            <value>
+                <fullName>לימור שגיב אברהמי</fullName>
+                <default>false</default>
+                <label>לימור שגיב אברהמי</label>
+            </value>
+            <value>
+                <fullName>לירז גסר טופר</fullName>
+                <default>false</default>
+                <label>לירז גסר טופר</label>
+            </value>
+            <value>
+                <fullName>לנדוי יועצים לניהול סיכונים</fullName>
+                <default>false</default>
+                <label>לנדוי יועצים לניהול סיכונים</label>
+            </value>
+            <value>
+                <fullName>מאיר לזרוביץ</fullName>
+                <default>false</default>
+                <label>מאיר לזרוביץ</label>
+            </value>
+            <value>
+                <fullName>מארש</fullName>
+                <default>false</default>
+                <label>מארש</label>
+            </value>
+            <value>
+                <fullName>מיכאל מירון</fullName>
+                <default>false</default>
+                <label>מיכאל מירון</label>
+            </value>
+            <value>
+                <fullName>משה קלטניק</fullName>
+                <default>false</default>
+                <label>משה קלטניק</label>
+            </value>
+            <value>
+                <fullName>ניר ויטקובסקי</fullName>
+                <default>false</default>
+                <label>ניר ויטקובסקי</label>
+            </value>
+            <value>
+                <fullName>עודד סלע</fullName>
+                <default>false</default>
+                <label>עודד סלע</label>
+            </value>
+            <value>
+                <fullName>עידו ברלשטיין</fullName>
+                <default>false</default>
+                <label>עידו ברלשטיין</label>
+            </value>
+            <value>
+                <fullName>עמירם בר אדון</fullName>
+                <default>false</default>
+                <label>עמירם בר אדון</label>
+            </value>
+            <value>
+                <fullName>צבי בר</fullName>
+                <default>false</default>
+                <label>צבי בר</label>
+            </value>
+            <value>
+                <fullName>ראובן קוניאק</fullName>
+                <default>false</default>
+                <label>ראובן קוניאק</label>
+            </value>
+            <value>
+                <fullName>שיר דורון</fullName>
+                <default>false</default>
+                <label>שיר דורון</label>
+            </value>
+            <value>
+                <fullName>שרון אמירה</fullName>
+                <default>false</default>
+                <label>שרון אמירה</label>
+            </value>
+            <value>
+                <fullName>תלי רגב</fullName>
+                <default>false</default>
+                <label>תלי רגב</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

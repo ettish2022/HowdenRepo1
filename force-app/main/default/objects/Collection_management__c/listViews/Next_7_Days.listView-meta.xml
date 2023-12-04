@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Next_7_Days</fullName>
+    <booleanFilter>1 AND ((2 OR 3) OR 4)</booleanFilter>
+    <columns>NAME</columns>
+    <columns>Date_to_Contact__c</columns>
+    <columns>status_collection__c</columns>
+    <columns>Remarks__c</columns>
+    <columns>Account__c</columns>
+    <columns>Elementar_Policy__c</columns>
+    <columns>Income__c</columns>
+    <columns>Policy_Number__c</columns>
+    <columns>Effective_date__c</columns>
+    <columns>Agency_Fee_income__c</columns>
+    <columns>B_Premium_Income__c</columns>
+    <columns>Policy_Owner__c</columns>
+    <filterScope>Mine</filterScope>
+    <filters>
+        <field>Date_to_Contact__c</field>
+        <operation>equals</operation>
+        <value>NEXT_N_DAYS:7</value>
+    </filters>
+    <filters>
+        <field>Unpaid_premium__c</field>
+        <operation>notEqual</operation>
+        <value>0</value>
+    </filters>
+    <filters>
+        <field>Unpaid_Agancy_Fee__c</field>
+        <operation>notEqual</operation>
+        <value>0</value>
+    </filters>
+    <filters>
+        <field>Policy_ID__c</field>
+        <operation>notContain</operation>
+        <value>1,2,3,4,5,6,7,8,9,0</value>
+    </filters>
+    <label>7 הימים הבאים</label>
+</ListView>

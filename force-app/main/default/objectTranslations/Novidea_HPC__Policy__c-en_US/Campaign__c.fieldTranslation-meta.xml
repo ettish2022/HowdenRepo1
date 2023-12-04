@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label></label>
+    <name>Campaign__c</name>
+    <picklistValues>
+        <masterLabel>2018 TECH פרויקט מנורה</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>AIG סייבר לעו&quot;ד</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Project Dual / Menorah</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>אחריות מקצועית לעו&quot;ד במנורה + הרחבת סייבר</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>אלמנטארי-מבצע שכ&quot;ט 2013</masterLabel>
+        <translation>Agent fee Promo</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>הרחבת סייבר + TECH פרויקט מנורה</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>מבצע - טרור ומלחמה</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>מבצע אביב - 2020</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>מבצע ציים 2019</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>תוכנית עמותות</masterLabel>
+        <translation></translation>
+    </picklistValues>
+</CustomFieldTranslation>

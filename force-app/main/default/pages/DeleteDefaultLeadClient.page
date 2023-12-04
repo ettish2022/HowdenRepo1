@@ -1,0 +1,3 @@
+<apex:page standardController="Novidea_HPC__Lead__c" extensions="DeleteDefaultLeadClientController" showHeader="false" 
+sidebar="false" action="{!init}">
+</apex:page>

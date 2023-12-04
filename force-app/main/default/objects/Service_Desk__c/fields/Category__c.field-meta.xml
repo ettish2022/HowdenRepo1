@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Category__c</fullName>
+    <externalId>false</externalId>
+    <label>Category</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>סיילספורס</fullName>
+                <default>false</default>
+                <label>סיילספורס</label>
+            </value>
+            <value>
+                <fullName>Outlook</fullName>
+                <default>false</default>
+                <label>Outlook</label>
+            </value>
+            <value>
+                <fullName>אינטרנט</fullName>
+                <default>false</default>
+                <label>אינטרנט</label>
+            </value>
+            <value>
+                <fullName>הרשאות</fullName>
+                <default>false</default>
+                <label>הרשאות</label>
+            </value>
+            <value>
+                <fullName>חדר ישיבות</fullName>
+                <default>false</default>
+                <label>חדר ישיבות</label>
+            </value>
+            <value>
+                <fullName>חיבור מרחוק</fullName>
+                <default>false</default>
+                <label>חיבור מרחוק</label>
+            </value>
+            <value>
+                <fullName>מדפסות וסורקים</fullName>
+                <default>false</default>
+                <label>מדפסות וסורקים</label>
+            </value>
+            <value>
+                <fullName>מחשב</fullName>
+                <default>false</default>
+                <label>מחשב</label>
+            </value>
+            <value>
+                <fullName>משתמש</fullName>
+                <default>false</default>
+                <label>משתמש</label>
+            </value>
+            <value>
+                <fullName>פקס</fullName>
+                <default>false</default>
+                <label>פקס</label>
+            </value>
+            <value>
+                <fullName>ציוד</fullName>
+                <default>false</default>
+                <label>ציוד</label>
+            </value>
+            <value>
+                <fullName>תוכנות עבודה</fullName>
+                <default>false</default>
+                <label>תוכנות עבודה</label>
+            </value>
+            <value>
+                <fullName>תיקיות וקבצים</fullName>
+                <default>false</default>
+                <label>תיקיות וקבצים</label>
+            </value>
+            <value>
+                <fullName>Office</fullName>
+                <default>false</default>
+                <label>Office</label>
+            </value>
+            <value>
+                <fullName>משאבי אנוש</fullName>
+                <default>false</default>
+                <label>משאבי אנוש</label>
+            </value>
+            <value>
+                <fullName>אחר</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>אחר</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

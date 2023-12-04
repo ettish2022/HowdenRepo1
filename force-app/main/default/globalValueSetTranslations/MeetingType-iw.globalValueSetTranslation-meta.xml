@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <valueTranslation>
+        <masterLabel>Clearer Order Only</masterLabel>
+        <translation>הזמנת מסלקה בלבד</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Departure meeting</masterLabel>
+        <translation>פגישת עזיבה</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Key Person Meeting</masterLabel>
+        <translation>איש מפתח</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Meeting Continued</masterLabel>
+        <translation>פגישת המשך</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>New Employee</masterLabel>
+        <translation>האודן עובד חדש</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Provident investment</masterLabel>
+        <translation>גמל להשקעה/חסכון פיננסי</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Service Meeting</masterLabel>
+        <translation>האודן פגישת שירות</translation>
+    </valueTranslation>
+</GlobalValueSetTranslation>

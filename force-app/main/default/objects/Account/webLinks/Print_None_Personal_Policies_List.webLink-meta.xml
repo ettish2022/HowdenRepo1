@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Print_None_Personal_Policies_List</fullName>
+    <availability>online</availability>
+    <displayType>button</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>הדפס רשימת פוליסות שאינן פרט</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <url>window.open(&quot;/a1M/x?id={!Account.Id}&amp;rpp_sticky=false&amp;rlid=00ND0000005aowd&quot;,&quot;print_policies&quot; ,&quot;_blank &quot;, &apos;top=0px,left=0px&apos;, true);</url>
+</WebLink>

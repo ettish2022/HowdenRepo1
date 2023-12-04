@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Cust_Overview__Carrier_Alias__c</fullName>
+    <deprecated>false</deprecated>
+    <description>this alias will appear on customer overview as the carrier name</description>
+    <externalId>false</externalId>
+    <inlineHelpText>this alias will appear on customer overview as the carrier name</inlineHelpText>
+    <label>Carrier Alias</label>
+    <length>255</length>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

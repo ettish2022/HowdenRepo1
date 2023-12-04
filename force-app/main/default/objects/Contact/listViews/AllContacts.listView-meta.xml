@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AllContacts</fullName>
+    <columns>FULL_NAME</columns>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>CONTACT.PHONE1</columns>
+    <columns>CONTACT.EMAIL</columns>
+    <columns>CONTACT.BIRTHDATE</columns>
+    <columns>Novidea_HPC__SSN__c</columns>
+    <columns>CONTACT.TITLE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>FULL_NAME</field>
+        <operation>notEqual</operation>
+        <value>.</value>
+    </filters>
+    <label>כל אנשי הקשר</label>
+    <language>en_US</language>
+    <sharedTo>
+        <role>Chair_Man</role>
+        <role>Secretary</role>
+    </sharedTo>
+</ListView>

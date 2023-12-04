@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<HomePageComponent xmlns="http://soap.sforce.com/2006/04/metadata">
+    <links>Managers_Dashborad</links>
+    <links>CustomLink1</links>
+    <links>CustomLink2</links>
+    <links>Activities_from_telemeeting</links>
+    <links>PipeLineManager</links>
+    <pageComponentType>links</pageComponentType>
+</HomePageComponent>

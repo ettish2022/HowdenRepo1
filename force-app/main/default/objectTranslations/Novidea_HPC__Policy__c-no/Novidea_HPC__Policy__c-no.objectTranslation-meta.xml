@@ -1,0 +1,812 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <article>None</article>
+        <plural>false</plural>
+        <value></value>
+    </caseValues>
+    <caseValues>
+        <article>Indefinite</article>
+        <plural>false</plural>
+        <value></value>
+    </caseValues>
+    <caseValues>
+        <article>Definite</article>
+        <plural>false</plural>
+        <value></value>
+    </caseValues>
+    <caseValues>
+        <article>None</article>
+        <plural>true</plural>
+        <value></value>
+    </caseValues>
+    <caseValues>
+        <article>Indefinite</article>
+        <plural>true</plural>
+        <value></value>
+    </caseValues>
+    <caseValues>
+        <article>Definite</article>
+        <plural>true</plural>
+        <value></value>
+    </caseValues>
+    <gender></gender>
+    <layouts>
+        <layout>Agents</layout>
+        <sections>
+            <label></label>
+            <section>Dates</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>כספים</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מסמכים</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מעקב פוליסה</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מקטע חדש</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>עמלות</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרטי רכב</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרמיות</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>BRZ Car Policy Layout</layout>
+        <sections>
+            <label></label>
+            <section>Collection Detail</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Commission Details</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Fees</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Policy Details</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Policy Source Details</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>System Information</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>גבולות אחריות</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מסמכים</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מעקב פוליסה</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מקטע חדש</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרטי פוטנציאל</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרטי רכב</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרמיות</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>BRZ Main Policy Layout</layout>
+        <sections>
+            <label></label>
+            <section>Collection Detail</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Commission Details</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Fees</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Policy Details</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Policy Source Details</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>System Information</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>גבולות אחריות</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מסמכים</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מעקב פוליסה</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מקטע חדש</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרטי רכב</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרמיות</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>BRZ Main Policy Layout - With Renewal</layout>
+        <sections>
+            <label></label>
+            <section>Collection Detail</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Commission Details</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Fees</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Policy Details</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Policy Source Details</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>System Information</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>גבולות אחריות</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מסמכים</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מעקב פוליסה</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מקטע חדש</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרטי רכב</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרמיות</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Budget</layout>
+        <sections>
+            <label></label>
+            <section>Dates</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Commission Reporting</layout>
+        <sections>
+            <label></label>
+            <section>Dates</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מסמכים</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מקטע חדש</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>עמלות</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרמיות</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>תקציב ותחזית</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Parent Section LO</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Fees &amp; Discount</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מסמכים</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>סיכומי נתונים</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>עמלות</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרטי פוליסה</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרמיות</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Policy Admin Layout</layout>
+        <sections>
+            <label></label>
+            <section>Currency</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Cyber</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Dates</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Migration BarZivRavid</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Production</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Products Info</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Source Details</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Split Carriers</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>System Info</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>בנקי ימים - נח&quot;ל</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>גבולות אחריות</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>חישוב תקציב</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>כספים</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מסמכים</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מעקב פוליסה</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מקטע חדש</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מרכז רווח פנימי</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>עמלות</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרמיות</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>שכ&quot;ט</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>תקציב</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>תקציב ותחזית</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Sub Section LO</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מסמכים</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>עמלות</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרטי פוליסה</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרמיות</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>תשלומים והנחות</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Travel Insurance Policy</layout>
+        <sections>
+            <label></label>
+            <section>Collection Detail</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Dates</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Financial Details</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Policy Details</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Policy Source Details</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מסמכים</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מעקב פוליסה</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מקטע חדש</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פירוט בנק ימים</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרטי מערכת</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>UK CRM Policy</layout>
+        <sections>
+            <label></label>
+            <section>Additional Details</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Commissions</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Dates</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Documents</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Fees</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Liability Limits</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Premiums</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מעקב פוליסה</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מקטע חדש</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>UK Policy</layout>
+        <sections>
+            <label></label>
+            <section>Additional Details</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Dates</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>גבולות אחריות</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>טיפול מול גורם חוץ</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>כספים</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מסמכים</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מעקב פוליסה</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מקטע חדש</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>עמלות</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרמיות</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>שכ&quot;ט</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>VehiclesPolicyLayout</layout>
+        <sections>
+            <label></label>
+            <section>מסמכים</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מעקב פוליסה</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מקטע חדש</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרטי רכב</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרמיות</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>תאריכים</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>תקציב</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>תשלומים וגביה</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>individual</layout>
+        <sections>
+            <label></label>
+            <section>Dates</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Policy Details</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Product Details</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>בנקי ימים - נח&quot;ל</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>כספים</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מסמכים</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מעקב פוליסה</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מקטע חדש</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>עמלות</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרמיות</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>פוליסה קליטת פרודוקציה פרט</layout>
+        <sections>
+            <label></label>
+            <section>Dates</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>גבולות אחריות</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>טיפול מול גורם חוץ</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מעקב פוליסה</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מקטע חדש</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>עמלות</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרטי רכב</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרמיות</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>שכ&quot;ט</section>
+        </sections>
+    </layouts>
+    <nameFieldLabel></nameFieldLabel>
+    <quickActions>
+        <label></label>
+        <name>Update_Income_Number</name>
+    </quickActions>
+    <recordTypes>
+        <description></description>
+        <label></label>
+        <name>Parent_Policy</name>
+    </recordTypes>
+    <recordTypes>
+        <label></label>
+        <name>Sub_Policy</name>
+    </recordTypes>
+    <recordTypes>
+        <description></description>
+        <label></label>
+        <name>Travel_Policy</name>
+    </recordTypes>
+    <recordTypes>
+        <description></description>
+        <label></label>
+        <name>VehiclesPolicy</name>
+    </recordTypes>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>AccountMustBeAgencyOrCarrier</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Cant_Change_Policy_Number_After_Product</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Cant_Change_Policy_Type</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Carrier_is_actually_a_carrier</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Constructor_Date_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Local_Policy_Number_only_for_Front</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>New_Policy_Must_Have_Account</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Policy_Number_Contains_Regular_CharsOnly</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>User_BZR_Must_have_Owner_BZR</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>if_record_type_is_dewelling</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>lock_Endorsement_Approved</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>lock_Endorsement_Number</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>lock_NOVIPROD_Endorsement_Approved</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>mandatory_field_when_lead_source_isOther</name>
+    </validationRules>
+    <webLinks>
+        <label></label>
+        <name>Add_Section</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>Add_Section_For_Lighting</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>Constructor_Policies_Management</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>Create_Certificate</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>Create_Debit_Note</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>Create_Request_for_Payment</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>Documents</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>File_a_Document</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>Generate_With_Perform</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>Log_a_call</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>Manage_Policy_cus</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>Send_mail_to_owner</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>Show_Credit_Card_Details</name>
+    </webLinks>
+    <workflowTasks>
+        <description></description>
+        <name>ActionTask</name>
+        <subject></subject>
+    </workflowTasks>
+    <workflowTasks>
+        <name>ActionTask423</name>
+        <subject></subject>
+    </workflowTasks>
+    <workflowTasks>
+        <name>CollectionActionTask</name>
+        <subject></subject>
+    </workflowTasks>
+    <workflowTasks>
+        <name>NoClaimsConfirmation</name>
+        <subject></subject>
+    </workflowTasks>
+    <workflowTasks>
+        <name>PolicyRejectionActionTask</name>
+        <subject></subject>
+    </workflowTasks>
+    <workflowTasks>
+        <name>ProtectionApproval</name>
+        <subject></subject>
+    </workflowTasks>
+</CustomObjectTranslation>

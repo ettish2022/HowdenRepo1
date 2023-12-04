@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>WrongSSNControlDigit__c</fullName>
+    <externalId>false</externalId>
+    <formula>AND(OR(RecordType.DeveloperName = &apos;Client&apos;, NOT(ISBLANK(Novidea_HPC__SSN__c ))),( 
+LEN(Novidea_HPC__SSN__c)&gt;9 || 
+(LEN(Novidea_HPC__SSN__c)&gt;0 &amp;&amp; !ISNUMBER(Novidea_HPC__SSN__c)) || 
+MOD( 
+VALUE(MID(LPAD(Novidea_HPC__SSN__c,9,&quot;0&quot;), 9, 1))+ 
+IF( VALUE(MID(LPAD(Novidea_HPC__SSN__c,9,&quot;0&quot;), 8, 1))&lt;5, 
+VALUE(MID(LPAD(Novidea_HPC__SSN__c,9,&quot;0&quot;), 8, 1))*2, 
+VALUE(MID(TEXT(VALUE(MID(LPAD(Novidea_HPC__SSN__c,9,&quot;0&quot;), 8, 1))*2),1,1))+VALUE(MID(TEXT(VALUE(MID(LPAD(Novidea_HPC__SSN__c,9,&quot;0&quot;), 8, 1))*2),2,1)) 
+) + 
+VALUE(MID(LPAD(Novidea_HPC__SSN__c,9,&quot;0&quot;), 7, 1))+ 
+IF( VALUE(MID(LPAD(Novidea_HPC__SSN__c,9,&quot;0&quot;), 6, 1))&lt;5, 
+VALUE(MID(LPAD(Novidea_HPC__SSN__c,9,&quot;0&quot;), 6, 1))*2, 
+VALUE(MID(TEXT(VALUE(MID(LPAD(Novidea_HPC__SSN__c,9,&quot;0&quot;), 6, 1))*2),1,1))+VALUE(MID(TEXT(VALUE(MID(LPAD(Novidea_HPC__SSN__c,9,&quot;0&quot;), 6, 1))*2),2,1)) 
+) + 
+VALUE(MID(LPAD(Novidea_HPC__SSN__c,9,&quot;0&quot;), 5, 1))+ 
+IF( VALUE(MID(LPAD(Novidea_HPC__SSN__c,9,&quot;0&quot;), 4, 1))&lt;5, 
+VALUE(MID(LPAD(Novidea_HPC__SSN__c,9,&quot;0&quot;), 4, 1))*2, 
+VALUE(MID(TEXT(VALUE(MID(LPAD(Novidea_HPC__SSN__c,9,&quot;0&quot;), 4, 1))*2),1,1))+VALUE(MID(TEXT(VALUE(MID(LPAD(Novidea_HPC__SSN__c,9,&quot;0&quot;), 4, 1))*2),2,1)) 
+) + 
+VALUE(MID(LPAD(Novidea_HPC__SSN__c,9,&quot;0&quot;), 3, 1))+ 
+IF( VALUE(MID(LPAD(Novidea_HPC__SSN__c,9,&quot;0&quot;), 2, 1))&lt;5, 
+VALUE(MID(LPAD(Novidea_HPC__SSN__c,9,&quot;0&quot;), 2, 1))*2, 
+VALUE(MID(TEXT(VALUE(MID(LPAD(Novidea_HPC__SSN__c,9,&quot;0&quot;), 2, 1))*2),1,1))+VALUE(MID(TEXT(VALUE(MID(LPAD(Novidea_HPC__SSN__c,9,&quot;0&quot;), 2, 1))*2),2,1)) 
+) + 
+VALUE(MID(LPAD(Novidea_HPC__SSN__c,9,&quot;0&quot;), 1, 1)) 
+, 10) != 0) 
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>ספרת ביקורת לא תקינה</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

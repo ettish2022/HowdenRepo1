@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <layouts>
+        <layout>BRZ Finance Income</layout>
+        <sections>
+            <label></label>
+            <section>Budget</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Commissions</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Dates</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Fees</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Premium</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>קישורים מותאמים אישית</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Budget</layout>
+        <sections>
+            <label></label>
+            <section>Income</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Premium</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Production</section>
+        </sections>
+        <sections>
+            <label>New Section</label>
+            <section>מקטע חדש</section>
+        </sections>
+        <sections>
+            <label>Custom Links</label>
+            <section>קישורים מותאמים אישית</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Copy Premiums Layout</layout>
+        <sections>
+            <label></label>
+            <section>YossiH Debug להלעלם</section>
+        </sections>
+        <sections>
+            <label>New Section</label>
+            <section>הכנסה</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>חיתוך הכנסות 395</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>ישויות</section>
+        </sections>
+        <sections>
+            <label>Production</label>
+            <section>פרודוקציה</section>
+        </sections>
+        <sections>
+            <label>New Section</label>
+            <section>פרטי מבטח</section>
+        </sections>
+        <sections>
+            <label>Premium</label>
+            <section>פרמיות</section>
+        </sections>
+        <sections>
+            <label>Custom Links</label>
+            <section>קישורים מותאמים אישית</section>
+        </sections>
+        <sections>
+            <label>New Section</label>
+            <section>שערוך</section>
+        </sections>
+        <sections>
+            <label>Payments</label>
+            <section>תשלום</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>File Manager</layout>
+        <sections>
+            <label></label>
+            <section>Income</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Premium</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Production</section>
+        </sections>
+        <sections>
+            <label>New Section</label>
+            <section>מקטע חדש</section>
+        </sections>
+        <sections>
+            <label>Custom Links</label>
+            <section>קישורים מותאמים אישית</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Finance</layout>
+        <sections>
+            <label></label>
+            <section>Income</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Premium</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Production</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>YossiH Debug - להתעלם</section>
+        </sections>
+        <sections>
+            <label>New Section</label>
+            <section>מקטע חדש</section>
+        </sections>
+        <sections>
+            <label>Custom Links</label>
+            <section>קישורים מותאמים אישית</section>
+        </sections>
+        <sections>
+            <label>Budget</label>
+            <section>תקציב</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Premium Breakdown Layout</layout>
+        <sections>
+            <label></label>
+            <section>הכנסה</section>
+        </sections>
+        <sections>
+            <label>New Section</label>
+            <section>מקטע חדש</section>
+        </sections>
+        <sections>
+            <label>Production</label>
+            <section>פרודוקציה</section>
+        </sections>
+        <sections>
+            <label>Premium</label>
+            <section>פרמיה</section>
+        </sections>
+        <sections>
+            <label>Custom Links</label>
+            <section>קישורים מותאמים אישית</section>
+        </sections>
+        <sections>
+            <label>Income</label>
+            <section>שדות</section>
+        </sections>
+        <sections>
+            <label>Budget</label>
+            <section>תקציב</section>
+        </sections>
+        <sections>
+            <label>Payments</label>
+            <section>תשלום</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label></label>
+        <name>Copy_values</name>
+    </quickActions>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Cannot_change_commission_fee</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Cant_Change_Income_Details_After_Product</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Income_395_only_on_0</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Lock_Novidea_HPC_Endorsement_Number</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>YH_Change_one_entity_at_a_time</name>
+    </validationRules>
+    <webLinks>
+        <label></label>
+        <name>Copy_Premiums</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>CreateNewCollection</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>Create_form</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>Documents</name>
+    </webLinks>
+</CustomObjectTranslation>

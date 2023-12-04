@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <article>Definite</article>
+        <plural>false</plural>
+        <value>תביעת חיים</value>
+    </caseValues>
+    <caseValues>
+        <article>None</article>
+        <plural>false</plural>
+        <value>תביעת חיים</value>
+    </caseValues>
+    <caseValues>
+        <article>Definite</article>
+        <plural>true</plural>
+        <value>תביעות חיים</value>
+    </caseValues>
+    <caseValues>
+        <article>None</article>
+        <plural>true</plural>
+        <value>תביעות חיים</value>
+    </caseValues>
+    <gender>Feminine</gender>
+    <nameFieldLabel>מספר תביעה</nameFieldLabel>
+    <recordTypes>
+        <label>קולקטיב</label>
+        <name>Collective</name>
+    </recordTypes>
+    <recordTypes>
+        <description></description>
+        <label>דרישת התחייבות</label>
+        <name>Commitment_Requirement</name>
+    </recordTypes>
+    <recordTypes>
+        <label>א.כ.ע</label>
+        <name>Disablility</name>
+    </recordTypes>
+    <recordTypes>
+        <description></description>
+        <label>נכות</label>
+        <name>Incapacity</name>
+    </recordTypes>
+    <recordTypes>
+        <label>ריסק</label>
+        <name>Life</name>
+    </recordTypes>
+    <recordTypes>
+        <label>תאונות אישיות</label>
+        <name>Std</name>
+    </recordTypes>
+    <recordTypes>
+        <description></description>
+        <label>פיצוי ניתוח/אמבולטורי</label>
+        <name>Surgery_Compensation_Ambulatory</name>
+    </recordTypes>
+    <recordTypes>
+        <label>שאירים פנסיה</label>
+        <name>SurvivingRelatives_Pension</name>
+    </recordTypes>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>EventTypeIsRequired</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>NewCollectiveRequiredEmployerAccount</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>PayedAmountRequired</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>PolicyIsRequired</name>
+    </validationRules>
+    <webLinks>
+        <label>תייק קבצים</label>
+        <name>File_a_Document</name>
+    </webLinks>
+</CustomObjectTranslation>

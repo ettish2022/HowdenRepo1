@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Hafshara_Lost_Q_Flag__c</fullName>
+    <externalId>false</externalId>
+    <label>הפשרה רבעון אבוד</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>UC1</fullName>
+                <default>false</default>
+                <label>UC1</label>
+            </value>
+            <value>
+                <fullName>UC2</fullName>
+                <default>false</default>
+                <label>UC2</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

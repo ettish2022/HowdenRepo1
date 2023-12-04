@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>Allow_ALL_except_RI</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Allow ALL except RI</label>
+        <sharedTo>
+            <group>AllowedForAllRecordsExceptRI</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>manage_RI__c</field>
+            <operation>notEqual</operation>
+            <value>accountRI</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Claims_non_RI</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Claims non RI</label>
+        <sharedTo>
+            <group>BRZ_ClaimsGroup</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>manage_RI__c</field>
+            <operation>notEqual</operation>
+            <value>accountRI</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Howden_See_BRZ</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Howden See BRZ</label>
+        <sharedTo>
+            <group>Howden_Manager</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>BRZ__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>RI_Accounts</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>RI Accounts</label>
+        <sharedTo>
+            <group>RI_Users</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>manage_RI__c</field>
+            <operation>equals</operation>
+            <value>accountRI</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>RI_Owned_Non_RI</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>RI Owned Non RI</label>
+        <sharedTo>
+            <group>ownedRI_NonRI</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>manage_RI__c</field>
+            <operation>equals</operation>
+            <value>ownerRI</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingOwnerRules>
+        <fullName>BusinessHowdenBarziv</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>האודן ובר זיו עסק</label>
+        <sharedTo>
+            <group>RI_Users</group>
+        </sharedTo>
+        <sharedFrom>
+            <roleAndSubordinates>HowdenIsrael</roleAndSubordinates>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Finance_Dep_View_All</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Finance Dep View All</label>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+        <sharedFrom>
+            <group>Finance_Department</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>GilS</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>גיל ס</label>
+        <sharedTo>
+            <group>GilS</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>HowdenPersonal</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>HowdenAndBZR</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>ללא סוכנים</description>
+        <label>האודן + בר זיו</label>
+        <sharedTo>
+            <group>HowdenAndBZR_WO_RI</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>HowdenAndBZR_WO_RI</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>HowdenPersonal</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>עובדי פרט</label>
+        <sharedTo>
+            <group>HowdenPersonal</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>HowdenPersonal</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>PJACK</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>יעקוב בוקעי</label>
+        <sharedTo>
+            <roleAndSubordinates>YakovBokai</roleAndSubordinates>
+        </sharedTo>
+        <sharedFrom>
+            <roleAndSubordinates>YakovBokaiDeletionMaster</roleAndSubordinates>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>PSHL</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>שלמה</label>
+        <sharedTo>
+            <roleAndSubordinates>ShlomoYadidLevi</roleAndSubordinates>
+        </sharedTo>
+        <sharedFrom>
+            <roleAndSubordinates>ShlomoYadidLeviDeletionMaster</roleAndSubordinates>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>PolicyOps</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>תפעול פוליסות</label>
+        <sharedTo>
+            <group>OperationNotHierarchy</group>
+        </sharedTo>
+        <sharedFrom>
+            <roleAndSubordinates>PRIME_TECH_MANG</roleAndSubordinates>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Shlomo_Yadid_Levi</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>שלמה ידיד לוי</label>
+        <sharedTo>
+            <roleAndSubordinates>ShlomoYadidLevi</roleAndSubordinates>
+        </sharedTo>
+        <sharedFrom>
+            <roleAndSubordinates>ShlomoYadidLevi</roleAndSubordinates>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Top_Executives</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Top Executives</label>
+        <sharedTo>
+            <group>TopExecutives</group>
+        </sharedTo>
+        <sharedFrom>
+            <allInternalUsers></allInternalUsers>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Yaakov_Bokai</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>יעקב בוקעי</label>
+        <sharedTo>
+            <roleAndSubordinates>YakovBokai</roleAndSubordinates>
+        </sharedTo>
+        <sharedFrom>
+            <roleAndSubordinates>YakovBokai</roleAndSubordinates>
+        </sharedFrom>
+    </sharingOwnerRules>
+</SharingRules>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Lock_Duplicate_SSN_Record</fullName>
+    <active>true</active>
+    <description>חסימת האפשרות להכנסת שינויים באיש קשר שיש לו תז שאינו של איש הקשר הראשי לאותו תז</description>
+    <errorConditionFormula>AND(NOT(
+ $Setup.Novidea_HPC__Trigger__c.Novidea_HPC__Stop_Validation_Rule__c ),
+CASESAFEID( $User.Id ) != &apos;005D0000002DrTrIAK&apos;,
+Not($Profile.Id = &quot;00eD0000001mpv0&quot;),
+Not(ISBLANK(Stored_Duplicate_SSN__c)))</errorConditionFormula>
+    <errorDisplayField>Main_Client_SSN__c</errorDisplayField>
+    <errorMessage>לא ניתן לעדכן רשומה זו. יש לעדכן רשומת לקוח ראשי שקיימת עם תז זה או למזג את הרשומות</errorMessage>
+</ValidationRule>

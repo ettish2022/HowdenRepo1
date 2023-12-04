@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Predefined_File_Selection_Dir__c</fullName>
+    <description>A constant directory to start searching for files to file. In use in the process of file filing, through the file applet</description>
+    <externalId>false</externalId>
+    <label>Predefined File Selection Dir</label>
+    <length>255</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

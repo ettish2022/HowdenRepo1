@@ -1,0 +1,1282 @@
+<apex:page controller="mergeTransactionCO" sidebar="false" tabStyle="Merge_Production_New__tab">
+
+<!-- start include script -->
+    
+    <apex:includeScript value="{!URLFOR($Resource.Novidea_HPC__autocompletejs)}" />
+    <apex:includeScript value="{!$Resource.wsemulator}"/>
+    <apex:includeScript value="{!$Resource.Novidea_HPC__jquery164min}"/> 
+    <apex:includeScript value="{!$Resource.datatablesmin19}"/>
+<!--     <apex:includeScript value="{!$Resource.FixedHeader}"/> -->
+    
+<!-- end include script -->
+
+<!-- start include css -->
+    
+    <apex:stylesheet value="{!$Resource.Novidea_HPC__autocompletecss}"/>
+
+    <apex:stylesheet value="{!$Resource.datatablecss}/css/jquery.dataTables.css"/>     
+<!-- end include css -->
+
+
+
+
+<!-- style start  -->
+
+<style type="text/css">    
+
+    div#mask { display: none; cursor: wait; z-index: 9998; 
+                position: absolute; top: 0; left: 0; height: 100%; 
+                width: 100%; background-color: #fff; opacity: 0; filter: alpha(opacity = 0);}
+
+    div#progress { display: none;  z-index: 9999; text-align:{!$Label.Text_Alignment};
+                position: absolute; top: 40%; left: 30%; height: 20%; padding:5px;
+                width: 40%; background-color: #fff; opacity: 0.9; filter: alpha(opacity = 70);}
+
+    #policyTrans .lookupIcon,#policyTrans .lookupIconOn, #policyTrans .infoIcon {
+        float:right;
+    }
+    .colLTR{
+        direction:ltr;
+    }
+    .tdNoWrap{
+        white-space:nowrap;
+    }
+
+    .searchArea{
+        background-color: transparent;
+        font-size: 14px;
+        font-weight: normal;
+        font-family: Arial,Helvetica;
+        border: 1px solid gray;
+        background-image: url('{!$Resource.search_loopa15}');
+        background-repeat: no-repeat;
+        background-position: top right;
+        background-size: 15px;
+        padding-right: 20px;  
+        width:120px;
+    }
+
+    #policyTrans td {
+        padding-right: 1px;
+        padding-left: 1px;
+        text-align: center;
+    }
+    
+    .paginate_button {
+        background: #E8E8E9 url('/img/alohaSkin/btn_sprite.png') repeat-x left top;
+        font-weight: bold;
+        font-size: 14px !important;
+    }
+
+    #policyTrans tbody{
+       font-size:12px;        
+    }
+    
+    .bPageBlock .labelCol{
+        font-size:14px;        
+    }
+    
+    .btn{
+        font-size:14px !important;        
+    }
+        
+    .dataTables_length {
+        float: right;
+    }
+    
+    .dataTables_filter{
+        padding-right: 20px;        
+       padding-bottom:5px;
+     }        
+    
+    .dataTables_paginate {
+        text-align: center;
+        float:none;
+        padding-top:5px;
+    }
+      
+    .tdLeft{
+        text-align: left;
+    }
+    
+    .tdRight{
+         text-align: right;
+    }
+              
+    
+    .subjectCol{ 
+       text-overflow: ellipsis;
+       white-space: nowrap;
+       overflow-x: hidden;
+       width:250px;
+    }
+              
+    th {
+       background:url("/img/alohaSkin/grid_headerbg.gif") repeat-x scroll 0 bottom #FFFFFF
+    }
+    
+    .trBackround{
+         background:url("/img/alohaSkin/grid_headerbg.gif") repeat-x scroll 0 bottom #FFFFFF
+    }
+    
+    thead  tr.headerRow{
+         background:url("/img/alohaSkin/grid_headerbg.gif") repeat-x scroll 0 bottom #FFFFFF
+    }                         
+    
+    .list_pb{
+        color:#333;
+        margin: 1px;
+        padding: 2px 3px;
+        border: 1px solid #B5B5B5;
+        border-bottom-color: #7F7F7F;
+        background: #E8E8E9 url('/img/alohaSkin/btn_sprite.png') repeat-x left top;
+        font-weight: bold;
+        font-size: 1.2em;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+    }
+    
+    .list_pbs{
+        float:{!$Label.Text_Alignment};
+    }      
+    
+</style>
+
+<!-- style end  -->
+
+<script>
+       
+        function formatString(instr) {
+            var args = arguments;
+            if(instr==null || instr===undefined || instr==""){
+                if(args.length>1) return args[1];
+                else return "";
+            }
+            return instr.replace(/\{(\d+)\}/g, function() {
+                var argNum = new Number(arguments[1]);
+                if(args.length>(argNum+1))
+                    return args[argNum+1];
+                else return "{" + arguments[1]+ "}";
+            });
+        }      
+       // will hold th SF url
+        var sfUrlG ="{!sFHost}";
+        var contactIdGL = "";
+        var accountIdGL = "";
+        var carrierIdGL = "";
+        var policyInCreationMap = {};
+        //var policyTransactionIdGL = "{!transactionName}";
+        //document.getElementById("policyTransactionInput").value = "{!transactionName}";
+        
+        var policyPrefixG = "{!policyPrefix}";
+        var BrokerNumberPrefixG = "{!brokerNumberPrefix}";
+        
+        function buildLinkToSobject(Id,Name,identificationType,toolTip){
+            var style = "";
+            var title = "";
+            if (identificationType == "Partially Auto")
+                style = ' style="color:red;" ';
+            if (!(typeof toolTip === 'undefined' || toolTip === null || toolTip === ""))
+                title = ' title =\"' + "{!JSENCODE($Label.Agency_Name)}" + " : " + toolTip + "\" ";
+                
+            var htmlLink ="<a " + title + "href=\"/" +Id +"\" " + " target=\"_blank\"><span" + style +  ">" + Name + "</span></a>";
+            return htmlLink ;
+        }
+        
+        function bulidSyncButton(rowNum,SFId,identificationType){
+            var label = "התאם";
+            if (identificationType == "Full Auto")
+                label = "מזג";
+            var srcSyncIcon = "{!$Resource.syncIcon}";
+            var htmlSyncButton = "<a title=\"התאם נתוני פרודוקציה\" style=\"cursor:pointer;\" onclick=\"syncRow(\'" + rowNum + "\',\'" + SFId + "\');\"\"><span style=\"color:#015BA7;\" >" + label + "</span></a>";
+            return htmlSyncButton ;
+        }
+        
+        //function for creating policy         
+         function bulidCreatePolicyButton(rowNum,SFId){
+            
+            var htmlSyncButton = "&nbsp;|&nbsp;<a style=\"cursor:pointer;\" onclick=\"syncAndCreatePolicy(\'" + rowNum + "\',\'" + SFId + "\');\"><span title=\"יצירת פוליסה חדשה\" style=\"color:#015BA7;\" >צור</span></a>";
+            return htmlSyncButton ;
+        }
+        
+        function buildCreateContactButton(rowNum,SFId){
+            var label = "צור איש קשר";
+            var htmlSyncButton = "<a title=\"צור איש קשר תחת חשבון הפוליסה\" style=\"cursor:pointer;\" onclick=\"if(!confirm('הפעולה תגרום ליצירת איש קשר המחובר לחשבון שבפוליסה, על בסיס הפרטים שבפרודוקציה. האם להמשיך?'))return false;createContact(\'" + rowNum + "\',\'" + SFId + "\');\"\"><span style=\"color:#015BA7;\" >" + label + "</span></a>";
+            return htmlSyncButton ;
+        }
+        
+        //function for delete one row 
+        function bulidDelRowButton(rowNum,SFId){
+            var htmlSyncButton = "<a onclick=\"deleteRow(\'" + rowNum + "\',\'" + SFId+ "\');\">מחק</a>";
+            return htmlSyncButton ;
+        }
+        
+        
+        function deleteRow(rowNum,SFId){
+           flowloadingStart();
+           mergeTransactionCO.deletePolicyTransaction(rowNum,SFId,callbackUpdateDelRow);
+        }
+        
+        //function for sync one row 
+        function syncRow(rowNum,SFId){
+           flowloadingStart();
+           mergeTransactionCO.syncRowTransaction(rowNum,SFId,callbackUpdateRow);
+        }
+        
+        function syncRowBeforeCreate(rowNum,SFId){
+           mergeTransactionCO.syncRowTransaction(rowNum,SFId,callbackUpdateRowSyncBeforeCreate);
+        }       
+        
+        function syncAndCreatePolicy(rowNum,SFId){
+            flowloadingStart();
+            syncRowBeforeCreate(rowNum,SFId);
+        }
+        
+        //function for create one policy
+        function createPolicies(SFIds){
+            flowloadingStart(true);
+            mergeTransactionCO.createPoliciesInDB(SFIds,callbackCreatePolicies);
+        }
+        
+         //function for create one policy
+        function createPolicy(rowNum, SFId, polNumFromInsCompany){
+            if(policyInCreationMap[polNumFromInsCompany])return;
+            policyInCreationMap[polNumFromInsCompany] = true;
+            flowloadingStart();
+            mergeTransactionCO.createPolicyInDB(rowNum,SFId,callbackUpdateRowFromCreate);
+        } 
+        
+        function createContact(rowNum, SFId){
+            mergeTransactionCO.createContact(rowNum,SFId,callbackCreateContact);
+        }  
+        
+        function callbackCreateContact(result, event) {
+            return callbackUpdateRow(result, event);
+        }    
+
+        //call back from deleting one row
+        function callbackCreatePolicies(result, event) {
+            if(event.type == 'exception') {
+                flowloadingStop();
+                alert(event.message);
+            } 
+            else {
+                if(result==null)return;   
+                mergeTransactionCO.checkPolicyCreationJobStatus(result, callbackCheckJobStatus);
+            }
+        }
+        
+        function callbackCheckJobStatus(result, event) {
+            if(event.type == 'exception') {
+                flowloadingStop();
+                alert(event.message);
+            } 
+            else {
+                if(result.txRows!=null && result.txRows.length>0){
+                    //Update table
+                    callbackUpdateRows(result.txRows, event);
+                }
+                var elem = document.getElementById("progress");
+                var subFormatStr = "{!JSENCODE($Label.Check_Policy_Creation_Job_Status_Errors)}";
+                if(result.Status.toLowerCase()=="aborted" || result.Status.toLowerCase()=="failed"){
+                    var formatStr = "{!JSENCODE($Label.Check_Policy_Creation_Job_Status_Abort_Failed)}", formattedMessage;
+                    if(result.NumberOfErrors!=0){
+                        var subFormattedStr = formatString(subFormatStr,result.NumberOfErrors,result.ExtendedStatus);
+                        formatStr += " {4}";
+                        formattedMessage = formatString(formatStr,result.jobId,result.transStatus, result.JobItemsProcessed, result.TotalJobItems, subFormattedStr)
+                    }
+                    else{
+                        formattedMessage = formatString(formatStr,result.jobId,result.transStatus, result.JobItemsProcessed, result.TotalJobItems,"");
+                    }
+                    alert(formattedMessage);
+                    flowloadingStop();
+                }
+                else{
+                    var formatStr = "{!JSENCODE($Label.Check_PolicyCreation_Job_Status_Not_Aborted_Failed)}", formattedMessage;
+                    if(result.NumberOfErrors!=0){
+                        var subFormattedStr = formatString(subFormatStr, result.NumberOfErrors, result.ExtendedStatus);
+                        formatStr += " {2}";
+                        formattedMessage = formatString(formatStr, result.JobItemsProcessed, result.TotalJobItems, subFormattedStr);
+                    }
+                    else formattedMessage = formatString(formatStr, result.JobItemsProcessed, result.TotalJobItems,"");
+                    elem.innerHTML = "<P>{!JSENCODE($Label.Check_Policy_Creation_Job_Status_Wait_Processing)}</P><P>" + formattedMessage + "</P>"; 
+                    if(result.Status.toLowerCase() == "completed"){
+                        if(result.ExtendedStatus!=null){
+                            alert("{!JSENCODE($Label.Check_PolicyCreation_Job_Status_Final_Message)} " + formattedMessage);
+                        }
+                        flowloadingStop();
+                        return;
+                    }
+                    resultForEval = result;
+                    window.setTimeout("mergeTransactionCO.checkPolicyCreationJobStatus(resultForEval, callbackCheckJobStatus);",10000);
+                } 
+            }
+        }
+        
+        //call back from deleting one row
+        function callbackUpdateDelRow(result, event) {
+            if(event.type == 'exception') {
+                 flowloadingStop();
+                alert(event.message);
+            } 
+            else {   
+                var rownNmber = result.rowNumber;                              
+                //alert(rownNmber );
+                var divId ="#"+rownNmber ;
+                var elm =j$(divId).parent().parent();
+                j$('#policyTrans').dataTable().fnDeleteRow(elm[0] );
+                //j$('#policyTrans').dataTable().fnDraw();
+                flowloadingStop();
+            }
+        } 
+        
+        //call back from updating one row
+        function callbackUpdateRow(result, event) {
+            if(event.type == 'exception') {
+                flowloadingStop();
+                alert(event.message);
+                return false;
+            } 
+            else {   
+                var rownNmber = result.rowNumber;
+                var divId ="#"+rownNmber ;
+                var elm =j$(divId).parent().parent();
+                var rowData = result.wrappedPT;    
+                var serial = elm.find("td:eq(13)").text();             
+                j$('#policyTrans').dataTable().fnUpdate(rowData ,elm[0],false,false);
+                //update the serial number column
+                j$('#policyTrans').dataTable().fnUpdate(serial, elm[0].rowIndex, 13, false,false);
+                flowloadingStop();
+                return true;
+            }
+        }
+        
+        function callbackUpdateRowSyncBeforeCreate(result, event) {
+            if(event.type != "exception" && !result.wrappedPT.IsPolicyfound){
+                var rownNmber = result.rowNumber;
+                var divId ="#"+rownNmber ;
+                var elm =j$(divId).parent().parent();
+                var rowindex = elm[0].rowIndex;
+                createPolicy(""+rowindex,result.wrappedPT.Id, result.wrappedPT.Policy_number_from_Insurance_company);
+            }
+            else callbackUpdateRow(result, event);
+        }
+        
+        function callbackUpdateRowFromCreate(result, event) {
+            if(event.type == "exception"){
+                for(var key in policyInCreationMap){
+                    delete policyInCreationMap[key];
+                }
+            }
+            else{
+                delete policyInCreationMap[result.wrappedPT.Policy_number_from_Insurance_company];
+            }
+            if(callbackUpdateRow(result, event) && (result.wrappedPT.Customer_AccountId==null || result.wrappedPT.Customer_AccountId==""))
+                window.open("/" + result.wrappedPT.PolicyId + "/e?retURL=%2F" + result.wrappedPT.PolicyId,"_blank");
+        }
+        
+        //callback from updating multiple rows both from sync and  from creating multipel policies
+        function callbackUpdateRows(result, event) {
+             if(event.type == 'exception') {
+                  flowloadingStop();
+                  alert(event.message);
+             } 
+             else {   
+                 var rows = result;
+                 for(i = 0; i < rows.length; i++){ 
+                     var rownNmber = rows[i].rowNumber;
+                     var divId ="#"+rownNmber ;
+                     var elm =j$(divId).parent().parent();
+                     var rowData = rows[i].wrappedPT;                   
+                     j$('#policyTrans').dataTable().fnUpdate(rowData ,elm[0],false,false);
+                 }
+                 flowloadingStop();
+                 clearSelectAllCheckBox();
+            }
+        }             
+        
+        function callbackFromUpdatePolicy(result, event) {
+            if(event.type == 'exception') {
+                alert(event.message);
+                flowloadingStop();
+            } 
+            else {
+                if(result==null || result.length===undefined){
+                    flowloadingStop();
+                    document.write("<div style='font-size:48px;'><p>בקשת העיבוד נשלחה. בסיום העיבוד תישלח הודעת דוא\"ל.</p><p style='font-size:24px;'>לרענון הדף בתום העיבוד <a href='" + window.location.href + "'>לחץ כאן</a></p></div>");
+                    return;
+                }
+                var rows = result;
+                for(i = 0; i < rows.length; i++){ 
+                    var rownNmber = rows[i].rowNumber;
+                    //var rowData = rows[i].wrappedPT; 
+                    var divId ="#"+rownNmber ;
+                    var elm =j$(divId).parent().parent();                  
+                    j$('#policyTrans').dataTable().fnDeleteRow(elm[0]);
+                }
+                j$('#policyTrans').dataTable().fnDraw();
+                flowloadingStop();
+                clearAllCheckBoxTable();
+                clearSelectAllCheckBox();
+                sumOfColumns("policyTrans",11,true);
+                //TODO write a function to clear all checkbox
+           }
+        }
+        
+        function handleDeleteRows(result, event) {
+            if(event.type == 'exception') {
+                alert(event.message);
+                flowloadingStop();
+            } 
+            else {   
+                if(result==null) {flowloadingStop(); return;}   
+                var rows = result;
+                for(i = 0; i < rows.length; i++){ 
+                    var rownNmber = rows[i];//.rowNumber;
+                    var divId ="#"+rownNmber ;
+                    var elm =j$(divId).parent().parent();                  
+                    j$('#policyTrans').dataTable().fnDeleteRow(elm[0]);
+                }
+                //j$('#policyTrans').dataTable().fnDraw();
+                flowloadingStop();
+                sumOfColumns("policyTrans",11,true);
+           }
+        }     
+        
+        function bulidInformatioSearchnButton(informationText, searchText, objectPrefix){
+             var searchUrl = bulidSearchUrl(searchText,objectPrefix);
+             var onClickStr = "onclick=\"window.open(\'" + searchUrl + "\',\'_blank\');\"";
+             var HtmlInformationButton ="<div  id=\"secondSearchInfo\" onfocus=\"addMouseOver(this)\" onmouseover=\"addMouseOver(this);\" tabindex=\"0\" style=\"cursor:pointer;display: inline;text-decoration: none;\" " + onClickStr + ">";
+             HtmlInformationButton += "<img src=\"/s.gif\" alt=\"\" class=\"infoIcon\" title=\"\"/>" ;
+             HtmlInformationButton += "<div class=\"mouseOverInfo\" id=\"secondSearchInfo_inner\" style=\"opacity:0;display:none;\"> ";
+             HtmlInformationButton += informationText ;
+             HtmlInformationButton += "</div> </div>" ;
+             return HtmlInformationButton  ;
+        }
+        
+        function bulidInformationButton(informationText){            
+             var HtmlInformationButton ="<div  id=\"secondSearchInfo\" onfocus=\"addMouseOver(this)\" onmouseover=\"addMouseOver(this)\" tabindex=\"0\" style = \"display: inline;text-decoration: none;\"> "; ////////
+             HtmlInformationButton += "<img src=\"/s.gif\" alt=\"\" class=\"infoIcon\" title=\"\"/>" ;
+             HtmlInformationButton += "<div class=\"mouseOverInfo\" id=\"secondSearchInfo_inner\" style=\"opacity:0;display:none;\"> ";
+             HtmlInformationButton += informationText ;
+             HtmlInformationButton += "</div> </div>" ;
+             return HtmlInformationButton  ;
+        }
+        
+        function bulidTooltip(informationText){            
+             var HtmlInformationButton ="<div  id=\"secondSearchInfo\" onfocus=\"addMouseOver(this)\" onmouseover=\"addMouseOver(this)\" tabindex=\"0\" style = \"display: inline;text-decoration: none;\"> "; //////////
+             HtmlInformationButton += informationText
+             HtmlInformationButton += "<div class=\"mouseOverInfo\" id=\"secondSearchInfo_inner\" style=\"opacity: 0; display: none; \"> ";
+             HtmlInformationButton += "</div> </div>" ;
+             return HtmlInformationButton  ;
+      
+        }
+        //TODO : before creatinע a package make sure that url exsit in all orgs 
+        function bulidSearchUrl(searchText,objectPrefix){
+            var searchUrl =sfUrlG  + "/search/SearchResults?searchType=2&sen="+objectPrefix+"&str="+ searchText+ "&search=+חיפוש+";
+           //  var searchUrl =sfUrlG  + "/search/SearchResults?searchType=2&sen=001&sen=003&sen=a04&sen=a0B&str="+ searchText+ "&search=+חיפוש+";
+           // var searchUrl = sfUrlG +"/_ui/common/search/client/ui/UnifiedSearchResults?searchType=2&sen=a07&sen=005&sen=a0j&sen=001&sen=015&sen=003&str=&cache=gzgo222l#!/str="+searchText+"&initialViewMode=summary";
+            return searchUrl ;
+        }
+              
+        function buildSearchButton(searchText,objectPrefix ){
+              var searchUrl = bulidSearchUrl(searchText,objectPrefix);
+              var onClickStr = "onclick=\"window.open(\'" +searchUrl +"\',\'_blank\');\"";
+              var lookupHtml =" <img src=\"/s.gif\"  class=\"lookupIcon\" onblur=\"this.className = \'lookupIcon\';\" onfocus=\"this.className = \'lookupIconOn\';\" onmouseout=\"this.className = \'lookupIcon\';this.className = \'lookupIcon\';\" onmouseover=\"this.className = \'lookupIconOn\';this.className = \'lookupIconOn\';\"   " ;
+              var lookupHtml = lookupHtml + onClickStr + "/>"; 
+              return lookupHtml ;
+        }
+        
+        
+        function buildListButtons(){
+            var containingDiv = j$(document).find(".list_pbs")[0];
+            
+            var btn = document.createElement("button");
+            btn.type= "button";
+            btn.className="btn list_pb";
+            var str1 = "יצירת פוליסות עבור תפוקות";
+            str1 += " {!categoriesName} ";
+            str1 += " מותאמות ומסומנות ";
+            btn.title= str1;
+            btn.id= "createPolicies";
+            btn.innerText="יצירה";
+            containingDiv.appendChild(btn);
+
+            btn = document.createElement("button");
+            btn.type= "button";
+            btn.className="btn list_pb";
+            btn.title="מחיקת פרודוקציות מסומנות";
+            btn.id = "deleteProds";
+            btn.innerText="מחיקה";
+            containingDiv.appendChild(btn);
+            
+            btn = document.createElement("button");
+            btn.type= "button";
+            btn.className="btn list_pb";
+            btn.title="בצע התאמה אוטומטית של הרשומות המסומנות";
+            btn.id= "autoMatch";
+            btn.innerText="התאמה";
+            containingDiv.appendChild(btn);
+            
+            btn = document.createElement("button");
+            btn.type= "button";
+            btn.className="btn list_pb";
+            btn.title="בצע קליטת נתונים של הרשומות המסומנות";
+            btn.id= "updatePolicyData";
+            btn.innerText="קליטה";
+            containingDiv.appendChild(btn);
+            
+            
+            var lbl = document.createElement("label");
+            lbl.style.marginRight = "1.2em";
+            lbl.className="labelCol";
+            lbl.innerText="סה\"כ פרמיה נטו:";
+            containingDiv.appendChild(lbl);
+            
+            lbl = document.createElement("label");
+            lbl.className="labelCol colLTR";
+            lbl.id= "preNeto";
+            containingDiv.appendChild(lbl);
+            
+            lbl = document.createElement("label");
+            lbl.className="labelCol";
+            lbl.innerText="סה\"כ רשומות:";
+            containingDiv.appendChild(lbl);
+            
+            lbl = document.createElement("label");
+            lbl.className="labelCol";
+            lbl.id= "records";
+            containingDiv.appendChild(lbl);
+
+        }
+        
+        function initContact(cName, cId){
+             contactIdGL = cId;
+             
+        }
+        
+        function initAccount(cName, cId){       
+             accountIdGL = cId;
+              
+        }
+        
+        function initCarrier(cName, cId){       
+             carrierIdGL = cId;
+              
+        }
+        
+        function initPolicyTransaction(cName, cId){       
+              policyTransactionIdGL = cName;
+        } 
+
+
+
+
+
+      function flowloadingStart(pevent){
+           // This is done in order to catch only submit forms actions. onclick/onchange, etc. are handled with flowloading actionStatus.
+           // Submit is different in that it uses form submit machenizm instead of A4J.AJAX.submit.
+           if (pevent == null || pevent.type != "submit")
+               return;
+           startFlowloading();
+       }                   
+       
+      function startFlowloading(bShowStatus){
+          var elem =  document.getElementById('mask');
+          elem.style.display = 'block';
+          if(bShowStatus) document.getElementById("progress").style.display = "block"; 
+          document.body.style.cursor='wait';
+      }
+      
+      function flowloadingStop(){
+          document.body.style.cursor='default';
+          document.getElementById("progress").style.display = "none"; 
+          document.getElementById('mask').style.display = 'none';                
+      }
+       
+       var allowEnterSubmission = false;
+       function preventEnterSubmission(pevent) 
+       {    
+           if (pevent == null)
+               return true;
+           if (pevent.keyCode == 13 && !allowEnterSubmission) {
+               pevent.cancelBubble = true;
+               pevent.returnValue = false;
+               return false;
+           }
+           return true;
+       } 
+       
+       function createProfitCenterOpts(){
+            var arrOpts = {!ProfitCentersOpts};
+            var sel = document.getElementById("profitCentersInput");
+            for(var i=0; i<arrOpts.length; ++i){
+                var opt = document.createElement("Option");
+                opt.value=arrOpts[i].id;
+                opt.text=arrOpts[i].name;
+                sel.add(opt);
+            }
+       }
+       
+       
+       ///////////     start jquey functions      /////////////////
+       
+       var j$ = jQuery.noConflict();
+       var oFH;
+       
+       j$(document).ready(function() {
+                 
+                  
+                 document.getElementById("policyTransactionInput").value = "{!transactionName}";
+                 // on first load of the document  create  insurance type table                             
+                 /*var insuranceTypeArr = insuranceTypeG.split(',');
+                 for(i = 0; i < insuranceTypeArr .length; i++){                               
+                       if ( insuranceTypeArr [i] != '' ){
+                           var htmlRow = "<tr><td><input class=\"insuranceTypeC\" name=\"" +insuranceTypeArr[i]+ "\"";
+                           htmlRow = htmlRow  + "type=\"checkbox\"/><label>" +insuranceTypeArr[i];
+                           htmlRow = htmlRow  + "</label></td></tr>";
+                           j$('#insuranceTypeTable').append(htmlRow);
+                       }
+                } */    
+                       
+               
+                
+                 var oTable = j$('#policyTrans').dataTable({
+                            "sScrollY": "310px",
+                            "sPaginationType": "full_numbers", 
+                            "bAutoWidth": false,                          
+                            "oLanguage": {
+                                        "sLengthMenu": 'מציג <select>'+
+                                        '<option value="10">10</option>'+
+                                        '<option value="20">20</option>'+
+                                        '<option value="30">30</option>'+
+                                        '<option value="40">40</option>'+
+                                        '<option value="50">50</option>'+
+                                        '<option value="-1">כל</option>'+
+                                        '</select> רשומות',
+                                       "sEmptyTable": "אין נתונים להצגה בטבלה",
+                                       "sInfoEmpty": "אין נתונים להצגה",
+                                       "sInfoFiltered": " - מסוננים מ _MAX_ מסמכים",
+                                       "sLoadingRecords":"טוען מסמכים...",
+                                       "sZeroRecords": "אין פרודוקציות להצגה",
+                                       "sInfo": "מציג סה&quot;כ _TOTAL_ פרודוקציות (_START_ עד _END_)",                                       
+                                       "oPaginate": {
+                                           "sFirst": "עמוד ראשון",
+                                           "sLast": "עמוד אחרון",
+                                           "sNext": "העמוד הבא",
+                                           "sPrevious": "העמוד הקודם"
+                                           },
+                                       "sSearch": "חיפוש: "
+                                    },
+                            "sDom":"lf<'list_pbs'>tip",                                       
+                            //this is done to support the refresh of the cloned FixedHeader to keep correct state of the checkbox in the header
+                            /*"fnHeaderCallback": function( nHead, aData, iStart, iEnd, aiDisplay ) {
+                                                    if(oFH!==undefined){
+                                                    oFH.fnUpdate();
+                                                    }
+                                                },*/
+                            /*"fnDrawCallback": function (oSettings) {
+                                if (oSettings.bSorted || oSettings.bFiltered)
+                                {
+                                    for (var i=0, iLen=oSettings.aiDisplay.length; i<iLen; i++)
+                                    {
+                                        j$('td:eq(13)', oSettings.aoData[oSettings.aiDisplay[i]].nTr).html(i+1);
+                                    }
+                                }
+                            },*/                            
+                            "aoColumns": [
+                                            {
+                                             "mDataProp": "checkBoxField",
+                                             "sWidth":"10px", 
+                                             "bSortable": false,
+                                             "sType" : "string",                                             
+                                             "bUseRendered": true, 
+                                             "fnRender": function ( oObj ) {
+                                                     var tofromtxt = "<input type=\"checkbox\" class=\"tableCheckBox\" rowNumber=\"" + oObj.iDataRow + "\" SFId=\"" + oObj.aData.Id + "\"/>";                   
+                                                     return tofromtxt ;
+                                                }
+                                            },
+                                            {
+                                             "bSortable": false,
+                                             "mDataProp": "actions",
+                                             "sWidth": "40px",
+                                             "sType" : "string",                                             
+                                             "bUseRendered": true, 
+                                             "fnRender": function ( oObj ) {
+                                                    //alert("hello");
+                                                    var tofromtxt = oObj.aData.Status;  
+                                                    var htmlCreatePolicy = "";
+                                                    var htmlCreateContact = "";
+                                                    //raniz comment 14/06/2012: "&& oObj.aData.Customer_AccountId != ''" need to allows creating policy without account
+                                                    //and later it will be filled with the account                                                                                                                                                       
+                                                    if (oObj.aData.Carrier_BrokerId != "" /*&& oObj.aData.Customer_AccountId != ""*/ &&  oObj.aData.PolicyId == "" ){
+                                                        htmlCreatePolicy =  bulidCreatePolicyButton(oObj.iDataRow,oObj.aData.Id);    
+                                                    }
+                                                    var HtmlsyncButton = "";
+                                                    if (oObj.aData.Status == "not compatible" ){
+                                                       HtmlsyncButton = bulidSyncButton(oObj.iDataRow,oObj.aData.Id, oObj.aData.identificationType);                                                   
+                                                    }
+                                                    else if(oObj.aData.Status == "compatible" && !oObj.aData.isAccountFound){
+                                                        htmlCreateContact = buildCreateContactButton(oObj.iDataRow,oObj.aData.Id);
+                                                    }
+                                                    
+                                                    return "<div id=\""+oObj.aData.Id+"\"> "+ HtmlsyncButton + htmlCreatePolicy + htmlCreateContact + " </div>" ;
+                                                    
+                                                     
+                                                }
+                                            },
+                                            {
+                                             "bSortable": true,
+                                             "sClass": "tdNoWrap",
+                                             "mDataProp": "Status",
+                                             "sType" : "string",   
+                                             "sWidth":"40px",                                           
+                                             "bUseRendered": true, 
+                                             "fnRender": function(oObj){
+                                                    var tofromtxt = oObj.aData.Status; 
+                                                    var HtmlsyncButton = "";
+                                                    if (tofromtxt == "not compatible"){
+                                                       HtmlsyncButton = bulidSyncButton(oObj.iDataRow,oObj.aData.Id, oObj.aData.identificationType);  
+                                                       tofromtxt ="לא מותאם";                                                 
+                                                    }
+                                                    else{
+                                                         tofromtxt ="מותאם";  
+                                                    }
+                                                    return tofromtxt;
+                                                }
+                                            },
+                                            {
+                                             "bSortable": true,
+                                             "mDataProp": "Policy_number_from_Insurance_company",
+                                             "sClass": "tdNoWrap",
+                                             "sWidth": "180px", 
+                                             "sType" : "string",                                             
+                                             "bUseRendered": true, 
+                                             "fnRender": function ( oObj ) {
+                                                     var policyNumber;
+                                                     if(oObj.aData.identificationType.toLowerCase()!="policy number" && oObj.aData.policyNumber!=null && oObj.aData.policyNumber!="") 
+                                                        policyNumber = oObj.aData.policyNumber;
+                                                     else policyNumber = oObj.aData.Policy_number_from_Insurance_company;                                                     
+                                                     var htmlButton = "";
+                                                     var htmlInformationButton = ""; 
+                                                     if (oObj.aData.IsPolicyfound == false){
+                                                         htmlButton = bulidInformatioSearchnButton(oObj.aData.Comments_PolicyId, policyNumber,policyPrefixG);
+                                                     }
+                                                     if ( oObj.aData.PolicyId != ""){
+                                                         policyNumber = buildLinkToSobject(oObj.aData.PolicyId, policyNumber, oObj.aData.identificationType);
+                                                     }
+                                                     return htmlInformationButton + htmlButton + policyNumber;
+                                                }
+                                            },
+                                            { 
+                                             "bSortable": false,
+                                             "mDataProp": "endorsment" , 
+                                             "sWidth":"5px"                                                                                              
+                                            },
+                                            {
+                                             "bSortable": true,
+                                             "mDataProp": "Carrier_BrokerId",
+                                             "sType" : "string",     
+                                             "sWidth":"100px",                                         
+                                             "sClass": "tdNoWrap",
+                                             "bUseRendered": true, 
+                                             "fnRender": function ( oObj ) {
+                                                     var BrokerNumber=oObj.aData.Agent_number_from_Insurance_comapny;                                                     
+                                                     var htmlButton = "";
+                                                     var htmlInformationButton = ""; 
+                                                     if (oObj.aData.IsBrokerFound == false ){
+                                                         htmlButton = bulidInformatioSearchnButton(oObj.aData.Comments_Agent_number, BrokerNumber,BrokerNumberPrefixG);
+                                                         //htmlButton = buildSearchButton(BrokerNumber,BrokerNumberPrefixG); 
+                                                         //htmlInformationButton = bulidInformationButton(oObj.aData.Comments_Agent_number); 
+                                                     }
+                                                     if ( oObj.aData.Carrier_BrokerId != ""){
+                                                         BrokerNumber= buildLinkToSobject(oObj.aData.Carrier_BrokerId ,oObj.aData.Agent_number_from_Insurance_comapny, oObj.aData.identificationType, oObj.aData.agency);
+                                                     }
+                                                     return htmlInformationButton + htmlButton + BrokerNumber  ;
+                                                }
+                                            },
+                                            { 
+                                              "mDataProp": "CarrierName", 
+                                              "sType" : "string", 
+                                              "sWidth":"60px",                                             
+                                              "bUseRendered": true, 
+                                              "fnRender": function ( oObj ) {
+                                                     var carrierName=oObj.aData.CarrierName;                                                     
+                                                     var hmlButton = "";
+                                                     var htmlInformationButton = ""; 
+                                                     if(oObj.aData.IscarrierFound == false && oObj.aData.Comments_Insurance_Company != "" ){
+                                                        // hmlButton = buildSearchButton(carrierName,'001'); 
+                                                         htmlInformationButton = bulidInformationButton(oObj.aData.Comments_Insurance_Company); 
+                                                     }
+                                                     if(oObj.aData.CarrierID!= ""){
+                                                         carrierName= buildLinkToSobject(oObj.aData.CarrierID,oObj.aData.CarrierName, oObj.aData.identificationType);
+                                                     }      
+                                                     return htmlInformationButton + hmlButton + carrierName   ;
+                                                }                                                                                       
+                                            
+                                            },
+                                            {
+                                             "bSortable": true,
+                                             "mDataProp": "Insured_number",
+                                             "sType" : "string",    
+                                             "sWidth":"105px",                                          
+                                             "bUseRendered": true, 
+                                             "fnRender": function ( oObj ) {
+                                                    
+                                                     var AccountName=oObj.aData.Insured_number;                                                     
+                                                     var htmlButton = "";
+                                                     var htmlInformationButton = ""; 
+                                                     if(oObj.aData.isAccountFound == false && oObj.aData.Customer_AccountId == ""){
+                                                        htmlButton = bulidInformatioSearchnButton(oObj.aData.commentsCustomerAccount, oObj.aData.fullName,'001');
+                                                     }
+                                                     else if (oObj.aData.isAccountFound == false ){
+                                                          htmlInformationButton = bulidInformationButton(oObj.aData.commentsCustomerAccount); 
+                                                     }
+                                                     /*if (oObj.aData.Customer_AccountId == "") {
+                                                         htmlButton = buildSearchButton(oObj.aData.fullName,'001');
+                                                     }*/
+                                                     if ( oObj.aData.Customer_AccountId!= "" ){
+                                                         AccountName= buildLinkToSobject(oObj.aData.Customer_AccountId,oObj.aData.AccountName, oObj.aData.identificationType);
+                                                     } 
+                                                     return htmlInformationButton + htmlButton + AccountName   ;
+                                                }          
+                                            },
+                                            { 
+                                                "mDataProp": "fullName" ,
+                                                "sWidth":"90px"   
+                                            },
+                                            { 
+                                                "mDataProp": "Production_Date" ,
+                                                "sWidth":"50px"
+                                            },
+                                            { 
+                                                "mDataProp": "premiumView",
+                                                "sWidth":"80px",
+                                                "sClass":"colLTR"
+                                            },
+                                            { 
+                                                "mDataProp": "Insurance_Type",
+                                                "sWidth":"70px"
+                                            },
+                                            { 
+                                                "mDataProp": "product_from_insurance_company" ,
+                                                "sClass": "tdNoWrap",
+                                                "sWidth":"50px"
+                                            },
+                                             {
+                                                "bVisible":true, 
+                                                "bSortable": false,
+                                                "mDataProp":"vehicle_number",
+                                                "sDefaultContent" : "",
+                                                "sWidth":"30px"
+                                            },
+                                            {
+                                                "bVisible":true, 
+                                                "bSortable": false,
+                                                "mDataProp":null,//"serialNumber",
+                                                "sDefaultContent" : "",
+                                                "fnRender": function(obj){
+                                                    return obj.iDataRow+1
+                                                },
+                                                "sWidth":"10px"
+                                            }
+                                         ]
+                 } );
+
+                  j$('#remoteSearchBT').click( function() {
+                          
+                          startFlowloading();
+                          var accountName = document.getElementById("accountInput").value;
+                          var carrierName = document.getElementById("carrierInput").value;
+                          var brokerName = document.getElementById("clientInput").value;
+                          var transactionNumber = document.getElementById("policyTransactionInput").value;
+                          var toYear =  document.getElementById("endDateYear").value;
+                          var toMonth =  document.getElementById("endDateMonth").value;
+                          var fromYear =  document.getElementById("startDateYear").value;
+                          var fromMonth =  document.getElementById("startDateMonth").value;
+                          var profitCenter = document.getElementById("profitCentersInput").value;
+                          var clientF = ""; 
+                          var accountF = ""; 
+                          var carrierF = ""; 
+                          var policyTransactionF = ""; 
+                          var startDateF ="";
+                          var endDateF ="";
+                          var compatible = "";
+                          var insuranceTypeF = "";
+                           j$("input[class='insuranceTypeC']:checked").each
+                             (
+                              function()
+                                  {
+                                    
+                                     var valueFromElment = j$(this).attr("name");
+                                     insuranceTypeF = insuranceTypeF + valueFromElment + ',';
+                                     
+                                  }
+                             );
+                          
+                          
+                           j$("input[class='compatibleC']:checked").each
+                             (
+                              function()
+                                  {
+                                     var valueFromElment = j$(this).attr("name");
+                                     compatible = compatible + valueFromElment + ',';
+                                  }
+                             );
+                          
+                          if (accountName!="" && accountIdGL!=""){
+                              accountF = accountIdGL 
+                          }
+                          if (carrierName!="" && carrierIdGL!=""){
+                              carrierF = carrierIdGL ;
+                          }
+                          if (contactIdGL!="" && brokerName!=""){
+                              clientF = contactIdGL; 
+                          }
+                          if (transactionNumber!= ""){
+                              policyTransactionF = transactionNumber;
+                          }
+                          
+                          if (fromYear!= "" && fromMonth!= ""){
+                              if (fromYear.length!= 4){
+                                  alert("שדה שנה לא חוקי");
+                                  return;
+                              }
+                              if (fromMonth.length == 1){
+                                  startDateF = "01/0" + fromMonth + "/" + fromYear;
+                              }
+                              else{
+                                  startDateF = "01/" + fromMonth + "/" + fromYear;
+                              }
+                          }
+                          if (toYear!= "" && toMonth !=""){
+                              if (toYear.length!= 4){
+                                  alert("שדה שנה לא חוקי");
+                                  return;
+                              }
+                              if (toMonth.length == 1){
+                                   endDateF = "01/0"+toMonth +"/" +toYear;
+                              }
+                              else{
+                                   endDateF = "01/"+toMonth +"/" +toYear;
+                              }
+                          }
+                          mergeTransactionCO.doRemoteSearch(clientF, accountF, carrierF, policyTransactionF, startDateF, endDateF, insuranceTypeF, compatible, profitCenter, showResult);
+                        }
+                    
+                    );
+                    
+                    j$('#firstCheckBox').change(function() {
+                           //this syntyax is used in order to bypass the FixedHeader add in issue of duplicating input Id
+                           if (j$("[id='firstCheckBox']").last().is(':checked')){
+                               //done in order to sync both cloned header checkboxes (FixedHeader and The Datatable one)
+                               //j$("[id='firstCheckBox']").attr('checked', 'checked');
+                               j$('.tableCheckBox').attr('checked', 'checked');
+                           }
+                           else{
+                             j$('.tableCheckBox').removeAttr('checked');
+                               //done in order to sync both cloned header checkboxes (FixedHeader and The Datatable one)
+                             //j$("[id='firstCheckBox']").removeAttr('checked');
+                           }
+                           
+                    });
+                    
+                    createProfitCenterOpts();
+                    
+                    j$('#remoteSearchBT').trigger('click'); 
+                     
+                
+                /* support fixed header: removed 1/7/2012
+                $ = jQuery.noConflict();
+                oFH = new FixedHeader(oTable);
+                j$ = jQuery.noConflict(); 
+                */
+                //sort according to serial number 
+                oTable.fnSort([[13,'asc']]);
+                buildListButtons();
+                closeFilterSec();     
+
+                j$('#createPolicies').click(function(){
+                  var str = "";
+                  str += "תווצרנה פוליסות רק עבור תפוקות";
+                  str += " {!categoriesName} "  ;
+                  str += "המסומנות, המותאמות (למעט מספר פוליסה) ועם מספר תוספת 0 ";
+                  str += ".\nהאם להמשיך?";
+                  if(!confirm(str))return;
+                  
+                  //if(!confirm("תווצרנה פוליסות רק עבור תפוקות הרכב המסומנות, המותאמות (למעט מספר פוליסה) ועם מספר תוספת 0.\nהאם להמשיך?"))return;
+                  startFlowloading(true);                
+                  var myRows=new Array();                             
+                  j$("input[class='tableCheckBox']:checked").each(function(){
+                      var sfid = j$(this).attr("SFId");
+                      myRows.push(sfid);                                     
+                  });   
+                  if(myRows.length >0)createPolicies(myRows);
+                  else flowloadingStop();
+                });
+ 
+                j$('#deleteProds').click( function() {
+                  if(!confirm("האם להמשיך ולמחוק את השורות המסומנות?")) return; 
+                  startFlowloading();                
+                  var myRows=new Array();                             
+                  j$("input[class='tableCheckBox']:checked").each(
+                     function(){
+                             var rownum = j$(this).attr("rowNumber");
+                             var sfid = j$(this).attr("SFId");
+                            
+                             var rowObj=new Object();
+                             rowObj.rownum = rownum ;
+                             rowObj.sfid = sfid ;
+                             myRows.push(rowObj);                                     
+                         }
+                     );   
+                   if(myRows.length >0 ){
+                        mergeTransactionCO.deleteRowsPolicyTransactions(myRows, handleDeleteRows);
+                   }
+                   else{
+                      flowloadingStop();
+                   }
+                });
+
+
+                j$('#autoMatch').click( function() {    
+                   startFlowloading();                        
+                   var myRows=new Array();                             
+                   j$("input[class='tableCheckBox']:checked").each(function(){
+                                      var rownum = j$(this).attr("rowNumber");
+                                      var sfid = j$(this).attr("SFId");
+                                     
+                                      var rowObj=new Object();
+                                      rowObj.rownum = rownum ;
+                                      rowObj.sfid = sfid ;
+                                      myRows.push(rowObj);                                     
+                                  }
+                    );   
+                    
+                     var rowsInJSON = JSON.stringify(myRows);
+                     if (myRows.length >0 ){
+                         mergeTransactionCO.syncRowTransactions(rowsInJSON ,callbackUpdateRows);                      
+                     }
+                     else{
+                        flowloadingStop();
+                     }
+                });
+                
+                
+                j$('#updatePolicyData').click( function() {         
+                    startFlowloading();                
+                    var myRows=new Array();                             
+                    j$("input[class='tableCheckBox']:checked").each
+                    (
+                     function()
+                         {
+                             var rownum = j$(this).attr("rowNumber");
+                             var sfid = j$(this).attr("SFId");
+                            
+                             var rowObj=new Object();
+                             rowObj.rownum = rownum ;
+                             rowObj.sfid = sfid ;
+                             myRows.push(rowObj);                                     
+                         }
+                     );   
+                     
+                      var rowsInJSON = JSON.stringify(myRows);
+                     // alert(rowsInJSON );
+                      if (myRows.length >0 ){
+                          mergeTransactionCO.updateRowTransactions(rowsInJSON ,callbackFromUpdatePolicy);                      
+                      }
+                      else{
+                          flowloadingStop();
+                      }
+                });
+           }); // end of the ready function 
+             
+       
+       
+       
+       
+       ///////////     end of jqueryFunction     /////////////////
+       
+     function closeFilterSec(){
+            j$("[id$='secfilter']").find("img:first").click();
+     }
+    
+     function sumOfColumns(tableID, columnIndex, hasHeader) {
+     
+         var tot = 0;
+         var rows = 0;
+         var nodes = j$('#policyTrans').dataTable().fnGetNodes();
+         for (var i=0; i< nodes.length; i++) {
+             var data =  j$('#policyTrans').dataTable().fnGetData(nodes[i]);
+             tot +=data.premium;
+         }
+         rows = nodes.length;
+         document.getElementById("preNeto").innerHTML= tot.toFixed(2);
+         document.getElementById("records").innerHTML= rows;
+     }
+       
+     function clearSelectAllCheckBox(){
+         //this syntyax is used in order to bypass the FixedHeader add-in issue of duplicating input Id
+         j$("[id='firstCheckBox']").last().attr('checked', false);
+     }
+        
+     function clearAllCheckBoxTable(){
+       j$("input[class='tableCheckBox']:checked").each
+          (
+           function()
+               {
+                   j$(this).attr('checked', false);
+               }
+           );
+     }
+        
+     function showResult(result, event) {
+          if(event.type == 'exception') {
+              flowloadingStop();
+              alert(event.message);
+          } 
+          else {                    
+              var r =result.listWrappedPolicyTransaction; 
+             
+              document.getElementById("preNeto").innerHTML= result.preNeto ;
+              document.getElementById("records").innerHTML= result.records;
+              j$('#policyTrans').dataTable().fnClearTable();  
+              j$('#policyTrans').dataTable().fnAddData(r) ;
+              flowloadingStop();
+              clearSelectAllCheckBox();
+          }
+     }
+       
+     function deleteFile(){
+          var transName = document.getElementById("policyTransactionInput").value ;
+          var reply = prompt(" ? האם אתה בטוח שאתה רוצה למחוק את הקובץ",transName );
+          if (reply != null){
+              //delete all records with the selected name
+              flowloadingStart();
+              mergeTransactionCO.deletePolicyTransactions(reply,callBackFromDelFile);
+          }
+     }
+      
+     function callBackFromDelFile(result, event) {
+        if(event.type == 'exception') {
+            flowloadingStop();
+            alert(event.message);
+         
+        } else {                    
+            j$('#remoteSearchBT').trigger('click');
+            
+        }
+     }
+           
+</script>
+
+<div id="mask" style="display:none;"></div>
+<div id="progress" style="display:none;"></div>
+
+
+<apex:outputpanel id="frm" onkeydown="/*preventEnterSubmission(event);*/" layout="block" style="width:995px">
+    <apex:pageblock >
+        <apex:pageblocksection columns="1" collapsible="true" showHeader="true" title="חיפוש" id="secfilter">
+            <apex:outputpanel layout="block">
+              <table> 
+                  <!-- first line  --> 
+                  <tr>
+                      <td class="tdRight"> 
+                         <table>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <input class="compatibleC" name="compatible" id="compatible" value="compatible" type="checkbox"/><label style="font-size:15px" for="compatible:0"> מותאם</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input class="compatibleC" name="not compatible" id="notCompatible" value="notCompatible" type="checkbox"/><label style="font-size:15px" for="notCompatible">לא מותאם</label>
+                                    </td>
+                                </tr>
+                            </tbody>
+                         </table>
+                      </td >
+                      <td class="tdLeft"> 
+                        <apex:outputpanel >
+                            <apex:outputText value="מתאריך" style="font-size:15px"/>       
+                            <input type="text" id="startDateYear" style="width:40px;" value="{!fromYear}" />
+                            <input type="text" id="startDateMonth" style="width:20px;" value="{!fromMonth}" />
+                        </apex:outputpanel>
+                      </td >
+                      <td class="tdLeft"> 
+                          <apex:outputText value="לקוח" style="font-size:15px"/> 
+                           <input type="text" id="accountInput"  Class="searchArea" />
+                           <Novidea_HPC:autocomplete width="300" className="autocomplete" inputId="accountInput" autoCompleteId="accountAC" objectName="Account"  searchField="AccountNumber"
+                               selectedCallBack="initAccount" />             
+                                 
+                      </td >
+                      <td class="tdLeft"> 
+                               <apex:outputText value="חברת ביטוח" style="font-size:15px"/> 
+                                <input type="text" id="carrierInput"  Class="searchArea" />
+                                <Novidea_HPC:autocomplete width="300" className="autocomplete" inputId="carrierInput" autoCompleteId="carrierAC" objectName="Account" RecordTypeName="Carrier"
+                                    selectedCallBack="initCarrier" />             
+                      </td >
+                       <td class="tdLeft">
+                            <apex:outputText value="מרכז רווח" style="font-size:15px"/>
+                            <select size="1" id="profitCentersInput" style="width:160px;"/>
+                       </td>
+                  </tr>
+                  <!-- second line  --> 
+                  <tr>
+                    <td/>
+                      <td class="tdLeft">
+                           <apex:outputText value="עד תאריך" style="font-size:15px"/> 
+                           <input type="text"  id="endDateYear" style="width:40px;" value="{!todayYear}" />
+                            <input type="text"  id="endDateMonth" style="width:20px;" value="{!todayMonth}" />
+                       </td>
+                       <td class="tdLeft">
+                             <apex:outputText value="מספר סוכן" style="font-size:15px"/> 
+                             <input type="text" id="clientInput"  Class="searchArea" />
+                             <Novidea_HPC:autocomplete width="300" className="autocomplete" inputId="clientInput" autoCompleteId="ContactAC" objectName="Broker_Number__c"
+                                 selectedCallBack="initContact" />             
+                       </td>
+                       <td class="tdLeft">
+                        
+                            <apex:outputText value="מספר טרנזקציה" style="font-size:15px"/> 
+                             <input type="text"  id="policyTransactionInput"  Class="searchArea" />
+                             <Novidea_HPC:autocomplete width="300" className="autocomplete" inputId="policyTransactionInput" autoCompleteId="policyTransactionAC" objectName="Policy_Transaction__c"
+                                 selectedCallBack="initPolicyTransaction" distinct="true" />             
+                       </td>
+                        <td class="tdLeft">
+                            <button class="btn list_pb" type="button" style="" id="deletefile"
+                                title="לחץ למחיקת קובץ פרודוקציה. יפתח חלון לבחירת מזהה הקובץ." onclick="deleteFile();">מחק קובץ
+                                פרודוקציה</button>
+                            <button type="button" class="btn" id="remoteSearchBT">חפש</button>
+                        </td>
+                   </tr>
+                </table>
+            </apex:outputpanel>
+        </apex:pageblocksection>
+    </apex:pageblock>
+    <apex:pageBlock >  
+           <table id="policyTrans" width="100%" class="list"  border="0" cellspacing="0" cellpadding="0">
+               <thead >
+                   <tr class="trBackround">
+                       <th style="padding-right:3px;padding-left:3px;"><input type="checkbox" id="firstCheckBox"/></th>
+                       <th>פעולות</th>
+                       <th>סטאטוס</th>                    
+                       <th>פוליסה</th>
+                       <th title="מספר תוספת" style="padding-right:3px;padding-left:3px;width:6px;text-align:center;">#</th>
+                       <th>סוכן ראשי</th>
+                       <th title="חברת ביטוח">ח ביטוח</th>
+                       <th>חשבון לקוח</th>
+                       <th>שם לקוח</th>
+                       <th>ת בורדרו</th>
+                       <th>פרמיה נטו</th>
+                       <th>שם ענף</th>
+                       <th title="מספר ענף"># ענף</th>
+                       <th>מספר רישוי</th>
+                       <th style="padding-right:3px;padding-left:3px;text-align:center;"> מס</th>
+                   </tr>
+               </thead>
+               <tbody></tbody>
+           </table>
+       </apex:pageBlock>
+</apex:outputpanel>
+</apex:page>

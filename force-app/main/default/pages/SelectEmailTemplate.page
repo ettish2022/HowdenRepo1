@@ -1,0 +1,268 @@
+<apex:page Controller="SelectEmailTemplateCo" showHeader="false" sidebar="false">
+  
+  <apex:variable value="{!$CurrentPage.parameters.type == 'sms'}" var="isSMS"/>
+   
+  <apex:includeScript value="{!$Resource.jquery}"/> 
+  <apex:form id="theForm" >
+  
+<style>    
+
+    .floatLeft { width: 50%; float: left}
+    .floatRight {width: 50%; float: right; ; text-align: right;}
+    .container { overflow: hidden; }
+    .sendtoarea{
+        border: 0px solid black;
+        padding:15px;
+    }
+    
+    .sendtoarea td{
+        padding:5px;
+    }
+    
+    .sendtoarea td label{
+        font-size:15px;
+    }
+
+    .sendtoarea td a{
+        padding-right: 5px;
+        padding-left: 5px;        
+    }
+    
+    .emailsRow{
+        width:620px;
+        height: 25px;
+    }
+    
+    .emailsbox{
+        width:550px;       
+    }
+    
+    .boxtitle{
+         vertical-align:top;
+         font-weight:bold;
+         padding-right:5px;
+         padding-left:5px;
+         width:50px;
+         display:inline-block;
+    }
+</style>
+
+    <div class= "container">   
+        <table border="0" class="sendtoarea">
+        
+        <apex:repeat value="{!NameAndEmails}" var="nae" rendered="{!NOT(isSMS)}">
+        
+        <tr>
+        <td>    
+                <apex:outputLabel value="{!nae.name}"/><apex:outputLabel value="{!nae.email}"/>
+                <td></td>
+                <td></td>
+                <td>
+                <a href="" style="font-weight : bold; cursor: pointer;" onclick="updateEmail('textForTo','{!nae.email}')">To</a>            
+                <a href="" style="font-weight : bold ;cursor: pointer;" onclick="updateEmail('textForCC','{!nae.email}')">Cc</a>
+                <a href="" style="font-weight : bold ;cursor: pointer;" onclick="updateEmail('textForBCC','{!nae.email}')">Bcc</a>
+                </td>
+        </td>       
+                
+        </tr>       
+        </apex:repeat> 
+         </table>
+     
+   
+    <div>
+        <div class="emailsRow">
+            <label for="textForTo" class="boxtitle">To</label>
+            <input class="emailsbox" id='textForTo' value="{!$CurrentPage.parameters.mobile}"/>         
+        </div>
+      <apex:outputPanel layout="none" rendered="{!NOT(isSMS)}">
+        
+        <div class="emailsRow">
+            <label for="textForCC" class="boxtitle">Cc</label>
+            <input class="emailsbox" id='textForCC'/>
+        </div>
+        <div class="emailsRow">
+            <label for="textForBCC" class="boxtitle">Bcc</label>
+            <input class="emailsbox" id='textForBCC'/>
+        </div>
+        <div class="emailsRow" style="padding-top: 10px;">
+            <label class="boxtitle">Subject</label>
+            <input id="inlinesubject" class="emailsbox" style="width:550px;"/>
+        </div>
+
+        <div class="emailsRow" style="height: 90px;padding-top: 10px;">
+            <label class="boxtitle">Email</label>                    
+            <textarea id='inlinebody' style="width:548px;height:80px;"/>
+        </div>        
+       
+        <div class="emailsRow" style="padding-top: 10px;width:100%;height:40px;padding-left:60px;padding-right:60px;">
+            <button type="button" onclick="sendEmail()" style="height:30px;">{!$Label.Send_Email}</button> 
+        </div>
+        
+     </apex:outputPanel>
+     <apex:outputPanel layout="none" rendered="{!(isSMS)}">
+         <div class="emailsRow" style="height: 90px;padding-top: 10px;">
+            <label class="boxtitle">Body</label>                    
+            <textarea id='inlinebody' style="width:548px;height:80px;"/>
+        </div>        
+       
+        <div class="emailsRow" style="padding-top: 10px;width:100%;height:40px;padding-left:60px;padding-right:60px;">
+            <button type="button" onclick="sendSMS()" style="height:30px;">{!$Label.Send_SMS}</button> 
+        </div>
+     </apex:outputPanel>      
+
+    </div>       
+
+    </div>
+
+    <apex:outputText value="{!templateWindow}" escape="false"/>
+     
+  <script>
+    
+    function sendSMS(){
+        var body =  $('#inlinebody').val() + '';
+        var phone =  $('#textForTo').val() + '';
+        
+        sendSingleSMS(body, phone, '{!$User.CompanyName}');
+    }
+    
+    function sendEmail(){
+        var subject = $('#inlinesubject').val() + '';
+        var body =  $('#inlinebody').val() + '';
+
+        var docs = [];        
+        if ('{!$CurrentPage.parameters.docid}' != '' && '{!$CurrentPage.parameters.docid}' != 'undefined'){
+            docs.push('{!$CurrentPage.parameters.docid}');
+        } else{
+            window.opener.j$('input:checkbox[name=selectedDocument]:checked').siblings('[name=rowdocid]').each(function(){
+                docs.push($(this).val());
+            });
+        }
+        
+        createTask(subject, body, docs);
+        openOutlookDialog(subject,body);
+    }
+    
+    function updateEmail(boxId,email){
+        $('#' + boxId).val($('#' + boxId).val() + ';' + email);
+    }
+    
+    $(document).ready(function(){
+    
+        $('#fcf_templateSelector').removeAttr('onchange').change(
+            function(){
+                window.location = '/apex/SelectEmailTemplate?filterIds=' + $(this).val()
+                                        + '&entid='  + '{!$CurrentPage.parameters.entid}'                                       
+                                        + '&type='   + '{!$CurrentPage.parameters.type}'
+                                        + '&mobile=' + '{!$CurrentPage.parameters.mobile}';
+            });             
+    });
+    
+function setTemplateId(selectedId){
+    
+     var entId = '{!$CurrentPage.parameters.entid}';
+     Visualforce.remoting.Manager.invokeAction(
+        '{!$RemoteAction.SelectEmailTemplateCo.getTemplateContent}', 
+        selectedId, entId,'{!$CurrentPage.parameters.docid}', 
+        function(result, event){
+                console.info(result);
+            if (event.status) {         
+                $('#inlinebody').val(result.body);
+                $('#inlinesubject').val(result.subject);   
+            } else if (event.type === 'exception') {
+                //some error
+            } else {
+                //some error
+            }
+        }, 
+        {escape: true}
+    );    
+}
+
+function sendSingleSMS(body, phone, senderName){
+
+    var entId = '{!$CurrentPage.parameters.entid}';  
+    var phones = new Array();
+    phones.push(phone);
+          
+     Visualforce.remoting.Manager.invokeAction(
+        '{!$RemoteAction.SelectEmailTemplateCo.sendSingleSMS}', 
+        body, phones, senderName, entId, 
+        function(result, event){
+                console.info(result);
+            if (event.status) {         
+              //todo: check task ID not null
+            } else if (event.type === 'exception') {
+                //some error
+            } else {
+                //some error
+            }
+        }, 
+        {escape: true}
+    );    
+}
+
+function createTask(subject, body, docs){
+
+    var entId = '{!$CurrentPage.parameters.entid}';        
+     Visualforce.remoting.Manager.invokeAction(
+        '{!$RemoteAction.SelectEmailTemplateCo.createEmailTask}', 
+        subject, body, entId, docs, 
+        function(result, event){
+                console.info(result);
+            if (event.status) {         
+              //todo: check task ID not null
+            } else if (event.type === 'exception') {
+                //some error
+            } else {
+                //some error
+            }
+        }, 
+        {escape: true}
+    );    
+}
+
+function openOutlookDialog(subject, body){
+
+    var emailStruct = new Object();
+    emailStruct.to = document.getElementById('textForTo')==null?"":document.getElementById('textForTo').value ;
+    emailStruct.cc = document.getElementById('textForCC')==null?"":document.getElementById('textForCC').value ;
+    emailStruct.bcc = document.getElementById('textForBCC')==null?"":document.getElementById('textForBCC').value ;
+    
+    emailStruct.subject = subject;
+    emailStruct.body = body;
+    
+    var emailParams;
+    var url;
+    if(emailStruct.to =="")
+        emailStruct.to = " ";
+    url = emailStruct.to;
+    if(emailStruct.cc != "")
+        url += '&cc='+emailStruct.cc;
+    if(emailStruct.bcc !="")
+        url += '&bcc='+emailStruct.bcc;
+    if(emailStruct.subject !="")
+        url += '&subject='+emailStruct.subject;
+    if(emailStruct.body !="")
+        url += '&body='+emailStruct.body ;
+     
+    emailParams = encodeURI(url);    
+    //diana 21/07/2013
+    var docIds = '{!$CurrentPage.parameters.docid}';
+    if (docIds != null && (docIds == "undefined" || docIds.indexOf(',') > 0)){
+        var resultInput = window.opener.document.getElementById('emailsFromTemplateSelectionMulti');
+        if(resultInput!=null)
+            $(resultInput).val(JSON.stringify(emailStruct)).change();
+    } else {
+        var resultInput = window.opener.document.getElementById('{!resultFieldId}');
+        if(resultInput!=null)
+            $(resultInput).val(emailParams).change();
+    }
+        
+    self.close();  
+    //End
+    
+}
+
+</script>
+  </apex:form> 
+</apex:page>

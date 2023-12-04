@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomPageWebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <availability>online</availability>
+    <displayType>link</displayType>
+    <encodingKey>UTF-8</encodingKey>
+    <linkType>url</linkType>
+    <masterLabel>טלמיטינג-פוטנציאלים לחודש זה</masterLabel>
+    <openType>replace</openType>
+    <protected>false</protected>
+    <url>https://eu1.salesforce.com/a0I?fcf=00BD0000008NV9l&amp;rolodexIndex=-1&amp;page=1</url>
+</CustomPageWebLink>

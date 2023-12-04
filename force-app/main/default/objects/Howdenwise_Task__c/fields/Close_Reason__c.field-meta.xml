@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Close_Reason__c</fullName>
+    <externalId>false</externalId>
+    <label>Close Reason</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>טופל</fullName>
+                <default>false</default>
+                <label>טופל</label>
+            </value>
+            <value>
+                <fullName>הוגדר כלא רלבנטי</fullName>
+                <default>false</default>
+                <label>הוגדר כלא רלבנטי</label>
+            </value>
+            <value>
+                <fullName>נדחה למועד לא ידוע</fullName>
+                <default>false</default>
+                <label>נדחה למועד לא ידוע</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

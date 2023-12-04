@@ -1,0 +1,460 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Claims</fullName>
+        <default>false</default>
+        <label>Claims</label>
+    </customValue>
+    <customValue>
+        <fullName>Collection</fullName>
+        <default>false</default>
+        <label>Collection</label>
+    </customValue>
+    <customValue>
+        <fullName>Credit</fullName>
+        <default>false</default>
+        <label>Credit</label>
+    </customValue>
+    <customValue>
+        <fullName>Finance</fullName>
+        <default>false</default>
+        <label>Finance</label>
+    </customValue>
+    <customValue>
+        <fullName>Howden FI</fullName>
+        <default>false</default>
+        <label>Howden FI</label>
+    </customValue>
+    <customValue>
+        <fullName>Howden Industries</fullName>
+        <default>false</default>
+        <label>Howden Industries</label>
+    </customValue>
+    <customValue>
+        <fullName>Howden Israelit</fullName>
+        <default>false</default>
+        <label>Howden Israelit</label>
+    </customValue>
+    <customValue>
+        <fullName>Howden Law Firms</fullName>
+        <default>false</default>
+        <label>Howden Law Firms</label>
+    </customValue>
+    <customValue>
+        <fullName>Howden Medical</fullName>
+        <default>false</default>
+        <label>Howden Medical</label>
+    </customValue>
+    <customValue>
+        <fullName>Howden Personal Lines</fullName>
+        <default>false</default>
+        <label>Howden Personal Lines</label>
+    </customValue>
+    <customValue>
+        <fullName>Howden Prime Tech</fullName>
+        <default>false</default>
+        <label>Howden Prime Tech</label>
+    </customValue>
+    <customValue>
+        <fullName>Howden Reinsurance</fullName>
+        <default>false</default>
+        <label>Howden Reinsurance</label>
+    </customValue>
+    <customValue>
+        <fullName>Howden Shefi</fullName>
+        <default>false</default>
+        <label>Howden Shefi</label>
+    </customValue>
+    <customValue>
+        <fullName>Howden Surety</fullName>
+        <default>false</default>
+        <label>Howden Surety</label>
+    </customValue>
+    <customValue>
+        <fullName>Howden Travel and PA</fullName>
+        <default>false</default>
+        <label>Howden Travel and PA</label>
+    </customValue>
+    <customValue>
+        <fullName>Howden VC</fullName>
+        <default>false</default>
+        <label>Howden VC</label>
+    </customValue>
+    <customValue>
+        <fullName>Howden Wise</fullName>
+        <default>false</default>
+        <label>Howden Wise</label>
+    </customValue>
+    <customValue>
+        <fullName>M.M.I</fullName>
+        <default>false</default>
+        <label>M.M.I</label>
+    </customValue>
+    <customValue>
+        <fullName>Management</fullName>
+        <default>false</default>
+        <label>Management</label>
+    </customValue>
+    <customValue>
+        <fullName>Other</fullName>
+        <default>false</default>
+        <label>Other</label>
+    </customValue>
+    <customValue>
+        <fullName>Secretary</fullName>
+        <default>false</default>
+        <label>Secretary</label>
+    </customValue>
+    <customValue>
+        <fullName>Sub agents</fullName>
+        <default>false</default>
+        <label>Sub agents</label>
+    </customValue>
+    <customValue>
+        <fullName>Telemeeting</fullName>
+        <default>false</default>
+        <label>Telemeeting</label>
+    </customValue>
+    <customValue>
+        <fullName>מערכות מידע</fullName>
+        <default>false</default>
+        <label>מערכות מידע</label>
+    </customValue>
+    <customValue>
+        <fullName>Howden W&amp;I</fullName>
+        <default>false</default>
+        <label>Howden W&amp;I</label>
+    </customValue>
+    <customValue>
+        <fullName>אלדן בר זיו רביד</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>אלדן בר זיו רביד</label>
+    </customValue>
+    <customValue>
+        <fullName>אלד בר זיו</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>אלד בר זיו</label>
+    </customValue>
+    <customValue>
+        <fullName>Howden Indutries</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Howden Indutries</label>
+    </customValue>
+    <customValue>
+        <fullName>OTHET</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>OTHET</label>
+    </customValue>
+    <customValue>
+        <fullName>Agents</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Agents</label>
+    </customValue>
+    <customValue>
+        <fullName>Business</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Business</label>
+    </customValue>
+    <customValue>
+        <fullName>Howden Technologies+Innovations</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Howden Technologies+Innovations</label>
+    </customValue>
+    <customValue>
+        <fullName>מזכירות</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>מזכירות</label>
+    </customValue>
+    <customValue>
+        <fullName>בריאות</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>בריאות</label>
+    </customValue>
+    <customValue>
+        <fullName>כספים</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>כספים</label>
+    </customValue>
+    <customValue>
+        <fullName>עסקי</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>עסקי</label>
+    </customValue>
+    <customValue>
+        <fullName>פרט</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>פרט</label>
+    </customValue>
+    <customValue>
+        <fullName>תביעות</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>תביעות</label>
+    </customValue>
+    <customValue>
+        <fullName>סיכונים</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>סיכונים</label>
+    </customValue>
+    <customValue>
+        <fullName>הנדסי</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>הנדסי</label>
+    </customValue>
+    <customValue>
+        <fullName>גביה</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>גביה</label>
+    </customValue>
+    <customValue>
+        <fullName>הנהלה</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>הנהלה</label>
+    </customValue>
+    <customValue>
+        <fullName>טלמיטינג</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>טלמיטינג</label>
+    </customValue>
+    <customValue>
+        <fullName>סוכנים</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>סוכנים</label>
+    </customValue>
+    <customValue>
+        <fullName>שפי</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>שפי</label>
+    </customValue>
+    <customValue>
+        <fullName>פרט בר זיו</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>פרט בר זיו</label>
+    </customValue>
+    <customValue>
+        <fullName>אלדן בר זיו</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>אלדן בר זיו</label>
+    </customValue>
+    <customValue>
+        <fullName>- למחיקה עסקי בר זיו</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>- למחיקה עסקי בר זיו</label>
+    </customValue>
+    <customValue>
+        <fullName>personal lines</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>personal lines</label>
+    </customValue>
+    <customValue>
+        <fullName>Howden 360</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Howden 360</label>
+    </customValue>
+    <customValue>
+        <fullName>Howden Prime</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Howden Prime</label>
+    </customValue>
+    <customValue>
+        <fullName>Commercial SR</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Commercial SR</label>
+    </customValue>
+    <customValue>
+        <fullName>Hi Tech</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Hi Tech</label>
+    </customValue>
+    <customValue>
+        <fullName>Shefi</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Shefi</label>
+    </customValue>
+    <customValue>
+        <fullName>Engeneering</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Engeneering</label>
+    </customValue>
+    <customValue>
+        <fullName>Private</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Private</label>
+    </customValue>
+    <customValue>
+        <fullName>Health</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Health</label>
+    </customValue>
+    <customValue>
+        <fullName>Medical</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Medical</label>
+    </customValue>
+    <customValue>
+        <fullName>surenty</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>surenty</label>
+    </customValue>
+    <customValue>
+        <fullName>פרט האודן</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>פרט האודן</label>
+    </customValue>
+    <customValue>
+        <fullName>AA</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>AA</label>
+    </customValue>
+    <customValue>
+        <fullName>Risks</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Risks</label>
+    </customValue>
+    <customValue>
+        <fullName>Bar Ziv Private</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Bar Ziv Private</label>
+    </customValue>
+    <customValue>
+        <fullName>Bar Ziv Eldan</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Bar Ziv Eldan</label>
+    </customValue>
+    <customValue>
+        <fullName>Bar Ziv Business</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Bar Ziv Business</label>
+    </customValue>
+    <customValue>
+        <fullName>Bar Ziv 360</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Bar Ziv 360</label>
+    </customValue>
+    <customValue>
+        <fullName>VIP Clients 360</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>VIP Clients 360</label>
+    </customValue>
+    <customValue>
+        <fullName>VIP Clients 348</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>VIP Clients 348</label>
+    </customValue>
+    <customValue>
+        <fullName>VIP Clients 349</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>VIP Clients 349</label>
+    </customValue>
+    <customValue>
+        <fullName>VIP Clients 350</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>VIP Clients 350</label>
+    </customValue>
+    <customValue>
+        <fullName>VIP Clients 351</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>VIP Clients 351</label>
+    </customValue>
+    <customValue>
+        <fullName>VIP Clients 352</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>VIP Clients 352</label>
+    </customValue>
+    <customValue>
+        <fullName>VIP Clients 353</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>VIP Clients 353</label>
+    </customValue>
+    <customValue>
+        <fullName>VIP Clients 354</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>VIP Clients 354</label>
+    </customValue>
+    <customValue>
+        <fullName>VIP Clients 355</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>VIP Clients 355</label>
+    </customValue>
+    <customValue>
+        <fullName>VIP Clients 356</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>VIP Clients 356</label>
+    </customValue>
+    <customValue>
+        <fullName>VIP Clients 357</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>VIP Clients 357</label>
+    </customValue>
+    <customValue>
+        <fullName>VIP Clients 358</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>VIP Clients 358</label>
+    </customValue>
+    <customValue>
+        <fullName>VIP Clients 359</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>VIP Clients 359</label>
+    </customValue>
+    <customValue>
+        <fullName>005D0000002YLPY</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>005D0000002YLPY</label>
+    </customValue>
+    <masterLabel>מרכז רווח פנימי</masterLabel>
+    <sorted>true</sorted>
+</GlobalValueSet>

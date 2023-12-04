@@ -1,0 +1,7 @@
+<apex:page extensions="InsuranceCrossSalesAnalysysController"
+    action="{!runanalytics}"
+    standardController="Insurance_Cross_Sale__c" 
+    showHeader="false" sidebar="false" standardStylesheets="true">
+    
+    <apex:pageMessages /> 
+</apex:page>

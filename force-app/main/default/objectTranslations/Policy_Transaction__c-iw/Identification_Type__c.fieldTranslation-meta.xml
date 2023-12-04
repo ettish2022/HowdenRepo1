@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>סוג זיהוי אוטומטי</label>
+    <name>Identification_Type__c</name>
+    <picklistValues>
+        <masterLabel>Full Auto</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>None</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Partially Auto</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Policy Number</masterLabel>
+        <translation></translation>
+    </picklistValues>
+</CustomFieldTranslation>

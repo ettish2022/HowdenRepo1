@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>56.0</apiVersion>
+    <decisions>
+        <name>Trigger_Type</name>
+        <label>Trigger Type</label>
+        <locationX>182</locationX>
+        <locationY>335</locationY>
+        <defaultConnector>
+            <targetReference>Mark_Contact_As_Wise</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Meeting_Time_Is_Changed</name>
+            <conditionLogic>2 AND 3 AND ((1 AND (4 OR 5 OR 6 OR 7 OR 8 OR 9)) OR (10 AND (4 OR 5 OR 6 OR 7 OR 8 OR 9)))</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Meeting_Time__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Meeting_Time__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <elementReference>$Setup.AgentWise_IL__AgentwiseSettings__c.Default_DateTime_For_B4u_Updates__c</elementReference>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Meeting_Time__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Meeting_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Meeting Was Held - Sold</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Meeting_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Meeting Was Held - No Sell</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Meeting_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Meeting Was Held Waiting For Customer Decision</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Meeting_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Meeting Was Held Waiting For Customer Signature</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Meeting_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Service Meeting Without Changes</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Meeting_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Service Meeting With Changes</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Meeting_Status__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Mark_Last_Meeting_Date</targetReference>
+            </connector>
+            <label>Meeting Time Is Changed</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <formulas>
+        <name>MeetingDate</name>
+        <dataType>Date</dataType>
+        <expression>IF(
+OR(
+ISBLANK({!$Record.AgentWise_IL__Insured_Person__r.Wise_Last_Meeting__c}),
+{!$Record.AgentWise_IL__Insured_Person__r.Wise_Last_Meeting__c}&lt;DATEVALUE({!$Record.Meeting_Time__c})),
+DATEVALUE({!$Record.Meeting_Time__c}),
+{!$Record.AgentWise_IL__Insured_Person__r.Wise_Last_Meeting__c})</expression>
+    </formulas>
+    <interviewLabel>Aw Sales Lead After Change Mark Contact As Wise {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Aw Sales Lead After Change Mark Contact As Wise</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Clear_Flag</name>
+        <label>Clear Flag</label>
+        <locationX>314</locationX>
+        <locationY>575</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.AgentWise_IL__Insured_Person__c</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Anti_Validate__c</field>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </inputAssignments>
+        <object>Contact</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Clear_Flag1</name>
+        <label>Clear Flag</label>
+        <locationX>50</locationX>
+        <locationY>575</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.AgentWise_IL__Insured_Person__c</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Anti_Validate__c</field>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </inputAssignments>
+        <object>Contact</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Mark_Contact_As_Wise</name>
+        <label>Mark Contact As Wise</label>
+        <locationX>314</locationX>
+        <locationY>455</locationY>
+        <connector>
+            <targetReference>Clear_Flag</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.AgentWise_IL__Insured_Person__c</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Anti_Validate__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Wise_Activity__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <object>Contact</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Mark_Last_Meeting_Date</name>
+        <label>Mark Last Meeting Date</label>
+        <locationX>50</locationX>
+        <locationY>455</locationY>
+        <connector>
+            <targetReference>Clear_Flag1</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.AgentWise_IL__Insured_Person__c</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Anti_Validate__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Wise_Activity__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Wise_Last_Meeting__c</field>
+            <value>
+                <elementReference>MeetingDate</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Contact</object>
+    </recordUpdates>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Trigger_Type</targetReference>
+        </connector>
+        <filterFormula>AND(
+NOT(ISBLANK({!$Record.AgentWise_IL__Insured_Person__c})),
+OR(
+ISNEW(),
+ISCHANGED ({!$Record.Meeting_Status__c}),
+ISCHANGED({!$Record.AgentWise_IL__Insured_Person__c}),
+AND(
+ISCHANGED ({!$Record.Meeting_Time__c}),
+NOT(ISBLANK({!$Record.Meeting_Time__c})))))</filterFormula>
+        <object>AgentWise_IL__Lead__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

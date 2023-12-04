@@ -1,0 +1,467 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>sub_industry__c</fullName>
+    <externalId>false</externalId>
+    <label>תת תעשייה</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Industry</controllingField>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>true</sorted>
+            <value>
+                <fullName>Ad Tech</fullName>
+                <default>false</default>
+                <label>Ad Tech</label>
+            </value>
+            <value>
+                <fullName>Auto Tech</fullName>
+                <default>false</default>
+                <label>Auto Tech</label>
+            </value>
+            <value>
+                <fullName>Aviation</fullName>
+                <default>false</default>
+                <label>Aviation</label>
+            </value>
+            <value>
+                <fullName>Cannabis</fullName>
+                <default>false</default>
+                <label>Cannabis</label>
+            </value>
+            <value>
+                <fullName>Clinic</fullName>
+                <default>false</default>
+                <label>Clinic</label>
+            </value>
+            <value>
+                <fullName>Cloud Services</fullName>
+                <default>false</default>
+                <label>Cloud Services</label>
+            </value>
+            <value>
+                <fullName>Crypto</fullName>
+                <default>false</default>
+                <label>Crypto</label>
+            </value>
+            <value>
+                <fullName>Cyber Security</fullName>
+                <default>false</default>
+                <label>Cyber Security</label>
+            </value>
+            <value>
+                <fullName>Digital Health</fullName>
+                <default>false</default>
+                <label>Digital Health</label>
+            </value>
+            <value>
+                <fullName>Doctors</fullName>
+                <default>false</default>
+                <label>Doctors</label>
+            </value>
+            <value>
+                <fullName>Energy Storage</fullName>
+                <default>false</default>
+                <label>Energy Storage</label>
+            </value>
+            <value>
+                <fullName>Fintech</fullName>
+                <default>false</default>
+                <label>Fintech</label>
+            </value>
+            <value>
+                <fullName>FoodTech / CleanTech</fullName>
+                <default>false</default>
+                <label>FoodTech / CleanTech</label>
+            </value>
+            <value>
+                <fullName>Gaming</fullName>
+                <default>false</default>
+                <label>Gaming</label>
+            </value>
+            <value>
+                <fullName>Hospital</fullName>
+                <default>false</default>
+                <label>Hospital</label>
+            </value>
+            <value>
+                <fullName>Infrastructures\Energy VC</fullName>
+                <default>false</default>
+                <label>Infrastructures\Energy VC</label>
+            </value>
+            <value>
+                <fullName>IOT</fullName>
+                <default>false</default>
+                <label>IOT</label>
+            </value>
+            <value>
+                <fullName>Medical VC</fullName>
+                <default>false</default>
+                <label>Medical VC</label>
+            </value>
+            <value>
+                <fullName>Power</fullName>
+                <default>false</default>
+                <label>Power</label>
+            </value>
+            <value>
+                <fullName>Private Equity</fullName>
+                <default>false</default>
+                <label>Private Equity</label>
+            </value>
+            <value>
+                <fullName>PV &amp; WIND</fullName>
+                <default>false</default>
+                <label>PV &amp; WIND</label>
+            </value>
+            <value>
+                <fullName>Refinery</fullName>
+                <default>false</default>
+                <label>Refinery</label>
+            </value>
+            <value>
+                <fullName>Reit VC</fullName>
+                <default>false</default>
+                <label>Reit VC</label>
+            </value>
+            <value>
+                <fullName>Robotics</fullName>
+                <default>false</default>
+                <label>Robotics</label>
+            </value>
+            <value>
+                <fullName>Technology VC</fullName>
+                <default>false</default>
+                <label>Technology VC</label>
+            </value>
+            <value>
+                <fullName>Upstream</fullName>
+                <default>false</default>
+                <label>Upstream</label>
+            </value>
+            <value>
+                <fullName>אדריכל נוף</fullName>
+                <default>false</default>
+                <label>אדריכל נוף</label>
+            </value>
+            <value>
+                <fullName>אלקטרוניקה</fullName>
+                <default>false</default>
+                <label>אלקטרוניקה</label>
+            </value>
+            <value>
+                <fullName>בתי מלון</fullName>
+                <default>false</default>
+                <label>בתי מלון</label>
+            </value>
+            <value>
+                <fullName>גופים מפוקחים</fullName>
+                <default>false</default>
+                <label>גופים מפוקחים</label>
+            </value>
+            <value>
+                <fullName>חברות כוח אדם ושמירה</fullName>
+                <default>false</default>
+                <label>חברות כוח אדם ושמירה</label>
+            </value>
+            <value>
+                <fullName>ימי</fullName>
+                <default>false</default>
+                <label>ימי</label>
+            </value>
+            <value>
+                <fullName>יעוץ עסקי</fullName>
+                <default>false</default>
+                <label>יעוץ עסקי</label>
+            </value>
+            <value>
+                <fullName>מודדים</fullName>
+                <default>false</default>
+                <label>מודדים</label>
+            </value>
+            <value>
+                <fullName>מוסדות חינוך</fullName>
+                <default>false</default>
+                <label>מוסדות חינוך</label>
+            </value>
+            <value>
+                <fullName>נדלן</fullName>
+                <default>false</default>
+                <label>נדלן</label>
+            </value>
+            <value>
+                <fullName>סיעודי</fullName>
+                <default>false</default>
+                <label>סיעודי</label>
+            </value>
+            <value>
+                <fullName>פלדה</fullName>
+                <default>false</default>
+                <label>פלדה</label>
+            </value>
+            <value>
+                <fullName>פלטפורמות מסחר והלוואות</fullName>
+                <default>false</default>
+                <label>פלטפורמות מסחר והלוואות</label>
+            </value>
+            <value>
+                <fullName>פלסטיק</fullName>
+                <default>false</default>
+                <label>פלסטיק</label>
+            </value>
+            <value>
+                <fullName>צמה</fullName>
+                <default>false</default>
+                <label>צמה</label>
+            </value>
+            <value>
+                <fullName>קבלני בניה</fullName>
+                <default>false</default>
+                <label>קבלני בניה</label>
+            </value>
+            <value>
+                <fullName>קבלני ויזמי בניה</fullName>
+                <default>false</default>
+                <label>קבלני ויזמי בניה</label>
+            </value>
+            <value>
+                <fullName>קבלני משנה - שירותים</fullName>
+                <default>false</default>
+                <label>קבלני משנה - שירותים</label>
+            </value>
+            <value>
+                <fullName>קבלני תשתיות</fullName>
+                <default>false</default>
+                <label>קבלני תשתיות</label>
+            </value>
+            <value>
+                <fullName>קרנות גידור</fullName>
+                <default>false</default>
+                <label>קרנות גידור</label>
+            </value>
+            <value>
+                <fullName>קרנות נדלן</fullName>
+                <default>false</default>
+                <label>קרנות נדלן</label>
+            </value>
+            <value>
+                <fullName>רשתות אפנה</fullName>
+                <default>false</default>
+                <label>רשתות אפנה</label>
+            </value>
+            <value>
+                <fullName>רשתות מזון</fullName>
+                <default>false</default>
+                <label>רשתות מזון</label>
+            </value>
+            <value>
+                <fullName>תעופתי</fullName>
+                <default>false</default>
+                <label>תעופתי</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>הנדסי/ Engineering</controllingFieldValue>
+            <valueName>נדלן</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>הנדסי/ Engineering</controllingFieldValue>
+            <valueName>צמה</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>הנדסי/ Engineering</controllingFieldValue>
+            <valueName>קבלני בניה</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>הנדסי/ Engineering</controllingFieldValue>
+            <valueName>קבלני ויזמי בניה</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>הנדסי/ Engineering</controllingFieldValue>
+            <valueName>קבלני משנה - שירותים</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>הנדסי/ Engineering</controllingFieldValue>
+            <valueName>קבלני תשתיות</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Industry</controllingFieldValue>
+            <valueName>אלקטרוניקה</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Industry</controllingFieldValue>
+            <valueName>ימי</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Industry</controllingFieldValue>
+            <valueName>מוסדות חינוך</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Industry</controllingFieldValue>
+            <valueName>פלדה</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Industry</controllingFieldValue>
+            <valueName>פלסטיק</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Industry</controllingFieldValue>
+            <valueName>תעופתי</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>אנרגיה</controllingFieldValue>
+            <valueName>Energy Storage</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>אנרגיה</controllingFieldValue>
+            <valueName>Power</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>אנרגיה</controllingFieldValue>
+            <valueName>PV &amp; WIND</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>אנרגיה</controllingFieldValue>
+            <valueName>Refinery</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>אנרגיה</controllingFieldValue>
+            <valueName>Upstream</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Medical</controllingFieldValue>
+            <valueName>Cannabis</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Medical</controllingFieldValue>
+            <valueName>Clinic</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Medical</controllingFieldValue>
+            <valueName>Digital Health</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Medical</controllingFieldValue>
+            <valueName>Doctors</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Medical</controllingFieldValue>
+            <valueName>FoodTech / CleanTech</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Medical</controllingFieldValue>
+            <valueName>Hospital</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Hi Tech</controllingFieldValue>
+            <valueName>Ad Tech</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Hi Tech</controllingFieldValue>
+            <valueName>Auto Tech</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Hi Tech</controllingFieldValue>
+            <valueName>Aviation</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Hi Tech</controllingFieldValue>
+            <valueName>Cloud Services</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Hi Tech</controllingFieldValue>
+            <valueName>Crypto</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Hi Tech</controllingFieldValue>
+            <valueName>Cyber Security</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Hi Tech</controllingFieldValue>
+            <valueName>Fintech</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Hi Tech</controllingFieldValue>
+            <valueName>Gaming</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Hi Tech</controllingFieldValue>
+            <valueName>IOT</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Hi Tech</controllingFieldValue>
+            <valueName>Robotics</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>VC</controllingFieldValue>
+            <valueName>Infrastructures\Energy VC</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>VC</controllingFieldValue>
+            <valueName>Medical VC</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>VC</controllingFieldValue>
+            <valueName>Private Equity</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>VC</controllingFieldValue>
+            <valueName>Reit VC</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>VC</controllingFieldValue>
+            <valueName>Technology VC</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Commercial</controllingFieldValue>
+            <valueName>בתי מלון</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Commercial</controllingFieldValue>
+            <valueName>רשתות אפנה</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Commercial</controllingFieldValue>
+            <valueName>רשתות מזון</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>מהנדסים</controllingFieldValue>
+            <valueName>אדריכל נוף</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>מהנדסים</controllingFieldValue>
+            <valueName>מודדים</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Service</controllingFieldValue>
+            <valueName>חברות כוח אדם ושמירה</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Service</controllingFieldValue>
+            <valueName>סיעודי</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>FI</controllingFieldValue>
+            <valueName>גופים מפוקחים</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>FI</controllingFieldValue>
+            <valueName>יעוץ עסקי</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>FI</controllingFieldValue>
+            <valueName>פלטפורמות מסחר והלוואות</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>FI</controllingFieldValue>
+            <valueName>קרנות גידור</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>FI</controllingFieldValue>
+            <valueName>קרנות נדלן</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Sale</fullName>
+        <default>false</default>
+        <label>Sale</label>
+    </customValue>
+    <customValue>
+        <fullName>Agent Appointment</fullName>
+        <default>false</default>
+        <label>Agent Appointment</label>
+    </customValue>
+    <customValue>
+        <fullName>Ownership Taking</fullName>
+        <default>false</default>
+        <label>Ownership Taking</label>
+    </customValue>
+    <customValue>
+        <fullName>Addition</fullName>
+        <default>false</default>
+        <label>Addition</label>
+    </customValue>
+    <customValue>
+        <fullName>Taking The OwnerShip</fullName>
+        <default>false</default>
+        <label>Taking The OwnerShip</label>
+    </customValue>
+    <customValue>
+        <fullName>Agent Appointment Plus Addition</fullName>
+        <default>false</default>
+        <label>Agent Appointment Plus Addition</label>
+    </customValue>
+    <masterLabel>Action Type</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

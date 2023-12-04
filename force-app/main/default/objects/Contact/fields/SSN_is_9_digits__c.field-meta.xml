@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SSN_is_9_digits__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(LEN(Novidea_HPC__SSN__c) == 9, true, false)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>SSN is 9 digits</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

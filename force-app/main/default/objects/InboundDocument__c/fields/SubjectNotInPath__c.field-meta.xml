@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SubjectNotInPath__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF( OR(CONTAINS(Physical_Path__c, TRIM(LEFT(SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(SUBSTITUTE( SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(Subject__c, &quot;\\&quot;, &quot;&quot;),&quot;/&quot;,&quot;&quot;),&quot;:&quot;,&quot;&quot;),&quot;*&quot;,&quot;&quot;),&quot;?&quot;,&quot;&quot;),&quot;\&quot;&quot;,&quot;&quot;),&quot;&lt;&quot;,&quot;&quot;),&quot;&gt;&quot;,&quot;&quot;),&quot;|&quot;,&quot;&quot;),&quot;	&quot;,&quot; &quot;),&quot;\r\n&quot;,&quot; &quot;),&quot;\n&quot;,&quot; &quot;),123))),ISNULL(Sender__c),Sender__c=&quot;&quot;, CONTAINS(Subject__c,&quot;תיוק שגוי&quot;))
+ ,1,0)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>SubjectNotInPath</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

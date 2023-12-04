@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label></label>
+    <name>Novidea_HPC__Country_of_Registration__c</name>
+    <picklistValues>
+        <masterLabel>France</masterLabel>
+        <translation>Francia</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Germany</masterLabel>
+        <translation>Alemania</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Israel</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>United Kingdom</masterLabel>
+        <translation>Reino Unido</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>United States of America</masterLabel>
+        <translation>Estados Unidos de América</translation>
+    </picklistValues>
+</CustomFieldTranslation>

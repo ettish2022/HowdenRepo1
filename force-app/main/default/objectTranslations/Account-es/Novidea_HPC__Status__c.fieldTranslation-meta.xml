@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label></label>
+    <name>Novidea_HPC__Status__c</name>
+    <picklistValues>
+        <masterLabel>Active</masterLabel>
+        <translation>Activo</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Bankrupt</masterLabel>
+        <translation>En quiebra</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Closed</masterLabel>
+        <translation>Cerrado</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Left The Agency</masterLabel>
+        <translation>Abandonó la agencia</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Potential</masterLabel>
+        <translation></translation>
+    </picklistValues>
+</CustomFieldTranslation>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Report_Description</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND
+(ISPICKVAL( Sub_Category__c, &quot;הקמת דוח חדש&quot;),(Description__c ==&quot;&quot; )
+)</errorConditionFormula>
+    <errorMessage>נא לצרף את הפרטים הבאים:
+מטרת הדוח / למי מוצג הדוח (פנים ארגוני/חיצוני) / מהם הנתונים המבוקשים לראות בדוח (תאריכים, פרמיות, הכנסות) / מטבע הדוח (₪ / $) / תקופת הדוח (תקופת ביטוח, הכרה בהכנסה, בורדרו) / דחיפות הדוח</errorMessage>
+</ValidationRule>

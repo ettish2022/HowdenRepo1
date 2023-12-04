@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Public_company__c</fullName>
+    <externalId>false</externalId>
+    <label>חברה ציבורית - איפה?</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>true</sorted>
+            <value>
+                <fullName>אוסטרליה</fullName>
+                <default>false</default>
+                <label>אוסטרליה</label>
+            </value>
+            <value>
+                <fullName>אנגליה</fullName>
+                <default>false</default>
+                <label>אנגליה</label>
+            </value>
+            <value>
+                <fullName>אנגליה וישראל</fullName>
+                <default>false</default>
+                <label>אנגליה וישראל</label>
+            </value>
+            <value>
+                <fullName>ארה&quot;ב</fullName>
+                <default>false</default>
+                <label>ארה&quot;ב</label>
+            </value>
+            <value>
+                <fullName>הונג קונג</fullName>
+                <default>false</default>
+                <label>הונג קונג</label>
+            </value>
+            <value>
+                <fullName>ישראל</fullName>
+                <default>false</default>
+                <label>ישראל</label>
+            </value>
+            <value>
+                <fullName>ישראל וארה&quot;ב</fullName>
+                <default>false</default>
+                <label>ישראל וארה&quot;ב</label>
+            </value>
+            <value>
+                <fullName>סינגפור</fullName>
+                <default>false</default>
+                <label>סינגפור</label>
+            </value>
+            <value>
+                <fullName>קנדה</fullName>
+                <default>false</default>
+                <label>קנדה</label>
+            </value>
+            <value>
+                <fullName>שאר העולם</fullName>
+                <default>false</default>
+                <label>שאר העולם</label>
+            </value>
+            <value>
+                <fullName>שוודיה</fullName>
+                <default>false</default>
+                <label>שוודיה</label>
+            </value>
+            <value>
+                <fullName>שוויץ</fullName>
+                <default>false</default>
+                <label>שוויץ</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

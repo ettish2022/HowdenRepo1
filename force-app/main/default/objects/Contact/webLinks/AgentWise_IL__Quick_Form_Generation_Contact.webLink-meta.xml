@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AgentWise_IL__Quick_Form_Generation_Contact</fullName>
+    <availability>online</availability>
+    <displayType>button</displayType>
+    <height>600</height>
+    <linkType>page</linkType>
+    <masterLabel>Quick Form Generation Contact</masterLabel>
+    <openType>sidebar</openType>
+    <page>AgentWise_IL__QuickFormGenerationContact</page>
+    <protected>false</protected>
+</WebLink>

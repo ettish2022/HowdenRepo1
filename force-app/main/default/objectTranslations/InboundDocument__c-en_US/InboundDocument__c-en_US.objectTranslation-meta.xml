@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Inbound Document - ישן</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Inbound Documents - ישן</value>
+    </caseValues>
+    <layouts>
+        <layout>Inbound Document Layout</layout>
+        <sections>
+            <label>Custom Links</label>
+            <section>קישורים מותאמים אישית</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Inbound Document Layout for SSBProc</layout>
+        <sections>
+            <label></label>
+            <section>קישורים מותאמים אישית</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Inbound Document for Support</layout>
+        <sections>
+            <label></label>
+            <section>Entities</section>
+        </sections>
+        <sections>
+            <label>Custom Links</label>
+            <section>קישורים מותאמים אישית</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+    <webLinks>
+        <label></label>
+        <name>Mail_As_Attachment</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>Mail_As_Attachment_for_FAx</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>Open_File</name>
+    </webLinks>
+</CustomObjectTranslation>

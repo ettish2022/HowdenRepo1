@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>NOV</fullName>
+    <columns>NAME</columns>
+    <columns>Department__c</columns>
+    <columns>Requested_By__c</columns>
+    <columns>Subject__c</columns>
+    <columns>Detailes__c</columns>
+    <columns>Request_Owner__c</columns>
+    <columns>Status__c</columns>
+    <columns>Request_date__c</columns>
+    <columns>Account__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Request_Owner__c</field>
+        <operation>equals</operation>
+        <value>Novidea</value>
+    </filters>
+    <label>Novidea</label>
+    <language>iw</language>
+</ListView>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <article>Definite</article>
+        <plural>false</plural>
+        <value>פוליסת החיים</value>
+    </caseValues>
+    <caseValues>
+        <article>None</article>
+        <plural>false</plural>
+        <value>פוליסה חיים</value>
+    </caseValues>
+    <caseValues>
+        <article>Definite</article>
+        <plural>true</plural>
+        <value>פוליסות החיים</value>
+    </caseValues>
+    <caseValues>
+        <article>None</article>
+        <plural>true</plural>
+        <value>פוליסות חיים</value>
+    </caseValues>
+    <gender>Feminine</gender>
+    <layouts>
+        <layout>NoInsured Policy Good Layout</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>New Section</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מידע מהפקה בסוכנות</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מידע מפרודוקציה</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מסמכים</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרטי הפוליסה</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרטי מערכת</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Policy Good Layout</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>New Section</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מידע מהפקה בסוכנות</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מידע מפרודוקציה</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מסמכים</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרטי הפוליסה</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>פרטי מערכת</section>
+        </sections>
+    </layouts>
+    <nameFieldLabel>שם</nameFieldLabel>
+    <recordTypes>
+        <label>השקעות אלטרנטיביות</label>
+        <name>Alternative_Investments</name>
+    </recordTypes>
+    <recordTypes>
+        <label>ביטוח בריאות קולקטיבי</label>
+        <name>Health_For_Collective_Policy</name>
+    </recordTypes>
+    <recordTypes>
+        <label>תיק השקעות</label>
+        <name>Invesments_Account_Policy</name>
+    </recordTypes>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>PolicyCancelledRequiredDetails</name>
+    </validationRules>
+    <webLinks>
+        <label></label>
+        <name>File_a_Document</name>
+    </webLinks>
+</CustomObjectTranslation>

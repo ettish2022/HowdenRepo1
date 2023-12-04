@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Income_Source__c</fullName>
+    <externalId>false</externalId>
+    <label>מקור הכנסה</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Income_Type__c</controllingField>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>חדש לא מתחדש</fullName>
+                <default>false</default>
+                <label>חדש לא מתחדש</label>
+            </value>
+            <value>
+                <fullName>חדש לקוחות חדשים</fullName>
+                <default>false</default>
+                <label>חדש לקוחות חדשים</label>
+            </value>
+            <value>
+                <fullName>חדש מכירה צולבת</fullName>
+                <default>false</default>
+                <label>חדש מכירה צולבת</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>חדש</controllingFieldValue>
+            <valueName>חדש לא מתחדש</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>חדש</controllingFieldValue>
+            <valueName>חדש לקוחות חדשים</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>חדש</controllingFieldValue>
+            <valueName>חדש מכירה צולבת</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

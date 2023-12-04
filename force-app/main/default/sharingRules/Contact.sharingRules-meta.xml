@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>BRZ_Shared_With_Howden</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>BRZ_Shared_With_Howden</label>
+        <sharedTo>
+            <group>Howden_Manager</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>BRZ__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Howden_SharedWith_BRZ</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Contacts Howden share with BRZ</description>
+        <label>Howden SharedWith BRZ</label>
+        <sharedTo>
+            <roleAndSubordinates>BarZivRavid</roleAndSubordinates>
+        </sharedTo>
+        <criteriaItems>
+            <field>BRZ__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingOwnerRules>
+        <fullName>AccountingOwner</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>בעלות כספים</label>
+        <sharedTo>
+            <group>BRZ_ClaimsGroup</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>FinanceRisksGroup</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>All_BZR_Created_BZR_See</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>All_BZR_Created_BZR_See</label>
+        <sharedTo>
+            <roleAndSubordinates>BarZivRavid</roleAndSubordinates>
+        </sharedTo>
+        <sharedFrom>
+            <roleAndSubordinates>BarZivRavid</roleAndSubordinates>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Created_By_Not_BRZ</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Created_By_Not_BRZ</label>
+        <sharedTo>
+            <roleAndSubordinates>HowdenIsrael</roleAndSubordinates>
+        </sharedTo>
+        <sharedFrom>
+            <roleAndSubordinates>Chair_Man</roleAndSubordinates>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Wise_Team</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>צוות חיים</label>
+        <sharedTo>
+            <group>GroupLifeInternal</group>
+        </sharedTo>
+        <sharedFrom>
+            <allInternalUsers></allInternalUsers>
+        </sharedFrom>
+    </sharingOwnerRules>
+</SharingRules>

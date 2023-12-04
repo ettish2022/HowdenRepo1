@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Json_Base_Field_Name__c</fullName>
+    <caseSensitive>true</caseSensitive>
+    <externalId>false</externalId>
+    <label>Json Base Field Name</label>
+    <length>15</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>true</unique>
+</CustomField>

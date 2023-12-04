@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <article>Definite</article>
+        <plural>false</plural>
+        <value>הצעות אלמנטרי</value>
+    </caseValues>
+    <caseValues>
+        <article>None</article>
+        <plural>false</plural>
+        <value>הצעות אלמנטרי</value>
+    </caseValues>
+    <caseValues>
+        <article>Definite</article>
+        <plural>true</plural>
+        <value>הצעות אלמנטרי</value>
+    </caseValues>
+    <caseValues>
+        <article>None</article>
+        <plural>true</plural>
+        <value>הצעות אלמנטרי</value>
+    </caseValues>
+    <gender>Feminine</gender>
+    <layouts>
+        <layout>Application Layout for Admin</layout>
+        <sections>
+            <label></label>
+            <section>Account Active Or Not?</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>BRZ Details</section>
+        </sections>
+        <sections>
+            <label>פוליסה נוכחית</label>
+            <section>Current Policy</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>הגדרת דרישות</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מסמכים</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Application New Short Process</layout>
+        <sections>
+            <label></label>
+            <section>הגדרת צרכים להצעת ביטוח</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מסמכים</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>BRZ Application New Short Process</layout>
+        <sections>
+            <label></label>
+            <section>הגדרת צרכים להצעת ביטוח</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מסמכים</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Elementry Business</layout>
+        <sections>
+            <label></label>
+            <section>Current Policy</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>מסמכים</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>UK CRM - Business</layout>
+        <sections>
+            <label>פוליסה קיימת</label>
+            <section>Current Policy</section>
+        </sections>
+        <sections>
+            <label>מסמכים</label>
+            <section>Documents</section>
+        </sections>
+    </layouts>
+    <nameFieldLabel>הצעות אלמנטרי</nameFieldLabel>
+    <recordTypes>
+        <label>דיווח מקוצר</label>
+        <name>Application_Short_Business_Process_Record</name>
+    </recordTypes>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Cannot_Change_Owner</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Update_Application_Source</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Update_Application_Sources</name>
+    </validationRules>
+    <webLinks>
+        <label>צור מוצרי עסקי</label>
+        <name>Add_Standard_Products_Kit</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>Documents</name>
+    </webLinks>
+    <webLinks>
+        <label>תייק קבצים</label>
+        <name>File_a_Document</name>
+    </webLinks>
+    <webLinks>
+        <label>צור טופס</label>
+        <name>Generate_With_Perform</name>
+    </webLinks>
+</CustomObjectTranslation>

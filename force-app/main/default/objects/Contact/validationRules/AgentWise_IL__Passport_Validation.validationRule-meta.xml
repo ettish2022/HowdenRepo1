@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AgentWise_IL__Passport_Validation</fullName>
+    <active>true</active>
+    <errorConditionFormula>OR(AND(ISPICKVAL( AgentWise_IL__Id_Type__c , &apos;דרכון&apos;), ISPICKVAL(AgentWise_IL__Passport_State__c, &apos;&apos;)),
+AND(NOT(ISPICKVAL( AgentWise_IL__Id_Type__c , &apos;דרכון&apos;)),NOT(ISPICKVAL(AgentWise_IL__Passport_State__c, &apos;&apos;))))</errorConditionFormula>
+    <errorDisplayField>AgentWise_IL__Passport_State__c</errorDisplayField>
+    <errorMessage>אנא מלא ערך זה אם סוג המזהה הוא דרכון</errorMessage>
+</ValidationRule>

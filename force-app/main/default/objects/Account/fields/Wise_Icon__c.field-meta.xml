@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Wise_Icon__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(  Has_Life_Insurace__c  , IMAGE(&quot;https://howdenil--c.documentforce.com/sfc/servlet.shepherd/version/renditionDownload?rendition=ORIGINAL_Jpg&amp;versionId=0684G00000Dc9BK&amp;operationContext=CHATTER&amp;contentId=05T4G00000eVybi&quot;, &quot;has wise&quot;, $Setup.IconSize__c.small__c, $Setup.IconSize__c.small__c),IMAGE(&quot;https://howdenil--c.documentforce.com/sfc/servlet.shepherd/version/renditionDownload?rendition=ORIGINAL_Jpg&amp;versionId=0684G00000Dc9Dx&amp;operationContext=CHATTER&amp;contentId=05T4G00000eVyjS&quot;,&quot;Does not have Wise&quot;, $Setup.IconSize__c.small__c, $Setup.IconSize__c.small__c))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Wise</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

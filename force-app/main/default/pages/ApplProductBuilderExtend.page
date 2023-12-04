@@ -1,0 +1,883 @@
+<apex:page standardcontroller="Novidea_HPC__Application__c" extensions="ApplProductBuilderExtendCo" 
+           showHeader="false" sidebar="false" action="{!init}" standardStylesheets="true" id="ApplProductBuilderExtendPage">
+     <div id="ieBrowserFix" style="display:none;">
+       <apex:sectionHeader title="IE" subtitle="BrowserFix" />
+     </div> 
+    <apex:includeScript value="{!$Resource.Novidea_HPC__jquery3_6_0min}" />
+    <!-- <apex:includeScript value="{!$Resource.jqueryMigrateDevelopment}" /> -->
+    <script type="application/javascript">
+        var j$ = jQuery;
+    </script>
+    
+    <apex:includeScript value="{!$Resource.Novidea_HPC__novidea_js_utils}" />
+    <apex:includeScript value="{!$Resource.Novidea_HPC__json2min}"/>
+    <apex:includeScript value="{!$Resource.Novidea_HPC__autocompletejs}"/>
+    <apex:stylesheet value="{!$Resource.Novidea_HPC__autocompletecss}" />
+    
+    <style>
+        body, td, tr, button, a, h2, select, input, textarea,  .autocomplete {
+            font-family: system-ui !important;
+        }
+        #{!$Component.frm.blk.maintable.liabilityPerCaseHeader} {
+            width:80px;
+            white-space: normal; 
+        }
+
+        div#mask{
+            display: none;
+            cursor: wait;
+            z-index: 9999;
+            position: absolute;
+            top: 0;
+            {!$Label.Novidea_HPC__Text_Alignment_Reverse}: 0;
+            height: 100%;
+            width: 100%;
+            background-color: #fff;
+            opacity: 0;
+            filter: alpha(opacity = 0);
+        }
+
+        .headerlabel {
+            font-weight: bold;
+            padding: 5px;
+        }
+
+        .headerTable {
+            border: 1px dashed #1F497D;
+            border-radius: 5px;
+            width: 735px;
+            margin-{!$Label.Novidea_HPC__Text_Alignment}: 5px;
+            margin-bottom: 10px;
+            margin-top: 20px;
+        }
+
+        .headerRow {
+            white-space: normal !important;
+        }
+        /*
+        table.maintable{
+            background-color:#f0f0f0;
+        }
+        table.maintable > thead > tr{
+            height:25px;
+            
+        }
+        table.maintable > thead > tr > th{
+            height:0;
+            line-height: 0;
+            min-height:30px;
+            
+        }
+        table.maintable > thead > tr > th > div {
+            padding: 9px 0px;
+            position: absolute;
+            top:35px;
+            background-color:#f0f0f0;
+            height:0;
+            line-height: 0;
+        }
+        table.maintable > thead > tr > th > div input{
+            margin-top:-5px;
+        }
+        */
+        .numeric{
+            direction:{!$Label.Novidea_HPC__direction_Reverse};
+        }
+        
+        div[id$="blk"]  .pbBody{
+            background: #f0f0f0;
+            max-height:300px;
+            
+        }
+        span.dateFormat{
+            display:none;
+        }
+        #{!SUBSTITUTE($Component.frm.blk.maintable,':','\\:')} td>img[class="trigger datepick-trigger"]{
+            vertical-align:middle !important;
+        }
+        
+        section {
+          position: relative;
+          border: 1px solid #fafafa;
+          background: #f0f0f0;
+        }
+        section.positioned {
+          position: absolute;
+          top:100px;
+          left:100px;
+          box-shadow: 0 0 2px #333;
+        }
+        .container {
+          overflow-y: auto;
+          max-height: 220px;
+        }
+        
+        table.maintable  {
+          border-spacing: 0;
+          width:auto;
+        }
+        table.maintable tbody {
+            background: #fff;
+        }
+        table.maintable td + table.maintable td {
+          border-left:1px solid #ddd;
+        }
+        table.maintable td, table.maintable th {
+          border-bottom:1px solid #ddd;
+          background: #fff;
+          color: #000;
+          padding: 3px 5px;
+          
+          width:110px;
+        }
+        table.maintable td input, table.maintable th input, table.maintable td textarea, table.maintable td span, table.maintable td select{
+            width:100px;
+            display:inline-table;
+        }
+        table.maintable td span{
+            /*text-align:center;*/
+        }
+        table.maintable td span:empty, table.maintable td span span{
+            text-align:initial;
+        }
+        table.maintable th input[type=checkbox], table.maintable td input[type=checkbox], table.maintable thead tr:first-child th{
+            width:30px;
+        }
+        table.maintable thead tr th:first-child div , table.maintable tbody tr td:first-child {
+            width:40px;
+        }
+        table.maintable > thead > tr.headerRow > th {
+          height: 0;
+          line-height: 0;
+          padding: 0 !important;
+          color: transparent;
+          border: none;
+          white-space: nowrap;
+        }
+        table.maintable > thead > tr > th div{
+          position: relative;
+          background: transparent;
+          color: #000;
+          padding: 3px 5px;
+          top: 0;
+          margin-left: 0px;
+          line-height: normal;
+          border-left: 1px solid #eee;
+          width:85px;
+        }
+        table.maintable > thead > tr > th:first-child div{
+          border: none;
+        }
+        .autocomplete {
+			position: relative !important;
+		}
+
+        /* Modal Styles */
+        .product-modal {
+            display: none;
+            position: fixed; 
+            z-index: 2; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            overflow: auto; 
+            background-color: rgba(0, 0, 0, 0.4); 
+            border-radius: 5px;
+        }
+
+        .product-modal-content {
+            background-color: #fefefe;
+            margin: 5% auto; 
+            padding: 20px;
+            border: 1px solid #888;
+            width: 30%;
+            border-radius: 5px;
+        }
+
+        .modal-body-item {
+            margin: 5px;
+        }
+
+        .modal-validation { 
+            display :none;
+            color:red;
+        }
+        .modal-validation.invalid {
+            display :block;
+        }
+
+        .textArea {
+            height: 100px;
+            width: 100% !important;
+            border-radius: 3px;
+        }
+        
+        .lossCauseSelect {
+            width: 200px !important;
+        }
+    </style>
+    <script type="application/javascript">
+        
+        function statusEnable(){
+
+            for(var i=0; i< jQuery("[id^='plcfilter']").length ; i++){
+                var product = jQuery("[id^='plcfilter']")[i];
+                var carrier = jQuery("[id^='carrfilter']")[i];
+                var status = jQuery("[id$=" + "'" + i + ":prodStatusNew']");
+                status.prop("disabled", !(product.value !== "" && carrier.value !== ""));
+            }
+        }
+        
+        function validate(){
+            var msgs = validateFieldValues();
+            if(msgs.length>0){
+                createMessage(msgs);
+                return false;
+            }
+            return true;
+        }
+        
+        function validateFieldValues(){
+            var msgs =[];
+            jQuery("[id$='hideProdDef']").each(function(index){if(this.value==null || this.value=="") msgs.push("{!$Label.Novidea_HPC__Missing} {!$ObjectType.Novidea_HPC__Product__c.Fields.Novidea_HPC__Product_Definition__c.label}")});
+            return msgs;
+        } 
+        function validate1(){
+            var flag = true;
+            jQuery("[id^='plcfilter']").each(function(){
+                if(this.value == null || this.value==""){
+                    jQuery(this).css("border-right-color", "red");
+                    flag = false;
+                }
+                else{
+                    jQuery(this).css("border-color", "#ededed");
+                    flag = true;
+                }
+            });
+            
+            jQuery("[id$='liabilityCurrency']").each(function(){
+                if(this.value == null || this.value==""){
+                    jQuery(this).css({"border-right-color": "red", "border-right-width": "2px"});
+                    flag = false;
+                }
+                else{
+                    jQuery(this).css("border", "1px solid #ededed");
+                    flag = true;
+                }
+            });
+            
+            jQuery("[id$='premiumCurrency']").each(function(){
+                if(this.value == null || this.value==""){
+                    jQuery(this).css({"border-right-color": "red", "border-right-width": "2px"});
+                    flag = false;
+                }
+                else{
+                    jQuery(this).css("border", "1px solid #ededed");
+                    flag = true;
+                }
+            });
+            
+            
+            
+            return flag;
+        } 
+                                                
+        function createMessage(msgs){
+            var elem = document.getElementById("{!$Component.msg}");
+            if(elem.getElementsByTagName("UL").length>0)elem.removeChild(elem.getElementsByTagName("UL")[0]);
+            if(msgs.length>0 && msgs[0]!=""){
+                elem = elem.appendChild(document.createElement("UL"));
+                var elem1;
+                for(var i=0;i<msgs.length;++i){
+                    elem1 = elem.appendChild(document.createElement("LI"));
+                    elem1.innerText= msgs[i];
+                }
+            }
+        }
+        
+        function handleValidationException(message, acInputId){
+            createMessage([message]);
+            jQuery("#"+acInputId).val("").css("border","1px solid red").parent().find(":hidden").val("");
+        }
+        
+        function handleValidateSelectedPolicy(result, plcId,plcName,acInputId){
+            var message = null;
+            if(!result.isPolicyOfCarrier){
+                message = "{!$Label.Novidea_HPC__The_selected_policy_is_not_related_to_carrier}";
+            }
+            if(result.isPolicyChargedThisMonth){
+                message = "{!$Label.Novidea_HPC__The_selected_policy_already_has_payment_in_the_selected_month}";
+            }
+            if(message!=null){
+                createMessage([message]);
+                jQuery("#"+acInputId).val("").css("border","1px solid red").parent().find(":hidden").val("");
+                return;
+            }
+            else{
+                createMessage([]);
+                jQuery("#"+acInputId).val(plcName).css("border","initial").find(":hidden").each(function(index){
+                                                                        if(index==0)this.value= plcName;
+                                                                        else if(index==1)this.value=plcId;
+                                                                    });
+            }
+        }   
+        
+        /*function toggleCheckAll(target) { // old retrive checkboxes
+            if(target.checked) {
+                j$("input[type='checkbox']").each(function() {
+                    j$(this).attr('checked', 'checked');
+                });
+            } else {
+                j$("input[type='checkbox']").each(function() {
+                    j$(this).removeAttr('checked');
+                });
+            }
+        }*/
+        
+        function toggleCheckAll(target) {
+            jQuery(":checkbox[data-id]").prop('checked',target.checked);
+        }
+        
+        
+        function notAll(target) {
+            if(!target.checked)
+                jQuery("#checkAllBox").prop("checked", false)
+        }
+        
+        function checkAll() {
+            var isAll = true;
+            isAll = jQuery(":checkbox[data-id]").length != 0;
+            jQuery(":checkbox[data-id]").each(function() {
+                if(this.id != 'checkAllBox')
+                    isAll = isAll && (jQuery(this).attr('checked') == 'checked');
+            }); 
+            if(isAll)
+                jQuery('#checkAllBox').attr('checked', 'checked');
+        }
+        
+        jQuery(document).ready(function() {
+            jQuery.noConflict();
+<!--        jQuery([id$="maintable"]).scrollableFixedHeaderTable(300,100,'true','scr_table_1_');-->
+            jQuery("#{!$Component.frm.blk.maintable}".replace(/:/g,"\\:")).on("keydown", function(event){
+                                                                                   if(event.which == 13 ) {
+                                                                                        event.preventDefault();
+                                                                                        var nextSiblingElem = jQuery((jQuery(event.srcElement).parents("TD:first").nextAll("TD:first")));
+                                                                                        if(nextSiblingElem.length==0)
+                                                                                            nextSiblingElem = jQuery((jQuery(event.srcElement).parents("TR:first").nextAll("TR:first")).children("TD:nth-child(2)"));
+                                                                                        nextSiblingElem.find("input,select").focus().select();
+                                                                                   }
+                                                                                });
+             checkAll();
+             statusEnable();      
+             datePickerObserver();
+             bindDateInputs();
+        
+         });
+         
+        var datePicker;
+        var pbBody;
+        var observer;
+        // configuration of the observer:
+        var config = { attributes : true, attributeFilter : ['style'] };
+        function datePickerObserver(){
+            datePicker = jQuery('#datePicker');
+            pbBody = jQuery(".pbBody").first();
+            observer = new MutationObserver(mutationCalback);
+            let datepickers = document.querySelectorAll('input[name*="startDate"],input[name*="endDate"]');
+            datepickers.forEach(date => {
+                observer.observe(date, config);
+            })
+            // pass in the target node, as well as the observer options
+        }
+     
+        function mutationCalback(){
+            datePicker.css('left',datePicker.position().left - pbBody.scrollLeft());
+            datePicker.css('top',datePicker.position().top - pbBody.scrollTop());
+            var takeRecords=   observer.takeRecords();
+        }
+
+        function bindDateInputs(){
+        jQuery('.dateOnlyInput > input').on("keypress", function (event) {
+                                                        var validChars = "^([0-9]|/)" ;
+                                                        var regex = new RegExp(validChars);
+                                                        var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+                                                        if (!regex.test(key)) {
+                                                            event.preventDefault();
+                                                            return false;
+                                                        }
+                                                    });
+        }
+        
+      function startFlowloading(){
+         document.getElementById('mask').style.display = 'block';
+         document.body.style.cursor='wait';
+      }
+      function flowloadingStop(){
+          document.body.style.cursor='default';
+          document.getElementById('mask').style.display = 'none';                
+      }
+            
+     
+      
+      
+      function DateStart(val){
+        var first = jQuery("input[id$='startDate']").first();
+        jQuery(this).find("input[id$='startDate']").each(function(){
+            if(this != first){
+                alert(val);
+                this.value = val;
+            }
+                
+        });    
+      }
+      function isDeleteProduct(){
+          return confirm("{!$Label.Novidea_HPC__Would_you_like_to_delete_the_chosen_product}");
+              //removeLine(val);
+      }
+      
+      function openMassUpdatePage() {
+        var link = '/apex/MassFieldUpdater?id={!Id}&potype=Novidea_HPC__Product__c&refField=Novidea_HPC__Application__c';
+        var selectedObjIds;
+        var selectedObjCounter = 0;
+        jQuery(":checkbox[data-id]:checked").each(function() {
+                ++selectedObjCounter;
+                var dataId =  jQuery(this).attr("data-id");
+                if(selectedObjIds && dataId)
+                    selectedObjIds += ',' + dataId;
+                else if(dataId)
+                    selectedObjIds = dataId;
+        });
+        
+        if(!selectedObjIds && 0 == selectedObjCounter)
+            alert('{!$Label.Novidea_HPC__Choose_products}');
+        else if(!selectedObjIds && 0 < selectedObjCounter)
+            alert('{!$Label.Novidea_HPC__Editing_locked}');
+        else
+            window.open(link + '&choosedIds='+selectedObjIds,'_top');
+        
+      }
+
+        function disableButtons() {
+            document.querySelectorAll('.pbButton > input.btn').forEach((buttonToDisable) => {
+                buttonToDisable.disabled = 'disabled';
+                buttonToDisable.classList.add('btnDisabled');
+            })
+        }
+
+        function enableButtons() {
+            document.querySelectorAll('.pbButton > input.btn').forEach((buttonToDisable) => {
+                buttonToDisable.disabled = '';
+                buttonToDisable.classList.remove('btnDisabled');
+            })
+        }
+
+        function handleChangeToCancelledStatus(event) {
+            let currentValue = event.target.value;
+            let parentDiv = event.target.closest('div[data-old-value]');
+            if (currentValue == 'Cancelled' && parentDiv.getAttribute('data-should-show-modal') == 'true') {
+                showModal(parentDiv);
+            }
+        }
+
+        function handleClickCancelModal(event) {
+            event.preventDefault();
+            let parentDiv = event.target.closest('div[data-old-value]');
+            let oldValue = parentDiv.getAttribute('data-old-value');
+            let selectList = parentDiv.querySelector('select[id*="prodStatusNew"]');
+            selectList.value = oldValue;
+            hideModal(parentDiv, true);
+        }
+
+        function handleClickSaveModal(event) {
+            event.preventDefault();
+            let parentDiv = event.target.closest('div[data-old-value]');
+            let lossCauseSelect = parentDiv.querySelector('select[id*="lossCauseStatus"]');
+            let lossCauseText = parentDiv.querySelector('textarea[id*="lossCauseText"]');
+            let lossCauseSelectValidation = parentDiv.querySelector('p[id*="selectValidation"]');
+            let lossCauseTextareaValidation = parentDiv.querySelector('p[id*="textaraValidation"]');
+            lossCauseSelect.style.borderColor = 'unset';
+            lossCauseText.style.borderColor = 'unset';
+            let textAreaRequiredCauses = {!requiredNotesForLossCauseStatus};
+            let validated = true;
+            lossCauseSelectValidation.classList.remove('invalid');
+            lossCauseTextareaValidation.classList.remove('invalid');
+            let invalidStatuses = {!invalidStatusesAsLossCause};
+            if (invalidStatuses.includes(lossCauseSelect.value))
+            {
+                lossCauseSelect.style.borderColor = 'red';
+                validated = false;
+                lossCauseSelectValidation.classList.add('invalid');
+            }
+            if (textAreaRequiredCauses.includes(lossCauseSelect.value) && !lossCauseText.value && lossCauseText.value.length <= 2 ) {
+                lossCauseText.style.borderColor = 'red';
+                validated = false;
+                lossCauseTextareaValidation.classList.add('invalid');
+            }
+            if (validated) {
+                hideModal(parentDiv, false);
+            }
+        }
+
+        function hideModal(parentDiv,shouldReset) {
+            let closedModal = parentDiv.querySelector('.product-modal');
+            let lossCauseSelect = parentDiv.querySelector('select[id*="lossCauseStatus"]');
+            let lossCauseText = parentDiv.querySelector('textarea[id*="lossCauseText"]');
+            if(shouldReset) {
+                lossCauseSelect.value = lossCauseSelect.options[0].value;
+                lossCauseText.value = '';
+            }
+            lossCauseText.style.borderColor = 'unset';
+            lossCauseSelect.style.borderColor = 'unset';
+            closedModal.style.display = "none";
+            enableButtons();
+        }
+
+        function showModal(parentDiv) {
+            let closedModal = parentDiv.querySelector('.product-modal');
+            closedModal.style.display = "block";
+            disableButtons();
+        }
+
+        function handleChangeOnCarrierAndExpectedsFields(event) {
+            let currentField = event.target;
+            let currentRow = currentField.closest('tr');
+            let isResetCheckBox = currentRow.querySelector('[data-id="isResetExpectedData"]');
+            if (isResetCheckBox.checked == true) return;
+            if (currentField.value != currentField.getAttribute('value')) {
+                isResetCheckBox.checked = true;
+                resetFieldsExcpectedFields(currentRow, event.target.getAttribute('data-id'));
+            }
+        }
+
+        function resetFieldsExcpectedFields(currentRow, fieldToKeep) {
+            let fieldsToReset = ["Novidea_HPC__Expected_Commission_Amount__c", "Novidea_HPC__Expected_Premium__c"];
+            fieldsToReset.forEach(field => {
+                if (fieldToKeep != field) {
+                    let fieldToReset = currentRow.querySelector(`input[data-id="${field}"]`);
+                    if (fieldToReset) {
+                        fieldToReset.value = "";
+                    }
+                }
+            });
+        }
+    </script>
+    
+    <div id="mask" style="display:none;"></div>
+    
+    <apex:outputPanel id="msg" style="font-style:italic;font-size:14px;color:#A80000;direction:{!$Label.Novidea_HPC__direction};" rendered="true" layout="block">
+        <script>
+            function showError(){
+                if({!!ISBLANK(error)}){
+                    createMessage(["{!error}"]);
+                } 
+            }
+            
+            var allowEnterSubmission = false;
+            function preventEnterSubmission(pevent) {   
+               if (pevent == null)
+                   return true;
+               if (pevent.keyCode == 13 && !allowEnterSubmission) {
+                   pevent.cancelBubble = true;
+                   pevent.returnValue = false;
+                   return false;
+               }
+               return true;
+           }
+        </script>
+    </apex:outputPanel>       
+    
+    <!-- <apex:actionStatus id="loadingStatus" onstart="startFlowloading();" onstop="flowloadingStop();"/> -->
+    
+    <apex:form id="frm" onkeydown="preventEnterSubmission(event);">
+        <apex:outputPanel rendered="{!!ISBLANK(lossReportPageLink)}">
+            <script>
+                window.open('{!lossReportPageLink}','_top');
+            </script> 
+        </apex:outputPanel>
+        <apex:outputPanel id="selectCarrierPageLink">
+        <apex:outputPanel rendered="{!!ISBLANK(selectCarrierPageLink)}">
+            <script>
+                window.open('{!selectCarrierPageLink}','_top');
+            </script> 
+        </apex:outputPanel>
+        </apex:outputPanel>
+        
+        <apex:outputPanel rendered="{!autoPageRefresh && refreshPageOnProductStatusChange && productStatusChanged}">
+            <script> 
+                   top.location.href = location.protocol +'//'+location.host+'/{!id}';
+            </script>
+        </apex:outputPanel>
+
+       
+        <apex:outputPanel rendered="{!applicationStatusChanged && !refreshPageOnProductStatusChange}">
+            <script>        
+                if({!autoPageRefresh}) 
+                       top.location.href = location.protocol +'//'+location.host+'/{!id}';
+                else 
+                    alert('{!$Label.novidea_hpc__Page_Refresh}'); 
+            </script>
+        </apex:outputPanel>
+        
+        <apex:actionFunction action="{!changeField}" name="changeField" rerender="massUpdateRegion,theMessage" />
+        <apex:actionFunction action="{!save}" name="goToSave" rerender="theMessage"/>
+        
+        <apex:pageMessages id="theMessage" /> 
+        <apex:pageBlock mode="maindetail" id="blk" rendered="{!ShowContent}">  
+
+            <apex:pageBlockButtons location="top" id="buttonBtns">
+                <apex:outputPanel id="massUpdateRegion" layout="inline">
+                    <apex:outputLabel value="{!$Label.Novidea_HPC__Mass_Update}: " title="{!$Label.Novidea_HPC__Short_App_Mass_Update_Title}"/>
+                    <apex:selectList id="fieldName" multiselect="false" value="{!selectedFieldName}" size="1" onchange="changeField();">
+                        <apex:selectOptions value="{!fieldSetItems}"/> 
+                    </apex:selectList> 
+                    <apex:inputField value="{!massUpdateDummyObject[selectedFieldName]}" rendered="{!!ISBLANK(selectedFieldName)}" 
+                            onchange="if(document.getElementById('{!$Component.fieldName}').value != 'Novidea_HPC__Carrier__c') goToSave();"/>  
+                </apex:outputPanel> 
+                
+                <apex:commandButton action="{!deleteProducts}" onclick="if(!isDeleteProduct()) return false ;"  value="{!$Label.Novidea_HPC__Erase}" /> 
+                <apex:commandButton action="{!addLine}" value="{!$Label.Novidea_HPC__Add_Line}" rendered="{!ShowAddLineButton}" onclick="disableButtons()" reRender="blk"></apex:commandButton>
+                <apex:commandButton action="{!cloneProduct}" value="{!$Label.Novidea_HPC__Clone}" rendered="{!ShowCloneButton}" onclick="disableButtons()" reRender="blk"></apex:commandButton>
+                <apex:commandButton id="btnSave" action="{!save}" value="{!$Label.Novidea_HPC__Save}" onclick="if(!validate1()) return false; disableButtons();" reRender="blk,theMessage"/>
+                <apex:commandButton id="btnConvert" styleClass="btnConvert" action="{!convert}" value="{!$Label.Novidea_HPC__Won}"
+                    reRender="atleastOneConverted,theMessage,selectCarrierPageLink,btnConvert,buttonBtns" onclick="disableButtons()"
+                    rendered="{!IF(ISNULL(fieldSetStorage), hasAcceptedProducts, IF(CONTAINS(fieldSetStorage,'Novidea_HPC__Status__c'), hasAcceptedProducts, false))}" />
+                <apex:commandButton id="btnLossReport" action="{!lossReport}" value="{!$Label.Novidea_HPC__Lost}"
+                    rendered="{!IF(ISNULL(fieldSetStorage), hasLostProducts, IF(CONTAINS(fieldSetStorage,'Novidea_HPC__Status__c'), hasLostProducts, false))}" />
+            
+            </apex:pageBlockButtons>
+
+
+            <apex:outputPanel id="atleastOneConverted">
+                <script> 
+                    if({!atleastOneConverted}) {
+                       if({!popConvertionMsg})
+                              alert('{!$Label.ConvertedToPolicyMsg}'); 
+                              
+                      if ({!!ISBLANK(policyEditUrl)})
+                            top.location = '{!policyEditUrl}';
+                      else
+                            window.open("/{!applicationId}", "_top");
+                 } else {
+                    jQuery(".btnConvert").prop("disabled", false)
+                 }
+                </script>
+            </apex:outputPanel>
+
+    <section class="">
+        <div class="container">
+            <apex:pageblockTable id="maintable" value="{!products}" var="productWrapper" styleClass="maintable" width="50%" align="center">
+                 
+                 <apex:column >
+                    <apex:facet name="header">
+                        <input type="checkbox" id="checkAllBox" onclick="toggleCheckAll(this)" />
+                    </apex:facet>
+                    <apex:inputCheckbox html-data-id="{!IF(NOT(productWrapper.isReadOnly),productWrapper.product.Id,'none')}" value="{!productWrapper.isSelected}" onchange="notAll(this);" rendered="{!productWrapper.isSelectable}"/>
+                    <apex:inputCheckbox html-data-id="isResetExpectedData" disabled="disabled" style="display:none" value="{!productWrapper.isResetExpectedData}"/>
+                </apex:column>
+
+                 <apex:column headerValue="{!$ObjectType.Novidea_HPC__Product__c.Fields.Novidea_HPC__Required_Policy_Type__c.label}" 
+                        rendered="{!IF(ISNULL(fieldSetStorage), true, IF(CONTAINS(fieldSetStorage,'Novidea_HPC__Required_Policy_Type__c'), true, false))}">
+                    <apex:outputLabel id="requiredpolicyType" value="{!productWrapper.requiredPolicyTypeLabel}" rendered="{!NOT(productWrapper.isReadOnly)}"/>
+                    <apex:outputLink target="_top" rendered="{!productWrapper.isReadOnly}" 
+                        value="{!URLFOR($Action.Novidea_HPC__Product__c.View, productWrapper.product.Id)}" style="color: #015ba7;font-weight: normal;">
+                        {!productWrapper.requiredPolicyTypeLabel}
+                    </apex:outputLink>
+                </apex:column>
+
+                <apex:column headerValue="{!$ObjectType.Novidea_HPC__Product__c.Fields.Policy_Type__c.label}"
+                    rendered="{!IF(ISNULL(fieldSetStorage), true, IF(CONTAINS(fieldSetStorage,'Policy_Type__c'), true, false))}">
+                    <apex:inputField value="{!productWrapper.product.Policy_Type__c}" rendered="{!!productWrapper.isReadOnly}"/>
+                    <apex:outputField value="{!productWrapper.product.Policy_Type__c}" rendered="{!productWrapper.isReadOnly}" />
+                </apex:column>
+                <apex:column headerValue="{!$ObjectType.Novidea_HPC__Product__c.Fields.Novidea_HPC__Product_Definition__c.label}"
+                    rendered="{!IF(ISNULL(fieldSetStorage), true, IF(CONTAINS(fieldSetStorage,'Novidea_HPC__Product_Definition__c'), true, false))}">
+                    <apex:outputPanel rendered="{!AND(!MakeReadOnlyProductDef,!productWrapper.isReadOnly)}" layout="none">
+                        <apex:inputhidden value="{!productWrapper.productDefName}"/>
+                        <apex:inputhidden id="hideProdDef" value="{!productWrapper.product.Novidea_HPC__Product_Definition__c}"/>
+                        <input autocomplete="off" type="text" id="plcfilter{!productWrapper.id}" value="{!productWrapper.productDefName}" onkeypress="jQuery(this).parent().find(':hidden')[1].value='';validate1();"
+                        style="width:100px;" onchange="statusEnable();"/>
+                        <Novidea_HPC:autocomplete width="300" className="autocomplete" searchField="Name" AutoCompleteId="au{!productWrapper.id}" InputId="plcfilter{!productWrapper.id}" objectName="Novidea_HPC__Product_Def__c" 
+                            selectedCallBack="initProductDef{!productWrapper.id}" />
+                        <script>
+                            function initProductDef{!productWrapper.id}(cName, cId){
+                                jQuery(document.getElementById("plcfilter{!productWrapper.id}")).parent().find(":hidden")[0].value = cName;
+                                jQuery(document.getElementById("plcfilter{!productWrapper.id}")).parent().find(":hidden")[1].value = cId;
+                            }
+                        </script>
+                    </apex:outputPanel>
+                    <apex:outputLink target="_top" rendered="{!OR(AND(productWrapper.isReadOnly, NOT(ISNULL(productWrapper.product.Novidea_HPC__Product_Definition__c))),MakeReadOnlyProductDef)}" 
+                                     value="{!URLFOR($Action.Novidea_HPC__Product_Def__c.View, productWrapper.product.Novidea_HPC__Product_Definition__c)}" 
+                                     style="color: #015ba7;font-weight: normal;">
+                        {!productWrapper.productDefName}
+                    </apex:outputLink>
+                    
+                </apex:column> 
+                
+                <apex:column headerValue="{!$ObjectType.Novidea_HPC__Product__c.Fields.Novidea_HPC__Carrier__c.label}"
+                    rendered="{!IF(ISNULL(fieldSetStorage), true, IF(CONTAINS(fieldSetStorage,'Novidea_HPC__Carrier__c'), true, false))}">
+                    
+                    <apex:outputPanel rendered="{!!productWrapper.isReadOnly}" layout="none">
+                        <apex:inputhidden value="{!productWrapper.carrierName}"/>
+                        <apex:inputhidden id="hideCarrier" value="{!productWrapper.product.Novidea_HPC__Carrier__c}"/>
+                        <apex:outputPanel rendered="{!productWrapper.isActive}" layout="none">
+                            <input data-id="Novidea_HPC__Carrier__c" autocomplete="off" type="text" onchange="statusEnable();" id="carrfilter{!productWrapper.id}" 
+                                   value="{!productWrapper.carrierName}" onkeypress="jQuery(this).parent().find(':hidden')[1].value=''; validate1();" 
+                                   style="width:100px;"/> 
+                        </apex:outputPanel>     
+                        <apex:outputPanel rendered="{!!productWrapper.isActive}" layout="none">
+                            <input data-id="Novidea_HPC__Carrier__c" autocomplete="off" type="text" onchange="statusEnable();" id="carrfilter{!productWrapper.id}" 
+                                   value="{!productWrapper.carrierName}" onkeypress="jQuery(this).parent().find(':hidden')[1].value=''; validate1();" 
+                                   disabled="true" style="width:100px;"/> 
+                        </apex:outputPanel>        
+                        <apex:outputPanel rendered="{!searchByGivenField}">
+                            <Novidea_HPC:autocomplete width="200" RecordTypeName="carrier" className="autocomplete" searchField="Name" AutoCompleteId="cau{!productWrapper.id}" inputId="carrfilter{!productWrapper.id}" objectName="Account" 
+                                            selectedCallBack="initCarrier{!productWrapper.id}" />
+                        </apex:outputPanel>
+                        <apex:outputPanel rendered="{!!searchByGivenField}">
+                            <Novidea_HPC:autocomplete width="200" RecordTypeName="carrier" className="autocomplete" searchField="Name" AutoCompleteId="cau{!productWrapper.id}" inputId="carrfilter{!productWrapper.id}" objectName="Account" 
+                                            selectedCallBack="initCarrier{!productWrapper.id}"/>
+                        </apex:outputPanel>
+                        <script>
+                            function initCarrier{!productWrapper.id} (cName, cId) {
+                                handleChangeOnCarrierAndExpectedsFields({
+                                    target: document.getElementById("carrfilter{!productWrapper.id}")
+                                });
+                                jQuery(document.getElementById("carrfilter{!productWrapper.id}")).parent().find(":hidden")[0].value = cName;
+                                jQuery(document.getElementById("carrfilter{!productWrapper.id}")).parent().find(":hidden")[1].value = cId;
+                                statusEnable();
+                            }
+                        </script>
+                    </apex:outputPanel>
+                    <apex:outputLink target="_top" rendered="{!productWrapper.isReadOnly}" value="/{!productWrapper.product.Novidea_HPC__Carrier__c}" style="color: #015ba7;font-weight: normal;">
+                        {!productWrapper.carrierName}
+                    </apex:outputLink>
+
+                </apex:column>
+                
+                <apex:column headerValue="{!$ObjectType.Novidea_HPC__Product__c.Fields.Novidea_HPC__Liability_Limit_Per_Case__c.label}" id="liabilityPerCaseHeader"
+                    rendered="{!IF(ISNULL(fieldSetStorage), true, IF(CONTAINS(fieldSetStorage,'Novidea_HPC__Liability_Limit_Per_Case__c'), true, false))}">
+                    <apex:inputField id="liabilityPerCase" value="{!productWrapper.product.Novidea_HPC__Liability_Limit_Per_Case__c}" rendered="{!!productWrapper.isReadOnly}" onkeypress="validateNumeric();" style="width:70px;"/>
+                    <apex:outputField value="{!productWrapper.product.Novidea_HPC__Liability_Limit_Per_Case__c}" rendered="{!productWrapper.isReadOnly}" />
+                </apex:column>
+                
+                <apex:column headerValue="{!$ObjectType.Novidea_HPC__Product__c.Fields.Novidea_HPC__Liability_Limit__c.label}" 
+                    rendered="{!IF(ISNULL(fieldSetStorage), true, IF(CONTAINS(fieldSetStorage,'Novidea_HPC__Liability_Limit__c'), true, false))}">
+                    <apex:inputField id="liabilityLimit" value="{!productWrapper.product.Novidea_HPC__Liability_Limit__c}" rendered="{!!productWrapper.isReadOnly}" onkeypress="validateNumeric();" style="width:70px;"/>
+                    <apex:outputField value="{!productWrapper.product.Novidea_HPC__Liability_Limit__c}" rendered="{!productWrapper.isReadOnly}" />
+                </apex:column>
+                <apex:column headerValue="{!$ObjectType.Novidea_HPC__Product__c.Fields.Novidea_HPC__Liability_Limit_Currency__c.label}"
+                    rendered="{!IF(ISNULL(fieldSetStorage), true, IF(CONTAINS(fieldSetStorage,'Novidea_HPC__Liability_Limit_Currency__c'), true, false))}">
+                    <apex:inputField id="liabilityCurrency" value="{!productWrapper.product.Novidea_HPC__Liability_Limit_Currency__c}" style="width:60px" rendered="{!!productWrapper.isReadOnly}"/>
+                    <apex:outputField value="{!productWrapper.product.Novidea_HPC__Liability_Limit_Currency__c}" rendered="{!productWrapper.isReadOnly}" />
+                </apex:column>
+                
+                <apex:column headerValue="{!$ObjectType.Novidea_HPC__Product__c.Fields.Novidea_HPC__Premium_Currency__c.label}"
+                    rendered="{!IF(ISNULL(fieldSetStorage), true, IF(CONTAINS(fieldSetStorage,'Novidea_HPC__Premium_Currency__c'), true, false))}">
+                    
+                    <apex:inputField id="premiumCurrency" value="{!productWrapper.product.Novidea_HPC__Premium_Currency__c}" style="width:60px" rendered="{!!productWrapper.isReadOnly}"/>
+                    <apex:outputField value="{!productWrapper.product.Novidea_HPC__Premium_Currency__c}" rendered="{!productWrapper.isReadOnly}" />
+                    
+                </apex:column>
+                
+                <apex:column headerValue="{!$ObjectType.Novidea_HPC__Product__c.Fields.Novidea_HPC__Expected_Premium__c.label}"
+                    rendered="{!IF(ISNULL(fieldSetStorage), true, IF(CONTAINS(fieldSetStorage,'Novidea_HPC__Expected_Premium__c'), true, false))}">
+                    <apex:inputField html-data-id="Novidea_HPC__Expected_Premium__c" id="premium" value="{!productWrapper.product.Novidea_HPC__Expected_Premium__c}" rendered="{!!productWrapper.isReadOnly}" style="width:90px;" onkeypress="validateNumeric();" onkeyup="handleChangeOnCarrierAndExpectedsFields(event);" />
+                    <apex:outputField value="{!productWrapper.product.Novidea_HPC__Expected_Premium__c}" rendered="{!productWrapper.isReadOnly}" />
+                </apex:column>
+                
+                <apex:column headerValue="{!$ObjectType.Novidea_HPC__Product__c.Fields.Novidea_HPC__Expected_Commission_Amount__c.label}"
+                    rendered="{!IF(ISNULL(fieldSetStorage), true, IF(CONTAINS(fieldSetStorage,'Novidea_HPC__Expected_Commission_Amount__c'), true, false))}">
+                    <apex:inputField html-data-id="Novidea_HPC__Expected_Commission_Amount__c" id="commission" value="{!productWrapper.product.Novidea_HPC__Expected_Commission_Amount__c}" style="width:90px;" rendered="{!!productWrapper.isReadOnly}" 
+                    onkeypress="validateNumeric();" onkeyup="handleChangeOnCarrierAndExpectedsFields(event);" />
+                    <apex:outputField value="{!productWrapper.product.Novidea_HPC__Expected_Commission_Amount__c}" rendered="{!productWrapper.isReadOnly}" />
+                </apex:column>
+                 
+                <apex:column headerValue="{!$ObjectType.Novidea_HPC__Product__c.Fields.Novidea_HPC__Agency_Fee_Currency__c.label}"
+                    rendered="{!IF(ISNULL(fieldSetStorage), true, IF(CONTAINS(fieldSetStorage,'Novidea_HPC__Agency_Fee_Currency__c'), true, false))}">
+                    
+                   <apex:inputField id="agencyFeeCurrency" value="{!productWrapper.product.Novidea_HPC__Agency_Fee_Currency__c}" rendered="{!!productWrapper.isReadOnly}" />
+                   <apex:outputField value="{!productWrapper.product.Novidea_HPC__Agency_Fee_Currency__c}" rendered="{!productWrapper.isReadOnly}" />
+                </apex:column>
+                
+                 <apex:column headerValue="{!$ObjectType.Novidea_HPC__Product__c.Fields.Novidea_HPC__Target_Agency_Fee__c.label}" id="targetAgencyFeeHeader"
+                    rendered="{!IF(ISNULL(fieldSetStorage), true, IF(CONTAINS(fieldSetStorage,'Novidea_HPC__Target_Agency_Fee__c'), true, false))}">
+                    <apex:inputField id="targetAgencyFee" value="{!productWrapper.product.Novidea_HPC__Target_Agency_Fee__c}" rendered="{!!productWrapper.isReadOnly}" onkeypress="validateNumeric();" style="width:70px;"/>
+                    <apex:outputField value="{!productWrapper.product.Novidea_HPC__Target_Agency_Fee__c}" rendered="{!productWrapper.isReadOnly}" />
+                </apex:column>
+                
+                
+                <apex:column headerValue="{!$ObjectType.Novidea_HPC__Product__c.Fields.Novidea_HPC__Effective_Date__c.label}"
+                    rendered="{!IF(ISNULL(fieldSetStorage), true, IF(CONTAINS(fieldSetStorage,'Novidea_HPC__Effective_Date__c'), true, false))}" style="width:100px;">
+                    
+                   <Novidea_HPC:datepicker fieldId="{!$Component.startDate}" rendered="{!!productWrapper.isReadOnly}"/>
+                   <apex:inputtext id="startDate" value="{!productWrapper.productEffDate}" onchange="DateStart(this.value);" style="width:70px;" rendered="{!!productWrapper.isReadOnly}" />
+                   
+                   <apex:outputText value="{!productWrapper.productEffDate}" rendered="{!productWrapper.isReadOnly}" />
+                   
+                </apex:column>
+                
+                
+                <apex:column headerValue="{!$ObjectType.Novidea_HPC__Product__c.Fields.Novidea_HPC__Expiration_Date__c.label}"
+                    rendered="{!IF(ISNULL(fieldSetStorage), true, IF(CONTAINS(fieldSetStorage,'Novidea_HPC__Expiration_Date__c'), true, false))}" style="width:100px;">
+                   <Novidea_HPC:datepicker fieldId="{!$Component.endDate}" rendered="{!!productWrapper.isReadOnly}"/>
+                   <apex:inputtext id="endDate" value="{!productWrapper.productExpirationDate}" onchange="DateStart(this.value);" style="width:70px;" rendered="{!!productWrapper.isReadOnly}"/>
+                   <apex:outputText value="{!productWrapper.productExpirationDate}" rendered="{!productWrapper.isReadOnly}" />
+                </apex:column>
+                
+                
+                <apex:column headerValue="{!$ObjectType.Novidea_HPC__Product__c.Fields.Novidea_HPC__Close_Probebility__c.label}"
+                    rendered="{!IF(ISNULL(fieldSetStorage), true, IF(CONTAINS(fieldSetStorage,'Novidea_HPC__Close_Probebility__c'), true, false))}">
+                    
+                   <apex:inputField value="{!productWrapper.product.Novidea_HPC__Close_Probebility__c}" rendered="{!!productWrapper.isReadOnly}" id="closeProbebility" />
+                   <apex:outputField value="{!productWrapper.product.Novidea_HPC__Close_Probebility__c}" rendered="{!productWrapper.isReadOnly}" />
+                   
+                </apex:column>
+                
+                <apex:column headerValue="{!$ObjectType.Novidea_HPC__Product__c.Fields.Novidea_HPC__Status__c.label}" title="{!$Label.Status_Enabled}"   
+                rendered="{!IF(ISNULL(fieldSetStorage), true, IF(CONTAINS(fieldSetStorage,'Novidea_HPC__Status__c'), true, false))}">
+
+                    <apex:outputField value="{!productWrapper.product.Novidea_HPC__Status__c}" rendered="{!productWrapper.isReadOnly}" />
+                    <div data-old-value="{!productWrapper.product.Novidea_HPC__Status__c}" data-should-show-modal="{!productWrapper.shouldShowModal}">
+                        <apex:selectList id="prodStatusNew" value="{!productWrapper.product.Novidea_HPC__Status__c}" size="1" multiselect="false"
+                            onchange="handleChangeToCancelledStatus(event)" rendered="{!!productWrapper.isReadOnly}">
+                            <apex:selectOptions value="{!statusListMap[productWrapper.product.Novidea_HPC__Status__c]}"></apex:selectOptions>
+                        </apex:selectList> 
+                        <div id="productModal" class="product-modal">
+                            <div class="product-modal-content">
+                                <h1>{!$Label.novidea_hpc__loss_cause_title}</h1>
+                                <div class="modal-body-item">
+                                    <apex:selectList multiselect="false" styleClass="lossCauseSelect" id="lossCauseStatus" value="{!productWrapper.cancellationReason}" size="1">
+                                        <apex:selectOptions value="{!CancellationReasonOptions}"/>
+                                    </apex:selectList>
+                                    <p id="selectValidation" class="modal-validation">{!$Label.Validation_Picklist_Cancellation_Reason}</p>
+                                </div>
+                                <div class="modal-body-item">
+                                    <apex:inputTextarea id="lossCauseText" value="{!productWrapper.lossCauseText}" styleClass="textArea"/>
+                                    <p id="textaraValidation" class="modal-validation">{!$Label.Validation_Textarea_Cancellation_Reason}</p>
+                                </div>
+                                <div class="modal-body-item">
+                                    <button class="btn" onclick="handleClickSaveModal(event)">{!$Label.Novidea_HPC__Save}</button>
+                                    <button class="btn" onclick="handleClickCancelModal(event)">{!$Label.Novidea_HPC__Back}</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </apex:column> 
+
+                 <!-- Diana #902 --> 
+                  <apex:repeat value="{!SelectedFields}" var="dynamicField">   
+                    <apex:column rendered="{!IF(dynamicField != null , true, false)}" style="width:118px"> 
+                    <apex:facet name="header" >{!dynamicField.Label}</apex:facet>
+                     <apex:inputField value="{!productWrapper.product[dynamicField.fieldPath]}" 
+                            style="width:100px;" rendered="{!!productWrapper.isReadOnly}"/>
+                    <apex:outputField value="{!productWrapper.product[dynamicField.fieldPath]}" rendered="{!productWrapper.isReadOnly}" />
+                    </apex:column>
+                 </apex:repeat> 
+                <!-- endRegion -->
+                
+            </apex:pageBlockTable>
+            </div>
+          </section>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

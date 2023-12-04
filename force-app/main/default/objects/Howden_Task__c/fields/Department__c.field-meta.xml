@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Department__c</fullName>
+    <externalId>false</externalId>
+    <label>מחלקה</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>true</sorted>
+            <value>
+                <fullName>Claims</fullName>
+                <default>false</default>
+                <label>Claims</label>
+            </value>
+            <value>
+                <fullName>Collection</fullName>
+                <default>false</default>
+                <label>Collection</label>
+            </value>
+            <value>
+                <fullName>Cyber</fullName>
+                <default>false</default>
+                <label>Cyber</label>
+            </value>
+            <value>
+                <fullName>Howden Indutries</fullName>
+                <default>false</default>
+                <label>Howden Indutries</label>
+            </value>
+            <value>
+                <fullName>Howden Israelit</fullName>
+                <default>false</default>
+                <label>Howden Israelit</label>
+            </value>
+            <value>
+                <fullName>Howden Law Firms</fullName>
+                <default>false</default>
+                <label>Howden Law Firms</label>
+            </value>
+            <value>
+                <fullName>Howden Medical</fullName>
+                <default>false</default>
+                <label>Howden Medical</label>
+            </value>
+            <value>
+                <fullName>Howden Personal Lines</fullName>
+                <default>false</default>
+                <label>Howden Personal Lines</label>
+            </value>
+            <value>
+                <fullName>Howden Prime</fullName>
+                <default>false</default>
+                <label>Howden Prime</label>
+            </value>
+            <value>
+                <fullName>Howden Ri + Howden 360</fullName>
+                <default>false</default>
+                <label>Howden Ri + Howden 360</label>
+            </value>
+            <value>
+                <fullName>Howden Shefi</fullName>
+                <default>false</default>
+                <label>Howden Shefi</label>
+            </value>
+            <value>
+                <fullName>Howden Surety</fullName>
+                <default>false</default>
+                <label>Howden Surety</label>
+            </value>
+            <value>
+                <fullName>Howden Technologies</fullName>
+                <default>false</default>
+                <label>Howden Technologies</label>
+            </value>
+            <value>
+                <fullName>Howden Travel and PA</fullName>
+                <default>false</default>
+                <label>Howden Travel and PA</label>
+            </value>
+            <value>
+                <fullName>Howden VC</fullName>
+                <default>false</default>
+                <label>Howden VC</label>
+            </value>
+            <value>
+                <fullName>Marketing Communication</fullName>
+                <default>false</default>
+                <label>Marketing Communication</label>
+            </value>
+            <value>
+                <fullName>Telemitting</fullName>
+                <default>false</default>
+                <label>Telemitting</label>
+            </value>
+            <value>
+                <fullName>בקרה פיננסית</fullName>
+                <default>false</default>
+                <label>בקרה פיננסית</label>
+            </value>
+            <value>
+                <fullName>הנהלת חשבונות</fullName>
+                <default>false</default>
+                <label>הנהלת חשבונות</label>
+            </value>
+            <value>
+                <fullName>כלל ארגוני</fullName>
+                <default>true</default>
+                <label>כלל ארגוני</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

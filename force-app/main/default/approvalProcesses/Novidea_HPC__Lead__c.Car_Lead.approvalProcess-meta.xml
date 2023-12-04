@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApprovalProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>false</active>
+    <allowRecall>false</allowRecall>
+    <allowedSubmitters>
+        <type>owner</type>
+    </allowedSubmitters>
+    <approvalPageFields>
+        <field>Name</field>
+        <field>Owner</field>
+        <field>Car_Model__c</field>
+        <field>CarRemarks1__c</field>
+        <field>Main_Insurance1__c</field>
+        <field>Car_Manufacturer__c</field>
+        <field>Car_Carrier1__c</field>
+        <field>Drivers_Number__c</field>
+        <field>Overall__c</field>
+        <field>ThirdParty1__c</field>
+        <field>Dirver_License_Year__c</field>
+        <field>Novidea_HPC__Renewal_Date__c</field>
+    </approvalPageFields>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <approvalActions>
+            <action>
+                <name>Lead_Status_Approved</name>
+                <type>FieldUpdate</type>
+            </action>
+        </approvalActions>
+        <assignedApprover>
+            <approver>
+                <name>admin@howden.co.il</name>
+                <type>user</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <label>אישור הצעה</label>
+        <name>approve_proposal</name>
+    </approvalStep>
+    <enableMobileDeviceAccess>true</enableMobileDeviceAccess>
+    <entryCriteria>
+        <criteriaItems>
+            <field>Novidea_HPC__Lead__c.RecordType</field>
+            <operation>equals</operation>
+            <value>פוטנציאל למכירת פוליסות רכב</value>
+        </criteriaItems>
+    </entryCriteria>
+    <finalApprovalRecordLock>true</finalApprovalRecordLock>
+    <finalRejectionRecordLock>false</finalRejectionRecordLock>
+    <initialSubmissionActions>
+        <action>
+            <name>Lead_In_Approve</name>
+            <type>FieldUpdate</type>
+        </action>
+    </initialSubmissionActions>
+    <label>Car Lead</label>
+    <processOrder>1</processOrder>
+    <recordEditability>AdminOrCurrentApprover</recordEditability>
+    <showApprovalHistory>true</showApprovalHistory>
+</ApprovalProcess>

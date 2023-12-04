@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Industry_As_MultiPicklist_For_Forms__c</fullName>
+    <externalId>false</externalId>
+    <label>Industry As MultiPicklist For Forms</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>הנדסה</fullName>
+                <default>false</default>
+                <label>הנדסה</label>
+            </value>
+            <value>
+                <fullName>אדריכלות</fullName>
+                <default>false</default>
+                <label>אדריכלות</label>
+            </value>
+            <value>
+                <fullName>תכנון ערים</fullName>
+                <default>false</default>
+                <label>תכנון ערים</label>
+            </value>
+            <value>
+                <fullName>אחר</fullName>
+                <default>false</default>
+                <label>אחר</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>3</visibleLines>
+</CustomField>

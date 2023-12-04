@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>NOVU__Field_Dependency_Test__c</fullName>
+    <deprecated>false</deprecated>
+    <externalId>false</externalId>
+    <label>Field Dependency Test</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>NOVU__Dependency_Test__c</controllingField>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>When False</fullName>
+                <default>false</default>
+                <label>When False</label>
+            </value>
+            <value>
+                <fullName>When True</fullName>
+                <default>false</default>
+                <label>When True</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>unchecked</controllingFieldValue>
+            <valueName>When False</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>checked</controllingFieldValue>
+            <valueName>When True</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

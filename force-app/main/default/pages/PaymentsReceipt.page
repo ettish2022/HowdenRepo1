@@ -1,0 +1,110 @@
+<apex:page controller="PaymentsReceiptCO" showHeader="false" sidebar="false" action="{!init}">
+    <apex:includeScript value="{!$Resource.jquery164min}" />
+    <style>
+.headerlabel {
+    font-weight: bold;
+    padding: 5px;
+}
+
+.headerTable {
+    border: 1px dashed #1F497D;
+    border-radius: 5px;
+    width: 800px;
+    margin-right: 5px;
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+.maintable{
+    width:50%;
+}
+</style>
+<script>
+    function validate(){
+        var msgs = validateFieldValues();
+        if(msgs.length>0){
+            createMessage(msgs);
+            return false;
+        }
+        return true;
+    }
+    
+    function validateFieldValues(){
+        var msgs = [];
+        if(jQuery("input:checkbox:checked").length==0){
+            msgs.push("לא נבחרה רשומת גביה");
+        }
+        return msgs;
+    }
+    
+    function createMessage(msgs){
+        var elem = document.getElementById("{!$Component.msg}");
+        if(elem.getElementsByTagName("UL").length>0)elem.removeChild(elem.getElementsByTagName("UL")[0]);
+        if(msgs.length>0 && msgs[0]!=""){
+            elem = elem.appendChild(document.createElement("UL"));
+            var elem1;
+            for(var i=0;i<msgs.length;++i){
+                elem1 = elem.appendChild(document.createElement("LI"));
+                elem1.innerText= msgs[i];
+            }
+        }
+    }
+
+</script>
+    <apex:outputPanel id="msg" style="font-style:italic;font-size:14px;color:#A80000;direction:rtl;" rendered="true" layout="block">
+        <script>
+            function showError(){
+                if({!!ISBLANK(error)}){
+                    createMessage(["{!error}"]);
+                } 
+            }       
+        </script>
+    </apex:outputPanel>
+    <apex:form id="frm">
+        <apex:pageblock mode="maindetail" id="blk">
+            <apex:pageBlockButtons location="bottom" dir="rtl">
+                <apex:commandButton id="btnSave" action="{!save}" rerender="msg" value="{!$Label.Create}" onclick="if(!validate())return false;"
+                    oncomplete="if({!ISBLANK(error)})window.close();else showError();" >
+                </apex:commandButton>
+                <apex:commandButton action="{!cancel}" value="{!$Label.Cancel}" onclick="window.close();return false;" />
+            </apex:pageBlockButtons>
+            <apex:panelGrid columns="3" cellspacing="5px" styleclass="headerTable">
+                <apex:panelGroup >
+                    <apex:outputLabel styleClass="headerlabel" value="{!$Label.Create_Receipts_Page}" escape="false"/>
+                </apex:panelGroup>
+                <apex:panelGroup >
+                    <apex:outputLabel styleClass="headerlabel" value="{!$ObjectType.Novidea_HPC__Policy__c.Fields.Novidea_HPC__Policy_Number__c.label}:" />
+                    <apex:outputText id="plcNum" value="{!plcNum}" />
+                </apex:panelGroup>
+                <apex:panelGroup >
+                    <apex:outputLabel styleClass="headerlabel" value="{!$ObjectType.Novidea_HPC__Policy__c.Fields.Name.label}:" />
+                    <apex:outputText id="plcName" value="{!plcName}" />
+                </apex:panelGroup>
+            </apex:panelGrid>
+            <apex:pageblockTable columns="8" value="{!collections}" var="clcWrap" styleClass="maintable" width="50%" align="center">
+                <apex:column headerValue="{!$Label.Select}">
+                    <apex:inputCheckbox value="{!clcWrap.selected}"/>
+                </apex:column>
+                <apex:column headerValue="{!$ObjectType.Novidea_HPC__Collection__c.Fields.Name.label}">
+                    <apex:outputField value="{!clcWrap.collection.Name}" />
+                </apex:column>
+                <apex:column headerValue="{!$ObjectType.Novidea_HPC__Collection__c.Fields.Novidea_HPC__Collection_Date__c.label}">
+                    <apex:outputField value="{!clcWrap.collection.Novidea_HPC__Collection_Date__c}" />
+                </apex:column>
+                <apex:column headerValue="{!$ObjectType.Novidea_HPC__Collection__c.Fields.Novidea_HPC__Payment__c.label}">
+                    <apex:outputField value="{!clcWrap.collection.Novidea_HPC__Payment__c}" />
+                </apex:column>
+                <apex:column headerValue="{!$ObjectType.Novidea_HPC__Collection__c.Fields.Novidea_HPC__Payment_Currency__c.label}">
+                    <apex:outputField value="{!clcWrap.collection.Novidea_HPC__Payment_Currency__c}" />
+                </apex:column>
+                <apex:column headerValue="{!$ObjectType.Novidea_HPC__Collection__c.Fields.Novidea_HPC__Payment_Target__c.label}">
+                    <apex:outputField value="{!clcWrap.collection.Novidea_HPC__Payment_Target__c}" />
+                </apex:column>
+                <apex:column headerValue="{!$ObjectType.Novidea_HPC__Collection__c.Fields.Novidea_HPC__Payment_Type__c.label}">
+                    <apex:outputField value="{!clcWrap.collection.Novidea_HPC__Payment_Type__c}" />
+                </apex:column>
+                <apex:column headerValue="{!$ObjectType.Novidea_HPC__Collection__c.Fields.Novidea_HPC__Payment_Value_In_ILS__c.label}">
+                    <apex:outputField value="{!clcWrap.collection.Novidea_HPC__Payment_Value_In_ILS__c}" />
+                </apex:column>
+            </apex:pageblockTable>
+        </apex:pageblock>
+    </apex:form></apex:page>

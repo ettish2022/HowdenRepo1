@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Has_Active_Policy_by_Product_types__c</fullName>
+    <externalId>false</externalId>
+    <formula>Not(isblank(Active_Insurance_Types__c))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Has Active Policy by Product types</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

@@ -1,0 +1,59 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 11-09-2023
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<template>
+    
+    <lightning-card>
+        <lightning-spinner if:true={isLoading}></lightning-spinner>   
+
+        <h3 slot="title"> {labels.Commission_Upload_Title} </h3>              
+
+        <lightning-combobox class="slds-align_absolute-center" 
+                            style="width: 20%;" 
+                            label={labels.File_format} 
+                            placeholder={labels.Choose_format} 
+                            options={formatOptions} 
+                            onchange={handleFormatChange}></lightning-combobox>
+
+        <!-- <template if:true={selectedFormat}>
+            <lightning-record-edit-form object-api-name="Commission_Staging__c">
+                <template for:each={selectedFormat.Commission_Upload_Field_Mappings__r} for:item="field">
+                    <lightning-input-field if:true={field.Is_Input_Value__c} 
+                                           key={field.Field_API_Name__c} 
+                                           label={field.MasterLabel} 
+                                           field-name={field.Field_API_Name__c}> </lightning-input-field>
+                </template>
+            </lightning-record-edit-form>
+        </template>  -->
+
+        <div if:true={selectedFormat} class="slds-align_absolute-center input-fields">        
+            <template for:each={selectedFormat.Commission_Upload_Field_Mappings__r} for:item="field">
+                <lightning-input if:true={field.Is_Input_Value__c} 
+                                 class="input-field"
+                                 key={field.Field_API_Name__c} 
+                                 label={field.MasterLabel} 
+                                 data-field-name={field.Field_API_Name__c}
+                                 type={field.Input_Type__c}> </lightning-input>
+            </template>
+        </div>
+
+        <lightning-input if:true={selectedFormat} 
+                         class="slds-align_absolute-center" 
+                         style="display: flex;" type="file" 
+                         accept=".csv" 
+                         onchange={handleFileUploaded}></lightning-input>
+        <p if:true={fileName} style="padding-top: 10px;" class="slds-align_absolute-center slds-p-vertical_small">
+            <b>{labels.Uploaded_file}</b>{fileName}
+        </p>
+            
+        <div slot="footer" class="slds-p-vertical_small" >
+            <lightning-button label={labels.Upload_button} 
+                              onclick={handleSave}></lightning-button>
+        </div>
+    </lightning-card>
+
+</template>

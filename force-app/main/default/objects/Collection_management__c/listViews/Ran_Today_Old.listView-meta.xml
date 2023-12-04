@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Ran_Today_Old</fullName>
+    <booleanFilter>1 AND 2</booleanFilter>
+    <columns>OWNER.FIRST_NAME</columns>
+    <columns>Account__c</columns>
+    <columns>Elementar_Policy__c</columns>
+    <columns>NAME</columns>
+    <columns>status_collection__c</columns>
+    <columns>Date_to_Contact__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Date_to_Contact__c</field>
+        <operation>lessOrEqual</operation>
+        <value>TODAY</value>
+    </filters>
+    <filters>
+        <field>status_collection__c</field>
+        <operation>notEqual</operation>
+        <value>הושלם</value>
+    </filters>
+    <label>צוות - היום + תאריך יעד חלף</label>
+    <sharedTo>
+        <role>Collection_Manager</role>
+    </sharedTo>
+</ListView>

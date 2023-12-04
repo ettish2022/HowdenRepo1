@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<HomePageComponent xmlns="http://soap.sforce.com/2006/04/metadata">
+    <body>&lt;div style=&quot;width: 100%; text-align: center;&quot; id=&quot;adDIV&quot;&gt;&lt;iframe height=&quot;250&quot; src=&quot;https://www.youtube.com/embed/d_wtbOra5mM&quot; frameborder=&quot;0&quot; width=&quot;400&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;/div&gt;</body>
+    <pageComponentType>htmlArea</pageComponentType>
+    <width>wide</width>
+</HomePageComponent>

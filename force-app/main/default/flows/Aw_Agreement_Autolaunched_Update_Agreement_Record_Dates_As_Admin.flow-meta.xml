@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>51.0</apiVersion>
+    <assignments>
+        <name>Assign_Dates</name>
+        <label>Assign Dates</label>
+        <locationX>406</locationX>
+        <locationY>69</locationY>
+        <assignmentItems>
+            <assignToReference>AgreementId.Active_From__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>ActiveFromDate</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>AgreementId.Active_Untill__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>ActiveTillDate</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update</targetReference>
+        </connector>
+    </assignments>
+    <description>יוצא מפרוסס אגרימנטס על רשומה חדשה או כשיש בה שינוי בדגל של האם פעילה, ומעדכן תאריכי תוקף בהתאם</description>
+    <formulas>
+        <name>ActiveFromDate</name>
+        <dataType>Date</dataType>
+        <expression>IF(NOT(ISBLANK({!AgreementId.Active_From__c})),{!AgreementId.Active_From__c},
+IF(ISPICKVAL ({!AgreementId.Is_Active__c},&quot;כן&quot;), TODAY(),NULL))</expression>
+    </formulas>
+    <formulas>
+        <name>ActiveTillDate</name>
+        <dataType>Date</dataType>
+        <expression>IF(NOT(ISBLANK({!AgreementId.Active_Untill__c})),{!AgreementId.Active_Untill__c},
+IF(ISPICKVAL ({!AgreementId.Is_Active__c},&quot;לא&quot;) &amp;&amp; NOT(ISBLANK({!AgreementId.Active_From__c})),TODAY(),NULL))</expression>
+    </formulas>
+    <interviewLabel>Aw Agreement Autolaunched Update Agreement Record Dates As Admin {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Aw Agreement Autolaunched Update Agreement Record Dates As Admin</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Update</name>
+        <label>Update</label>
+        <locationX>528</locationX>
+        <locationY>69</locationY>
+        <inputReference>AgreementId</inputReference>
+    </recordUpdates>
+    <runInMode>SystemModeWithoutSharing</runInMode>
+    <start>
+        <locationX>50</locationX>
+        <locationY>50</locationY>
+        <connector>
+            <targetReference>Assign_Dates</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>AgreementId</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <objectType>AgentWise_IL__Agreement__c</objectType>
+    </variables>
+</Flow>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LifeProfileValidationEmail</fullName>
+    <active>true</active>
+    <description>רק לפרופיל חיים, לכל לקוח מעל גיל 18</description>
+    <errorConditionFormula>AND($Setup.Novidea_HPC__Trigger__c.Novidea_HPC__Stop_Validation_Rule__c =False,
+OR(
+$Profile.Name = &apos;Life Profile&apos;,
+$Profile.Name = &apos;Life Manager Profile&apos;),
+NoEmail__c =false,
+ISBLANK( Email ),
+ISBLANK(  Work_Email__c ),
+AgentWise_IL__Age__c &gt; 18.0,
+NOT(ISCHANGED( Anti_Validate__c)),
+NOT(ISCHANGED(Wise_Last_Lead_Created__c)),
+NOT(AND(
+ISNEW(),
+Flow_Creation__c = TRUE)))</errorConditionFormula>
+    <errorDisplayField>Email</errorDisplayField>
+    <errorMessage>חובה לציין כתובת מייל ללקוח מעל גיל 18</errorMessage>
+</ValidationRule>

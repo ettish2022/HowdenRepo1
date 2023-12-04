@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Novidea_HPC__Account_Legal_Name__c</fullName>
+    <deprecated>false</deprecated>
+    <description>A new field &apos;Account legal name&apos; is required in order to be used in perform letters and in the Settlement document.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>uses in perform letters and in the Settlement document</inlineHelpText>
+    <label>Account Legal Name</label>
+    <length>75</length>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

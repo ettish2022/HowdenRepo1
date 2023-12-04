@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <valueTranslation>
+        <masterLabel>Commercial</masterLabel>
+        <translation><!-- Commercial --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Contractors</masterLabel>
+        <translation><!-- Contractors --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>FI</masterLabel>
+        <translation><!-- FI --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Hi Tech</masterLabel>
+        <translation><!-- Hi Tech --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Industry</masterLabel>
+        <translation><!-- Industry --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Law Firm</masterLabel>
+        <translation><!-- Law Firm --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Medical</masterLabel>
+        <translation><!-- Medical --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other</masterLabel>
+        <translation>אחר</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>RI</masterLabel>
+        <translation><!-- RI --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Service</masterLabel>
+        <translation><!-- Service --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>VC</masterLabel>
+        <translation><!-- VC --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>אדריכלים</masterLabel>
+        <translation>אדריכלים</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>אנרגיה</masterLabel>
+        <translation><!-- אנרגיה --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>הנדסאים</masterLabel>
+        <translation><!-- הנדסאים --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>הנדסי/ Engineering</masterLabel>
+        <translation>הנדסי/ Engineering</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>ייעוץ</masterLabel>
+        <translation>ייעוץ</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>מהנדסים</masterLabel>
+        <translation><!-- מהנדסים --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>מתכנני ערים</masterLabel>
+        <translation><!-- מתכנני ערים --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>פרט</masterLabel>
+        <translation><!-- פרט --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>רואי חשבון</masterLabel>
+        <translation><!-- רואי חשבון --></translation>
+    </valueTranslation>
+</StandardValueSetTranslation>

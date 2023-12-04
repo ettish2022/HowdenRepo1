@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Change_Fees_Text_In_Front__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Choose text label if the field is checked</description>
+    <externalId>false</externalId>
+    <label>Change Fees Text In Front</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

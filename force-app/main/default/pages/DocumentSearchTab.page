@@ -1,0 +1,5 @@
+<apex:page controller="DocumentViewStdControllerExt" sidebar="false" showHeader="true" action="{!init}"> 
+    <div style="width:100%">
+        <c:DocumentSearch psearchparams="{!searchparams}" pdisplayFilter="true"/>
+    </div>
+</apex:page>

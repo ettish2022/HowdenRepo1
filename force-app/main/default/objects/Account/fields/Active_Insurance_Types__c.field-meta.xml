@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Active_Insurance_Types__c</fullName>
+    <externalId>false</externalId>
+    <label>Insurance Types in Account</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Directors</fullName>
+                <default>false</default>
+                <label>Directors</label>
+            </value>
+            <value>
+                <fullName>Liability</fullName>
+                <default>false</default>
+                <label>Liability</label>
+            </value>
+            <value>
+                <fullName>Cyber</fullName>
+                <default>false</default>
+                <label>Cyber</label>
+            </value>
+            <value>
+                <fullName>Marine</fullName>
+                <default>false</default>
+                <label>Marine</label>
+            </value>
+            <value>
+                <fullName>Crime</fullName>
+                <default>false</default>
+                <label>Crime</label>
+            </value>
+            <value>
+                <fullName>Medical Research</fullName>
+                <default>false</default>
+                <label>Medical Research</label>
+            </value>
+            <value>
+                <fullName>Car Fleet</fullName>
+                <default>false</default>
+                <label>Car Fleet</label>
+            </value>
+            <value>
+                <fullName>Life</fullName>
+                <default>false</default>
+                <label>Life</label>
+            </value>
+            <value>
+                <fullName>Travel</fullName>
+                <default>false</default>
+                <label>Travel</label>
+            </value>
+            <value>
+                <fullName>Constructors</fullName>
+                <default>false</default>
+                <label>Constructors</label>
+            </value>
+            <value>
+                <fullName>War and Terror</fullName>
+                <default>false</default>
+                <label>War and Terror</label>
+            </value>
+            <value>
+                <fullName>Credit</fullName>
+                <default>false</default>
+                <label>Credit</label>
+            </value>
+            <value>
+                <fullName>Business</fullName>
+                <default>false</default>
+                <label>Business</label>
+            </value>
+            <value>
+                <fullName>Other Insurance Products</fullName>
+                <default>false</default>
+                <label>Other Insurance Products</label>
+            </value>
+            <value>
+                <fullName>Motor</fullName>
+                <default>false</default>
+                <label>Motor</label>
+            </value>
+            <value>
+                <fullName>PL CGL</fullName>
+                <default>false</default>
+                <label>PL CGL</label>
+            </value>
+            <value>
+                <fullName>Household</fullName>
+                <default>false</default>
+                <label>Household</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

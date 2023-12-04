@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>רשומת גבייה מלקוח</label>
+    <name>Client_Collection__c</name>
+    <relationshipLabel>תקבולים לפוליסות</relationshipLabel>
+</CustomFieldTranslation>

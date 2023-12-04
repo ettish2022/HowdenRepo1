@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Field1__c</fullName>
+    <externalId>false</externalId>
+    <label>תת מרכז רווח (סוכנות)</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>true</sorted>
+            <value>
+                <fullName>גדי לונגין</fullName>
+                <default>false</default>
+                <label>גדי לונגין</label>
+            </value>
+            <value>
+                <fullName>טל סנונית</fullName>
+                <default>false</default>
+                <label>טל סנונית</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

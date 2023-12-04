@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Service Meeting</fullName>
+        <default>false</default>
+        <label>Service Meeting</label>
+    </customValue>
+    <customValue>
+        <fullName>New Employee</fullName>
+        <default>false</default>
+        <label>New Employee</label>
+    </customValue>
+    <customValue>
+        <fullName>Key Person Meeting</fullName>
+        <default>false</default>
+        <label>Key Person Meeting</label>
+    </customValue>
+    <customValue>
+        <fullName>Clearer Order Only</fullName>
+        <default>false</default>
+        <label>Clearer Order Only</label>
+    </customValue>
+    <customValue>
+        <fullName>Provident investment</fullName>
+        <default>false</default>
+        <label>Provident investment</label>
+    </customValue>
+    <customValue>
+        <fullName>Meeting Continued</fullName>
+        <default>false</default>
+        <label>Meeting Continued</label>
+    </customValue>
+    <customValue>
+        <fullName>Departure meeting</fullName>
+        <default>false</default>
+        <label>Departure meeting</label>
+    </customValue>
+    <customValue>
+        <fullName>Additional Meeting</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Additional Meeting</label>
+    </customValue>
+    <masterLabel>MeetingType</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

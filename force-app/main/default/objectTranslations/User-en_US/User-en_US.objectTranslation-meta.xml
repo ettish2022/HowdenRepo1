@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <layouts>
+        <layout>Community Member Layout</layout>
+        <layoutType>CommunityMemberLayout</layoutType>
+        <sections>
+            <label></label>
+            <section>Basic Information</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Chatter Settings</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Language And Locale Settings</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>User Layout</layout>
+        <sections>
+            <label>Custom Links</label>
+            <section>קישורים מותאמים אישית</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>רשומת איש הקשר של המשתמש</section>
+        </sections>
+    </layouts>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Cannot_Change_Email</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Cant_Change_First_Name</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Cant_Change_Last_Name</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>RelatedContact_is_Mandatory</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Shefi_Filing_Path</name>
+    </validationRules>
+</CustomObjectTranslation>

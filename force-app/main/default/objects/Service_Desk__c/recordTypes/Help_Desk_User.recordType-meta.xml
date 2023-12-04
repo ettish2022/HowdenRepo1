@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Help_Desk_User</fullName>
+    <active>true</active>
+    <label>Help Desk User</label>
+    <picklistValues>
+        <picklist>Category__c</picklist>
+        <values>
+            <fullName>Office</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Outlook</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>אינטרנט</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>הרשאות</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>חדר ישיבות</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>חיבור מרחוק</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>מדפסות וסורקים</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>מחשב</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>משתמש</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>סיילספורס</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>פקס</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ציוד</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>תוכנות עבודה</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>תיקיות וקבצים</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Status__c</picklist>
+        <values>
+            <fullName>בטיפול</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>חדשה</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>ממתין למענה המשתמש</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>סגורה</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Sub_Category__c</picklist>
+        <values>
+            <fullName>2TEAM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3CX</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BI</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PDF%2FTIF</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>אוזניות</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>אי התאמה בין דיווח לפרודוקציה</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>איפוס%2Fהחלפת סיסמה</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ארכיון</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>אתר חסום</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>אתר לא עובד</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>בבילון</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ביטול נעילת פוליסה</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>בירור והקמת הסכם סוכני משנה</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>בירור עמלות</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>דפדפן</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>הגדרות תצוגה%2Fשפה</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>הגדרת חתימה</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>הגדרת כתובות מייל לסריקה</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>הגדרת מדפסת</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>הגדרת מענה אוטומטי</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>הגדרת פקס במחשב</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>הודעת Bit Locker בהעלאת המחשב</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>הוספת מרכז רווח בדיווח</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>החלפת מקלדת</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>החלפת עכבר</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>העברת בעלות ברשומות</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>העברת פוליסות בין חשבונות</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>העברת תיוקים בין חשבונות%2Fפוליסות</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>הקמת דוח חדש</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>הקמת מבטחים חדשים</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>הקמת מוצרים%2Fמרכזי רווח%2Fשדות</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>הקמת משתמש בחברות ביטוח</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>הקמת עובד חדש</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>הקמת תיקייה</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>הרשאה לקובץ</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>הרשאה לתיקיית רשת</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>זום כספים</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>חברות ביטוח</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>חיבור לעבודה מהבית</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>חשבון נעול</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>טונרים</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>טלפון נייד</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>טעינת רשומות</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>יומנים</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>כבלים</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>לא מתחבר ל-VPN</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>לא מתקבל SMS עבור חשבון מיקרוסופט</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>לא מתקבלת התראה לפלאפון בכניסה למחשב %28DUO%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>מדפסת מציגה שגיאה %28נא להוסיף את מספר השגיאה%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>מחיקת כפילויות</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>מחיקת רשומות</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>מחשב</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>מחשב איטי%2Fנתקע</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>מחשב לא נדלק</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>מחשב מתחמם</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>מיזוג חשבונות</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>מייל חשוד</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>מייל מנותק%2Fלא מסונכרן</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>מיפוי כוננים</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>מסך</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>מצלמה</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>מקרן</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>סגירת הצעות%2Fפוטנציאלים</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>סיוע בדיווחים</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>סיילספורס</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>פקס לא מתקבל%2Fנשלח</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>פרופיל לא עולה</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>פתיחת הרשאות בחול</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>שחזור תיקייה%2Fקובץ</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>שינויים לדוח קיים</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>תוכנת שכר</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>תחנת עגינה</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>תיוק ופתיחת מסמכים</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>תיקון שכט%2Fעמלה בדיווח</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>תמיכה למשתמש בחברות ביטוח</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>תקבולים ממבטחים</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>תקלה בהדפסה</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>תקלה בסריקה</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>תקלות Office</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>תקלות דיווח</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>תקלת WIFI</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>תקלת חיבור</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

@@ -1,0 +1,15 @@
+<apex:page standardController="Novidea_HPC__Claim__c" sidebar="false" showHeader="false" standardStylesheets="true" extensions="NFILING.DocumentViewStdControllerExt"> 
+    <script>
+        var entstype = "Novidea_HPC__Claim__c";
+        var entid = "{!Novidea_HPC__Claim__c.id}";
+        var entname="{!JSENCODE(Novidea_HPC__Claim__c.name)}";
+        var accountId="{!Novidea_HPC__Claim__c.Novidea_HPC__Client__c}";
+        var contactId="{!contactId}";
+        var defaultFaxNumber = "{!JSENCODE(defaultFaxNumber)}";
+        var defaultEmail = "{!JSENCODE(defaultEmail)}";
+        var defaultMobileSMS= "{!JSENCODE(defaultMobileSMS)}";
+    </script>
+     <div style="width:100%;">
+    <NFILING:DocumentSearch psearchparams="{!searchparams}" pdisplayFilter="false"/>
+    </div>
+</apex:page>

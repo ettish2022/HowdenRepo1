@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Novidea_HPC__License_Number__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Currently serves for Surplus Lines Tax details (London Market: Trading Partners)</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Currently serves for Surplus Lines Tax details</inlineHelpText>
+    <label>License Number</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>TextArea</type>
+</CustomField>

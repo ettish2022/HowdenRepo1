@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>צור מוצר CS 2024</label>
+    <optionsCreateFeedItem>true</optionsCreateFeedItem>
+    <quickActionLayout>
+        <layoutSectionStyle>TwoColumnsLeftToRight</layoutSectionStyle>
+        <quickActionLayoutColumns>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>Name</field>
+                <uiBehavior>Required</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>Account_Name__c</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+        </quickActionLayoutColumns>
+        <quickActionLayoutColumns/>
+    </quickActionLayout>
+    <successMessage>נוצר מוצר CS 2024 בהצלחה</successMessage>
+    <targetObject>Novidea_HPC__Product__c</targetObject>
+    <targetParentField>Account_Name__c</targetParentField>
+    <targetRecordType>Novidea_HPC__Product__c.Novidea_HPC__General_Product</targetRecordType>
+    <type>Create</type>
+</QuickAction>

@@ -1,0 +1,6 @@
+<apex:page standardController="Novidea_HPC__Claim__c" extensions="checkForActivityJournalCO" action="{!onLoad}" >
+  <!-- Begin Default Content REMOVE THIS -->
+  <h1>Congratulations</h1>
+  This is your new Page: checkForActivityJournal
+  <!-- End Default Content REMOVE THIS -->
+</apex:page>

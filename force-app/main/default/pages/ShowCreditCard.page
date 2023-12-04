@@ -1,0 +1,4 @@
+<apex:page standardController="Novidea_HPC__Lead__c" extensions="ShowCreditCardController" standardStylesheets="false" sidebar="false" showHeader="false" action="{!init}" >
+<h1> {!creditCard} </h1>  
+ 
+</apex:page>

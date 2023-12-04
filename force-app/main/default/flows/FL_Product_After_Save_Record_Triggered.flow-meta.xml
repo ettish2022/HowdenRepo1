@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>55.0</apiVersion>
+    <assignments>
+        <name>Delete_Value_from_Product_Fields</name>
+        <label>Delete Value from Product Fields</label>
+        <locationX>50</locationX>
+        <locationY>431</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Novidea_HPC__Expected_Fees__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <numberValue>0.0</numberValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.Novidea_HPC__Expected_Premium__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <numberValue>0.0</numberValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.Novidea_HPC__Expected_Premium_Net__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <numberValue>0.0</numberValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.Novidea_HPC__Expected_Commission_Amount__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <numberValue>0.0</numberValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.Novidea_HPC__Premium_Target__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <numberValue>0.0</numberValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.Novidea_HPC__Target_Agency_Fee__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <numberValue>0.0</numberValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_Product</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <name>Check_Conditions_for_Constructor_Policy_Renewal</name>
+        <label>Check Conditions for Constructor Policy Renewal</label>
+        <locationX>182</locationX>
+        <locationY>323</locationY>
+        <defaultConnector>
+            <targetReference>Policy_Type_Is_Change</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Constructor_Policy_Renewal</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>f_IsNew</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Novidea_HPC__Required_Policy_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Renew</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Novidea_HPC__Product_Def_Name__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>קבלנים הצהרתית</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Novidea_HPC__Application__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Delete_Value_from_Product_Fields</targetReference>
+            </connector>
+            <label>Constructor Policy Renewal</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>HIL-236</description>
+        <name>Policy_Type_Is_Change</name>
+        <label>Policy Type Is Change</label>
+        <locationX>182</locationX>
+        <locationY>731</locationY>
+        <defaultConnector>
+            <targetReference>Status_Is_Change</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Yes</name>
+            <conditionLogic>1 AND (2 OR 3)</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Novidea_HPC__Policy__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Policy_Type__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>f_IsNew</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Policy</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Status_Is_Change</name>
+        <label>Status Is Change</label>
+        <locationX>182</locationX>
+        <locationY>1031</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Yes_1</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Novidea_HPC__Status__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>f_IsNew</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Application</targetReference>
+            </connector>
+            <label>Yes_1</label>
+        </rules>
+    </decisions>
+    <description>HIL-194, HIL-222, HIL-214, HIL-236</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>f_check_status</name>
+        <dataType>String</dataType>
+        <expression>IF(AND(ISPICKVAL( {!$Record.Novidea_HPC__Status__c}, &quot;Active&quot;),ISPICKVAL( {!$Record.Novidea_HPC__Required_Policy_Type__c}, &quot;New&quot;)), &quot;חדש&quot;,
+IF(AND(ISPICKVAL( {!$Record.Novidea_HPC__Status__c}, &quot;Active&quot;),ISPICKVAL( {!$Record.Novidea_HPC__Required_Policy_Type__c},&quot;Renew&quot;)), &quot;חידוש&quot;,
+IF(ISPICKVAL( {!$Record.Novidea_HPC__Status__c}, &quot;בוצעה פניה ללקוח&quot;), &quot;בתהליך&quot;,
+IF(ISPICKVAL( {!$Record.Novidea_HPC__Status__c}, &quot;Send&quot;), &quot;בתהליך&quot;,
+IF(ISPICKVAL( {!$Record.Novidea_HPC__Status__c}, &quot;Received&quot;), &quot;בתהליך&quot;,
+IF(ISPICKVAL( {!$Record.Novidea_HPC__Status__c},&apos;Accepted&apos;), &quot;בתהליך&quot;,
+IF(ISPICKVAL( {!$Record.Novidea_HPC__Status__c}, &quot;שילוב של המרה ולא מתחדש&quot;), &quot;כיסוי חלקי – סגור&quot;,
+IF(ISPICKVAL( {!$Record.Novidea_HPC__Status__c}, &quot;Converted&quot;), &quot;אישור כיסוי&quot;,
+IF(ISPICKVAL( {!$Record.Novidea_HPC__Status__c}, &quot;Cancelled&quot;), &quot;לא עומד לחידוש&quot;,
+ &quot;&quot;)))))))))</expression>
+    </formulas>
+    <formulas>
+        <name>f_IsNew</name>
+        <dataType>Boolean</dataType>
+        <expression>ISNEW()</expression>
+    </formulas>
+    <formulas>
+        <name>Renewal_Type</name>
+        <dataType>String</dataType>
+        <expression>IF((ISPICKVAL({!$Record.Policy_Type__c}, &apos;Project&apos;)), &apos;None Renewable&apos;,
+IF((ISPICKVAL({!$Record.Policy_Type__c}, &apos;RunOff&apos;)), &apos;None Renewable&apos;,
+IF((ISPICKVAL({!$Record.Policy_Type__c}, &apos;Treaty&apos;)), &apos;Renewable&apos;,
+IF((ISPICKVAL({!$Record.Policy_Type__c}, &apos;OnGoing&apos;)), &apos;Renewable&apos;,&apos;&apos;
+))))</expression>
+    </formulas>
+    <interviewLabel>FL Product After Save Record Triggered {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>FL Product After Save Record Triggered</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Update_Application</name>
+        <label>Update Application</label>
+        <locationX>50</locationX>
+        <locationY>1139</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Novidea_HPC__Application__c</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Novidea_HPC__Status__c</field>
+            <value>
+                <elementReference>f_check_status</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Novidea_HPC__Application__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Policy</name>
+        <label>Update Policy</label>
+        <locationX>50</locationX>
+        <locationY>839</locationY>
+        <connector>
+            <targetReference>Status_Is_Change</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Novidea_HPC__Policy__r.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Renewal_Type__c</field>
+            <value>
+                <elementReference>Renewal_Type</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Type_Of_Renewal__c</field>
+            <value>
+                <elementReference>$Record.Policy_Type__c</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Novidea_HPC__Policy__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Product</name>
+        <label>Update Product</label>
+        <locationX>50</locationX>
+        <locationY>539</locationY>
+        <connector>
+            <targetReference>Policy_Type_Is_Change</targetReference>
+        </connector>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Check_Conditions_for_Constructor_Policy_Renewal</targetReference>
+        </connector>
+        <object>Novidea_HPC__Product__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

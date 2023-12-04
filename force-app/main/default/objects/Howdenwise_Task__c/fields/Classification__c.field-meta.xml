@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Classification__c</fullName>
+    <externalId>false</externalId>
+    <label>Classification</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>true</sorted>
+            <value>
+                <fullName>אוטומציה</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>אוטומציה</label>
+            </value>
+            <value>
+                <fullName>הרשאות</fullName>
+                <default>false</default>
+                <label>הרשאות</label>
+            </value>
+            <value>
+                <fullName>טיוב מידע</fullName>
+                <default>false</default>
+                <label>טיוב מידע</label>
+            </value>
+            <value>
+                <fullName>ישום</fullName>
+                <default>false</default>
+                <label>ישום</label>
+            </value>
+            <value>
+                <fullName>ממשקים חיצוניים</fullName>
+                <default>false</default>
+                <label>ממשקים חיצוניים</label>
+            </value>
+            <value>
+                <fullName>פריסה</fullName>
+                <default>false</default>
+                <label>פריסה</label>
+            </value>
+            <value>
+                <fullName>תכונות חסרות</fullName>
+                <default>false</default>
+                <label>תכונות חסרות</label>
+            </value>
+            <value>
+                <fullName>תקלה</fullName>
+                <default>false</default>
+                <label>תקלה</label>
+            </value>
+            <value>
+                <fullName>תרגום</fullName>
+                <default>false</default>
+                <label>תרגום</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

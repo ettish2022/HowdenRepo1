@@ -1,0 +1,13 @@
+<apex:page standardController="Novidea_HPC__Lead__c" 
+        showHeader="false" sidebar="false" standardStylesheets="false" 
+action="{!URLFOR(
+                '/apex/Novidea_HPC__CustomLeadCreation?'+
+                '&retURL=' + '/a0I/o' + 
+                '&save_new=1&sfdc.override=1',
+                '/setup/ui/recordtypeselect.jsp?'+ 
+                '&ent=01ID0000000y8f3' +
+                '&retURL=' + '/a0I/o' + 
+                '&save_new_url=/a0I/e?' +
+                '&retURL=' + '/a0I/o' +
+                '&nooverride=0')}">
+</apex:page>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Claims_time_measurement_report__c</fullName>
+    <externalId>false</externalId>
+    <formula>HYPERLINK(&quot;/00OD0000007ZZns?pv1=&quot;&amp;Name, &quot;דוח מדידת זמנים בתביעות סיכונים&quot; )</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>דוח מדידת זמנים בתביעות סיכונים</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

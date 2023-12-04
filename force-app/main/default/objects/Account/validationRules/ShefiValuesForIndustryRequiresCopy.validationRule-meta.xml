@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ShefiValuesForIndustryRequiresCopy</fullName>
+    <active>true</active>
+    <description>כאשר בשדה זה מעדכנים את אחד מ- 3 הערכים: מהנדסים, אדריכלים, מתכנני ערים - נדרש להעתיק את הערך גם לשדה מקביל שיוצא לחידושים דיגיטליים</description>
+    <errorConditionFormula>AND(
+ $Setup.Novidea_HPC__Trigger__c.Novidea_HPC__Stop_Validation_Rule__c = FALSE,
+OR(
+ISPICKVAL ( Industry,&quot;Architects&quot;),
+ISPICKVAL ( Industry,&quot;מתכנני ערים&quot;),
+ISPICKVAL ( Industry,&quot;מהנדסים&quot;)),
+ISBLANK( Industry_As_MultiPicklist_For_Forms__c ))</errorConditionFormula>
+    <errorDisplayField>Industry_As_MultiPicklist_For_Forms__c</errorDisplayField>
+    <errorMessage>לכל עסק של אדריכלים, מהנדסים או מתכנני ערים יש לעדכן בהתאמה גם את שדה &quot;תחום פעילות&quot;</errorMessage>
+</ValidationRule>

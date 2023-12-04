@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Person_Role__c</fullName>
+    <externalId>false</externalId>
+    <label>Person Role</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Accountant</fullName>
+                <default>false</default>
+                <label>Accountant</label>
+            </value>
+            <value>
+                <fullName>Administrative Secretary</fullName>
+                <default>false</default>
+                <label>Administrative Secretary</label>
+            </value>
+            <value>
+                <fullName>Attorney</fullName>
+                <default>false</default>
+                <label>Attorney</label>
+            </value>
+            <value>
+                <fullName>Auditor</fullName>
+                <default>false</default>
+                <label>Auditor</label>
+            </value>
+            <value>
+                <fullName>Bookkeeper</fullName>
+                <default>false</default>
+                <label>Bookkeeper</label>
+            </value>
+            <value>
+                <fullName>Brother</fullName>
+                <default>false</default>
+                <label>Brother</label>
+            </value>
+            <value>
+                <fullName>Brother/Sister</fullName>
+                <default>false</default>
+                <label>Brother/Sister</label>
+            </value>
+            <value>
+                <fullName>Business Contact</fullName>
+                <default>false</default>
+                <label>Business Contact</label>
+            </value>
+            <value>
+                <fullName>CEO</fullName>
+                <default>false</default>
+                <label>CEO</label>
+            </value>
+            <value>
+                <fullName>CFO</fullName>
+                <default>false</default>
+                <label>CFO</label>
+            </value>
+            <value>
+                <fullName>Child</fullName>
+                <default>false</default>
+                <label>Child</label>
+            </value>
+            <value>
+                <fullName>Clinic Trail Manager</fullName>
+                <default>false</default>
+                <label>Clinic Trail Manager</label>
+            </value>
+            <value>
+                <fullName>Collection Manager</fullName>
+                <default>false</default>
+                <label>Collection Manager</label>
+            </value>
+            <value>
+                <fullName>Consultant</fullName>
+                <default>false</default>
+                <label>Consultant</label>
+            </value>
+            <value>
+                <fullName>COO</fullName>
+                <default>false</default>
+                <label>COO</label>
+            </value>
+            <value>
+                <fullName>Director</fullName>
+                <default>false</default>
+                <label>Director</label>
+            </value>
+            <value>
+                <fullName>Economist</fullName>
+                <default>false</default>
+                <label>Economist</label>
+            </value>
+            <value>
+                <fullName>Employee</fullName>
+                <default>false</default>
+                <label>Employee</label>
+            </value>
+            <value>
+                <fullName>Executive</fullName>
+                <default>false</default>
+                <label>Executive</label>
+            </value>
+            <value>
+                <fullName>Father</fullName>
+                <default>false</default>
+                <label>Father</label>
+            </value>
+            <value>
+                <fullName>Husband</fullName>
+                <default>false</default>
+                <label>Husband</label>
+            </value>
+            <value>
+                <fullName>Husband/wife</fullName>
+                <default>false</default>
+                <label>Husband/wife</label>
+            </value>
+            <value>
+                <fullName>Legal Counsel</fullName>
+                <default>false</default>
+                <label>Legal Counsel</label>
+            </value>
+            <value>
+                <fullName>Mother</fullName>
+                <default>false</default>
+                <label>Mother</label>
+            </value>
+            <value>
+                <fullName>Owner</fullName>
+                <default>false</default>
+                <label>Owner</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

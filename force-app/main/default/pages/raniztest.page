@@ -1,0 +1,58 @@
+<apex:page controller="raniztestco" sidebar="false" showHeader="false" standardStylesheets="false">
+<script>
+	var counter = 319936;
+	function handler(result,event){
+		console.debug("returned function");
+	    if (event.status) {
+	        if(typeof(result)=="object")counter=result.valueOf();
+	        else counter = result;
+	        if(counter>500000)return;
+	        else window.setTimeout("doinsert()",10000);
+			console.debug("window.setTimeout fired " + counter);
+	    }
+	    else alert(event.message);
+	}
+	
+	function doinsert(){
+		console.debug("entered function " + counter);
+		raniztestco.insertdata(counter,handler,{escape:false});
+	}
+	function handlefindres(result,event){
+	    if (event.status) {
+			document.getElementById("start").innerText = "start time: " + result[0];
+			document.getElementById("end").innerText = "end time: " + result[1];
+	    }
+	    else alert(event.message);
+	 }
+	
+	function dofind(){
+		raniztestco.finder(handlefindres,{escape:false});
+	}
+	function docomplex2Fileds(){
+		raniztestco.testComplex2Fields(handlefindres,{escape:false});
+	}
+	
+	function docomplex1Field(){
+		raniztestco.testComplex1Field(handlefindres,{escape:false});
+	}
+	
+	function doJob(){
+		raniztestco.runJob(handlefindres,{escape:false});
+	}
+</script>
+<p>
+<input type="button" value="click me for running the job" onclick="doJob();"/>
+</p>
+
+<p>
+<input type="button" value="click me for find test" onclick="dofind();"/>
+</p>
+<p>
+<input type="button" value="click me for complex 2 Fields query test" onclick="docomplex2Fileds();"/>
+</p>
+<p>
+<input type="button" value="click me for complex 1 Field query test" onclick="docomplex1Field();"/>
+</p>
+<label id="start"></label><br></br>
+<label id="end"></label>
+</apex:page>

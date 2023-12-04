@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <article>None</article>
+        <plural>false</plural>
+        <value>טעינת עמלה</value>
+    </caseValues>
+    <caseValues>
+        <article>None</article>
+        <plural>true</plural>
+        <value>טעינת עמלות</value>
+    </caseValues>
+    <gender>Feminine</gender>
+    <layouts>
+        <layout>AIG Layout</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Input</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Results</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>ARDONAIGH Layout</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Input</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Results</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>AYALON Layout</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Input</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Results</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>CFC Layout</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Input</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Results</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>CLAL Layout</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Input</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Results</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>GUEST Layout</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Input</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Results</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>HAHSHARA Layout</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Input</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Results</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>HAREL layout</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Input</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Results</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>HIBL Layout</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Input</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Results</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>LUX Layout</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Input</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Results</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>MENORA Layout</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Input</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Results</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>MIGDAL Layout</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Input</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Results</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>PHOENIX Layout</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Input</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Results</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>SELA Layout</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Input</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Results</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>WS Layout</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Input</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Results</section>
+        </sections>
+    </layouts>
+    <recordTypes>
+        <label></label>
+        <name>AIG</name>
+    </recordTypes>
+    <recordTypes>
+        <label></label>
+        <name>ARDONAGH</name>
+    </recordTypes>
+    <recordTypes>
+        <label></label>
+        <name>AYALON</name>
+    </recordTypes>
+    <recordTypes>
+        <label></label>
+        <name>CFC</name>
+    </recordTypes>
+    <recordTypes>
+        <label></label>
+        <name>CLAL</name>
+    </recordTypes>
+    <recordTypes>
+        <label></label>
+        <name>GUEST</name>
+    </recordTypes>
+    <recordTypes>
+        <label></label>
+        <name>HAHSHARA</name>
+    </recordTypes>
+    <recordTypes>
+        <label></label>
+        <name>HAREL</name>
+    </recordTypes>
+    <recordTypes>
+        <label></label>
+        <name>HIBL</name>
+    </recordTypes>
+    <recordTypes>
+        <label></label>
+        <name>LUX</name>
+    </recordTypes>
+    <recordTypes>
+        <label></label>
+        <name>MENORA</name>
+    </recordTypes>
+    <recordTypes>
+        <label></label>
+        <name>MIGDAL</name>
+    </recordTypes>
+    <recordTypes>
+        <label></label>
+        <name>PHOENIX_ILS</name>
+    </recordTypes>
+    <recordTypes>
+        <label></label>
+        <name>PHOENIX_USD</name>
+    </recordTypes>
+    <recordTypes>
+        <label></label>
+        <name>SELA</name>
+    </recordTypes>
+    <recordTypes>
+        <label></label>
+        <name>WS</name>
+    </recordTypes>
+</CustomObjectTranslation>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label></label>
+    <name>Lead_Source__c</name>
+    <picklistValues>
+        <masterLabel>אחר, נא לפרט</masterLabel>
+        <translation>Other</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>אלדן רכב</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>הפניה מ-ימי</masterLabel>
+        <translation>Referal from Marine</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>הפניה מאלמנטארי</masterLabel>
+        <translation>Referal from Elementri</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>הפניה מבריאות</masterLabel>
+        <translation>Referal from Health</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>הפניה מגורם חוץ</masterLabel>
+        <translation>Referal from outside</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>הפניה מיועץ</masterLabel>
+        <translation>Referal from advisor</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>הפניה מישראלית</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>הפניה מלקוח קיים</masterLabel>
+        <translation>Referal from existing client</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>הפניה מסיכונים</masterLabel>
+        <translation>Referal from risk</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>טלמיטינג</masterLabel>
+        <translation>Tele meeting</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>מוצר נוסף ללקוח קיים</masterLabel>
+        <translation>Add on to existing custommer</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>מכירה חוזרת</masterLabel>
+        <translation>Repeating sale</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>מכירה צולבת</masterLabel>
+        <translation>Cross Sale</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>סוכן משנה</masterLabel>
+        <translation>Secondary Agent</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>פניה טלפונית להאודן</masterLabel>
+        <translation>Phone</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>פניה יזומה של מנהל התיק</masterLabel>
+        <translation>Active Engagement</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>פניה לאתר</masterLabel>
+        <translation>Website contact form</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>פניה לבלוג</masterLabel>
+        <translation>Blog comment</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>קשר אישי</masterLabel>
+        <translation>Personal Connection</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>שיחה יזומה</masterLabel>
+        <translation>An Imitated Conversation</translation>
+    </picklistValues>
+</CustomFieldTranslation>

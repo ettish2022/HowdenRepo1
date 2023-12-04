@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>XXX_Adress__c</fullName>
+    <description>שדה אליו יופנו פרטי כתובת של פרודוקציה. לא לשימוש ולא לתצוגה</description>
+    <externalId>false</externalId>
+    <label>XXX_Adress</label>
+    <length>200</length>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

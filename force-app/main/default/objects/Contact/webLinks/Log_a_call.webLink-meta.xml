@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Log_a_call</fullName>
+    <availability>online</availability>
+    <displayType>button</displayType>
+    <encodingKey>UTF-8</encodingKey>
+    <linkType>url</linkType>
+    <masterLabel>רישום שיחה</masterLabel>
+    <openType>replace</openType>
+    <protected>false</protected>
+    <url>https://um2.salesforce.com/00T/e?title=%D7%A9%D7%99%D7%97%D7%94&amp;who_id={!Contact.Id}&amp;followup=1&amp;tsk5=%D7%A9%D7%99%D7%97%D7%94&amp;retURL=%2F{!Contact.Id}</url>
+</WebLink>

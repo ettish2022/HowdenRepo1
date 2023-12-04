@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <valueTranslation>
+        <masterLabel>Agency</masterLabel>
+        <translation>הזמנת לקוח לפגישת שירות</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Another Department</masterLabel>
+        <translation>מחלקה אחרת</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Business / Account Reference</masterLabel>
+        <translation>עסק / חברה</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Call</masterLabel>
+        <translation>שיחה נכנסת</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Customer Reference</masterLabel>
+        <translation>לקוח קיים</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Employee Reference</masterLabel>
+        <translation>עובד</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>עזיבת עבודה</masterLabel>
+        <translation><!-- עזיבת עבודה --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>פגישת שירות</masterLabel>
+        <translation><!-- פגישת שירות --></translation>
+    </valueTranslation>
+</GlobalValueSetTranslation>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Query_Fields_Display_Mark_Obj_Csv__c</fullName>
+    <description>Used in DocumentSearchController to select additional lookups for this entity to display as criteria. This value is in addition to the account value that is selected anyway</description>
+    <externalId>false</externalId>
+    <label>Query Fields Display Mark Obj Csv</label>
+    <length>255</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Recalculate__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF( Leads_Changed__c, HYPERLINK(&quot;/apex/Insurance_Cross_Sales_Analysys?id=&quot;+Id , &quot;Need to recalculate analysis&quot; , &quot;_top&quot;), &quot;&quot;)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Recalculate</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

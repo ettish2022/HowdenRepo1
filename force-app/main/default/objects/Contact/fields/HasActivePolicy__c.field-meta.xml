@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>HasActivePolicy__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>לסימון מחלקת הכספים לטובת מיילים בזמן הקורונה</description>
+    <externalId>false</externalId>
+    <label>HasActivePolicy</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

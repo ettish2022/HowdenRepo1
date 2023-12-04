@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Responded_Rate__c</fullName>
+    <description>Google API Chart Sent Vs. Responded</description>
+    <externalId>false</externalId>
+    <formula>IMAGE(&quot;http://chart.apis.google.com/chart?cht=p3&amp;chd=t:&quot; &amp; 
+ Text(Sent__c/(Sent__c+ Responded__c)) &amp; &quot;,&quot; &amp; 
+Text(Responded__c/(Sent__c+ Responded__c)) &amp; 
+ &quot;&amp;chs=275x100&amp;chf=bg,s,F3F3EC&amp;chl=Sent|Responded&amp;chco=5555ff&quot;, 
+ &quot;Sent vs. Responded Chart&quot;)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Sent Vs. Responded</inlineHelpText>
+    <label>Responded Rate</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

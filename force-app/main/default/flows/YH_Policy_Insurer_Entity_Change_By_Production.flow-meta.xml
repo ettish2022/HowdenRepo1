@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>58.0</apiVersion>
+    <decisions>
+        <name>Who_Updated</name>
+        <label>Who Updated</label>
+        <locationX>182</locationX>
+        <locationY>323</locationY>
+        <defaultConnectorLabel>Other</defaultConnectorLabel>
+        <rules>
+            <name>Financial_Control_Production</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>$Profile.Name</leftValueReference>
+                <operator>StartsWith</operator>
+                <rightValue>
+                    <stringValue>Financial Control</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Profile.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>מנהל מערכת</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Relevant_Income</targetReference>
+            </connector>
+            <label>Financial Control/Production</label>
+        </rules>
+    </decisions>
+    <description>מעדכן את הישות במבטח בהכנסה כשעדכון פרודוקציה משנה את מספר הסוכן בפוליסה</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>f_InsurerEntity</name>
+        <dataType>String</dataType>
+        <expression>IF(
+{!$Record.Novidea_HPC__Broker_In_Carrier__r.Novidea_HPC__Profit_Center__r.Name}= &quot;האודן סוכנים&quot;, &quot;Howden 2011&quot;,
+{!$Record.Novidea_HPC__Broker_In_Carrier__r.Novidea_HPC__Profit_Center__r.Name}
+)</expression>
+    </formulas>
+    <interviewLabel>YH Policy Insurer Entity Change By Production {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>YH Policy Insurer Entity Change By Production</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_Relevant_Income</name>
+        <label>Get Relevant Income</label>
+        <locationX>50</locationX>
+        <locationY>431</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Set_New_Insurer_Entity</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Novidea_HPC__Production_Update_Date__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Flow.CurrentDate</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Novidea_HPC__Is_Updated_by_Production__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Novidea_HPC__Policy__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Novidea_HPC__Income__c</object>
+        <sortField>LastModifiedDate</sortField>
+        <sortOrder>Desc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Set_New_Insurer_Entity</name>
+        <label>Set New Insurer Entity</label>
+        <locationX>50</locationX>
+        <locationY>539</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Relevant_Income.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Insurerentity__c</field>
+            <value>
+                <elementReference>f_InsurerEntity</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Novidea_HPC__Income__c</object>
+    </recordUpdates>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Who_Updated</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Novidea_HPC__Broker_In_Carrier__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <object>Novidea_HPC__Policy__c</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>First_Letter__c</fullName>
+    <externalId>false</externalId>
+    <formula>BEGINS(Name_Formula__c, &apos;י&apos;) ||
+BEGINS(Name_Formula__c, &apos;כ&apos;) ||
+BEGINS(Name_Formula__c, &apos;ל&apos;) ||
+BEGINS(Name_Formula__c, &apos;מ&apos;) ||
+BEGINS(Name_Formula__c, &apos;נ&apos;) ||
+BEGINS(Name_Formula__c, &apos;ס&apos;) ||
+BEGINS(Name_Formula__c, &apos;ע&apos;) ||
+BEGINS(Name_Formula__c, &apos;פ&apos;) ||
+BEGINS(Name_Formula__c, &apos;צ&apos;) ||
+BEGINS(Name_Formula__c, &apos;ק&apos;) ||
+BEGINS(Name_Formula__c, &apos;ר&apos;) ||
+BEGINS(Name_Formula__c, &apos;ש&apos;) ||
+BEGINS(Name_Formula__c, &apos;ת&apos;)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>בדיקת אות תחילית י-ת</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

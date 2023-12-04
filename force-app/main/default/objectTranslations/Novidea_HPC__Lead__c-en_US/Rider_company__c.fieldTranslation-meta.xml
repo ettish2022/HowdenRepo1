@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label></label>
+    <name>Rider_company__c</name>
+    <picklistValues>
+        <masterLabel>דרכים - טל: 2008*</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>מ.מ.ס.י – טל:  5202*</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>סטארט - טל: *5676</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>פמי פרימיום - טל: 656*</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>שגריר - טל: 8888*</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>שלמה - טל: 6648*</masterLabel>
+        <translation></translation>
+    </picklistValues>
+</CustomFieldTranslation>

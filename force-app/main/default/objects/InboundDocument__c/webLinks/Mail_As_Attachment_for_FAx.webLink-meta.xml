@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mail_As_Attachment_for_FAx</fullName>
+    <availability>online</availability>
+    <displayType>button</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>Mail As Attachment for FAx</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <url>{!REQUIRESCRIPT(&apos;/resource/&apos; &amp; LEFT(SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(TEXT(NOW()),&apos;:&apos;,&apos;&apos;),&apos;-&apos;,&apos;&apos;),&apos; &apos;,&apos;&apos;),10) &amp; &apos;000/json2min&apos;)}
+function openNewOutlookMail(app){
+   var faxNum= prompt(&quot;{!JSENCODE($Label.Enter_Default_Fax_Number)}&quot;,&quot;&quot;);
+   if(faxNum==null || faxNum==&quot;&quot;){
+	throw &quot;יש להזין מספר פקס&quot;;
+   }
+faxNum = formatString(&quot;{!$Setup.Novidea_Document_Management__c.Fax_Number_Format__c}&quot;,faxNum);
+   var strRes = app.openNewOutlookMail([faxNum],&quot;{!JSENCODE(InboundDocument__c.Physical_Path__c)}&quot;);
+    var oRes = JSON.parse(strRes);
+    if(!oRes.success){
+         alert(oRes.errormessage);
+   }
+}
+    	function formatString(instr) {
+		    var args = arguments;
+			if(instr==null || instr===undefined || instr==&quot;&quot;){
+				if(args.length&gt;1) return args[1];
+				else return &quot;&quot;;
+			}
+		    return instr.replace(/\{(\d+)\}/g, function() {
+		        var argNum = new Number(arguments[1]);
+				if(args.length&gt;(argNum+1))
+		        	return args[argNum+1];
+		        else return &quot;{&quot; + arguments[1]+ &quot;}&quot;;
+		    });
+		}
+var applet = document.getElementById(&quot;filingapp&quot;);
+if(applet==null){
+	applet = document.createElement(&quot;APPLET&quot;);
+	applet.code= &quot;com.novidea.dm.Filing&quot;;
+	applet.setAttribute(&quot;width&quot;,&quot;0&quot;);
+	applet.setAttribute(&quot;height&quot;,&quot;0&quot;);
+	//an hour long cache
+	applet.archive = &quot;{!&apos;/resource/&apos; &amp; LEFT(SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(TEXT(NOW()),&apos;:&apos;,&apos;&apos;),&apos;-&apos;,&apos;&apos;),&apos; &apos;,&apos;&apos;),10) &amp; &apos;000/FilingApplet&apos;}&quot;;
+	//for testing 1 sec long cache
+	//applet.archive = &quot;{!&apos;/resource/&apos; &amp; LEFT(SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(TEXT(NOW()),&apos;:&apos;,&apos;&apos;),&apos;-&apos;,&apos;&apos;),&apos; &apos;,&apos;&apos;),8) &amp; MID(SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(TEXT(NOW()),&apos;:&apos;,&apos;&apos;),&apos;-&apos;,&apos;&apos;),&apos; &apos;,&apos;&apos;) ,11,2)&amp; &apos;000/FilingApplet&apos;}&quot;;
+	applet.id=&quot;filingapp&quot;;
+	applet = this.parentNode.appendChild(applet);
+	setTimeout(function(){
+		var elem = document.getElementById(&quot;filingapp&quot;);
+		try{openNewOutlookMail(elem);}catch(ex){alert(ex);}
+	},100);
+}
+else{
+	openNewOutlookMail(applet);
+}</url>
+</WebLink>

@@ -1,0 +1,1395 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>AcceptProductInListView_Error_Format</fullName>
+        <categories>AcceptProductInListView</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AcceptProductInListView Error Format</shortDescription>
+        <value>Product of application - {0}: Could not continue because - {1}</value>
+    </labels>
+    <labels>
+        <fullName>Account_Required</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Account_Required</shortDescription>
+        <value>true</value>
+    </labels>
+    <labels>
+        <fullName>Activity_Subject</fullName>
+        <language>iw</language>
+        <protected>false</protected>
+        <shortDescription>Activity Subject</shortDescription>
+        <value>Subject</value>
+    </labels>
+    <labels>
+        <fullName>Add_Product</fullName>
+        <language>iw</language>
+        <protected>false</protected>
+        <shortDescription>Add Product</shortDescription>
+        <value>Add Product</value>
+    </labels>
+    <labels>
+        <fullName>Add_Split</fullName>
+        <categories>Policy Management</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Add Split</shortDescription>
+        <value>Add Split</value>
+    </labels>
+    <labels>
+        <fullName>Advanced_Search</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Advanced Search</shortDescription>
+        <value>Advanced Search</value>
+    </labels>
+    <labels>
+        <fullName>Agency_Fee</fullName>
+        <categories>Policy Management</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Agency Fee</shortDescription>
+        <value>Agency Fee</value>
+    </labels>
+    <labels>
+        <fullName>Agency_Name</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Agency_Name</shortDescription>
+        <value>Agency Name</value>
+    </labels>
+    <labels>
+        <fullName>All</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>All</shortDescription>
+        <value>All</value>
+    </labels>
+    <labels>
+        <fullName>All_Products_Were_Converted</fullName>
+        <categories>Products Conversion</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>All Products Were Converted</shortDescription>
+        <value>All products were converted</value>
+    </labels>
+    <labels>
+        <fullName>Application</fullName>
+        <categories>Policy Management</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Application</shortDescription>
+        <value>Application</value>
+    </labels>
+    <labels>
+        <fullName>Application_Object_not_exist</fullName>
+        <language>iw</language>
+        <protected>false</protected>
+        <shortDescription>Application Object not exist</shortDescription>
+        <value>הצעה לא נבחרה</value>
+    </labels>
+    <labels>
+        <fullName>Assign_to</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Assigned to</shortDescription>
+        <value>Assigned to</value>
+    </labels>
+    <labels>
+        <fullName>AttachAndEmail</fullName>
+        <language>iw</language>
+        <protected>false</protected>
+        <shortDescription>AttachAndEmail</shortDescription>
+        <value>Attach And Email</value>
+    </labels>
+    <labels>
+        <fullName>Bpm_Application_Account</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Bpm Application Account</shortDescription>
+        <value>0012p00002UVodB</value>
+    </labels>
+    <labels>
+        <fullName>Business_Account_Invalid_Tax_Id</fullName>
+        <categories>Account Trigger</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Business Account Invalid Tax Id</shortDescription>
+        <value>Invalid Tax Id</value>
+    </labels>
+    <labels>
+        <fullName>Cancel</fullName>
+        <categories>Receipt</categories>
+        <language>iw</language>
+        <protected>false</protected>
+        <shortDescription>Cancel</shortDescription>
+        <value>ביטול</value>
+    </labels>
+    <labels>
+        <fullName>Cancel_Policy</fullName>
+        <categories>Policy Management</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Cancel Policy</shortDescription>
+        <value>Cancel Policy</value>
+    </labels>
+    <labels>
+        <fullName>Cannot_input_lower_value_than_exist_in_the_system</fullName>
+        <categories>Policy Management</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Cannot input lower value than exist in the system</shortDescription>
+        <value>Cannot input lower value than exist in the system</value>
+    </labels>
+    <labels>
+        <fullName>Change_Filter</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Change Filter</shortDescription>
+        <value>No results on this filter(s) - change filter parameters</value>
+    </labels>
+    <labels>
+        <fullName>Check_PolicyCreation_Job_Status_Final_Message</fullName>
+        <categories>merge Production</categories>
+        <language>iw</language>
+        <protected>false</protected>
+        <shortDescription>Check PolicyCreation Job Status Final Message</shortDescription>
+        <value>Final job result:</value>
+    </labels>
+    <labels>
+        <fullName>Check_PolicyCreation_Job_Status_Not_Aborted_Failed</fullName>
+        <categories>merge Production</categories>
+        <language>iw</language>
+        <protected>false</protected>
+        <shortDescription>Check PolicyCreation Job Status Not Aborted/Failed</shortDescription>
+        <value>{0} items processed out of {1}.</value>
+    </labels>
+    <labels>
+        <fullName>Check_Policy_Creation_Job_Status_Abort_Failed</fullName>
+        <categories>merge Production</categories>
+        <language>iw</language>
+        <protected>false</protected>
+        <shortDescription>Check Policy Creation Job Status Abort/Failed</shortDescription>
+        <value>Policy creation Job {0} {1}. Only {2} job Items completed, out of {3}.</value>
+    </labels>
+    <labels>
+        <fullName>Check_Policy_Creation_Job_Status_Errors</fullName>
+        <categories>merge Production</categories>
+        <language>iw</language>
+        <protected>false</protected>
+        <shortDescription>Check_Policy Creation Job Status Errors</shortDescription>
+        <value>There where {0} errors.\nError Description: {1}</value>
+    </labels>
+    <labels>
+        <fullName>Check_Policy_Creation_Job_Status_Wait_Processing</fullName>
+        <categories>merge Production</categories>
+        <language>iw</language>
+        <protected>false</protected>
+        <shortDescription>Check_Policy Creation Job Status Wait Processing</shortDescription>
+        <value>Wait. Processing...</value>
+    </labels>
+    <labels>
+        <fullName>Choose_format</fullName>
+        <categories>Commission Upload Screen</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Choose format</shortDescription>
+        <value>Choose File Format</value>
+    </labels>
+    <labels>
+        <fullName>Client_Payment</fullName>
+        <categories>Payments</categories>
+        <language>iw</language>
+        <protected>false</protected>
+        <shortDescription>Client Payment</shortDescription>
+        <value>Client Payment</value>
+    </labels>
+    <labels>
+        <fullName>Close</fullName>
+        <language>iw</language>
+        <protected>false</protected>
+        <shortDescription>Close</shortDescription>
+        <value>סגור</value>
+    </labels>
+    <labels>
+        <fullName>Commission</fullName>
+        <categories>Policy Management</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Commission</shortDescription>
+        <value>Commission</value>
+    </labels>
+    <labels>
+        <fullName>Commission_Upload_Title</fullName>
+        <categories>Commission Upload Screen</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Commission Upload Title</shortDescription>
+        <value>מסך טעינת עמלות</value>
+    </labels>
+    <labels>
+        <fullName>Commission_input_in_percentage_or_round_number</fullName>
+        <categories>Policy Management</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Commission input in percentage or round number</shortDescription>
+        <value>Commission input in percentage or round number</value>
+    </labels>
+    <labels>
+        <fullName>Commission_input_in_percentage_or_round_number_for_external_carrier_broker</fullName>
+        <categories>Policy Management</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Commission input in percentage or round number for external carrier/ broker</shortDescription>
+        <value>Commission input in percentage or round number for external carrier/ broker</value>
+    </labels>
+    <labels>
+        <fullName>Confirm</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Confirm</shortDescription>
+        <value>Confirm</value>
+    </labels>
+    <labels>
+        <fullName>Constructors_Details</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Constructors Details</shortDescription>
+        <value>Constructors Details</value>
+    </labels>
+    <labels>
+        <fullName>Contacts</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Contacts</shortDescription>
+        <value>Contacts</value>
+    </labels>
+    <labels>
+        <fullName>Conversation_With_Customer</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Conversation With Customer</shortDescription>
+        <value>Conversation With Customer</value>
+    </labels>
+    <labels>
+        <fullName>Conversion_Process_Finished</fullName>
+        <categories>Products Conversion</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Conversion Process Finished</shortDescription>
+        <value>Conversion process finished</value>
+    </labels>
+    <labels>
+        <fullName>ConvertProductsToPolicies_Error</fullName>
+        <categories>ConvertProductsToPolicies</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Error</shortDescription>
+        <value>The following error has occured:</value>
+    </labels>
+    <labels>
+        <fullName>ConvertProductsToPolicies_Missing_Products</fullName>
+        <categories>ConvertProductsToPolicies</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>No products</shortDescription>
+        <value>Please select at least one product</value>
+    </labels>
+    <labels>
+        <fullName>ConvertProductsToPolicies_Missing_Valid_Products</fullName>
+        <categories>ConvertProductsToPolicies</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>No products</shortDescription>
+        <value>No valid product has been found</value>
+    </labels>
+    <labels>
+        <fullName>ConvertProductsToPolicies_Success</fullName>
+        <categories>ConvertProductsToPolicies</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Error</shortDescription>
+        <value>The products were converted successfully!</value>
+    </labels>
+    <labels>
+        <fullName>ConvertedToPolicyMsg</fullName>
+        <categories>Policy Management</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ConvertedToPolicyMsg</shortDescription>
+        <value>A policy has been successfully created for the selected product(s). You can view all the policies in the policy section</value>
+    </labels>
+    <labels>
+        <fullName>Converting_Please_Wait</fullName>
+        <categories>Products Conversion</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Converting Please Wait</shortDescription>
+        <value>Converting, please wait...</value>
+    </labels>
+    <labels>
+        <fullName>Create</fullName>
+        <categories>Receipt</categories>
+        <language>iw</language>
+        <protected>false</protected>
+        <shortDescription>Create</shortDescription>
+        <value>יצירה</value>
+    </labels>
+    <labels>
+        <fullName>Create_Receipts_Page</fullName>
+        <categories>Receipts</categories>
+        <language>iw</language>
+        <protected>false</protected>
+        <shortDescription>Create Receipts Page</shortDescription>
+        <value>הכנת קבלה על המחאות לפוליסה</value>
+    </labels>
+    <labels>
+        <fullName>Currency</fullName>
+        <categories>Policy Management</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Currency</shortDescription>
+        <value>Currency</value>
+    </labels>
+    <labels>
+        <fullName>Customer_answered</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Customer answered</shortDescription>
+        <value>Client has responded to the email</value>
+    </labels>
+    <labels>
+        <fullName>Date_Sent_Received</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Date Sent/Received</shortDescription>
+        <value>Date Sent/Received</value>
+    </labels>
+    <labels>
+        <fullName>E_Mail</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>E-Mail</shortDescription>
+        <value>E-Mail</value>
+    </labels>
+    <labels>
+        <fullName>Edit</fullName>
+        <language>iw</language>
+        <protected>false</protected>
+        <shortDescription>Edit</shortDescription>
+        <value>Edit</value>
+    </labels>
+    <labels>
+        <fullName>Email_counter</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Email counter</shortDescription>
+        <value>Number of  sent emails: {0}</value>
+    </labels>
+    <labels>
+        <fullName>Enter_Default_Email</fullName>
+        <language>iw</language>
+        <protected>false</protected>
+        <shortDescription>Enter Default Email</shortDescription>
+        <value>Please type in the desired email</value>
+    </labels>
+    <labels>
+        <fullName>Enter_Default_Fax_Number</fullName>
+        <language>iw</language>
+        <protected>false</protected>
+        <shortDescription>Enter Default Fax Number</shortDescription>
+        <value>Please type in the desired fax number</value>
+    </labels>
+    <labels>
+        <fullName>Error</fullName>
+        <categories>Commission Upload Screen</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Error</shortDescription>
+        <value>Error</value>
+    </labels>
+    <labels>
+        <fullName>Error_Empty_file</fullName>
+        <categories>Commission Upload Screen</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Error - Empty file</shortDescription>
+        <value>File is empty.</value>
+    </labels>
+    <labels>
+        <fullName>Error_Missing_mandatory_fields</fullName>
+        <categories>Commission Upload Screen</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Error - Missing mandatory fields</shortDescription>
+        <value>Mandatory fields are missing.</value>
+    </labels>
+    <labels>
+        <fullName>Error_No_fields_mapping_under_format</fullName>
+        <categories>Commission Upload Screen</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Error - No fields mapping under format</shortDescription>
+        <value>No Field mapping under selected format</value>
+    </labels>
+    <labels>
+        <fullName>Extension_Change</fullName>
+        <categories>Policy Management</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Change\ Extension</shortDescription>
+        <value>Change \ Extension</value>
+    </labels>
+    <labels>
+        <fullName>External_Claim_Department_Group_Id</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>External Claim Department Group Id</shortDescription>
+        <value>00GD0000002ESt7</value>
+    </labels>
+    <labels>
+        <fullName>Fees_In_Front</fullName>
+        <categories>Policy Management</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Fees In Front</shortDescription>
+        <value>Fees In Front</value>
+    </labels>
+    <labels>
+        <fullName>File</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>File</shortDescription>
+        <value>File</value>
+    </labels>
+    <labels>
+        <fullName>File_Action</fullName>
+        <language>iw</language>
+        <protected>false</protected>
+        <shortDescription>File Action</shortDescription>
+        <value>תייק</value>
+    </labels>
+    <labels>
+        <fullName>File_All_Action</fullName>
+        <language>iw</language>
+        <protected>false</protected>
+        <shortDescription>File All Action</shortDescription>
+        <value>תייק הכל</value>
+    </labels>
+    <labels>
+        <fullName>File_Error_Message</fullName>
+        <language>iw</language>
+        <protected>false</protected>
+        <shortDescription>File Error Message</shortDescription>
+        <value>התיוק נכשל</value>
+    </labels>
+    <labels>
+        <fullName>File_Name</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>File Name</shortDescription>
+        <value>File Name</value>
+    </labels>
+    <labels>
+        <fullName>File_Properties</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>File Properties</shortDescription>
+        <value>File Properties</value>
+    </labels>
+    <labels>
+        <fullName>File_Size</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>File Size</shortDescription>
+        <value>File Size</value>
+    </labels>
+    <labels>
+        <fullName>File_Success_Message</fullName>
+        <language>iw</language>
+        <protected>false</protected>
+        <shortDescription>File Success Message</shortDescription>
+        <value>התיוק הסתיים בהצלחה</value>
+    </labels>
+    <labels>
+        <fullName>File_Type</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>File Type</shortDescription>
+        <value>File Type</value>
+    </labels>
+    <labels>
+        <fullName>File_Types</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>File Types</shortDescription>
+        <value>File Types</value>
+    </labels>
+    <labels>
+        <fullName>File_a_File</fullName>
+        <language>iw</language>
+        <protected>false</protected>
+        <shortDescription>File a File</shortDescription>
+        <value>File</value>
+    </labels>
+    <labels>
+        <fullName>File_format</fullName>
+        <categories>Commission Upload Screen</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>File format</shortDescription>
+        <value>File Format</value>
+    </labels>
+    <labels>
+        <fullName>Files</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Files</shortDescription>
+        <value>Files</value>
+    </labels>
+    <labels>
+        <fullName>Filing_Date</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Filing Date</shortDescription>
+        <value>Filing Date</value>
+    </labels>
+    <labels>
+        <fullName>Filing_Delete_Message</fullName>
+        <language>iw</language>
+        <protected>false</protected>
+        <shortDescription>Filing Delete Message</shortDescription>
+        <value>מחיקת קובץ לאחר תיוק</value>
+    </labels>
+    <labels>
+        <fullName>Filing_files</fullName>
+        <language>iw</language>
+        <protected>false</protected>
+        <shortDescription>Filing files</shortDescription>
+        <value>תייק קבצים</value>
+    </labels>
+    <labels>
+        <fullName>Filing_records</fullName>
+        <language>iw</language>
+        <protected>false</protected>
+        <shortDescription>Filing records</shortDescription>
+        <value>תייק הקלטות</value>
+    </labels>
+    <labels>
+        <fullName>Filing_scans</fullName>
+        <language>iw</language>
+        <protected>false</protected>
+        <shortDescription>Filing scans</shortDescription>
+        <value>תייק סריקות</value>
+    </labels>
+    <labels>
+        <fullName>Filter_Changed</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Filter Changed</shortDescription>
+        <value>Filters have been changed</value>
+    </labels>
+    <labels>
+        <fullName>Filterd_from</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Filterd from</shortDescription>
+        <value>Filterd from</value>
+    </labels>
+    <labels>
+        <fullName>First_Page</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>First Page</shortDescription>
+        <value>First Page</value>
+    </labels>
+    <labels>
+        <fullName>For_external_carrier_broker</fullName>
+        <categories>Policy Management</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>For external carrier/ broker</shortDescription>
+        <value>For external carrier/ broker</value>
+    </labels>
+    <labels>
+        <fullName>For_local_carrier</fullName>
+        <categories>Policy Management</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>For local carrier</shortDescription>
+        <value>For local carrier</value>
+    </labels>
+    <labels>
+        <fullName>Free_Text</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Free Text</shortDescription>
+        <value>Free Text</value>
+    </labels>
+    <labels>
+        <fullName>GApiKey</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>GApiKey</shortDescription>
+        <value>ABQIAAAARms8MGvnV-BbiTjwR8z1eBST0mNpJvtWvmgvEdrgGXs5szHHahQdD86Zd50nyAzG0QAkxwmgieQrLQ</value>
+    </labels>
+    <labels>
+        <fullName>General</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>General</shortDescription>
+        <value>General</value>
+    </labels>
+    <labels>
+        <fullName>In_Process</fullName>
+        <language>iw</language>
+        <protected>false</protected>
+        <shortDescription>In Process</shortDescription>
+        <value>בטיפול</value>
+    </labels>
+    <labels>
+        <fullName>Income_From_Front</fullName>
+        <categories>Policy Management</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Income From Front</shortDescription>
+        <value>Income From Front</value>
+    </labels>
+    <labels>
+        <fullName>Income_Reason</fullName>
+        <categories>Policy Management</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Income Reason</shortDescription>
+        <value>Income Reason</value>
+    </labels>
+    <labels>
+        <fullName>Income_from_broker</fullName>
+        <categories>Policy Management</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Income from broker</shortDescription>
+        <value>Income from broker</value>
+    </labels>
+    <labels>
+        <fullName>Income_from_carrier</fullName>
+        <categories>Policy Management</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Income from carrier</shortDescription>
+        <value>Income from carrier</value>
+    </labels>
+    <labels>
+        <fullName>Income_from_file</fullName>
+        <categories>Policy Management</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Income from file</shortDescription>
+        <value>Income from file</value>
+    </labels>
+    <labels>
+        <fullName>Invalid_Date</fullName>
+        <categories>AcceptProductInListView</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Invalid Date</shortDescription>
+        <value>Novidea_HPC__Effective_Date__c is not within 30 days</value>
+    </labels>
+    <labels>
+        <fullName>Involved_In_Claim</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Involved In Claim</shortDescription>
+        <value>Involved In Claim</value>
+    </labels>
+    <labels>
+        <fullName>Language_Code</fullName>
+        <language>iw</language>
+        <protected>false</protected>
+        <shortDescription>Language Code</shortDescription>
+        <value>he</value>
+    </labels>
+    <labels>
+        <fullName>Last_Page</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Last Page</shortDescription>
+        <value>Last Page</value>
+    </labels>
+    <labels>
+        <fullName>Lead</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Lead</shortDescription>
+        <value>Lead</value>
+    </labels>
+    <labels>
+        <fullName>Leads_Number</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Leads Number</shortDescription>
+        <value>Based on the given parameters, {0} leads will be created.</value>
+    </labels>
+    <labels>
+        <fullName>LineBreak</fullName>
+        <language>iw</language>
+        <protected>false</protected>
+        <shortDescription>LineBreak</shortDescription>
+        <value>a
+b</value>
+    </labels>
+    <labels>
+        <fullName>Loading_Files</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Loading Files</shortDescription>
+        <value>Loading Files...</value>
+    </labels>
+    <labels>
+        <fullName>Mail_Attachment</fullName>
+        <language>iw</language>
+        <protected>false</protected>
+        <shortDescription>Mail Attachment</shortDescription>
+        <value>Mail Attachment</value>
+    </labels>
+    <labels>
+        <fullName>Mark_for_Filing</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Mark for Filing</shortDescription>
+        <value>Mark for Filing</value>
+    </labels>
+    <labels>
+        <fullName>Michal_Shlomo_User_Id</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Michal Shlomo User Id</shortDescription>
+        <value>0054G00000BwfF3QAJ</value>
+    </labels>
+    <labels>
+        <fullName>Mirav_Itach_User_Id</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Mirav Itach User Id</shortDescription>
+        <value>005D0000005VoLCIA0</value>
+    </labels>
+    <labels>
+        <fullName>Missing_Application</fullName>
+        <categories>AcceptProductInListView</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Missing Application</shortDescription>
+        <value>The Product missing application</value>
+    </labels>
+    <labels>
+        <fullName>Missing_Carrier</fullName>
+        <categories>AcceptProductInListView</categories>
+        <language>iw</language>
+        <protected>false</protected>
+        <shortDescription>Missing Carrier</shortDescription>
+        <value>The Product missing a carrier</value>
+    </labels>
+    <labels>
+        <fullName>Name</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Name</shortDescription>
+        <value>Name</value>
+    </labels>
+    <labels>
+        <fullName>New</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>New</shortDescription>
+        <value>New</value>
+    </labels>
+    <labels>
+        <fullName>New_Task</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>New Task</shortDescription>
+        <value>New Task</value>
+    </labels>
+    <labels>
+        <fullName>Next_Page</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Next Page</shortDescription>
+        <value>Next Page</value>
+    </labels>
+    <labels>
+        <fullName>No</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>No</shortDescription>
+        <value>No</value>
+    </labels>
+    <labels>
+        <fullName>No_Available_Files</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>No Available Files</shortDescription>
+        <value>No Available Files</value>
+    </labels>
+    <labels>
+        <fullName>No_Results_Found</fullName>
+        <categories>autocomplete</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>No Results Found</shortDescription>
+        <value>No results found</value>
+    </labels>
+    <labels>
+        <fullName>No_file_uploaded</fullName>
+        <categories>Commission Upload Screen</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>No file uploaded</shortDescription>
+        <value>No file uploaded</value>
+    </labels>
+    <labels>
+        <fullName>None_Saved</fullName>
+        <categories>Policy Management</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>None Saved</shortDescription>
+        <value>None Of The Records Were Saved</value>
+    </labels>
+    <labels>
+        <fullName>Not_All_email_send</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Not all email send</shortDescription>
+        <value>Not all emails were sent to leads, due to missing contact email details.</value>
+    </labels>
+    <labels>
+        <fullName>Numb_Of_Policies_Converted_Out_Of_Total</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Numb Of Policies Converted Out Of Total</shortDescription>
+        <value>{0} out of {1} products were successfully converted</value>
+    </labels>
+    <labels>
+        <fullName>Open_new_task</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Open New Task</shortDescription>
+        <value>Open New Task</value>
+    </labels>
+    <labels>
+        <fullName>Other_Commission</fullName>
+        <categories>Policy Management</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Other Commission</shortDescription>
+        <value>Other Commission</value>
+    </labels>
+    <labels>
+        <fullName>Outlook_Delete_Message</fullName>
+        <language>iw</language>
+        <protected>false</protected>
+        <shortDescription>Outlook Delete Message</shortDescription>
+        <value>מחיקה מ-outlook לאחר תיוק</value>
+    </labels>
+    <labels>
+        <fullName>Owner</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Owner</shortDescription>
+        <value>Owner</value>
+    </labels>
+    <labels>
+        <fullName>ParentPolicyTypeID</fullName>
+        <language>iw</language>
+        <protected>false</protected>
+        <shortDescription>ParentPolicyTypeID</shortDescription>
+        <value>0124G000000t493QAA</value>
+    </labels>
+    <labels>
+        <fullName>Policy_time_period_too_small</fullName>
+        <categories>Policy Management</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>time period of policy too small</shortDescription>
+        <value>Time period of the policy is too small. It must be equal or greater than {0} days.</value>
+    </labels>
+    <labels>
+        <fullName>Powerpoint</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Powerpoint</shortDescription>
+        <value>Powerpoint</value>
+    </labels>
+    <labels>
+        <fullName>Premium_Payment</fullName>
+        <categories>Policy Management</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Premium Payment</shortDescription>
+        <value>Premium Payment</value>
+    </labels>
+    <labels>
+        <fullName>Premium_and_Income_Breakdown</fullName>
+        <categories>Policy Management</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Premium and Income Breakdown</shortDescription>
+        <value>Premium and Income Breakdown</value>
+    </labels>
+    <labels>
+        <fullName>Preview</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Preview</shortDescription>
+        <value>Preview</value>
+    </labels>
+    <labels>
+        <fullName>Previous_Page</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Previous Page</shortDescription>
+        <value>Previous Page</value>
+    </labels>
+    <labels>
+        <fullName>Previous_Premium</fullName>
+        <language>iw</language>
+        <protected>false</protected>
+        <shortDescription>Previous Premium</shortDescription>
+        <value>Previous Premium</value>
+    </labels>
+    <labels>
+        <fullName>Print_Document</fullName>
+        <language>iw</language>
+        <protected>false</protected>
+        <shortDescription>Print Document</shortDescription>
+        <value>Print Document</value>
+    </labels>
+    <labels>
+        <fullName>ProductCategoryId</fullName>
+        <language>iw</language>
+        <protected>false</protected>
+        <shortDescription>ProductDefKablanimId</shortDescription>
+        <value>a0P4G00000kaSZSUA2</value>
+    </labels>
+    <labels>
+        <fullName>ProductDefIDPolicaBat</fullName>
+        <language>iw</language>
+        <protected>false</protected>
+        <shortDescription>ProductDefIDPolicaBat</shortDescription>
+        <value>a0P4G00000kaSZXUA2</value>
+    </labels>
+    <labels>
+        <fullName>RFP</fullName>
+        <categories>Policy Management</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RFP</shortDescription>
+        <value>RFP</value>
+    </labels>
+    <labels>
+        <fullName>Receiver</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Receiver</shortDescription>
+        <value>Receiver</value>
+    </labels>
+    <labels>
+        <fullName>Record_Marked_for_Filing</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Record Marked for Filing</shortDescription>
+        <value>Record Marked for Filing</value>
+    </labels>
+    <labels>
+        <fullName>Related_To</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Related To</shortDescription>
+        <value>Related To</value>
+    </labels>
+    <labels>
+        <fullName>Remarks</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Remarks</shortDescription>
+        <value>Remarks</value>
+    </labels>
+    <labels>
+        <fullName>Sachar_Filsner_User_recordId</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Sachar Pilsner User recordId</shortDescription>
+        <value>005D0000001zbHbIAI</value>
+    </labels>
+    <labels>
+        <fullName>SalesforceURL</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SalesforceURL</shortDescription>
+        <value>howdenil--hwdnilflsb.sandbox.my.salesforce.com</value>
+    </labels>
+    <labels>
+        <fullName>Search</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Search</shortDescription>
+        <value>Search</value>
+    </labels>
+    <labels>
+        <fullName>Search_Context</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Search Context</shortDescription>
+        <value>file</value>
+    </labels>
+    <labels>
+        <fullName>Search_Length_Warning</fullName>
+        <language>iw</language>
+        <protected>false</protected>
+        <shortDescription>Search Length Warning</shortDescription>
+        <value>Text search must be at least two characters.</value>
+    </labels>
+    <labels>
+        <fullName>Searching</fullName>
+        <categories>autocomplete</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Searching</shortDescription>
+        <value>Searching...</value>
+    </labels>
+    <labels>
+        <fullName>Select</fullName>
+        <categories>Receipt</categories>
+        <language>iw</language>
+        <protected>false</protected>
+        <shortDescription>Select</shortDescription>
+        <value>בחירה</value>
+    </labels>
+    <labels>
+        <fullName>Select_Cancellation_Reason</fullName>
+        <language>iw</language>
+        <protected>false</protected>
+        <shortDescription>Select Cancellation Reason</shortDescription>
+        <value>בחר סיבת אובדן</value>
+    </labels>
+    <labels>
+        <fullName>Select_product_for_create_lead</fullName>
+        <categories>error message</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Select product for create lead</shortDescription>
+        <value>Please select required products to create leads</value>
+    </labels>
+    <labels>
+        <fullName>Send_Email</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Send Email</shortDescription>
+        <value>Send Email</value>
+    </labels>
+    <labels>
+        <fullName>Send_Fax</fullName>
+        <language>iw</language>
+        <protected>false</protected>
+        <shortDescription>Send Fax</shortDescription>
+        <value>Send Fax</value>
+    </labels>
+    <labels>
+        <fullName>Send_SMS</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Send SMS</shortDescription>
+        <value>Send SMS</value>
+    </labels>
+    <labels>
+        <fullName>Sender</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Sender</shortDescription>
+        <value>Sender</value>
+    </labels>
+    <labels>
+        <fullName>Showing</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Showing</shortDescription>
+        <value>Showing</value>
+    </labels>
+    <labels>
+        <fullName>Showing_Total_of</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Showing Total of</shortDescription>
+        <value>Showing Total of</value>
+    </labels>
+    <labels>
+        <fullName>Status_Enabled</fullName>
+        <categories>Policy Management</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Status Enabled</shortDescription>
+        <value>status enabled only if product definition and carrier are entered</value>
+    </labels>
+    <labels>
+        <fullName>Status_Not_Suitable</fullName>
+        <categories>Policy Management</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Status Not Suitable</shortDescription>
+        <value>Status of one or more selected products not suitable for this operation</value>
+    </labels>
+    <labels>
+        <fullName>Strictly_Policy</fullName>
+        <language>iw</language>
+        <protected>false</protected>
+        <shortDescription>Strictly Policy</shortDescription>
+        <value>No Application Or Lead was in the process</value>
+    </labels>
+    <labels>
+        <fullName>Sub_Agent_Exists_Warning</fullName>
+        <categories>Sub-Agent Agreement</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Sub-Agent Exists Warning</shortDescription>
+        <value>A sub-agent exists in the policy Client, is he rewarded in this transaction?</value>
+    </labels>
+    <labels>
+        <fullName>Subject</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Subject</shortDescription>
+        <value>Subject</value>
+    </labels>
+    <labels>
+        <fullName>Success_message</fullName>
+        <categories>Commission Upload Screen</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Success message</shortDescription>
+        <value>was uploaded successfully.</value>
+    </labels>
+    <labels>
+        <fullName>Sum_Of_Premium</fullName>
+        <language>iw</language>
+        <protected>false</protected>
+        <shortDescription>Sum Of Premium</shortDescription>
+        <value>Sum Of Premium</value>
+    </labels>
+    <labels>
+        <fullName>TB_irrelevant_values</fullName>
+        <categories>Policy Management</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>TB irrelevant values</shortDescription>
+        <value>The field TB % must contain numbers greater than 0.</value>
+    </labels>
+    <labels>
+        <fullName>TB_not_value</fullName>
+        <categories>Policy Management</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>TB not value</shortDescription>
+        <value>Missing TD %</value>
+    </labels>
+    <labels>
+        <fullName>Text_Alignment</fullName>
+        <language>iw</language>
+        <protected>false</protected>
+        <shortDescription>Text Alignment</shortDescription>
+        <value>right</value>
+    </labels>
+    <labels>
+        <fullName>Text_Alignment_Reverse</fullName>
+        <language>iw</language>
+        <protected>false</protected>
+        <shortDescription>Text Alignment Reverse</shortDescription>
+        <value>left</value>
+    </labels>
+    <labels>
+        <fullName>Text_Direction</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Text Direction</shortDescription>
+        <value>rtl</value>
+    </labels>
+    <labels>
+        <fullName>Text_File</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Text File</shortDescription>
+        <value>Text</value>
+    </labels>
+    <labels>
+        <fullName>The_selected_policy_already_has_payment_in_the_selected_month</fullName>
+        <categories>Policy Management</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>The selected policy already has payment in the selected month</shortDescription>
+        <value>The selected policy already has payment in the selected month</value>
+    </labels>
+    <labels>
+        <fullName>The_selected_policy_is_not_related_to_carrier</fullName>
+        <categories>Policy Management</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>The selected policy is not related to carrier</shortDescription>
+        <value>The selected policy is not related to carrier</value>
+    </labels>
+    <labels>
+        <fullName>Underwriter_Commission</fullName>
+        <categories>Policy Management</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Underwriter Commission</shortDescription>
+        <value>Underwriter Comm.</value>
+    </labels>
+    <labels>
+        <fullName>Unknown</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Unknown</shortDescription>
+        <value>לא ידוע</value>
+    </labels>
+    <labels>
+        <fullName>Upload_button</fullName>
+        <categories>Commission Upload Screen</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Upload button</shortDescription>
+        <value>Upload</value>
+    </labels>
+    <labels>
+        <fullName>Uploaded_file</fullName>
+        <categories>Commission Upload Screen</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Uploaded file</shortDescription>
+        <value>Uploaded file :</value>
+    </labels>
+    <labels>
+        <fullName>Validation_PickList_Cancellation_Reason</fullName>
+        <language>iw</language>
+        <protected>false</protected>
+        <shortDescription>Validation PickList Cancellation Reason</shortDescription>
+        <value>נא לעדכן את סיבת האובדן</value>
+    </labels>
+    <labels>
+        <fullName>Validation_Textarea_Cancellation_Reason</fullName>
+        <language>iw</language>
+        <protected>false</protected>
+        <shortDescription>Validation Textarea Cancellation Reason</shortDescription>
+        <value>נא לפרט את סיבת האובדן</value>
+    </labels>
+    <labels>
+        <fullName>Validation_User_Answers_Sub_Agent_Agreement</fullName>
+        <categories>Sub-Agent Agreement</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Validation User Answers Sub-Agent Agreement</shortDescription>
+        <value>Need to answer if policy client is rewarded in transaction</value>
+    </labels>
+    <labels>
+        <fullName>Validation_error</fullName>
+        <categories>error message</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Validation error</shortDescription>
+        <value>Please correct errors</value>
+    </labels>
+    <labels>
+        <fullName>Wise_Product_recordId</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Wise Product recordId</shortDescription>
+        <value>a0P4G00000iHZ9FUAW</value>
+    </labels>
+    <labels>
+        <fullName>Word_File</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Word_File</shortDescription>
+        <value>word</value>
+    </labels>
+    <labels>
+        <fullName>Wrong_Product_Status</fullName>
+        <categories>AcceptProductInListView</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Wrong Product Status</shortDescription>
+        <value>The Product Status could not be Cancelled, Converted, or Approved For Transaction,
+And Should be one of Active, Received Or Sent to client</value>
+    </labels>
+    <labels>
+        <fullName>Wrong_RecordType</fullName>
+        <categories>AcceptProductInListView</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Wrong RecordType</shortDescription>
+        <value>The product type should be General_Product</value>
+    </labels>
+    <labels>
+        <fullName>Yes</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Yes</shortDescription>
+        <value>Yes</value>
+    </labels>
+    <labels>
+        <fullName>direction</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>direction</shortDescription>
+        <value>ltr</value>
+    </labels>
+    <labels>
+        <fullName>direction_reverse</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>direction reverse</shortDescription>
+        <value>rtl</value>
+    </labels>
+    <labels>
+        <fullName>excel_file</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>excel file</shortDescription>
+        <value>excel file</value>
+    </labels>
+    <labels>
+        <fullName>from_Date</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>from Date</shortDescription>
+        <value>from Date</value>
+    </labels>
+    <labels>
+        <fullName>no_rights_to_change_confirmed_income</fullName>
+        <categories>Policy Management</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>no rights to change confirmed income</shortDescription>
+        <value>You have no rights to change the confirmed income &apos;{0}&apos; of the policy &apos;{1}&apos;.</value>
+    </labels>
+    <labels>
+        <fullName>reminder</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>reminder</shortDescription>
+        <value>Reminder</value>
+    </labels>
+    <labels>
+        <fullName>to</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>to</shortDescription>
+        <value>to</value>
+    </labels>
+    <labels>
+        <fullName>to_Date</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>to Date</shortDescription>
+        <value>to Date</value>
+    </labels>
+</CustomLabels>

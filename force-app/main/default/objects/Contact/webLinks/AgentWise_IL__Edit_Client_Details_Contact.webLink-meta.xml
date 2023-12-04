@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AgentWise_IL__Edit_Client_Details_Contact</fullName>
+    <availability>online</availability>
+    <displayType>button</displayType>
+    <encodingKey>UTF-8</encodingKey>
+    <height>600</height>
+    <linkType>url</linkType>
+    <masterLabel>Edit Client Details</masterLabel>
+    <openType>sidebar</openType>
+    <protected>false</protected>
+    <url>/apex/AgentWise_IL__ClientCreation?insuredId={!Contact.Id}</url>
+</WebLink>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AgentWise_IL__Credit_Card_Type__c</fullName>
+    <deprecated>false</deprecated>
+    <externalId>false</externalId>
+    <label>Credit Card Type</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>MasterCard</fullName>
+                <default>false</default>
+                <label>MasterCard</label>
+            </value>
+            <value>
+                <fullName>American Express</fullName>
+                <default>false</default>
+                <label>American Express</label>
+            </value>
+            <value>
+                <fullName>VISA</fullName>
+                <default>false</default>
+                <label>VISA</label>
+            </value>
+            <value>
+                <fullName>Isracard</fullName>
+                <default>false</default>
+                <label>Isracard</label>
+            </value>
+            <value>
+                <fullName>Diners</fullName>
+                <default>false</default>
+                <label>Diners</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

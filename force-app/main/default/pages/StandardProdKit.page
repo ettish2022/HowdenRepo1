@@ -1,0 +1,4 @@
+<apex:page standardController="Novidea_HPC__Application__c"  extensions="ProdKitController"  standardStylesheets="false" sidebar="false" showHeader="false" action="{!addStandardProductsKit}">
+<h1>Wait ... </h1>
+
+</apex:page>

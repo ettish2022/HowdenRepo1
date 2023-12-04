@@ -1,0 +1,11 @@
+<apex:page standardController="Novidea_HPC__Claim__c">
+
+<script>
+
+     window.open("/apex/NFILING__OutlookAddin?mode=0&entid={!Novidea_HPC__Claim__c}" ,null,"fullscreen=0,width=680,height=720,resizable=1,menubar=0,toolbar=0,location=0,scrollbars=1");
+
+     window.history.back();
+
+</script>
+
+</apex:page>

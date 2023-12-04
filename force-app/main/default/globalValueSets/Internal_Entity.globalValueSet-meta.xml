@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Howden 2002</fullName>
+        <default>false</default>
+        <label>Howden 2002</label>
+    </customValue>
+    <customValue>
+        <fullName>Howden 2011</fullName>
+        <default>false</default>
+        <label>Howden 2011</label>
+    </customValue>
+    <customValue>
+        <fullName>Howden Re</fullName>
+        <default>false</default>
+        <label>Howden Re</label>
+    </customValue>
+    <customValue>
+        <fullName>Howden Wise</fullName>
+        <default>false</default>
+        <label>Howden Wise</label>
+    </customValue>
+    <customValue>
+        <fullName>BZR</fullName>
+        <default>false</default>
+        <label>BZR</label>
+    </customValue>
+    <customValue>
+        <fullName>M.M.I</fullName>
+        <default>false</default>
+        <label>M.M.I</label>
+    </customValue>
+    <customValue>
+        <fullName>Howden Boutique</fullName>
+        <default>false</default>
+        <label>Howden Boutique</label>
+    </customValue>
+    <customValue>
+        <fullName>Nilibit</fullName>
+        <default>false</default>
+        <label>Nilibit</label>
+    </customValue>
+    <customValue>
+        <fullName>Howden Boutique (Nilibit)</fullName>
+        <default>false</default>
+        <label>Howden Boutique (Nilibit)</label>
+    </customValue>
+    <customValue>
+        <fullName>Howden 2002 (Nilibit)</fullName>
+        <default>false</default>
+        <label>Howden 2002 (Nilibit)</label>
+    </customValue>
+    <customValue>
+        <fullName>Howden Surety</fullName>
+        <default>false</default>
+        <label>Howden Surety</label>
+    </customValue>
+    <masterLabel>ישות פנים ארגונית</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LifeProfileMobileValidation</fullName>
+    <active>true</active>
+    <description>לפרופיל חיים, רק מעל גיל 18</description>
+    <errorConditionFormula>AND($Setup.Novidea_HPC__Trigger__c.Novidea_HPC__Stop_Validation_Rule__c =False,
+OR(
+$Profile.Name = &apos;Life Profile&apos;,
+$Profile.Name = &apos;Life Manager Profile&apos;),
+No_Cellular_phone__c =false,
+ISBLANK( MobilePhone ),
+AgentWise_IL__Age__c &gt; 18.0,
+NOT(ISCHANGED( Anti_Validate__c)),
+NOT(AND(
+ISNEW(),
+Flow_Creation__c = TRUE)))</errorConditionFormula>
+    <errorDisplayField>MobilePhone</errorDisplayField>
+    <errorMessage>חובה להזין טלפון נייד למבוטח מעל גיל 18</errorMessage>
+</ValidationRule>

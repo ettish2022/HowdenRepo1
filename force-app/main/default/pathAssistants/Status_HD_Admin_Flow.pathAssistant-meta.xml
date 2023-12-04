@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PathAssistant xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <entityName>Service_Desk__c</entityName>
+    <fieldName>Status__c</fieldName>
+    <masterLabel>Status HD Admin Flow</masterLabel>
+    <recordTypeName>Help_Desk_Admin</recordTypeName>
+</PathAssistant>

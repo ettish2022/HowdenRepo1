@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>מהנדס: ממונה בטיחות-פעילות מעל 20 אחוז</label>
+    <name>Mehandes_Memune_Betihut_Over_20_Percent__c</name>
+    <picklistValues>
+        <masterLabel>כן</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>לא</masterLabel>
+        <translation></translation>
+    </picklistValues>
+</CustomFieldTranslation>

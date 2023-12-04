@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <valueTranslation>
+        <masterLabel>Call</masterLabel>
+        <translation>קריאה</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other</masterLabel>
+        <translation>אחר</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Send Letter</masterLabel>
+        <translation>מכתב נשלח</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Send Quote</masterLabel>
+        <translation>הצעה נשלחה</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>בדיקת סטטוס תביעה</masterLabel>
+        <translation><!-- בדיקת סטטוס תביעה --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>בדיקת סטטוס תביעה משפטית</masterLabel>
+        <translation><!-- בדיקת סטטוס תביעה משפטית --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>בקשה לקבלת פוליסה</masterLabel>
+        <translation><!-- בקשה לקבלת פוליסה --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>דרישה מב&quot;כ צ&quot;ג</masterLabel>
+        <translation><!-- דרישה מב&quot;כ צ&quot;ג --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>הסדרת ייצוג</masterLabel>
+        <translation><!-- הסדרת ייצוג --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>השלמת מסמכים</masterLabel>
+        <translation><!-- השלמת מסמכים --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>התייחסות ממנהל תיק</masterLabel>
+        <translation><!-- התייחסות ממנהל תיק --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>חבות מעבידים- הודעת זהירות</masterLabel>
+        <translation><!-- חבות מעבידים- הודעת זהירות --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>להשיב למכתב דרישה</masterLabel>
+        <translation><!-- להשיב למכתב דרישה --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>לוודא שנוצר קשר עם עו&quot;ד</masterLabel>
+        <translation><!-- לוודא שנוצר קשר עם עו&quot;ד --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>לקוח נאסדק - קביעת פגישה</masterLabel>
+        <translation><!-- לקוח נאסדק - קביעת פגישה --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>לקוח נאסדק - תחילת טיפול בחידוש</masterLabel>
+        <translation><!-- לקוח נאסדק - תחילת טיפול בחידוש --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>מועד חזרה לעבודה</masterLabel>
+        <translation><!-- מועד חזרה לעבודה --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>מינוי מייצג</masterLabel>
+        <translation><!-- מינוי מייצג --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>מספר תביעה</masterLabel>
+        <translation><!-- מספר תביעה --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>מעקב השתתפות עצמית</masterLabel>
+        <translation><!-- מעקב השתתפות עצמית --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>מעקב כינון</masterLabel>
+        <translation><!-- מעקב כינון --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>סטטוס תשלום</masterLabel>
+        <translation><!-- סטטוס תשלום --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>סעיף 68</masterLabel>
+        <translation><!-- סעיף 68 --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>עדכון מהמבוטח</masterLabel>
+        <translation><!-- עדכון מהמבוטח --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>עדכון מהמבטח</masterLabel>
+        <translation><!-- עדכון מהמבטח --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>עדכון מהשמאי</masterLabel>
+        <translation><!-- עדכון מהשמאי --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>עדכון מעו&quot;ד מטפל</masterLabel>
+        <translation><!-- עדכון מעו&quot;ד מטפל --></translation>
+    </valueTranslation>
+</StandardValueSetTranslation>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>סטטוס פגישת עזיבת עבודה</label>
+    <name>Leaving_Work_Meeting_Status__c</name>
+    <picklistValues>
+        <masterLabel>טרם התקבלו הנחיות</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>טרם נבחר</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>נמסרו המלצות להמשך</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>פדיון</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>קבלה למעסיק חדש</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>ריסק זמני</masterLabel>
+        <translation></translation>
+    </picklistValues>
+</CustomFieldTranslation>

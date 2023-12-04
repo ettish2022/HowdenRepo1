@@ -1,0 +1,797 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sub_Category__c</fullName>
+    <externalId>false</externalId>
+    <label>Sub Category</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Category__c</controllingField>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>true</sorted>
+            <value>
+                <fullName>2TEAM</fullName>
+                <default>false</default>
+                <label>2TEAM</label>
+            </value>
+            <value>
+                <fullName>3CX</fullName>
+                <default>false</default>
+                <label>3CX</label>
+            </value>
+            <value>
+                <fullName>BI</fullName>
+                <default>false</default>
+                <label>BI</label>
+            </value>
+            <value>
+                <fullName>PDF/TIF</fullName>
+                <default>false</default>
+                <label>PDF/TIF</label>
+            </value>
+            <value>
+                <fullName>אוזניות</fullName>
+                <default>false</default>
+                <label>אוזניות</label>
+            </value>
+            <value>
+                <fullName>אי התאמה בין דיווח לפרודוקציה</fullName>
+                <default>false</default>
+                <label>אי התאמה בין דיווח לפרודוקציה</label>
+            </value>
+            <value>
+                <fullName>איפוס/החלפת סיסמה</fullName>
+                <default>false</default>
+                <label>איפוס/החלפת סיסמה</label>
+            </value>
+            <value>
+                <fullName>ארכיון</fullName>
+                <default>false</default>
+                <label>ארכיון</label>
+            </value>
+            <value>
+                <fullName>אתר חסום</fullName>
+                <default>false</default>
+                <label>אתר חסום</label>
+            </value>
+            <value>
+                <fullName>אתר לא עובד</fullName>
+                <default>false</default>
+                <label>אתר לא עובד</label>
+            </value>
+            <value>
+                <fullName>בבילון</fullName>
+                <default>false</default>
+                <label>בבילון</label>
+            </value>
+            <value>
+                <fullName>ביטול נעילת פוליסה</fullName>
+                <default>false</default>
+                <label>ביטול נעילת פוליסה</label>
+            </value>
+            <value>
+                <fullName>בירור והקמת הסכם סוכני משנה</fullName>
+                <default>false</default>
+                <label>בירור והקמת הסכם סוכני משנה</label>
+            </value>
+            <value>
+                <fullName>בירור עמלות</fullName>
+                <default>false</default>
+                <label>בירור עמלות</label>
+            </value>
+            <value>
+                <fullName>דפדפן</fullName>
+                <default>false</default>
+                <label>דפדפן</label>
+            </value>
+            <value>
+                <fullName>דרישה כללית</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>דרישה כללית</label>
+            </value>
+            <value>
+                <fullName>הגדרות תצוגה/שפה</fullName>
+                <default>false</default>
+                <label>הגדרות תצוגה/שפה</label>
+            </value>
+            <value>
+                <fullName>הגדרת חתימה</fullName>
+                <default>false</default>
+                <label>הגדרת חתימה</label>
+            </value>
+            <value>
+                <fullName>הגדרת כתובות מייל לסריקה</fullName>
+                <default>false</default>
+                <label>הגדרת כתובות מייל לסריקה</label>
+            </value>
+            <value>
+                <fullName>הגדרת מדפסת</fullName>
+                <default>false</default>
+                <label>הגדרת מדפסת</label>
+            </value>
+            <value>
+                <fullName>הגדרת מענה אוטומטי</fullName>
+                <default>false</default>
+                <label>הגדרת מענה אוטומטי</label>
+            </value>
+            <value>
+                <fullName>הגדרת פקס במחשב</fullName>
+                <default>false</default>
+                <label>הגדרת פקס במחשב</label>
+            </value>
+            <value>
+                <fullName>הודעת Bit Locker בהעלאת המחשב</fullName>
+                <default>false</default>
+                <label>הודעת Bit Locker בהעלאת המחשב</label>
+            </value>
+            <value>
+                <fullName>הוספת מרכז רווח בדיווח</fullName>
+                <default>false</default>
+                <label>הוספת מרכז רווח בדיווח</label>
+            </value>
+            <value>
+                <fullName>החלפת מקלדת</fullName>
+                <default>false</default>
+                <label>החלפת מקלדת</label>
+            </value>
+            <value>
+                <fullName>החלפת עכבר</fullName>
+                <default>false</default>
+                <label>החלפת עכבר</label>
+            </value>
+            <value>
+                <fullName>העברת בעלות ברשומות</fullName>
+                <default>false</default>
+                <label>העברת בעלות ברשומות</label>
+            </value>
+            <value>
+                <fullName>העברת מקום</fullName>
+                <default>false</default>
+                <label>העברת מקום</label>
+            </value>
+            <value>
+                <fullName>העברת פוליסות בין חשבונות</fullName>
+                <default>false</default>
+                <label>העברת פוליסות בין חשבונות</label>
+            </value>
+            <value>
+                <fullName>העברת תיוקים בין חשבונות/פוליסות</fullName>
+                <default>false</default>
+                <label>העברת תיוקים בין חשבונות/פוליסות</label>
+            </value>
+            <value>
+                <fullName>הקמת דוח חדש</fullName>
+                <default>false</default>
+                <label>הקמת דוח חדש</label>
+            </value>
+            <value>
+                <fullName>הקמת מבטחים חדשים</fullName>
+                <default>false</default>
+                <label>הקמת מבטחים חדשים</label>
+            </value>
+            <value>
+                <fullName>הקמת מוצרים/מרכזי רווח/שדות</fullName>
+                <default>false</default>
+                <label>הקמת מוצרים/מרכזי רווח/שדות</label>
+            </value>
+            <value>
+                <fullName>הקמת משתמש בחברות ביטוח</fullName>
+                <default>false</default>
+                <label>הקמת משתמש בחברות ביטוח</label>
+            </value>
+            <value>
+                <fullName>הקמת עובד חדש</fullName>
+                <default>false</default>
+                <label>הקמת עובד חדש</label>
+            </value>
+            <value>
+                <fullName>הקמת תיקייה</fullName>
+                <default>false</default>
+                <label>הקמת תיקייה</label>
+            </value>
+            <value>
+                <fullName>הרשאה לקובץ</fullName>
+                <default>false</default>
+                <label>הרשאה לקובץ</label>
+            </value>
+            <value>
+                <fullName>הרשאה לתיקיית רשת</fullName>
+                <default>false</default>
+                <label>הרשאה לתיקיית רשת</label>
+            </value>
+            <value>
+                <fullName>זום כספים</fullName>
+                <default>false</default>
+                <label>זום כספים</label>
+            </value>
+            <value>
+                <fullName>חברות ביטוח</fullName>
+                <default>false</default>
+                <label>חברות ביטוח</label>
+            </value>
+            <value>
+                <fullName>חופשת לידה</fullName>
+                <default>false</default>
+                <label>חופשת לידה</label>
+            </value>
+            <value>
+                <fullName>חיבור לעבודה מהבית</fullName>
+                <default>false</default>
+                <label>חיבור לעבודה מהבית</label>
+            </value>
+            <value>
+                <fullName>חשבון נעול</fullName>
+                <default>false</default>
+                <label>חשבון נעול</label>
+            </value>
+            <value>
+                <fullName>טונרים</fullName>
+                <default>false</default>
+                <label>טונרים</label>
+            </value>
+            <value>
+                <fullName>טלפון נייד</fullName>
+                <default>false</default>
+                <label>טלפון נייד</label>
+            </value>
+            <value>
+                <fullName>טעינת רשומות</fullName>
+                <default>false</default>
+                <label>טעינת רשומות</label>
+            </value>
+            <value>
+                <fullName>יומנים</fullName>
+                <default>false</default>
+                <label>יומנים</label>
+            </value>
+            <value>
+                <fullName>כבלים</fullName>
+                <default>false</default>
+                <label>כבלים</label>
+            </value>
+            <value>
+                <fullName>לא מתחבר ל-VPN</fullName>
+                <default>false</default>
+                <label>לא מתחבר ל-VPN</label>
+            </value>
+            <value>
+                <fullName>לא מתקבל SMS עבור חשבון מיקרוסופט</fullName>
+                <default>false</default>
+                <label>לא מתקבל SMS עבור חשבון מיקרוסופט</label>
+            </value>
+            <value>
+                <fullName>לא מתקבלת התראה לפלאפון בכניסה למחשב (DUO)</fullName>
+                <default>false</default>
+                <label>לא מתקבלת התראה לפלאפון בכניסה למחשב (DUO)</label>
+            </value>
+            <value>
+                <fullName>מדפסת מציגה שגיאה (נא להוסיף את מספר השגיאה)</fullName>
+                <default>false</default>
+                <label>מדפסת מציגה שגיאה (נא להוסיף את מספר השגיאה)</label>
+            </value>
+            <value>
+                <fullName>מחיקת כפילויות</fullName>
+                <default>false</default>
+                <label>מחיקת כפילויות</label>
+            </value>
+            <value>
+                <fullName>מחיקת רשומות</fullName>
+                <default>false</default>
+                <label>מחיקת רשומות</label>
+            </value>
+            <value>
+                <fullName>מחשב</fullName>
+                <default>false</default>
+                <label>מחשב</label>
+            </value>
+            <value>
+                <fullName>מחשב איטי/נתקע</fullName>
+                <default>false</default>
+                <label>מחשב איטי/נתקע</label>
+            </value>
+            <value>
+                <fullName>מחשב לא נדלק</fullName>
+                <default>false</default>
+                <label>מחשב לא נדלק</label>
+            </value>
+            <value>
+                <fullName>מחשב מתחמם</fullName>
+                <default>false</default>
+                <label>מחשב מתחמם</label>
+            </value>
+            <value>
+                <fullName>מיזוג חשבונות</fullName>
+                <default>false</default>
+                <label>מיזוג חשבונות</label>
+            </value>
+            <value>
+                <fullName>מייל חשוד</fullName>
+                <default>false</default>
+                <label>מייל חשוד</label>
+            </value>
+            <value>
+                <fullName>מייל מנותק/לא מסונכרן</fullName>
+                <default>false</default>
+                <label>מייל מנותק/לא מסונכרן</label>
+            </value>
+            <value>
+                <fullName>מיפוי כוננים</fullName>
+                <default>false</default>
+                <label>מיפוי כוננים</label>
+            </value>
+            <value>
+                <fullName>מסך</fullName>
+                <default>false</default>
+                <label>מסך</label>
+            </value>
+            <value>
+                <fullName>מצלמה</fullName>
+                <default>false</default>
+                <label>מצלמה</label>
+            </value>
+            <value>
+                <fullName>מקרן</fullName>
+                <default>false</default>
+                <label>מקרן</label>
+            </value>
+            <value>
+                <fullName>ניוד</fullName>
+                <default>false</default>
+                <label>ניוד</label>
+            </value>
+            <value>
+                <fullName>סגירת הצעות/פוטנציאלים</fullName>
+                <default>false</default>
+                <label>סגירת הצעות/פוטנציאלים</label>
+            </value>
+            <value>
+                <fullName>סיוע בדיווחים</fullName>
+                <default>false</default>
+                <label>סיוע בדיווחים</label>
+            </value>
+            <value>
+                <fullName>סיילספורס</fullName>
+                <default>false</default>
+                <label>סיילספורס</label>
+            </value>
+            <value>
+                <fullName>עזיבת עובד</fullName>
+                <default>false</default>
+                <label>עזיבת עובד</label>
+            </value>
+            <value>
+                <fullName>פקס לא מתקבל/נשלח</fullName>
+                <default>false</default>
+                <label>פקס לא מתקבל/נשלח</label>
+            </value>
+            <value>
+                <fullName>פרופיל לא עולה</fullName>
+                <default>false</default>
+                <label>פרופיל לא עולה</label>
+            </value>
+            <value>
+                <fullName>פתיחת הרשאות בחול</fullName>
+                <default>false</default>
+                <label>פתיחת הרשאות בחול</label>
+            </value>
+            <value>
+                <fullName>קליטת עובד חדש</fullName>
+                <default>false</default>
+                <label>קליטת עובד חדש</label>
+            </value>
+            <value>
+                <fullName>שחזור תיקייה/קובץ</fullName>
+                <default>false</default>
+                <label>שחזור תיקייה/קובץ</label>
+            </value>
+            <value>
+                <fullName>שינויים לדוח קיים</fullName>
+                <default>false</default>
+                <label>שינויים לדוח קיים</label>
+            </value>
+            <value>
+                <fullName>תוכנת שכר</fullName>
+                <default>false</default>
+                <label>תוכנת שכר</label>
+            </value>
+            <value>
+                <fullName>תחנת עגינה</fullName>
+                <default>false</default>
+                <label>תחנת עגינה</label>
+            </value>
+            <value>
+                <fullName>תיוק ופתיחת מסמכים</fullName>
+                <default>false</default>
+                <label>תיוק ופתיחת מסמכים</label>
+            </value>
+            <value>
+                <fullName>תיקון שכט/עמלה בדיווח</fullName>
+                <default>false</default>
+                <label>תיקון שכט/עמלה בדיווח</label>
+            </value>
+            <value>
+                <fullName>תמיכה למשתמש בחברות ביטוח</fullName>
+                <default>false</default>
+                <label>תמיכה למשתמש בחברות ביטוח</label>
+            </value>
+            <value>
+                <fullName>תקבולים ממבטחים</fullName>
+                <default>false</default>
+                <label>תקבולים ממבטחים</label>
+            </value>
+            <value>
+                <fullName>תקלה בהדפסה</fullName>
+                <default>false</default>
+                <label>תקלה בהדפסה</label>
+            </value>
+            <value>
+                <fullName>תקלה בסריקה</fullName>
+                <default>false</default>
+                <label>תקלה בסריקה</label>
+            </value>
+            <value>
+                <fullName>תקלות Office</fullName>
+                <default>false</default>
+                <label>תקלות Office</label>
+            </value>
+            <value>
+                <fullName>תקלות דיווח</fullName>
+                <default>false</default>
+                <label>תקלות דיווח</label>
+            </value>
+            <value>
+                <fullName>תקלת WIFI</fullName>
+                <default>false</default>
+                <label>תקלת WIFI</label>
+            </value>
+            <value>
+                <fullName>תקלת חיבור</fullName>
+                <default>false</default>
+                <label>תקלת חיבור</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>משתמש</controllingFieldValue>
+            <valueName>איפוס/החלפת סיסמה</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>משתמש</controllingFieldValue>
+            <valueName>הקמת משתמש בחברות ביטוח</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>משתמש</controllingFieldValue>
+            <valueName>חשבון נעול</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>משתמש</controllingFieldValue>
+            <valueName>פרופיל לא עולה</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>משתמש</controllingFieldValue>
+            <valueName>תמיכה למשתמש בחברות ביטוח</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>סיילספורס</controllingFieldValue>
+            <valueName>BI</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>סיילספורס</controllingFieldValue>
+            <valueName>אי התאמה בין דיווח לפרודוקציה</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>סיילספורס</controllingFieldValue>
+            <valueName>אתר לא עובד</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>סיילספורס</controllingFieldValue>
+            <valueName>ביטול נעילת פוליסה</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>סיילספורס</controllingFieldValue>
+            <valueName>בירור והקמת הסכם סוכני משנה</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>סיילספורס</controllingFieldValue>
+            <valueName>בירור עמלות</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>סיילספורס</controllingFieldValue>
+            <valueName>הוספת מרכז רווח בדיווח</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>סיילספורס</controllingFieldValue>
+            <valueName>העברת בעלות ברשומות</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>סיילספורס</controllingFieldValue>
+            <valueName>העברת פוליסות בין חשבונות</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>סיילספורס</controllingFieldValue>
+            <valueName>העברת תיוקים בין חשבונות/פוליסות</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>סיילספורס</controllingFieldValue>
+            <valueName>הקמת דוח חדש</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>סיילספורס</controllingFieldValue>
+            <valueName>הקמת מבטחים חדשים</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>סיילספורס</controllingFieldValue>
+            <valueName>הקמת מוצרים/מרכזי רווח/שדות</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>סיילספורס</controllingFieldValue>
+            <valueName>טעינת רשומות</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>סיילספורס</controllingFieldValue>
+            <valueName>מחיקת כפילויות</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>סיילספורס</controllingFieldValue>
+            <valueName>מחיקת רשומות</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>סיילספורס</controllingFieldValue>
+            <valueName>מיזוג חשבונות</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>סיילספורס</controllingFieldValue>
+            <valueName>סגירת הצעות/פוטנציאלים</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>סיילספורס</controllingFieldValue>
+            <valueName>סיוע בדיווחים</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>סיילספורס</controllingFieldValue>
+            <valueName>שינויים לדוח קיים</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>סיילספורס</controllingFieldValue>
+            <valueName>תיוק ופתיחת מסמכים</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>סיילספורס</controllingFieldValue>
+            <valueName>תיקון שכט/עמלה בדיווח</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>סיילספורס</controllingFieldValue>
+            <valueName>תקלות דיווח</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>פקס</controllingFieldValue>
+            <valueName>הגדרת פקס במחשב</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>פקס</controllingFieldValue>
+            <controllingFieldValue>ציוד</controllingFieldValue>
+            <valueName>כבלים</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>פקס</controllingFieldValue>
+            <controllingFieldValue>ציוד</controllingFieldValue>
+            <valueName>מסך</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>פקס</controllingFieldValue>
+            <valueName>פקס לא מתקבל/נשלח</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>ציוד</controllingFieldValue>
+            <valueName>אוזניות</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>ציוד</controllingFieldValue>
+            <valueName>החלפת מקלדת</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>ציוד</controllingFieldValue>
+            <valueName>החלפת עכבר</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>ציוד</controllingFieldValue>
+            <valueName>טלפון נייד</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>ציוד</controllingFieldValue>
+            <valueName>מצלמה</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>תוכנות עבודה</controllingFieldValue>
+            <valueName>2TEAM</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>תוכנות עבודה</controllingFieldValue>
+            <valueName>3CX</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>תוכנות עבודה</controllingFieldValue>
+            <valueName>PDF/TIF</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>תוכנות עבודה</controllingFieldValue>
+            <valueName>בבילון</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>תוכנות עבודה</controllingFieldValue>
+            <valueName>זום כספים</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>תוכנות עבודה</controllingFieldValue>
+            <valueName>חברות ביטוח</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>תוכנות עבודה</controllingFieldValue>
+            <valueName>סיילספורס</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>תוכנות עבודה</controllingFieldValue>
+            <valueName>תוכנת שכר</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>תיקיות וקבצים</controllingFieldValue>
+            <valueName>הקמת תיקייה</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>תיקיות וקבצים</controllingFieldValue>
+            <valueName>מיפוי כוננים</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>תיקיות וקבצים</controllingFieldValue>
+            <valueName>שחזור תיקייה/קובץ</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>משאבי אנוש</controllingFieldValue>
+            <valueName>העברת מקום</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>משאבי אנוש</controllingFieldValue>
+            <valueName>חופשת לידה</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>משאבי אנוש</controllingFieldValue>
+            <valueName>ניוד</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>משאבי אנוש</controllingFieldValue>
+            <valueName>עזיבת עובד</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>משאבי אנוש</controllingFieldValue>
+            <valueName>קליטת עובד חדש</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Office</controllingFieldValue>
+            <valueName>תקלות Office</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Outlook</controllingFieldValue>
+            <valueName>ארכיון</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Outlook</controllingFieldValue>
+            <valueName>הגדרות תצוגה/שפה</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Outlook</controllingFieldValue>
+            <valueName>הגדרת חתימה</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Outlook</controllingFieldValue>
+            <valueName>הגדרת מענה אוטומטי</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Outlook</controllingFieldValue>
+            <valueName>יומנים</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Outlook</controllingFieldValue>
+            <valueName>מייל חשוד</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Outlook</controllingFieldValue>
+            <valueName>מייל מנותק/לא מסונכרן</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>אינטרנט</controllingFieldValue>
+            <valueName>אתר חסום</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>אינטרנט</controllingFieldValue>
+            <valueName>דפדפן</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>אינטרנט</controllingFieldValue>
+            <valueName>תקלת WIFI</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>אינטרנט</controllingFieldValue>
+            <valueName>תקלת חיבור</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>הרשאות</controllingFieldValue>
+            <valueName>הרשאה לקובץ</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>הרשאות</controllingFieldValue>
+            <valueName>הרשאה לתיקיית רשת</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>הרשאות</controllingFieldValue>
+            <valueName>פתיחת הרשאות בחול</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>חדר ישיבות</controllingFieldValue>
+            <valueName>מחשב</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>חדר ישיבות</controllingFieldValue>
+            <valueName>מקרן</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>חיבור מרחוק</controllingFieldValue>
+            <valueName>חיבור לעבודה מהבית</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>חיבור מרחוק</controllingFieldValue>
+            <valueName>לא מתחבר ל-VPN</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>חיבור מרחוק</controllingFieldValue>
+            <valueName>לא מתקבל SMS עבור חשבון מיקרוסופט</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>מדפסות וסורקים</controllingFieldValue>
+            <valueName>הגדרת כתובות מייל לסריקה</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>מדפסות וסורקים</controllingFieldValue>
+            <valueName>הגדרת מדפסת</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>מדפסות וסורקים</controllingFieldValue>
+            <valueName>טונרים</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>מדפסות וסורקים</controllingFieldValue>
+            <valueName>מדפסת מציגה שגיאה (נא להוסיף את מספר השגיאה)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>מדפסות וסורקים</controllingFieldValue>
+            <valueName>תקלה בהדפסה</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>מדפסות וסורקים</controllingFieldValue>
+            <valueName>תקלה בסריקה</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>מחשב</controllingFieldValue>
+            <valueName>הודעת Bit Locker בהעלאת המחשב</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>מחשב</controllingFieldValue>
+            <valueName>לא מתקבלת התראה לפלאפון בכניסה למחשב (DUO)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>מחשב</controllingFieldValue>
+            <valueName>מחשב איטי/נתקע</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>מחשב</controllingFieldValue>
+            <valueName>מחשב לא נדלק</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>מחשב</controllingFieldValue>
+            <valueName>מחשב מתחמם</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

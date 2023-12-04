@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AgentWise_IL__Additional_Health_Service__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <externalId>false</externalId>
+    <label>Additional Health Service</label>
+    <lookupFilter>
+        <active>true</active>
+        <filterItems>
+            <field>AgentWise_IL__Insurance_Plan__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Private Health Service</value>
+        </filterItems>
+        <isOptional>true</isOptional>
+    </lookupFilter>
+    <referenceTo>AgentWise_IL__Insurance_Plan__c</referenceTo>
+    <relationshipLabel>Contacts (Additional Health Service)</relationshipLabel>
+    <relationshipName>Contacts</relationshipName>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Lookup</type>
+</CustomField>
